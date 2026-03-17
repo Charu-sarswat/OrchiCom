@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
 import styles from "./pricing.module.css";
 import { Search, Info, Truck, Clock, CheckCircle, Package, Star, Calendar, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -100,16 +100,35 @@ const pricingData = {
   ]
 };
 
-import { useEffect } from "react";
-
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
+
+interface PricingItem {
+  name: string;
+  price: string;
+}
+
+interface PricingGroup {
+  category: string;
+  items: PricingItem[];
+}
+
+interface PricingDataMap {
+  [serviceName: string]: PricingGroup[];
+}
+
+interface Plan {
+  name: string;
+  price: string;
+  features: string[];
+  popular: boolean;
+}
 
 export default function PricingPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeService, setActiveService] = useState("Dry Clean");
   const [activeCategory, setActiveCategory] = useState("All");
-  const [plans, setPlans] = useState<any[]>([]);
-  const [pricingData, setPricingData] = useState<any>({});
+  const [plans, setPlans] = useState<Plan[]>([]);
+  const [pricingData, setPricingData] = useState<PricingDataMap>({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -232,7 +251,7 @@ export default function PricingPage() {
     setActiveCategory("All");
   }, [activeService]);
 
-  const categories = ["All", ...new Set((pricingData[activeService] || []).map((g: any) => g.category) as string[])];
+  const categories = ["All", ...new Set((pricingData[activeService] || []).map((g: PricingGroup) => g.category))];
   
   const serviceOrder = ["dry clean", "wash per kg", "steam iron"];
   const services = Object.keys(pricingData).sort((a, b) => {
@@ -244,16 +263,16 @@ export default function PricingPage() {
     return a.localeCompare(b);
   });
 
-  const currentServiceData = pricingData[activeService as keyof typeof pricingData] || [];
+  const currentServiceData = pricingData[activeService] || [];
 
-  const filteredData = currentServiceData.filter(group => 
+  const filteredData = currentServiceData.filter((group: PricingGroup) => 
     activeCategory === "All" || group.category === activeCategory
-  ).map(group => ({
+  ).map((group: PricingGroup) => ({
     ...group,
-    items: group.items.filter(item => 
+    items: group.items.filter((item: PricingItem) => 
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
-  })).filter(group => group.items.length > 0);
+  })).filter((group: any) => group.items.length > 0);
 
   return (
     <div className={styles.page}>
