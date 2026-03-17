@@ -22,7 +22,12 @@ import {
   Fan,
   Flame,
   Smartphone,
-  Shield
+  Shield,
+  Target,
+  Eye,
+  Rocket,
+  IndianRupee,
+  Handshake
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -35,25 +40,29 @@ export default function Home() {
       {/* About Section */}
       <section className="section-padding bg-light">
         <div className="container">
-          <div className="grid grid-2 items-stretch">
-            <div style={{ position: 'relative', borderRadius: '30px', overflow: 'hidden', minHeight: '400px' }}>
+          <div className="grid grid-2 items-center">
+            <div style={{ position: 'relative', borderRadius: '30px', overflow: 'hidden', minHeight: '500px' }}>
               <Image 
-                src="/img/delivery image.png" 
-                alt="The Orchid Laundry Delivery" 
+                src="/about2.png" 
+                alt="The Orchid Laundry LLP" 
                 fill
                 style={{ objectFit: 'cover' }}
               />
             </div>
-            <div style={{ paddingLeft: '1rem' }}>
-              <h2 style={{ fontSize: '3rem', marginBottom: '0.5rem', marginTop: '0.5rem' }}>About The Orchid <span className="text-gradient">Laundry</span></h2>
+            <div style={{ paddingLeft: '1.5rem' }}>
+              <h2 style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>About The Orchid <span className="text-gradient">Laundry LLP</span></h2>
               <p style={{ fontWeight: 800, color: '#000', marginBottom: '1.5rem', fontSize: '1.1rem' }}>Fast - Reliable - Affordable</p>
               
-              <p style={{ color: '#333', marginBottom: '1rem', fontSize: '1.1rem', lineHeight: '1.5' }}>
+              <p style={{ color: '#333', marginBottom: '1rem', fontSize: '1.1rem', lineHeight: '1.8' }}>
                 At <strong style={{ color: 'var(--primary)' }}>The Orchid Laundry</strong>, we turn an everyday chore into a seamless, stress-free experience.
               </p>
               
-              <p style={{ color: '#333', marginBottom: '2rem', fontSize: '1.1rem', lineHeight: '1.5' }}>
-                What began as a small idea in Dombivli has grown into a professional, tech-enabled service dedicated to quality, convenience, and customer delight.
+              <p style={{ color: '#333', marginBottom: '1rem', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                We know the hours spent on washing, drying, ironing, and folding can add up, time that could be better spent on family, work, or simply enjoying life.
+              </p>
+
+              <p style={{ color: '#333', marginBottom: '2rem', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                That is why we started <strong className="text-gradient">The Orchid Laundry LLP</strong>, to make laundry fast, reliable, and affordable. What began as a small idea in Dombivli has grown into a professional, tech-enabled service dedicated to quality, convenience, and customer delight.
               </p>
 
               <div className="grid grid-2" style={{ gap: '1.5rem', marginBottom: '2.5rem' }}>
@@ -64,13 +73,81 @@ export default function Home() {
                   { label: "ECO-FRIENDLY", desc: "Safe processes" }
                 ].map((item, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.8rem', fontSize: '1.05rem' }}>
-                    <CheckCircle2 size={22} color="#000" style={{ marginTop: '2px', flexShrink: 0 }} /> 
+                    <CheckCircle2 size={22} color="var(--primary)" style={{ marginTop: '2px', flexShrink: 0 }} /> 
                     <span><strong style={{ color: 'var(--primary)' }}>{item.label}:</strong> {item.desc}</span>
                   </div>
                 ))}
               </div>
               <Link href="/about" className="btn btn-primary">Read More</Link>
             </div>
+          </div>
+
+          {/* Approach Section (from About page) */}
+          <div style={{ 
+            background: '#fdfcf6', 
+            padding: '3rem', 
+            borderRadius: '40px', 
+            border: '1px solid rgba(24, 161, 216, 0.15)',
+            marginTop: '4rem',
+            textAlign: 'center'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', marginBottom: '1.5rem' }}>
+              <Rocket size={32} className="text-gradient" />
+              <h2 style={{ margin: 0, fontSize: '2.5rem' }}>Our <span className="text-gradient">Approach</span></h2>
+            </div>
+            <p style={{ fontSize: '1.1rem', color: '#444', lineHeight: '1.8', maxWidth: '1000px', margin: '0 auto' }}>
+              We combine technology, expert care, and efficient operations to deliver a consistent, high-quality laundry experience. From scheduled pickups and doorstep delivery to customizable instructions for every garment, we ensure your clothes are treated with care while saving you time, effort, and money.
+            </p>
+          </div>
+
+          {/* Mission & Vision Section (from About page) */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '4rem' }}>
+            <div style={{ background: 'white', padding: '2.5rem', borderRadius: '30px', border: '1px solid var(--primary)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
+                <Target size={28} className="text-gradient" />
+                <h3 style={{ margin: 0, fontSize: '1.8rem' }}>Our <span className="text-gradient">Mission</span></h3>
+              </div>
+              <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#444' }}>
+                To improve the quality of life for our customers by saving them time, energy, and hassle through a highly reliable, convenient, and affordable laundry service.
+              </p>
+            </div>
+            <div style={{ background: 'white', padding: '2.5rem', borderRadius: '30px', border: '1px solid var(--primary)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
+                <Eye size={28} className="text-gradient" />
+                <h3 style={{ margin: 0, fontSize: '1.8rem' }}>Our <span className="text-gradient">Vision</span></h3>
+              </div>
+              <p style={{ fontSize: '1.05rem', lineHeight: '1.6', color: '#444' }}>
+                To become the most trusted laundry brand in India, starting from Dombivli and expanding across Maharashtra and beyond, delivering consistent quality, convenience, and value.
+              </p>
+            </div>
+          </div>
+
+          {/* Values Section (Summary) */}
+          <div style={{ textAlign: 'center', marginTop: '5rem', marginBottom: '3rem' }}>
+            <h2 style={{ fontSize: '2.5rem' }}>Our Core <span className="text-gradient">Values</span></h2>
+          </div>
+          
+          <div className="grid grid-3" style={{ gap: '1.5rem' }}>
+            {[
+              { icon: <Leaf size={24} />, title: "SUSTAINABILITY", desc: "Caring for the environment with eco-friendly processes.", bg: "#f0fdf4" },
+              { icon: <CheckCircle2 size={24} />, title: "RELIABLE", desc: "Consistent quality, every wash, every time.", bg: "#f0f9ff" },
+              { icon: <IndianRupee size={24} />, title: "AFFORDABLE", desc: "Premium service at fair, transparent pricing.", bg: "#fffcf0" },
+              { icon: <Handshake size={24} />, title: "RESPECT", desc: "Treating everyone with dignity and care.", bg: "#fef2f2" },
+              { icon: <Shield size={24} />, title: "INTEGRITY", desc: "Honest, transparent, and ethical in all dealings.", bg: "#f5f3ff" },
+              { icon: <Zap size={24} />, title: "FAST", desc: "Quick, on-time service with efficiency.", bg: "#ecfdf5" }
+            ].map((value, i) => (
+              <div key={i} style={{ 
+                padding: '1.5rem', 
+                borderRadius: '24px', 
+                background: value.bg,
+                border: '1px solid rgba(24, 161, 216, 0.1)',
+                textAlign: 'center'
+              }}>
+                <div style={{ color: 'var(--primary)', marginBottom: '0.8rem', display: 'flex', justifyContent: 'center' }}>{value.icon}</div>
+                <h4 style={{ fontSize: '1.1rem', fontWeight: 800, marginBottom: '0.5rem', letterSpacing: '1px' }}>{value.title}</h4>
+                <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.4' }}>{value.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
