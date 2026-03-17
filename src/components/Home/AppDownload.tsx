@@ -1,7 +1,7 @@
 "use client";
 
 import { GrAppleAppStore } from "react-icons/gr";
-import { SiGoogleplay } from "react-icons/si";
+import { BiLogoPlayStore } from "react-icons/bi";
 import styles from "./AppDownload.module.css";
 
 export default function AppDownload() {
@@ -11,7 +11,10 @@ export default function AppDownload() {
         <div className={styles.wrapper}>
           <div className={styles.content}>
             <p className={styles.text}>
-              Download <strong>The Orchid Laundry</strong> app now
+              Download <strong>The Orchid Laundry App</strong>
+            </p>
+            <p className={styles.subtext}>
+              Experience the most convenient way to handle your laundry. Get it now on your favorite store.
             </p>
           </div>
           <div className={styles.apps}>
@@ -23,7 +26,7 @@ export default function AppDownload() {
               </div>
             </a>
             <a href="#" className={`${styles.appLink} ${styles.google}`}>
-              <SiGoogleplay className={styles.icon} />
+              <BiLogoPlayStore className={styles.icon} />
               <div className={styles.btnText}>
                 <span>GET IT ON</span>
                 <strong>Google Play</strong>

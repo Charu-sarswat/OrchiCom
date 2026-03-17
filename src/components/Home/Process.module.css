@@ -25,8 +25,9 @@
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   color: #18A1D8;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   letter-spacing: 1px;
+  line-height: 1.2;
 }
 
 .mainTitle {
@@ -257,55 +258,121 @@
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .brandName {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .mainTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .contentColumn p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .actions {
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .stepsColumn {
+    min-height: auto;
+  }
+
   .swirlContainer {
     width: 100%;
     height: auto;
+    transform: none;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
   }
+
   .centerCircle {
     display: none;
   }
+
   .swirlStep {
     position: static;
-    transform: none;
-    width: 100%;
-    height: auto;
-  }
-  .stepPetal {
-    border-radius: 20px;
     transform: none !important;
-    padding: 2rem;
+    width: 100%;
+    height: auto;
+  }
+
+  .stepPetal {
+    border-radius: 12px;
+    transform: none !important;
+    padding: 1.2rem;
     height: auto;
     width: 100%;
+    border-color: rgba(255, 255, 255, 0.2);
+    cursor: default;
+    display: block; /* Stack internally */
   }
+
   .stepContent {
-    transform: none;
+    transform: none !important;
     text-align: left;
     width: 100%;
-    flex-direction: row;
-    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
   }
+
   .stepHeader {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    width: 100%;
+  }
+
+  .swirlStep:hover .stepPetal {
+    transform: translateY(-2px) !important;
+    scale: 1 !important;
+  }
+
+  .numberIcon {
+    width: 36px;
+    height: 36px;
     flex-shrink: 0;
-    margin-bottom: 0;
+    font-size: 1rem;
   }
-  .stepHeader h4 {
-    color: white;
-    font-size: 1.2rem;
-    text-align: center;
-  }
-  .textContent {
+
+  .stepContent h4 {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
     text-align: left;
   }
+
   .stepContent p {
+    font-size: 0.9rem;
     text-align: left;
     max-width: 100%;
-    margin-left: 0;
-    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  .petalDecor {
+    display: none;
   }
 }
 

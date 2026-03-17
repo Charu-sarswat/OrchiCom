@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram, Linkedin, Youtube, Phone, Mail, MapPin, Apple, Play } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, Phone, Mail, MapPin } from "lucide-react";
+import AppDownload from "../Home/AppDownload";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -8,27 +9,8 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className="container">
         {/* App Download Strip */}
-        <div className={styles.appStrip}>
-          <div className={styles.appContent}>
-            <h3><span className={styles.blackText}>Download</span> The Orchid Laundry App</h3>
-            <p>Experience the most convenient way to handle your laundry. Get it now on your favorite store.</p>
-          </div>
-          <div className={styles.appButtons}>
-            <Link href="#" className={styles.appBtn}>
-              <Apple size={24} />
-              <div>
-                <small>Download on the</small>
-                <strong>App Store</strong>
-              </div>
-            </Link>
-            <Link href="#" className={styles.appBtn}>
-              <Play size={24} fill="currentColor" />
-              <div>
-                <small>Get it on</small>
-                <strong>Google Play</strong>
-              </div>
-            </Link>
-          </div>
+        <div style={{ position: 'relative', top: '-3rem' }}>
+          <AppDownload />
         </div>
 
         <div className={styles.grid}>

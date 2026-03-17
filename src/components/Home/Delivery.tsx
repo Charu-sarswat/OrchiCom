@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Truck, Zap, Check, MessageCircle, Calendar } from "lucide-react";
+import { Truck, Zap, Check, Calendar } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Delivery.module.css";
@@ -78,10 +79,10 @@ export default function Delivery() {
         </div>
         
         <div className={styles.actions}>
-          <Link href="https://wa.me/917080803074" className="btn btn-primary" style={{ display: 'flex', gap: '8px', alignItems: 'center', backgroundColor: '#000' }}>
-            <MessageCircle size={20} /> Chat on WhatsApp
+          <Link href="https://wa.me/917080803074" className="btn btn-secondary">
+            <SiWhatsapp size={20} /> Chat on WhatsApp
           </Link>
-          <Link href="/booking" className="btn btn-primary" style={{ display: 'flex', gap: '8px', alignItems: 'center', backgroundColor: '#18A1D8' }}>
+          <Link href="/booking" className="btn btn-primary">
             <Calendar size={20} /> Schedule Free Pickup
           </Link>
         </div>
