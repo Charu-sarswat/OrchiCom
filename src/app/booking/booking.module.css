@@ -1,0 +1,164 @@
+.page {
+  background: var(--light);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: none;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.cardHeader {
+  background: var(--primary);
+  color: white;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cardHeader h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.cardBody {
+  padding: 2rem;
+}
+
+.inputGroup {
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.inputGroup input, 
+.inputGroup select, 
+.inputGroup textarea {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1.5px solid #eee;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.inputGroup input:focus, 
+.inputGroup select:focus, 
+.inputGroup textarea:focus {
+  outline: none;
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 4px var(--secondary-soft);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.checkboxGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+}
+
+.checkboxLabel input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--secondary);
+}
+
+.freeNotice {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #1c7c3d;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 1.25rem;
+  border-radius: 15px;
+  margin-top: 1rem;
+}
+
+.successPage {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successCard {
+  text-align: center;
+  background: white;
+  padding: 5rem 3rem;
+  border-radius: 40px;
+  box-shadow: none;
+  max-width: 600px;
+}
+
+.successIcon {
+  width: 100px;
+  height: 100px;
+  background: var(--secondary-soft);
+  color: var(--secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2.5rem;
+}
+
+.error {
+  color: #c12b2b;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,216 @@
+.footer {
+  background: white;
+  color: var(--dark);
+  padding: 0;
+  margin-top: 5rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.appStrip {
+  background: var(--primary); /* Changed background to blue */
+  border-radius: 30px;
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: -3rem;
+  box-shadow: none;
+  border: none; /* Border is redundant with blue background */
+}
+
+.appContent h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #000; /* Heading text changed to black */
+}
+
+.blackText {
+  color: #000; /* Ensured this is also black */
+}
+
+.appContent p {
+  color: #fff;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.appButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.appBtn {
+  background: #000;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.appBtn:hover {
+  transform: translateY(-5px);
+  box-shadow: none;
+}
+
+.appBtn small {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.appBtn strong {
+  font-size: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 4rem;
+  padding-bottom: 5rem;
+}
+
+.section h3 {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  position: relative;
+}
+
+.section h3::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--primary);
+}
+
+.bio {
+  color: #555;
+  line-height: 1.8;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+}
+
+.social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social a {
+  color: var(--dark);
+  background: rgba(0,0,0,0.05);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.social a:hover {
+  background: var(--secondary);
+  color: var(--primary);
+  transform: rotate(360deg);
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links li {
+  margin-bottom: 1rem;
+}
+
+.links a {
+  color: #555;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.links a:hover {
+  color: var(--primary);
+  padding-left: 5px;
+}
+
+.contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact li {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.contact svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.contact a {
+  color: #555;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.3rem;
+  transition: color 0.3s ease;
+}
+
+.contact a:hover {
+  color: var(--primary);
+}
+
+.bottom {
+  border-top: 1px solid #f0f0f0;
+  padding: 2.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.credit {
+  font-style: italic;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .appStrip {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}

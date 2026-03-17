@@ -1,0 +1,406 @@
+.page {
+  background: white;
+}
+
+.hero {
+  background: var(--light);
+  padding: 8rem 0 5rem;
+  text-align: center;
+}
+
+.heroContent h1 {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.heroContent p {
+  font-size: 1.25rem;
+  color: #666;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.processSection {
+  background: white;
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.processSection h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Infographic Structure */
+.infoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 4rem auto 0;
+  position: relative;
+}
+
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1;
+}
+
+.centerColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 0 0 320px;
+}
+
+.mainCircle {
+  width: 320px;
+  height: 320px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: none;
+  border: 4px solid white;
+  padding: 2rem;
+  z-index: 5;
+  position: relative;
+}
+
+/* Infographic Hub Ring */
+.hubRing {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hubSegment {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 50%, 50% 0, 85% 15%);
+  transform-origin: center;
+}
+
+.hubSegment:nth-child(1) { transform: rotate(0deg); background: var(--primary); }
+.hubSegment:nth-child(2) { transform: rotate(45deg); background: #000; }
+.hubSegment:nth-child(3) { transform: rotate(90deg); background: var(--primary); }
+.hubSegment:nth-child(4) { transform: rotate(135deg); background: #000; }
+.hubSegment:nth-child(5) { transform: rotate(180deg); background: var(--primary); }
+.hubSegment:nth-child(6) { transform: rotate(225deg); background: #000; }
+.hubSegment:nth-child(7) { transform: rotate(270deg); background: var(--primary); }
+.hubSegment:nth-child(8) { transform: rotate(315deg); background: #000; }
+
+.mainCircle h3 {
+  font-size: 2.22rem;
+  color: #000;
+  margin: 0;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.mainCircle span {
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-top: 12px;
+}
+
+.infoCard {
+  background: white;
+  border-radius: 100px;
+  padding: 1.2rem 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: none;
+  border: 2px solid var(--primary);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  min-height: 100px;
+  width: 100%;
+}
+
+.infoCard:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: none;
+  border-color: var(--primary);
+}
+
+/* Connectors / Pointers */
+.infoCard::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 2px;
+  background: #eee;
+  z-index: -1;
+}
+
+.cardRight::before {
+  left: -55px;
+  width: 55px;
+}
+
+.cardLeft::before {
+  right: -55px;
+  width: 55px;
+}
+
+/* Triangular notch from reference image */
+.infoCard::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  z-index: 2;
+}
+
+.cardRight::after {
+  left: -2px;
+  border-left: 10px solid #f8fafc; /* Color of the background or container */
+  display: none; /* Reference image uses a separate design, keeping it clean */
+}
+
+/* Let's actually use the pointer from the image */
+.infoCard::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.cardRight::after {
+  left: -8px;
+  border-right: 8px solid white;
+}
+
+.cardLeft::after {
+  right: -8px;
+  border-left: 8px solid white;
+}
+
+.cardLeft {
+  text-align: right;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.cardRight {
+  flex-direction: row-reverse;
+}
+
+.cardBadge {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  border: 4px solid currentColor; /* Takes color from parent nth-child */
+  color: #333;
+  box-shadow: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.cardRight .cardBadge {
+  left: -51px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cardLeft .cardBadge {
+  right: -51px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cardIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--primary);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: none;
+}
+
+.cardText {
+  flex: 1;
+}
+
+.cardText h4 {
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #000;
+}
+
+.cardText p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Infographic Colors */
+.cardRight:nth-child(1) { color: var(--primary); margin-left: -100px; margin-top: 20px; }
+.cardRight:nth-child(2) { color: #000; margin-left: 20px; }
+.cardRight:nth-child(3) { color: var(--primary); margin-top: -10px; }
+.cardRight:nth-child(4) { color: #000; margin-left: -120px; margin-top: -20px; }
+
+.cardLeft:nth-child(1) { color: var(--primary); margin-left: 80px; margin-top: 30px; }
+.cardLeft:nth-child(2) { color: #000; }
+.cardLeft:nth-child(3) { color: var(--primary); }
+.cardLeft:nth-child(4) { color: #000; margin-left: 120px; margin-top: -10px; }
+
+@media (max-width: 1200px) {
+  .infoContainer {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .centerColumn {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+  .sideColumn {
+    width: 100%;
+    gap: 1.5rem;
+  }
+  .infoCard {
+    border-radius: 24px;
+    flex-direction: row !important;
+    text-align: left !important;
+    padding-right: 1.5rem !important;
+  }
+  .cardBadge {
+    order: -1;
+  }
+}
+
+.gridSection {
+  background: var(--light);
+}
+
+.categoryGroup {
+  margin-bottom: 6rem;
+}
+
+.categoryGroup:last-child {
+  margin-bottom: 0;
+}
+
+.categoryHeader {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.categoryTitle {
+  font-size: 2.22rem;
+  color: #000;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.titleUnderline {
+  width: 60px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+
+.serviceCard {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: none;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-10px);
+  box-shadow: none;
+}
+
+.serviceImg {
+  height: 200px;
+  position: relative;
+}
+
+.serviceImg img {
+  object-fit: cover;
+}
+
+.serviceInfo {
+  padding: 2rem;
+}
+
+.serviceInfo h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.serviceInfo p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.learnMore {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroContent h1 {
+    font-size: 2.8rem;
+  }
+}

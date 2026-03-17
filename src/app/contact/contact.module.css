@@ -1,0 +1,199 @@
+.contactPage {
+  background: white;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 4rem;
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infoCard {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.infoCard:hover {
+  border-color: #18a1d8;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  background: var(--secondary-soft);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.infoCard h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.infoCard p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.whatsappCard {
+  background: #22c55e;
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  color: white;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.whatsappCard:hover {
+  transform: translateY(-5px);
+  background: #16a34a;
+}
+
+.waIconBox {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.waText h3 {
+  color: white;
+  margin-bottom: 0.2rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.waText p {
+  margin-bottom: 0;
+  opacity: 0.95;
+  font-size: 1rem;
+}
+
+.mapSection {
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.formColumn {
+  position: relative;
+}
+
+.form {
+  padding: 3rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  background: white;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.inputGroup input, .inputGroup textarea {
+  padding: 0.9rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.inputGroup input:focus, .inputGroup textarea:focus {
+  outline: none;
+  border-color: var(--secondary);
+  background: white;
+  box-shadow: 0 0 0 4px var(--secondary-soft);
+}
+
+.successMessage {
+  text-align: center;
+  padding: 5rem 3rem;
+}
+
+.successIcon {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.errorText {
+  color: #ff4d4d;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 992px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .form {
+    padding: 1.5rem;
+  }
+  
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+  }
+}
