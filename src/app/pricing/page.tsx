@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import styles from "./pricing.module.css";
 import { Search, Info, Truck, Clock, CheckCircle, Package, Star, Calendar, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -100,13 +100,149 @@ const pricingData = {
   ]
 };
 
+import { useEffect } from "react";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
+
 export default function PricingPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeService, setActiveService] = useState("Dry Clean");
   const [activeCategory, setActiveCategory] = useState("All");
+  const [plans, setPlans] = useState<any[]>([]);
+  const [pricingData, setPricingData] = useState<any>({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  const categories = ["All", "Men", "Women", "Kids", "Other"];
-  const services = ["Dry Clean", "Steam Press", "Wash Per KG"];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        // Fetch Services and Categories
+        const servicesRes = await fetch(`${API_URL}/services/all`);
+        const services = await servicesRes.json();
+
+        // Transform services data to pricingData format
+        const formattedPricing: any = {};
+        
+        // Define desired order
+        const serviceOrder = ["dry clean", "wash per kg", "steam iron"];
+        
+        services.forEach((service: any) => {
+          // Normalize service name: trim and replace multiple whitespaces/newlines with a single space
+          const rawName = service.name || "";
+          const normalizedName = rawName.trim().replace(/\s+/g, ' ');
+          const lowerName = normalizedName.toLowerCase();
+          
+          // Determine display name
+          let displayName = normalizedName;
+          if (lowerName.includes("dry") && lowerName.includes("clean")) displayName = "Dry Clean";
+          else if (lowerName.includes("steam") && (lowerName.includes("press") || lowerName.includes("iron"))) displayName = "Steam Iron";
+          else if (lowerName.includes("wash") && lowerName.includes("kg")) displayName = "Wash Per Kg";
+
+          if (lowerName.includes("wash") && lowerName.includes("kg")) {
+            // Special handling for Wash Per Kg: categories with prices but no sub-items
+            const items = service.LaundryCategory.flatMap((cat: any) => {
+              if (cat.LaundryItem && cat.LaundryItem.length > 0) {
+                return cat.LaundryItem.map((item: any) => ({
+                  name: item.name,
+                  price: `₹${item.price}${item.perUnit ? `/${item.perUnit}` : item.unit ? `/${item.unit}` : ""}`
+                }));
+              } else {
+                return [{
+                  name: cat.name,
+                  price: `₹${cat.price}${cat.unit ? `/${cat.unit}` : ""}`
+                }];
+              }
+            });
+
+            formattedPricing[displayName] = [{
+              category: "Products",
+              items: items
+            }];
+          } else {
+            // Grouping logic for Dry Clean and Steam Press
+            const groups: { [key: string]: any[] } = {
+              "Men": [],
+              "Women": [],
+              "Kids": [],
+              "Others": []
+            };
+
+            service.LaundryCategory.forEach((cat: any) => {
+              const catName = cat.name.toLowerCase();
+              let targetGroup = "Others";
+              
+              if (catName.includes("men") && !catName.includes("women")) targetGroup = "Men";
+              else if (catName.includes("women")) targetGroup = "Women";
+              else if (catName.includes("kid") || catName.includes("child")) targetGroup = "Kids";
+
+              const catItems = cat.LaundryItem.map((item: any) => ({
+                name: item.name,
+                price: `₹${item.price}${item.perUnit ? `/${item.perUnit}` : item.unit ? `/${item.unit}` : ""}`
+              }));
+
+              groups[targetGroup].push(...catItems);
+            });
+
+            formattedPricing[displayName] = Object.entries(groups)
+              .filter(([_, items]) => items.length > 0)
+              .map(([name, items]) => ({
+                category: name,
+                items: items
+              }));
+          }
+        });
+
+        // Re-calculate sorted names for selection
+        const availableServices = Object.keys(formattedPricing).sort((a, b) => {
+          const idxA = serviceOrder.indexOf(a.toLowerCase());
+          const idxB = serviceOrder.indexOf(b.toLowerCase());
+          if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+          if (idxA !== -1) return -1;
+          if (idxB !== -1) return 1;
+          return a.localeCompare(b);
+        });
+
+        setPricingData(formattedPricing);
+        if (availableServices.length > 0) {
+          setActiveService(availableServices[0]);
+        }
+
+        // Fetch Subscription Plans
+        const plansRes = await fetch(`${API_URL}/subscriptions`);
+        const plansData = await plansRes.json();
+        setPlans(plansData.map((p: any) => ({
+          name: p.name,
+          price: `₹${p.price}`,
+          features: p.features || [],
+          popular: p.isPopular || false
+        })));
+
+      } catch (error) {
+        console.error("Error fetching pricing data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Reset category when service changes
+  useEffect(() => {
+    setActiveCategory("All");
+  }, [activeService]);
+
+  const categories = ["All", ...new Set((pricingData[activeService] || []).map((g: any) => g.category) as string[])];
+  
+  const serviceOrder = ["dry clean", "wash per kg", "steam iron"];
+  const services = Object.keys(pricingData).sort((a, b) => {
+    const idxA = serviceOrder.indexOf(a.toLowerCase());
+    const idxB = serviceOrder.indexOf(b.toLowerCase());
+    if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+    if (idxA !== -1) return -1;
+    if (idxB !== -1) return 1;
+    return a.localeCompare(b);
+  });
 
   const currentServiceData = pricingData[activeService as keyof typeof pricingData] || [];
 
@@ -193,8 +329,8 @@ export default function PricingPage() {
             <tbody>
               {filteredData.length > 0 ? (
                 filteredData.map((group) => (
-                  <>
-                    <tr key={group.category} className={styles.categoryHeader}>
+                  <Fragment key={group.category}>
+                    <tr className={styles.categoryHeader}>
                       <td colSpan={3}>
                         <div className={styles.catTitle}>
                           <User size={16} /> {group.category}
@@ -203,12 +339,12 @@ export default function PricingPage() {
                     </tr>
                     {group.items.map((item, i) => (
                       <tr key={i}>
-                        <td className={styles.groupCol}>{group.category} Luxury</td>
+                        <td className={styles.groupCol}>{activeService.toLowerCase().includes("kg") ? "Laundry" : `${group.category} Service`}</td>
                         <td className={styles.itemCol}>{item.name}</td>
-                        <td className={styles.priceCol}>{item.price} /piece</td>
+                        <td className={styles.priceCol}>{item.price}</td>
                       </tr>
                     ))}
-                  </>
+                  </Fragment>
                 ))
               ) : (
                 <tr>
@@ -246,7 +382,6 @@ export default function PricingPage() {
                     <li key={i}><CheckCircle size={18} className={styles.checkIcon} /> {f}</li>
                   ))}
                 </ul>
-                <button className={styles.buyBtn}>Buy Now</button>
               </div>
             ))}
           </div>
@@ -254,14 +389,25 @@ export default function PricingPage() {
 
         {/* Delivery Info */}
         <div className={styles.deliveryBanner}>
-          <div className={styles.deliveryItem}>
-            <Truck size={20} />
+          <div className={styles.deliveryHeader}>
+            <Truck size={24} />
             <h4>Pickup & Delivery Charges</h4>
           </div>
-          <div className={styles.deliveryThresholds}>
-            <p>&lt; ₹299: <span>₹60 delivery charge</span></p>
-            <p>₹299 - ₹499: <span>₹30 delivery charge</span></p>
-            <p>&gt; ₹499: <span>FREE delivery</span></p>
+          <div className={styles.deliveryContent}>
+            <div className={styles.deliveryRow}>
+              <div className={styles.deliveryBullet}>
+                <span className={styles.dot}></span>
+                <p>&lt; ₹299: <span>₹60 delivery charge</span></p>
+              </div>
+              <div className={styles.deliveryBullet}>
+                <span className={styles.dot}></span>
+                <p>₹299 - ₹499: <span>₹30 delivery charge</span></p>
+              </div>
+              <div className={styles.deliveryBullet}>
+                <span className={styles.dot}></span>
+                <p>&gt; ₹499: <span>FREE delivery</span></p>
+              </div>
+            </div>
           </div>
         </div>
 

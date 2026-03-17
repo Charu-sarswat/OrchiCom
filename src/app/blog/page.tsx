@@ -7,18 +7,79 @@ import Image from "next/image";
 import styles from "./blog.module.css";
 import { Calendar, User, ArrowRight, Search } from "lucide-react";
 
+import { useEffect } from "react";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
+
 export default function BlogPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("All posts");
+  const [posts, setPosts] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const categories = ["All posts", ...new Set(blogPosts.map(post => post.category))];
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        setIsLoading(true);
+        const res = await fetch(`${API_URL}/blog`);
+        const data = await res.json();
+        setPosts(data.map((p: any) => ({
+          ...p,
+          date: new Date(p.createdAt).toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+          }),
+          author: p.author || "Admin",
+          category: p.category || "General",
+          image: p.image || "/img/blog-1.jpg",
+          excerpt: p.excerpt || p.content.substring(0, 150) + "..."
+        })));
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
 
-  const filteredPosts = blogPosts.filter(post => {
+  const categories = ["All posts", ...new Set(posts.map(post => post.category))];
+
+  const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = activeCategory === "All posts" || post.category === activeCategory;
     return matchesSearch && matchesCategory;
   });
+
+  const [subEmail, setSubEmail] = useState("");
+  const [subStatus, setSubStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!subEmail) return;
+
+    setSubStatus('loading');
+    try {
+      const res = await fetch(`${API_URL}/blog/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: subEmail })
+      });
+
+      if (res.ok) {
+        setSubStatus('success');
+        setSubEmail("");
+        setTimeout(() => setSubStatus('idle'), 3000);
+      } else {
+        setSubStatus('error');
+      }
+    } catch (error) {
+      console.error("Subscription error:", error);
+      setSubStatus('error');
+    }
+  };
 
   return (
     <div className={styles.page}>
@@ -94,9 +155,21 @@ export default function BlogPage() {
             <h3>Subscribe to Our Newsletter</h3>
             <p>Get expert tips, fabric care guides and latest laundry news delivered to your inbox.</p>
           </div>
-          <div className={styles.newsletterForm}>
-            <input type="email" placeholder="Enter your email" />
-            <button>Subscribe</button>
+          <div className={styles.newsletterFormWrapper}>
+            <form onSubmit={handleSubscribe} className={styles.newsletterForm}>
+              <input 
+                type="email" 
+                placeholder="Enter your email" 
+                value={subEmail}
+                onChange={(e) => setSubEmail(e.target.value)}
+                required
+              />
+              <button type="submit" disabled={subStatus === 'loading'}>
+                {subStatus === 'loading' ? 'Saving...' : 'Subscribe'}
+              </button>
+            </form>
+            {subStatus === 'success' && <p className={styles.successText}>Success! You're subscribed.</p>}
+            {subStatus === 'error' && <p className={styles.errorText}>Something went wrong.</p>}
           </div>
         </div>
       </div>

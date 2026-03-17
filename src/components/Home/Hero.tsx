@@ -23,8 +23,16 @@ const Hero = () => {
           <div
             key={img}
             className={`${styles.bgImage} ${index === currentImage ? styles.active : ''}`}
-            style={{ backgroundImage: `url(${img})` }}
-          />
+          >
+            <Image
+              src={img}
+              alt="Hero Background"
+              fill
+              priority={index === 0}
+              quality={90}
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
         ))}
       </div>
 

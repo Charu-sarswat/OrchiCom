@@ -11,8 +11,8 @@ export default function Delivery() {
     <section className={`section-padding ${styles.section}`}>
       <div className="container">
         <div className={styles.header}>
-          <h2 style={{ fontSize: '3.5rem', marginBottom: '1rem', color: '#000' }}>Free Home Pickup <span className="text-gradient">& Delivery</span></h2>
-          <p style={{ maxWidth: '800px', margin: '0 auto', fontSize: '1.1rem', color: '#444' }}>
+          <h2 className={styles.title}>Free Home Pickup <span className="text-gradient">& Delivery</span></h2>
+          <p className={styles.description}>
             The Orchid Laundry provides free home pickup and delivery at your convenience. 
             We also offer express delivery services for urgent requirements.
           </p>

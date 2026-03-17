@@ -1,31 +1,24 @@
-import Hero from "@/components/Home/Hero";
-import ServicesGrid from "@/components/Home/ServicesGrid";
-import Delivery from "@/components/Home/Delivery";
-import Process from "@/components/Home/Process";
-import Testimonials from "@/components/Home/Testimonials";
+import Image from 'next/image';
+import Link from 'next/link';
 import { 
   CheckCircle2, 
   Wallet, 
-  Clock, 
-  Award, 
-  Droplets, 
-  Zap, 
-  ShieldCheck, 
-  Wind, 
+  Hourglass, 
+  Star, 
+  Heart, 
+  Leaf, 
+  Fan, 
+  Flame, 
   Sparkles, 
-  Headphones, 
-  UserCheck,
-  Hourglass,
-  Star,
-  Heart,
-  Leaf,
-  Fan,
-  Flame,
-  Smartphone,
-  Shield
-} from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
+  Smartphone, 
+  Shield 
+} from 'lucide-react';
+import Hero from '@/components/Home/Hero';
+import ServicesGrid from '@/components/Home/ServicesGrid';
+import Delivery from '@/components/Home/Delivery';
+import Process from '@/components/Home/Process';
+import Testimonials from '@/components/Home/Testimonials';
+import styles from './Home.module.css';
 
 export default function Home() {
   return (
@@ -33,10 +26,10 @@ export default function Home() {
       <Hero />
       
       {/* About Section */}
-      <section className="section-padding bg-light">
+      <section className={`${styles.homeSection} bg-light`}>
         <div className="container">
-          <div className="grid grid-2 items-stretch">
-            <div style={{ position: 'relative', borderRadius: '30px', overflow: 'hidden', minHeight: '400px' }}>
+          <div className={styles.aboutGrid}>
+            <div className={styles.aboutImageWrapper}>
               <Image 
                 src="/img/delivery image.png" 
                 alt="The Orchid Laundry Delivery" 
@@ -44,9 +37,9 @@ export default function Home() {
                 style={{ objectFit: 'cover' }}
               />
             </div>
-            <div style={{ paddingLeft: '1rem' }}>
-              <h2 style={{ fontSize: '3rem', marginBottom: '0.5rem', marginTop: '0.5rem' }}>About The Orchid <span className="text-gradient">Laundry</span></h2>
-              <p style={{ fontWeight: 800, color: '#000', marginBottom: '1.5rem', fontSize: '1.1rem' }}>Fast - Reliable - Affordable</p>
+            <div className={styles.aboutContent}>
+              <h2 className={styles.heading}>About The Orchid <span className="text-gradient">Laundry</span></h2>
+              <p className={styles.subheading}>Fast - Reliable - Affordable</p>
               
               <p style={{ color: '#333', marginBottom: '1rem', fontSize: '1.1rem', lineHeight: '1.5' }}>
                 At <strong style={{ color: 'var(--primary)' }}>The Orchid Laundry</strong>, we turn an everyday chore into a seamless, stress-free experience.
@@ -56,16 +49,16 @@ export default function Home() {
                 What began as a small idea in Dombivli has grown into a professional, tech-enabled service dedicated to quality, convenience, and customer delight.
               </p>
 
-              <div className="grid grid-2" style={{ gap: '1.5rem', marginBottom: '2.5rem' }}>
+              <div className={styles.featureGrid}>
                 {[
                   { label: "FAST", desc: "Quick on-time service" },
                   { label: "RELIABLE", desc: "Consistent quality" },
                   { label: "AFFORDABLE", desc: "Transparent pricing" },
                   { label: "ECO-FRIENDLY", desc: "Safe processes" }
                 ].map((item, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.8rem', fontSize: '1.05rem' }}>
+                  <div key={i} className={styles.featureItem}>
                     <CheckCircle2 size={22} color="#000" style={{ marginTop: '2px', flexShrink: 0 }} /> 
-                    <span><strong style={{ color: 'var(--primary)' }}>{item.label}:</strong> {item.desc}</span>
+                    <span><strong className={styles.featureLabel}>{item.label}:</strong> {item.desc}</span>
                   </div>
                 ))}
               </div>

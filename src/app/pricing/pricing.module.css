@@ -122,9 +122,19 @@
 .tableWrapper {
   background: white;
   border-radius: 16px;
-  overflow: hidden;
+  overflow: auto;
   box-shadow: none;
   margin-bottom: 3rem;
+  max-height: 500px;
+  position: relative;
+  border: 1px solid #e2e8f0;
+}
+
+/* Make header sticky */
+.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .table {
@@ -185,6 +195,11 @@
 
 .addOns {
   margin-bottom: 4rem;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  border-left: 5px solid #18a1d8;
 }
 
 .addOns h3 {
@@ -330,41 +345,63 @@
 
 .deliveryBanner {
   background: white;
-  border-radius: 16px;
-  padding: 1.5rem 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 3rem;
   border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.deliveryItem {
+.deliveryHeader {
   display: flex;
   align-items: center;
   gap: 1rem;
   color: #18a1d8;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 1rem;
 }
 
-.deliveryItem h4 {
+.deliveryHeader h4 {
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
-.deliveryThresholds {
+.deliveryContent {
+  width: 100%;
+}
+
+.deliveryRow {
   display: flex;
-  gap: 2rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
-.deliveryThresholds p {
-  font-size: 0.9rem;
-  color: #64748b;
+.deliveryBullet {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #18a1d8;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.deliveryBullet p {
+  font-size: 1rem;
   font-weight: 600;
+  color: #475569;
 }
 
-.deliveryThresholds span {
-  color: #1e293b;
-  font-weight: 700;
+.deliveryBullet span {
+  color: #18a1d8;
+  font-weight: 800;
 }
 
 .infoCards {
@@ -449,9 +486,34 @@
     text-align: center;
   }
   .filtersSection {
-    align-items: flex-start;
+    align-items: center;
   }
   .filterPills, .categoryPills {
-    justify-content: flex-start;
+    justify-content: center;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  .table th, .table td {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding-top: 80px;
+  }
+  .deliveryThresholds {
+    gap: 0.8rem;
+  }
+  .deliveryThresholds p {
+    font-size: 0.8rem;
+  }
+  .planCard {
+    padding: 2rem 1.5rem;
+  }
+  .planPrice {
+    font-size: 2rem;
   }
 }

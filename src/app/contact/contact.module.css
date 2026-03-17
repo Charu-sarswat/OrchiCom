@@ -72,7 +72,6 @@
   padding: 1.5rem 2rem;
   border-radius: 20px;
   color: white;
-  margin-top: 1rem;
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -116,6 +115,13 @@
 
 .formColumn {
   position: relative;
+}
+
+.formTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: #1e293b;
 }
 
 .form {
@@ -164,11 +170,26 @@
 .successMessage {
   text-align: center;
   padding: 5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .successIcon {
   font-size: 4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem; /* Reduced gap between icon and title */
+}
+
+.successTitle {
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+.successSubtitle {
+  margin-bottom: 2.5rem; /* Gap between subtitle and button */
+  color: #666;
+  max-width: 400px;
+  line-height: 1.6;
 }
 
 .errorText {

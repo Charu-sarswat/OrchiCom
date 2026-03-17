@@ -247,10 +247,15 @@
   max-width: 400px;
 }
 
+.newsletterFormWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
 .newsletterForm {
   display: flex;
   gap: 1.2rem;
-  flex-shrink: 0;
 }
 
 .newsletterForm input {
@@ -290,4 +295,49 @@
   .newsletterForm input {
     width: 100%;
   }
+  .newsletterFormWrapper {
+    width: 100%;
+  }
 }
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  .filtersSection {
+    gap: 0.5rem;
+  }
+  .filterPill {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+  }
+  .newsletterContent h3 {
+    font-size: 1.6rem;
+  }
+  .newsletterSection {
+    padding: 2rem 1rem;
+  }
+  .card h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Subscription Status Messages */
+.successText, .errorText {
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  text-align: left;
+  width: 100%;
+  padding-left: 0.5rem;
+}
+
+@media (max-width: 992px) {
+  .successText, .errorText {
+    text-align: center;
+    padding-left: 0;
+  }
+}
+
+.successText { color: #10b981; }
+.errorText { color: #ef4444; }

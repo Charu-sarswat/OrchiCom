@@ -7,17 +7,110 @@ import Link from "next/link";
 import styles from "./BlogDetail.module.css";
 import { Calendar, User, ArrowRight, Tag, Mail, HelpCircle, ChevronRight, Facebook, Twitter, Linkedin, MessageSquare, Clock } from "lucide-react";
 
+import { useEffect, useState } from "react";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
+
 export default function BlogDetail() {
   const params = useParams();
   const slug = params?.slug as string;
+  const [post, setPost] = useState<any>(null);
+  const [recentPosts, setRecentPosts] = useState<any[]>([]);
+  const [allPosts, setAllPosts] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [subEmail, setSubEmail] = useState("");
+  const [bottomSubEmail, setBottomSubEmail] = useState("");
+  const [subStatus, setSubStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [bottomSubStatus, setBottomSubStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const post = blogPosts.find(p => p.slug === slug);
+  useEffect(() => {
+    if (!slug) return;
+
+    const fetchPost = async () => {
+      try {
+        setIsLoading(true);
+        const res = await fetch(`${API_URL}/blog/${slug}`);
+        if (res.ok) {
+          const data = await res.json();
+          setPost({
+            ...data,
+            date: new Date(data.createdAt).toLocaleDateString("en-IN", {
+              day: "numeric",
+              month: "long",
+              year: "numeric"
+            }),
+            author: data.author || "Admin",
+            category: data.category || "General",
+            image: data.image || "/img/blog-1.jpg"
+          });
+        }
+
+        const recentRes = await fetch(`${API_URL}/blog`);
+        const recentData = await recentRes.json();
+        const formattedRecent = recentData.map((p: any) => ({
+          ...p,
+          date: new Date(p.createdAt).toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+          }),
+          image: p.image || "/img/blog-1.jpg"
+        }));
+        setAllPosts(formattedRecent);
+        setRecentPosts(formattedRecent.filter((p: any) => p.slug !== slug).slice(0, 3));
+      } catch (error) {
+        console.error("Error fetching blog post:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPost();
+  }, [slug]);
+
+  const handleSubscribe = async (e: React.FormEvent, isBottom: boolean = false) => {
+    e.preventDefault();
+    const email = isBottom ? bottomSubEmail : subEmail;
+    const setStatus = isBottom ? setBottomSubStatus : setSubStatus;
+    const setEmail = isBottom ? setBottomSubEmail : setSubEmail;
+
+    if (!email) return;
+
+    setStatus('loading');
+    try {
+      const res = await fetch(`${API_URL}/blog/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        setEmail("");
+        setTimeout(() => setStatus('idle'), 3000);
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error("Subscription error:", error);
+      setStatus('error');
+    }
+  };
+
+  if (isLoading) {
+    return <div className="container section-padding">Loading...</div>;
+  }
 
   if (!post) {
     return notFound();
   }
 
-  const recentPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 3);
+  // Calculate dynamic categories from all posts
+  const categories = allPosts.reduce((acc: any, p: any) => {
+    const cat = p.category || "General";
+    acc[cat] = (acc[cat] || 0) + 1;
+    return acc;
+  }, {});
 
   return (
     <div className={styles.page}>
@@ -51,51 +144,10 @@ export default function BlogDetail() {
             </div>
 
             <article className={styles.article}>
-              {post.content.split("\n\n").map((para: string, i: number) => (
-                 <div key={i}>
-                    {para.startsWith("###") ? (
-                      <h2 className={styles.sectionHeading}>{para.replace("### ", "")}</h2>
-                    ) : para.startsWith("-") ? (
-                      <ul className={styles.bulletList}>
-                        {para.split("\n").map((item, j) => (
-                          <li key={j}>{item.replace("- ", "")}</li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p>{para}</p>
-                    )}
-                 </div>
-              ))}
-
-              {/* Specific to the image: Seasonal Care Table */}
-              <h2 className={styles.sectionHeading}>Seasonal Care</h2>
-              <table className={styles.careTable}>
-                <thead>
-                  <tr>
-                    <th>Season</th>
-                    <th>Care Tips</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Spring/Summer</td>
-                    <td>Wash whites more often with brightener-free detergents to prevent yellowing...</td>
-                  </tr>
-                  <tr>
-                    <td>Fall/Winter</td>
-                    <td>Clean and store summer clothing in breathable bags, ensuring no stains are present...</td>
-                  </tr>
-                  <tr>
-                    <td>Year-Round</td>
-                    <td>Maintain correct temperature and humidity levels in storage areas.</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <div className={styles.investmentSection}>
-                 <h2 className={styles.sectionHeading}>Investment Pays Off</h2>
-                 <p>By implementing these simple yet effective strategies, you'll never have to worry about your clothes losing their quality. Professional garment care is the key to longevity.</p>
-              </div>
+              <div 
+                className={styles.blogContent}
+                dangerouslySetInnerHTML={{ __html: post.content.replace(/&nbsp;/g, ' ') }} 
+              />
             </article>
 
             {/* Social Share & Tags Footer */}
@@ -146,36 +198,55 @@ export default function BlogDetail() {
               </div>
             </div>
 
-            {/* Bottom Newsletter */}
             <div className={styles.newsletterSection}>
                <div className={styles.newsletterContent}>
                   <h3>Subscribe to Our Newsletter</h3>
                   <p>Get expert tips, fabric care guides and latest laundry news delivered to your inbox.</p>
                </div>
-               <div className={styles.newsletterForm}>
-                  <input type="email" placeholder="Enter your email" />
-                  <button>Subscribe</button>
+               <div className={styles.newsletterFormWrapper}>
+                 <form onSubmit={(e) => handleSubscribe(e, true)} className={styles.newsletterForm}>
+                    <input 
+                      type="email" 
+                      placeholder="Enter your email" 
+                      value={bottomSubEmail}
+                      onChange={(e) => setBottomSubEmail(e.target.value)}
+                      required
+                    />
+                    <button type="submit" disabled={bottomSubStatus === 'loading'}>
+                      {bottomSubStatus === 'loading' ? 'Saving...' : 'Subscribe'}
+                    </button>
+                 </form>
+                 {bottomSubStatus === 'success' && <p className={styles.successText}>Success! You're subscribed.</p>}
+                 {bottomSubStatus === 'error' && <p className={styles.errorText}>Something went wrong.</p>}
                </div>
             </div>
           </div>
 
           {/* Sidebar Area */}
           <aside className={styles.sidebar}>
-            {/* Stay Updated Widget */}
             <div className={styles.widget}>
               <h3 className={styles.widgetTitle}><Mail size={18} /> Stay Updated</h3>
               <p>Join our newsletter to receive the latest updates directly in your inbox.</p>
-              <div className={styles.widgetForm}>
-                <input type="email" placeholder="Your Email Address" />
-                <button className={styles.widgetBtn}>SUBSCRIBE NOW</button>
-              </div>
+              <form onSubmit={(e) => handleSubscribe(e)} className={styles.widgetForm}>
+                <input 
+                  type="email" 
+                  placeholder="Your Email Address" 
+                  value={subEmail}
+                  onChange={(e) => setSubEmail(e.target.value)}
+                  required
+                />
+                <button type="submit" className={styles.widgetBtn} disabled={subStatus === 'loading'}>
+                  {subStatus === 'loading' ? 'SAVING...' : 'SUBSCRIBE NOW'}
+                </button>
+              </form>
+              {subStatus === 'success' && <p className={styles.successTextSide}>Successfully subscribed!</p>}
+              {subStatus === 'error' && <p className={styles.errorTextSide}>Error subscribing.</p>}
             </div>
 
-            {/* Recent Posts Widget */}
             <div className={styles.widget}>
               <h3 className={styles.widgetTitle}><Clock size={18} /> Recent Posts</h3>
               <div className={styles.recentList}>
-                {blogPosts.slice(0, 3).map(p => (
+                {recentPosts.map(p => (
                   <Link href={`/blog/${p.slug}`} key={p.slug} className={styles.recentLink}>
                     <ArrowRight size={14} />
                     <div>
@@ -187,18 +258,15 @@ export default function BlogDetail() {
               </div>
             </div>
 
-            {/* Categories Widget */}
             <div className={styles.widget}>
               <h3 className={styles.widgetTitle}><Tag size={18} /> Categories</h3>
               <div className={styles.categoryList}>
-                <Link href="#" className={styles.categoryItem}>
-                  <span>Pro Tips</span>
-                  <span className={styles.catCount}>4</span>
-                </Link>
-                <Link href="#" className={styles.categoryItem}>
-                  <span>Fabric Care</span>
-                  <span className={styles.catCount}>6</span>
-                </Link>
+                {Object.entries(categories).map(([cat, count]) => (
+                  <Link href={`/blog?category=${cat}`} key={cat} className={styles.categoryItem}>
+                    <span>{cat}</span>
+                    <span className={styles.catCount}>{count as number}</span>
+                  </Link>
+                ))}
               </div>
             </div>
 

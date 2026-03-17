@@ -20,6 +20,12 @@ export const metadata: Metadata = {
   description: "Professional laundry, dry cleaning, shoe cleaning, and carpet cleaning services with free pickup and delivery.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -22,8 +22,10 @@ const ContactPage = () => {
     e.preventDefault();
     setStatus('loading');
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
+
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch(`${API_URL}/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -89,11 +91,12 @@ const ContactPage = () => {
           </div>
 
           <div className={styles.formColumn}>
+            <h2 className={styles.formTitle}>Send Us a Message</h2>
             {status === 'success' ? (
               <div className={`${styles.successMessage} glass-card`}>
                 <div className={styles.successIcon}>✅</div>
-                <h2>Message Sent!</h2>
-                <p>Thank you for reaching out. Our team will contact you shortly.</p>
+                <h2 className={styles.successTitle}>Message Sent!</h2>
+                <p className={styles.successSubtitle}>Thank you for reaching out. Our team will contact you shortly.</p>
                 <button onClick={() => setStatus('idle')} className="btn btn-primary">Send Another Message</button>
               </div>
             ) : (
@@ -132,6 +135,7 @@ const ContactPage = () => {
         {/* Map Section */}
         <div className={styles.mapSection}>
           <iframe 
+            title="Location Map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15082.9067571342!2d73.1368565!3d19.2238565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be79589d7000001%3A0xe24fa3f6fb36873c!2sThe%20Orchid%20Laundry!5e0!3m2!1sen!2sin!4v1710680000000!5m2!1sen!2sin" 
             width="100%" 
             height="450" 
