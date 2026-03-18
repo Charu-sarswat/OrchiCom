@@ -85,7 +85,7 @@ export default function BlogPage() {
     <div className={styles.page}>
       <div className="container">
         <div className={styles.header}>
-          <h1>Latest <span className="text-gradient">Blog</span></h1>
+          <h1>Latest blog</h1>
           <p>Search for articles, tips, or fabric care guides...</p>
         </div>
 
@@ -152,7 +152,7 @@ export default function BlogPage() {
         {/* Newsletter Section */}
         <div className={styles.newsletterSection}>
           <div className={styles.newsletterContent}>
-            <h3>Subscribe to Our Newsletter</h3>
+            <h3>Subscribe to our newsletter</h3>
             <p>Get expert tips, fabric care guides and latest laundry news delivered to your inbox.</p>
           </div>
           <div className={styles.newsletterFormWrapper}>

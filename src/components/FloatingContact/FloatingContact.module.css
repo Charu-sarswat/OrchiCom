@@ -65,12 +65,13 @@
 @media (max-width: 768px) {
   .wrapper {
     top: auto;
-    bottom: 20px;
+    bottom: 30px;
     right: 15px;
     transform: none;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-end;
-    gap: 10px;
+    gap: 8px;
+    z-index: 1000; /* Behind sidebar (2000) */
   }
   
   .btn {

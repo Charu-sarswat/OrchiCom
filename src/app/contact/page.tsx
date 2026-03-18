@@ -47,7 +47,7 @@ const ContactPage = () => {
     <div className={`section-padding ${styles.contactPage}`}>
       <div className="container">
         <div className={styles.header}>
-          <h1>Get in <span className="text-gradient">Touch</span></h1>
+          <h1>Get in <span className="text-gradient">touch</span></h1>
           <p>Have questions? We're here to help you with all your laundry needs.</p>
         </div>
 
@@ -91,7 +91,7 @@ const ContactPage = () => {
           </div>
 
           <div className={styles.formColumn}>
-            <h2 className={styles.formTitle}>Send Us a Message</h2>
+            <h2 className={styles.formTitle}>Send us a message</h2>
             {status === 'success' ? (
               <div className={`${styles.successMessage} glass-card`}>
                 <div className={styles.successIcon}>✅</div>
@@ -136,7 +136,7 @@ const ContactPage = () => {
         <div className={styles.mapSection}>
           <iframe 
             title="Location Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15082.9067571342!2d73.1368565!3d19.2238565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be79589d7000001%3A0xe24fa3f6fb36873c!2sThe%20Orchid%20Laundry!5e0!3m2!1sen!2sin!4v1710680000000!5m2!1sen!2sin" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.4353966186486!2d73.1188939!3d19.1761764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be795ca24710af3%3A0x4895fa5fec477883!2sThe%20Orchid%20Laundry%20LLP!5e0!3m2!1sen!2sin!4v1773768246349!5m2!1sen!2sin" 
             width="100%" 
             height="450" 
             style={{ border: 0, borderRadius: '24px' }} 

@@ -15,6 +15,8 @@
   --shadow-md: none;
   --shadow-lg: none;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-height: 90px;
+  --nav-height-mobile: 70px;
 }
 
 * {
@@ -30,7 +32,18 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--dark);
   background: var(--white);
-  line-height: 1.6;
+  line-height: 1.5;
+}
+
+.main-content {
+  min-height: calc(100vh - var(--nav-height));
+  padding-top: var(--nav-height);
+}
+
+@media (max-width: 1100px) {
+  .main-content {
+    padding-top: var(--nav-height-mobile);
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -38,6 +51,19 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: #000000;
   line-height: 1.2;
+  text-transform: none; /* Ensure sentence case by default */
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 1.8rem;
 }
 
 a {
@@ -53,14 +79,20 @@ ul {
 /* Utilities */
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   overflow-wrap: break-word;
 }
 
 .section-padding {
-  padding: 5rem 0;
+  padding: 3rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 2rem 0;
+  }
 }
 
 .glass-card {

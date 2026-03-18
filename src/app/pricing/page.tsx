@@ -279,7 +279,7 @@ export default function PricingPage() {
       <div className="container">
         {/* Header */}
         <div className={styles.header}>
-          <h1>Our Services & Pricing</h1>
+          <h1>Our services & pricing</h1>
         </div>
 
         {/* Search Bar */}
@@ -387,7 +387,7 @@ export default function PricingPage() {
 
         {/* Subscription Plans */}
         <div className={styles.plansSection}>
-          <h2>Subscription Plans</h2>
+          <h2>Subscription plans</h2>
           <div className={styles.plansGrid}>
             {plans.map((plan, idx) => (
               <div key={idx} className={`${styles.planCard} ${plan.popular ? styles.popular : ""}`}>

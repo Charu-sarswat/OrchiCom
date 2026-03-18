@@ -39,7 +39,7 @@ const AboutPage = () => {
           <div className={styles.approachCard}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', marginBottom: '1.2rem' }}>
               <Rocket size={32} className="text-gradient" />
-              <h2 style={{ margin: 0 }}>Our <span className="text-gradient">Approach</span></h2>
+              <h2 style={{ margin: 0 }}>Our <span className="text-gradient">approach</span></h2>
             </div>
             <p style={{ fontSize: '1.15rem', color: '#444', lineHeight: '1.8' }}>
               We combine technology, expert care, and efficient operations to deliver a consistent, high-quality laundry experience. From scheduled pickups and doorstep delivery to customizable instructions for every garment, we ensure your clothes are treated with care while saving you time, effort, and money.
@@ -54,7 +54,7 @@ const AboutPage = () => {
             <div className={styles.missionCard}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
                 <Target size={28} className="text-gradient" />
-                <h3 style={{ margin: 0 }}>Our <span className="text-gradient">Mission</span></h3>
+                <h3 style={{ margin: 0 }}>Our <span className="text-gradient">mission</span></h3>
               </div>
               <p>
                 To improve the quality of life for our customers by saving them time, energy, and hassle through a highly reliable, convenient, and affordable laundry service.
@@ -63,7 +63,7 @@ const AboutPage = () => {
             <div className={styles.missionCard}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
                 <Eye size={28} className="text-gradient" />
-                <h3 style={{ margin: 0 }}>Our <span className="text-gradient">Vision</span></h3>
+                <h3 style={{ margin: 0 }}>Our <span className="text-gradient">vision</span></h3>
               </div>
               <p>
                 To become the most trusted laundry brand in India, starting from Dombivli and expanding across Maharashtra and beyond, delivering consistent quality, convenience, and value to every household.
@@ -72,17 +72,17 @@ const AboutPage = () => {
           </div>
 
           <div className={styles.sectionTitle}>
-            <h2>Our Core <span className="text-gradient">Values</span></h2>
+            <h2>Our core <span className="text-gradient">values</span></h2>
           </div>
           
           <div className={styles.valuesGrid}>
             {[
-              { icon: <Leaf size={28} />, title: "SUSTAINABILITY", desc: "Caring for the environment with eco-friendly processes and resources." },
-              { icon: <CheckCircle size={28} />, title: "RELIABLE", desc: "Consistent quality, every wash, every time." },
-              { icon: <IndianRupee size={28} />, title: "AFFORDABLE", desc: "Premium service at fair, transparent pricing." },
-              { icon: <Handshake size={28} />, title: "RESPECT", desc: "Treating every customer, associate, and partner with dignity." },
-              { icon: <Shield size={28} />, title: "INTEGRITY", desc: "Honest, transparent, and ethical in all dealings." },
-              { icon: <Zap size={28} />, title: "FAST", desc: "Quick, on-time service with efficiency at every step." }
+              { icon: <Leaf size={28} />, title: "Sustainability", desc: "Caring for the environment with eco-friendly processes and resources." },
+              { icon: <CheckCircle size={28} />, title: "Reliable", desc: "Consistent quality, every wash, every time." },
+              { icon: <IndianRupee size={28} />, title: "Affordable", desc: "Premium service at fair, transparent pricing." },
+              { icon: <Handshake size={28} />, title: "Respect", desc: "Treating every customer, associate, and partner with dignity." },
+              { icon: <Shield size={28} />, title: "Integrity", desc: "Honest, transparent, and ethical in all dealings." },
+              { icon: <Zap size={28} />, title: "Fast", desc: "Quick, on-time service with efficiency at every step." }
             ].map((value, i) => (
               <div key={i} className={styles.valueCard}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.8rem' }}>
@@ -98,7 +98,7 @@ const AboutPage = () => {
           <div className={styles.promiseBox}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '1.2rem' }}>
               <Heart size={32} className="text-gradient" fill="rgba(19, 165, 217, 0.2)" />
-              <h2 style={{ margin: 0 }}>Our <span className="text-gradient">Promise</span></h2>
+              <h2 style={{ margin: 0 }}>Our <span className="text-gradient">promise</span></h2>
             </div>
             <p>
               At The Orchid Laundry, we do not just clean clothes, we give you back your time, peace of mind, and confidence in every wash. With every pickup, wash, and delivery, we aim to make laundry faster, reliable, and more affordable, because life is too short to spend it on chores.

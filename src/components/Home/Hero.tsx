@@ -63,9 +63,9 @@ const Hero = () => {
                 <SiWhatsapp size={22} />
                 Chat On WhatsApp
               </Link>
-              <Link href="/contact" className="btn btn-primary">
+              <Link href="/booking" className="btn btn-primary">
                 <Calendar size={22} />
-                Schedule Free Pickup
+                Schedule Pickup
               </Link>
             </div>
           </div>

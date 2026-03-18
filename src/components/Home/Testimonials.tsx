@@ -40,7 +40,7 @@ export default function Testimonials() {
     <section className={`section-padding ${styles.section}`}>
       <div className="container">
         <div className={styles.header}>
-          <h2 className={styles.title}>WHAT OUR <span className="text-gradient">CLIENTS SAY</span></h2>
+          <h2 className={styles.title}>What our <span className="text-gradient">Clients Say</span></h2>
         </div>
       </div>
 

@@ -70,7 +70,7 @@ const ServicesGrid = () => {
     <section className={`section-padding ${styles.servicesSection}`}>
       <div className="container">
         <div className={styles.header}>
-          <h2 className={styles.title}>OUR <span className="text-gradient">SERVICES</span></h2>
+          <h2 className={styles.title}>Our <span className="text-gradient">Services</span></h2>
         </div>
         
         <div className={styles.grid}>

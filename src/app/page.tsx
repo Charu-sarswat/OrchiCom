@@ -38,7 +38,7 @@ export default function Home() {
               />
             </div>
             <div style={{ paddingLeft: '1.5rem' }}>
-              <h2 style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>About <span className="text-gradient">The Orchid Laundry LLP</span></h2>
+              <h2 style={{ marginBottom: '0.5rem' }}>About <span className="text-gradient">The Orchid Laundry LLP</span></h2>
               <p style={{ fontWeight: 800, color: '#000', marginBottom: '1.5rem', fontSize: '1.1rem' }}>Fast - Reliable - Affordable</p>
               
               <p style={{ color: '#333', marginBottom: '1rem', fontSize: '1.1rem', lineHeight: '1.8' }}>
@@ -78,7 +78,7 @@ export default function Home() {
       <section className="section-padding bg-white" style={{ overflow: 'hidden' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '3rem' }}>The Orchid Laundry – <span className="text-gradient">Why Choose Us?</span></h2>
+            <h2>The Orchid Laundry – <span className="text-gradient">Why Choose Us?</span></h2>
           </div>
         </div>
         

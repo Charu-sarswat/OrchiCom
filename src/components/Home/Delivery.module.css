@@ -5,13 +5,11 @@
 .header {
   text-align: center;
   max-width: 900px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 2.5rem;
 }
 
 .header h2, .title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  line-height: 1.2;
+  color: #000;
 }
 
 .description {
@@ -114,7 +112,7 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-top: 5rem;
+  margin-top: 3rem;
   width: 100%;
 }
 
@@ -142,7 +140,7 @@
     grid-column: span 1;
   }
   .header h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   .actions {
     flex-direction: column;
@@ -151,5 +149,7 @@
   }
   .actions a {
     width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
   }
 }

@@ -4,13 +4,12 @@
 
 .hero {
   background: var(--light);
-  padding: 8rem 0 5rem;
+  padding: 4rem 0 3rem;
   text-align: center;
 }
 
 .heroContent h1 {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .heroContent p {
@@ -23,13 +22,12 @@
 
 .processSection {
   background: white;
-  padding: 8rem 0;
+  padding: 4rem 0;
   overflow: hidden;
 }
 
 .processSection h2 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 /* Infographic Structure */
@@ -39,7 +37,7 @@
   justify-content: center;
   gap: 3rem;
   max-width: 1400px;
-  margin: 4rem auto 0;
+  margin: 2.5rem auto 0;
   position: relative;
 }
 
@@ -314,7 +312,7 @@
 }
 
 .categoryGroup {
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 }
 
 .categoryGroup:last-child {
@@ -322,14 +320,12 @@
 }
 
 .categoryHeader {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   position: relative;
 }
 
 .categoryTitle {
-  font-size: 2.22rem;
   color: #000;
-  font-weight: 800;
   margin-bottom: 0.8rem;
 }
 
@@ -343,7 +339,7 @@
 .servicesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 
 

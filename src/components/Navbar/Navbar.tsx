@@ -26,6 +26,16 @@ export default function Navbar() {
 
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1100) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     setIsOpen(false);
     setShowDropdown(false);
   }, [pathname]);
@@ -38,10 +48,10 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className={styles.logo}>
               <Image 
-                src="/img/orhidlogo.png" 
+                src="/logo.png" 
                 alt="The Orchid Laundry" 
                 width={200} 
-                height={80} 
+                height={70} 
                 priority
               />
             </Link>
@@ -58,20 +68,25 @@ export default function Navbar() {
               >
                 <Link href="/services" className={`${styles.navLink} ${pathname.startsWith("/services") ? styles.active : ""}`}>
                   Services
+                  <ChevronDown size={14} className={styles.chevron} />
                 </Link>
                 
                 <AnimatePresence>
                   {showDropdown && (
                     <motion.div 
                       className={styles.dropdown}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 15, x: "-50%" }}
+                      animate={{ opacity: 1, y: 0, x: "-50%" }}
+                      exit={{ opacity: 0, y: 15, x: "-50%" }}
+                      transition={{ duration: 0.2 }}
                     >
                       <div className={styles.dropdownContent}>
-                        {serviceCategories.map((category) => (
+                        {serviceCategories.map((category, idx) => (
                           <div key={category.title} className={styles.categorySection}>
                             <h5 className={styles.categoryTitle}>
+                              {idx === 0 && <ShieldCheck size={16} />}
+                              {idx === 1 && <Clock size={16} />}
+                              {idx === 2 && <MapPin size={16} />}
                               {category.title}
                             </h5>
                             <div className={styles.categoryLinks}>
@@ -84,7 +99,6 @@ export default function Navbar() {
                           </div>
                         ))}
                       </div>
-
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -94,16 +108,23 @@ export default function Navbar() {
               <Link href="/blog" className={`${styles.navLink} ${pathname === "/blog" ? styles.active : ""}`}>Blog</Link>
               <Link href="/contact" className={`${styles.navLink} ${pathname === "/contact" ? styles.active : ""}`}>Contact</Link>
               
-              <Link href="/booking" className={styles.cta}>
-                <Calendar size={18} />
-                Book Pickup
-              </Link>
+              <div className={styles.desktopActions}>
+                <Link href="/booking" className={styles.cta}>
+                  <Calendar size={18} />
+                  Schedule Pickup
+                </Link>
+              </div>
             </div>
 
             {/* Mobile Toggle */}
-            <button className={styles.mobileToggle} onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
+            <div className={styles.mobileRight}>
+              <Link href="/contact" className={styles.mobileContactBtn}>
+                Contact Us
+              </Link>
+              <button className={styles.mobileToggle} onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -117,19 +138,25 @@ export default function Navbar() {
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
             >
+              <div className={styles.mobileHeader}>
+                <Image src="/logo.png" alt="Logo" width={120} height={42} />
+                <button onClick={() => setIsOpen(false)}><X size={28} /></button>
+              </div>
+
               <div className={styles.mobileLinks}>
-                <Link href="/">Home</Link>
-                <Link href="/about">About</Link>
+                <Link href="/" className={pathname === "/" ? styles.mobileActive : ""}>Home</Link>
+                <Link href="/about" className={pathname === "/about" ? styles.mobileActive : ""}>About</Link>
                 
                 <div className={styles.mobileSubmenu}>
-                  <p>Our Services</p>
+                  <div className={styles.mobileSubmenuHeader}>
+                    <ShieldCheck size={20} />
+                    <p>Our Services</p>
+                  </div>
                   <div className={styles.mobileSubGrid}>
                     {serviceCategories.map((category) => (
                       <div key={category.title} className={styles.mobileCategory}>
-                        <p className={styles.mobileCategoryTitle}>
-                          {category.title}
-                        </p>
-                        <div className={styles.mobileSubGrid}>
+                        <p className={styles.mobileCategoryTitle}>{category.title}</p>
+                        <div className={styles.mobileSubLinks}>
                           {category.links.map((s) => (
                             <Link key={s.href} href={s.href} className={styles.mobileSubLink}>
                               {s.name}
@@ -138,15 +165,20 @@ export default function Navbar() {
                         </div>
                       </div>
                     ))}
-
                   </div>
                 </div>
 
-                <Link href="/pricing">Pricing</Link>
-                <Link href="/blog">Blog</Link>
-                <Link href="/contact">Contact</Link>
+                <Link href="/pricing" className={pathname === "/pricing" ? styles.mobileActive : ""}>Pricing</Link>
+                <Link href="/blog" className={pathname === "/blog" ? styles.mobileActive : ""}>Blog</Link>
+                <Link href="/contact" className={pathname === "/contact" ? styles.mobileActive : ""}>Contact</Link>
                 
-                <Link href="/booking" className={styles.mobileCta}>Book Free Pickup</Link>
+                <div className={styles.mobileActions}>
+                  <a href="tel:+917080803074" className={styles.mobilePhoneBtn}>
+                    <Phone size={20} />
+                    +91 7080803074
+                  </a>
+                  <Link href="/booking" className={styles.mobileCta}>Book Free Pickup</Link>
+                </div>
               </div>
             </motion.div>
           )}

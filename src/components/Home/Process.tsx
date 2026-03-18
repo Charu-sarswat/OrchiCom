@@ -45,7 +45,7 @@ export default function Process() {
       <div className="container">
         <div className={styles.grid}>
           <div className={styles.contentColumn}>
-            <span className={styles.brandName}>THE ORCHID LAUNDRY</span>
+            <span className={styles.brandName}>The Orchid Laundry</span>
             <h2 className={styles.mainTitle}>Six Stage Process for Unmatched Garment Care</h2>
             <p>
               Specialized machinery & skilled experts for each stage makes <strong>The Orchid Laundry</strong> the best laundry & dry cleaner near you.

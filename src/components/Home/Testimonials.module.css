@@ -1,12 +1,12 @@
 .section {
   background: white;
-  padding: 5rem 0;
+  padding: 3rem 0;
   overflow: hidden;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
 .wrapper {
@@ -118,24 +118,29 @@
   margin-bottom: 1.5rem;
 }
 
+.title {
+  color: #000;
+}
+
 .text {
   color: #334155;
-  font-size: 1.1rem;
-  line-height: 1.6;
   font-weight: 500;
   margin: 0;
 }
 
 @media (max-width: 768px) {
   .card {
-    width: 320px;
-    padding: 1.5rem;
+    width: 290px;
+    padding: 1.25rem;
   }
   .avatar {
     width: 70px;
     height: 70px;
   }
   .meta strong {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+  .meta span {
+    font-size: 0.95rem;
   }
 }

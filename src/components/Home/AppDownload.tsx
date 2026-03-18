@@ -4,6 +4,7 @@ import { GrAppleAppStore } from "react-icons/gr";
 import { BiLogoPlayStore } from "react-icons/bi";
 import styles from "./AppDownload.module.css";
 
+
 export default function AppDownload() {
   return (
     <section className={styles.section}>
@@ -11,7 +12,7 @@ export default function AppDownload() {
         <div className={styles.wrapper}>
           <div className={styles.content}>
             <p className={styles.text}>
-              Download <strong>The Orchid Laundry App</strong>
+              Download <strong className={styles.text}>The Orchid Laundry App</strong>
             </p>
             <p className={styles.subtext}>
               Experience the most convenient way to handle your laundry. Get it now on your favorite store.
@@ -28,7 +29,7 @@ export default function AppDownload() {
             <a href="#" className={`${styles.appLink} ${styles.google}`}>
               <BiLogoPlayStore className={styles.icon} />
               <div className={styles.btnText}>
-                <span>GET IT ON</span>
+                <span>Get it on</span>
                 <strong>Google Play</strong>
               </div>
             </a>

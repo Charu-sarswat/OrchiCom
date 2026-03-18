@@ -17,7 +17,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className={styles.section}>
             <Link href="/" className={styles.logo}>
-              <Image src="/img/orhidlogo.png" alt="Logo" width={180} height={60} />
+              <Image src="/img/orhidlogo.png" alt="Logo" width={180} height={60} style={{ width: 'auto' }} />
             </Link>
             <p className={styles.bio}>
               Premium laundry and dry cleaning services dedicated to providing the highest quality care for your garments. Experience professional excellence with The Orchid Laundry.
@@ -32,7 +32,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className={styles.section}>
-            <h3>Quick Links</h3>
+            <h3>Quick links</h3>
             <ul className={styles.links}>
               <li><Link href="/">Home</Link></li>
               <li><Link href="/about">About Us</Link></li>
@@ -45,7 +45,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div className={styles.section}>
-            <h3>Legal & Support</h3>
+            <h3>Legal & support</h3>
             <ul className={styles.links}>
               <li><Link href="/terms">Terms & Conditions</Link></li>
               <li><Link href="/privacy">Privacy Policy</Link></li>
@@ -57,7 +57,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div className={styles.section}>
-            <h3>Get In Touch</h3>
+            <h3>Get in touch</h3>
             <ul className={styles.contact}>
               <li>
                 <MapPin size={20} />

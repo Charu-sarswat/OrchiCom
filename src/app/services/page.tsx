@@ -40,7 +40,7 @@ export default function ServicesPage() {
       <section className={`section-padding ${styles.processSection}`}>
         <div className="container">
           <div className="section-title text-center">
-            <h2>Our 8-Step <span className="text-gradient">Premium Process</span></h2>
+            <h2>Our 8-step <span className="text-gradient">premium process</span></h2>
             <p>Scientifically designed to make your clothes feel &apos;As Good As New&apos;.</p>
           </div>
 
