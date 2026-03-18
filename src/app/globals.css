@@ -218,3 +218,17 @@ ul {
 .why-choose-track:hover {
   animation-play-state: paused;
 }
+
+.about-home-image-container {
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 100%; /* Fill the grid height to match text exactly */
+  min-height: 450px; /* Reference minimum */
+}
+
+/* Alignment utilities */
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+

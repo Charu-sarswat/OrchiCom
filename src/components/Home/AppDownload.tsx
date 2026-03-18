@@ -12,10 +12,10 @@ export default function AppDownload() {
         <div className={styles.wrapper}>
           <div className={styles.content}>
             <p className={styles.text}>
-              Download <strong className={styles.text}>The Orchid Laundry App</strong>
+              Download <strong>The Orchid Laundry App</strong>
             </p>
             <p className={styles.subtext}>
-              Experience the most convenient way to handle your laundry. Get it now on your favorite store.
+              Experience the most convenient way to handle your laundry. Download it now.
             </p>
           </div>
           <div className={styles.apps}>

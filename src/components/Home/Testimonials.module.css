@@ -59,7 +59,7 @@
 .profile {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
@@ -93,10 +93,11 @@
 }
 
 .meta strong {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   color: #000;
   font-weight: 800;
   font-family: 'Outfit', sans-serif;
+  white-space: nowrap;
 }
 
 .meta span {
@@ -138,7 +139,7 @@
     height: 70px;
   }
   .meta strong {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
   }
   .meta span {
     font-size: 0.95rem;

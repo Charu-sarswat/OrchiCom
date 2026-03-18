@@ -52,7 +52,7 @@ export default function Delivery() {
               <h3>Express <span style={{ color: 'var(--primary)' }}>Delivery</span></h3>
             </div>
             <ul className={styles.list}>
-              <li><Check size={20} className={styles.checkIcon} /> 1.5x extra charges</li>
+              <li><Check size={20} className={styles.checkIcon} /> with minimal additional charges</li>
               <li><Check size={20} className={styles.checkIcon} /> Same-day / Next-day delivery</li>
             </ul>
           </motion.div>

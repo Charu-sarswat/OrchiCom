@@ -22,6 +22,7 @@
 
 .header {
   max-width: 800px;
+  margin: 0 auto;
 }
 
 .header h1 {
@@ -162,12 +163,12 @@
 }
 
 /* Bento Spans */
-.valueCard:nth-child(1) { grid-column: span 2; grid-row: span 1; background: #f0f9ff; } /* FAST */
+.valueCard:nth-child(1) { grid-column: span 2; grid-row: 1; background: #f0f9ff; } /* FAST */
 .valueCard:nth-child(2) { grid-column: 3; grid-row: 1; background: #f0fdf4; } /* RELIABLE */
 .valueCard:nth-child(3) { grid-column: 4; grid-row: 1; background: #fffcf0; } /* AFFORDABLE */
-.valueCard:nth-child(4) { grid-column: 3 / span 2; grid-row: 2; background: #fef2f2; } /* RESPECT (on the right) */
-.valueCard:nth-child(5) { grid-column: 1; grid-row: 2; background: #f5f3ff; } /* INTEGRITY */
-.valueCard:nth-child(6) { grid-column: 2; grid-row: 2; background: #ecfdf5; } /* SUSTAINABILITY */
+.valueCard:nth-child(4) { grid-column: 1; grid-row: 2; background: #f5f3ff; } /* INTEGRITY */
+.valueCard:nth-child(5) { grid-column: 2; grid-row: 2; background: #fef2f2; } /* RESPECT */
+.valueCard:nth-child(6) { grid-column: 3 / span 2; grid-row: 2; background: #ecfdf5; } /* SUSTAINABILITY */
 
 @media (max-width: 1024px) {
   .valuesGrid {

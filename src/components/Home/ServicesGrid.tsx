@@ -12,7 +12,7 @@ const services = [
   { 
     id: 2, 
     title: 'Wash & Iron', 
-    img: '/img/Laundry by Kilo.jpg',
+    img: '/wash.png',
     link: '/services/wash-iron'
   },
   { 

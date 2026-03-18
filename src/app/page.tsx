@@ -28,10 +28,10 @@ export default function Home() {
       {/* About Section */}
       <section className={`${styles.homeSection} bg-light`}>
         <div className="container">
-          <div className="grid grid-2 items-center">
-            <div style={{ position: 'relative', borderRadius: '30px', overflow: 'hidden', minHeight: '500px' }}>
+          <div className="grid grid-2">
+            <div className="about-home-image-container">
               <Image 
-                src="/about2.png" 
+                src="/img/about-new.jpg" 
                 alt="The Orchid Laundry LLP" 
                 fill
                 style={{ objectFit: 'cover' }}
@@ -39,17 +39,17 @@ export default function Home() {
             </div>
             <div style={{ paddingLeft: '1.5rem' }}>
               <h2 style={{ marginBottom: '0.5rem' }}>About <span className="text-gradient">The Orchid Laundry LLP</span></h2>
-              <p style={{ fontWeight: 800, color: '#000', marginBottom: '1.5rem', fontSize: '1.1rem' }}>Fast - Reliable - Affordable</p>
+              <p style={{ fontWeight: 800, color: '#000', marginBottom: '0.8rem', fontSize: '1.1rem' }}>Fast - Reliable - Affordable</p>
               
-              <p style={{ color: '#333', marginBottom: '1rem', fontSize: '1.1rem', lineHeight: '1.8' }}>
+              <p style={{ color: '#333', marginBottom: '0.8rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
                 At <strong style={{ color: 'var(--primary)' }}>The Orchid Laundry</strong>, we turn an everyday chore into a seamless, stress-free experience.
               </p>
               
-              <p style={{ color: '#333', marginBottom: '1rem', fontSize: '1.1rem', lineHeight: '1.8' }}>
+              <p style={{ color: '#333', marginBottom: '0.8rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
                 We know the hours spent on washing, drying, ironing, and folding can add up, time that could be better spent on family, work, or simply enjoying life.
               </p>
 
-              <p style={{ color: '#333', marginBottom: '2rem', fontSize: '1.1rem', lineHeight: '1.8' }}>
+              <p style={{ color: '#333', marginBottom: '1.2rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
                 That is why we started <strong className="text-gradient">The Orchid Laundry LLP</strong>, to make laundry fast, reliable, and affordable. What began as a small idea in Dombivli has grown into a professional, tech-enabled service dedicated to quality, convenience, and customer delight.
               </p>
 
@@ -66,7 +66,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <Link href="/about" className="btn btn-primary" style={{ marginTop: '2rem' }}>Read More</Link>
+              <Link href="/about" className="btn btn-primary" style={{ marginTop: '1.2rem' }}>Read More</Link>
             </div>
           </div>
         </div>

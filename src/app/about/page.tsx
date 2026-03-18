@@ -7,7 +7,7 @@ const AboutPage = () => {
       <section className={styles.aboutHero}>
         <div className="container">
           <div className={styles.header}>
-            <h1>About <span className="text-gradient">The Orchid Laundry LLP</span></h1>
+            <h1>About <span style={{ color: 'white' }}>The Orchid Laundry LLP</span></h1>
             <p>Fast - Reliable - Affordable</p>
           </div>
         </div>
@@ -19,7 +19,7 @@ const AboutPage = () => {
           <div className={styles.grid}>
             <div className={styles.imageColumn}>
               <div className={styles.imageWrapper}>
-                <img src="/about2.png" alt="The Orchid Laundry Service" />
+                <img src="/img/about-new.jpg" alt="The Orchid Laundry Service" />
               </div>
             </div>
             <div className={styles.contentColumn}>
@@ -77,12 +77,12 @@ const AboutPage = () => {
           
           <div className={styles.valuesGrid}>
             {[
-              { icon: <Leaf size={28} />, title: "Sustainability", desc: "Caring for the environment with eco-friendly processes and resources." },
+              { icon: <Zap size={28} />, title: "Fast", desc: "Quick, on-time service with efficiency at every step." },
               { icon: <CheckCircle size={28} />, title: "Reliable", desc: "Consistent quality, every wash, every time." },
               { icon: <IndianRupee size={28} />, title: "Affordable", desc: "Premium service at fair, transparent pricing." },
-              { icon: <Handshake size={28} />, title: "Respect", desc: "Treating every customer, associate, and partner with dignity." },
               { icon: <Shield size={28} />, title: "Integrity", desc: "Honest, transparent, and ethical in all dealings." },
-              { icon: <Zap size={28} />, title: "Fast", desc: "Quick, on-time service with efficiency at every step." }
+              { icon: <Handshake size={28} />, title: "Respect", desc: "Treating every customer, associate, and partner with dignity." },
+              { icon: <Leaf size={28} />, title: "Sustainability", desc: "Caring for the environment with eco-friendly processes and resources." },
             ].map((value, i) => (
               <div key={i} className={styles.valueCard}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.8rem' }}>

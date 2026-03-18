@@ -134,8 +134,8 @@
 }
 
 .stepContent {
-  /* Counter-rotate to keep text horizontal */
-  transform: rotate(calc(var(--i) * 60deg - 45deg));
+  /* Keep text horizontal - matching the first card's orientation */
+  transform: rotate(-45deg);
   text-align: center;
   color: white;
   width: 150px;
