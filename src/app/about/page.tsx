@@ -37,14 +37,13 @@ const AboutPage = () => {
 
           {/* Our Approach Card */}
           <div className={styles.approachCard}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', marginBottom: '1.2rem' }}>
-              <Rocket size={32} className="text-gradient" />
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.8rem', marginBottom: '0.8rem' }}>
               <h2 style={{ margin: 0 }}>Our <span className="text-gradient">approach</span></h2>
             </div>
-            <p style={{ fontSize: '1.15rem', color: '#444', lineHeight: '1.8' }}>
+            <p>
               We combine technology, expert care, and efficient operations to deliver a consistent, high-quality laundry experience. From scheduled pickups and doorstep delivery to customizable instructions for every garment, we ensure your clothes are treated with care while saving you time, effort, and money.
             </p>
-            <p style={{ fontSize: '1.15rem', color: '#444', lineHeight: '1.8', marginTop: '1.5rem' }}>
+            <p>
               Our eco-friendly detergents, advanced washing machines, and streamlined processes make laundry simpler for our customers and better for the planet.
             </p>
           </div>
@@ -53,7 +52,6 @@ const AboutPage = () => {
           <div className={styles.missionVisionGrid}>
             <div className={styles.missionCard}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
-                <Target size={28} className="text-gradient" />
                 <h3 style={{ margin: 0 }}>Our <span className="text-gradient">mission</span></h3>
               </div>
               <p>
@@ -62,7 +60,6 @@ const AboutPage = () => {
             </div>
             <div className={styles.missionCard}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
-                <Eye size={28} className="text-gradient" />
                 <h3 style={{ margin: 0 }}>Our <span className="text-gradient">vision</span></h3>
               </div>
               <p>
@@ -86,7 +83,7 @@ const AboutPage = () => {
             ].map((value, i) => (
               <div key={i} className={styles.valueCard}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.8rem' }}>
-                  <span style={{ color: 'var(--primary)', display: 'flex' }}>{value.icon}</span>
+                  {/* <span style={{ color: 'var(--primary)', display: 'flex' }}>{value.icon}</span> */}
                   <h4 style={{ margin: 0 }}>{value.title}</h4>
                 </div>
                 <p>{value.desc}</p>
@@ -96,12 +93,9 @@ const AboutPage = () => {
 
           {/* Promise */}
           <div className={styles.promiseBox}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '1.2rem' }}>
-              <Heart size={32} className="text-gradient" fill="rgba(19, 165, 217, 0.2)" />
-              <h2 style={{ margin: 0 }}>Our <span className="text-gradient">promise</span></h2>
-            </div>
+            <h2 style={{ marginBottom: '0.8rem' }}>Our <span className="text-gradient">promise</span></h2>
             <p>
-              At The Orchid Laundry, we do not just clean clothes, we give you back your time, peace of mind, and confidence in every wash. With every pickup, wash, and delivery, we aim to make laundry faster, reliable, and more affordable, because life is too short to spend it on chores.
+              At The Orchid Laundry, we do not just clean clothes — we give you back your time, peace of mind, and confidence in every wash. With every pickup, wash, and delivery, we aim to make laundry faster, reliable, and more affordable.
             </p>
           </div>
         </div>

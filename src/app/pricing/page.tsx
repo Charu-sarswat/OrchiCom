@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, Fragment, useEffect } from "react";
+import { useState, Fragment, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import styles from "./pricing.module.css";
 import { Search, Info, Truck, Clock, CheckCircle, Package, Star, Calendar, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -124,6 +125,14 @@ interface Plan {
 }
 
 export default function PricingPage() {
+  return (
+    <Suspense fallback={<div>Loading Pricing...</div>}>
+      <PricingContent />
+    </Suspense>
+  );
+}
+
+function PricingContent() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeService, setActiveService] = useState("Dry Clean");
   const [activeCategory, setActiveCategory] = useState("All");
@@ -131,10 +140,21 @@ export default function PricingPage() {
   const [pricingData, setPricingData] = useState<PricingDataMap>({});
   const [isLoading, setIsLoading] = useState(true);
 
+  const searchParams = useSearchParams();
+
+  // Pre-select service tab from ?service= query param
+  useEffect(() => {
+    const serviceParam = searchParams.get("service");
+    if (serviceParam) {
+      setActiveService(serviceParam);
+    }
+  }, [searchParams]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
+
         // Fetch Services and Categories
         const servicesRes = await fetch(`${API_URL}/services/all`);
         const services = await servicesRes.json();
@@ -317,7 +337,7 @@ export default function PricingPage() {
           <div className={styles.filterGroup}>
             <p>Category</p>
             <div className={styles.categoryPills}>
-              {categories.map(cat => (
+              {!activeService.toLowerCase().includes("kg") && categories.map(cat => (
                 <button 
                   key={cat}
                   className={activeCategory === cat ? styles.activeCategory : ""}
@@ -326,6 +346,9 @@ export default function PricingPage() {
                   {cat}
                 </button>
               ))}
+              {activeService.toLowerCase().includes("kg") && (
+                <span style={{ fontSize: '0.9rem', color: '#666' }}>All items shown below</span>
+              )}
             </div>
           </div>
         </div>
@@ -349,13 +372,15 @@ export default function PricingPage() {
               {filteredData.length > 0 ? (
                 filteredData.map((group) => (
                   <Fragment key={group.category}>
-                    <tr className={styles.categoryHeader}>
-                      <td colSpan={3}>
-                        <div className={styles.catTitle}>
-                          <User size={16} /> {group.category}
-                        </div>
-                      </td>
-                    </tr>
+                    {!activeService.toLowerCase().includes("kg") && (
+                      <tr className={styles.categoryHeader}>
+                        <td colSpan={3}>
+                          <div className={styles.catTitle}>
+                            <User size={16} /> {group.category}
+                          </div>
+                        </td>
+                      </tr>
+                    )}
                     {group.items.map((item, i) => (
                       <tr key={i}>
                         <td className={styles.groupCol}>{activeService.toLowerCase().includes("kg") ? "Laundry" : `${group.category} Service`}</td>

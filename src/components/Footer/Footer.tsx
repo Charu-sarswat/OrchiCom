@@ -14,64 +14,65 @@ export default function Footer() {
         </div>
 
         <div className={styles.grid}>
-          {/* Company Info */}
+          {/* Company Info — always full width on mobile (first child) */}
           <div className={styles.section}>
             <Link href="/" className={styles.logo}>
-              <Image src="/img/orhidlogo.png" alt="Logo" width={180} height={60} style={{ width: 'auto' }} />
+              <Image src="/img/orhidlogo.png" alt="Logo" width={180} height={60} style={{ width: 'auto', height: '44px' }} />
             </Link>
             <p className={styles.bio}>
-              Premium laundry and dry cleaning services dedicated to providing the highest quality care for your garments. Experience professional excellence with The Orchid Laundry.
+              Premium laundry and dry cleaning services dedicated to providing the highest quality care for your garments.
             </p>
             <div className={styles.social}>
-              <Link href="#"><Facebook size={20} /></Link>
-              <Link href="#"><Instagram size={20} /></Link>
-              <Link href="#"><Linkedin size={20} /></Link>
-              <Link href="#"><Youtube size={20} /></Link>
+              <Link href="#"><Facebook size={18} /></Link>
+              <Link href="#"><Instagram size={18} /></Link>
+              <Link href="#"><Linkedin size={18} /></Link>
+              <Link href="#"><Youtube size={18} /></Link>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className={styles.section}>
-            <h3>Quick links</h3>
-            <ul className={styles.links}>
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/services">Our Services</Link></li>
-              <li><Link href="/pricing">Pricing Plans</Link></li>
-              <li><Link href="/blog">Laundry Blog</Link></li>
-              <li><Link href="/contact">Contact Us</Link></li>
-            </ul>
+          {/* Quick Links + Legal — side by side on mobile via linksRow */}
+          <div className={styles.linksRow}>
+            <div className={styles.section}>
+              <h3>Quick links</h3>
+              <ul className={styles.links}>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/about">About us</Link></li>
+                <li><Link href="/services">Our services</Link></li>
+                <li><Link href="/pricing">Pricing plans</Link></li>
+                <li><Link href="/blog">Laundry blog</Link></li>
+                <li><Link href="/contact">Contact us</Link></li>
+              </ul>
+            </div>
+
+            <div className={styles.section}>
+              <h3>Legal & support</h3>
+              <ul className={styles.links}>
+                <li><Link href="/terms">Terms & conditions</Link></li>
+                <li><Link href="/privacy">Privacy policy</Link></li>
+                <li><Link href="/faq">FAQs</Link></li>
+                <li><Link href="/booking">Book a pickup</Link></li>
+                <li><Link href="/contact">Support center</Link></li>
+              </ul>
+            </div>
           </div>
 
-          {/* Legal */}
-          <div className={styles.section}>
-            <h3>Legal & support</h3>
-            <ul className={styles.links}>
-              <li><Link href="/terms">Terms & Conditions</Link></li>
-              <li><Link href="/privacy">Privacy Policy</Link></li>
-              <li><Link href="/faq">FAQs</Link></li>
-              <li><Link href="/booking">Book a Pickup</Link></li>
-              <li><Link href="/contact">Support Center</Link></li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div className={styles.section}>
+          {/* Get In Touch */}
+          <div className={`${styles.section} ${styles.contactSection}`}>
             <h3>Get in touch</h3>
             <ul className={styles.contact}>
               <li>
-                <MapPin size={20} />
-                <span>Shop No. 3, Priyanka Compound, Near MHADA Colony, Badlapur Pipeline Road, Khoni, Dombivli East - 421204</span>
+                <MapPin size={18} />
+                <span>Shop No. 3, Priyanka Compound, Near MHADA Colony, Badlapur Pipeline Road, Khoni, Dombivli East – 421204</span>
               </li>
               <li>
-                <Phone size={20} />
+                <Phone size={18} />
                 <div>
                   <a href="tel:7080803074">Enquiry: 7080803074</a>
                   <a href="tel:7080804074">Support: 7080804074</a>
                 </div>
               </li>
               <li>
-                <Mail size={20} />
+                <Mail size={18} />
                 <div>
                   <a href="mailto:info@theorchidlaundry.com">info@theorchidlaundry.com</a>
                   <a href="mailto:care@theorchidlaundry.com">care@theorchidlaundry.com</a>

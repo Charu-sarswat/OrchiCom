@@ -1,12 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle, Search, Droplets, Wind, Zap, Shield, Package, ArrowRight } from "lucide-react";
+import { Search, Droplets, Wind, Zap, Shield, Package, ArrowRight } from "lucide-react";
 import styles from "./services.module.css";
 import Link from "next/link";
-import { servicesData, serviceCategories } from "@/services/servicesData";
+import { servicesData } from "@/services/servicesData";
 import Image from "next/image";
-
 
 const steps = [
   { icon: Search, title: "Tagging & Sorting", desc: "Each garment is tagged and sorted based on color, fabric type, and soiling level." },
@@ -17,6 +16,21 @@ const steps = [
   { icon: Shield, title: "Softening & Drying", desc: "Air-dried in temperature-controlled environments to prevent shrinkage." },
   { icon: Zap, title: "Precision Steam Ironing", desc: "Finished with industrial steam presses for a crisp, wrinkle-free look." },
   { icon: Package, title: "Quality Check & Packing", desc: "Multiple inspections followed by hygienic, UV-safe packaging." }
+];
+
+const allServices = [
+  { slug: "dry-cleaning", title: "Dry Cleaning" },
+  { slug: "wash-iron", title: "Wash & Iron" },
+  { slug: "wash-fold", title: "Wash & Fold" },
+  { slug: "wash-kg", title: "Wash Per KG" },
+  { slug: "premium-laundry", title: "Premium Laundry" },
+  { slug: "household-laundry", title: "Household Laundry" },
+  { slug: "steam-iron", title: "Steam Iron" },
+  { slug: "shoe-cleaning", title: "Shoe Cleaning" },
+  { slug: "sofa-cleaning", title: "Sofa Cleaning" },
+  { slug: "carpet-cleaning", title: "Carpet Cleaning" },
+  { slug: "curtain-cleaning", title: "Curtain Cleaning" },
+  { slug: "bridal-wear", title: "Bridal Wear" },
 ];
 
 export default function ServicesPage() {
@@ -115,38 +129,32 @@ export default function ServicesPage() {
       {/* Services Grid Section */}
       <section className={`section-padding ${styles.gridSection}`}>
         <div className="container">
-          {serviceCategories.map((category) => (
-            <div key={category.title} className={styles.categoryGroup}>
-              <div className={styles.categoryHeader}>
-                <h2 className={styles.categoryTitle}>{category.title}</h2>
-                <div className={styles.titleUnderline}></div>
-              </div>
-              
-              <div className={styles.servicesGrid}>
-                {category.links.filter(link => link.href.startsWith('/services/')).map((link) => {
-                  const slug = link.href.replace('/services/', '');
-                  const service = (servicesData as any)[slug];
-                  if (!service) return null;
+          <div className={styles.categoryHeader}>
+            <h2 className={styles.categoryTitle}>Explore All <span className="text-gradient">Our Services</span></h2>
+            <div className={styles.titleUnderline}></div>
+          </div>
+          
+          <div className={styles.servicesGrid}>
+            {allServices.map((item) => {
+              const service = (servicesData as any)[item.slug];
+              if (!service) return null;
 
-                  return (
-                    <Link key={slug} href={link.href} className={styles.serviceCard}>
-                      <div className={styles.serviceImg}>
-                        <Image src={service.image} alt={service.title} fill />
-                      </div>
-                      <div className={styles.serviceInfo}>
-                        <h3>{service.title}</h3>
-                        <p>{service.subtitle}</p>
-                        <span className={styles.learnMore}>Explore Service <ArrowRight size={16} /></span>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
+              return (
+                <Link key={item.slug} href={`/services/${item.slug}`} className={styles.serviceCard}>
+                  <div className={styles.serviceImg}>
+                    <Image src={service.image} alt={service.title} fill />
+                  </div>
+                  <div className={styles.serviceInfo}>
+                    <h3>{service.title.includes("Best") ? service.title.replace("Best ", "") : service.title}</h3>
+                    <p>{service.subtitle}</p>
+                    <span className={styles.learnMore}>Explore Service <ArrowRight size={16} /></span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
-
     </div>
   );
 }

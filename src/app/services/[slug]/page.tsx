@@ -8,24 +8,39 @@ import styles from "./ServiceDetail.module.css";
 import { 
   CheckCircle, 
   ArrowRight, 
-  MessageCircle, 
+  Calendar, 
   XCircle, 
   AlertCircle, 
-  List, 
+  Sparkles,
   Shirt, 
   User, 
   User2, 
-  Sparkles, 
   Briefcase, 
   Bed,
   Luggage,
-  Flame,
-  IndianRupee
+  IndianRupee,
+  Info
 } from "lucide-react";
 
 
 type ServiceKey = keyof typeof servicesData;
 
+// Map service slug → pricing page service tab name
+const slugToPricingService: Record<string, string> = {
+  "dry-cleaning":      "Dry Clean",
+  "wash-iron":         "Wash Per Kg",
+  "wash-fold":         "Wash Per Kg",
+  "wash-kg":           "Wash Per Kg",
+  "premium-laundry":   "Dry Clean",
+  "household-laundry": "Wash Per Kg",
+  "steam-iron":        "Steam Iron",
+  "shoe-cleaning":     "Dry Clean",
+  "sofa-cleaning":     "Dry Clean",
+  "carpet-cleaning":   "Dry Clean",
+  "curtain-cleaning":  "Dry Clean",
+  "bridal-wear":       "Dry Clean",
+  "special-laundry":   "Dry Clean",
+};
 
 export default function ServiceDetail() {
   const params = useParams();
@@ -36,6 +51,7 @@ export default function ServiceDetail() {
   }
 
   const service = servicesData[slug as ServiceKey] as any;
+  const pricingService = slugToPricingService[slug] || "Dry Clean";
 
   const splitTitle = (title: string) => {
     if (!title) return null;
@@ -49,8 +65,6 @@ export default function ServiceDetail() {
       </>
     );
   };
-
-
 
   return (
     <div className={`section-padding ${styles.page}`}>
@@ -91,7 +105,6 @@ export default function ServiceDetail() {
           <section className={styles.longDescriptionSection}>
             <div className="section-title text-center">
               <h2>{splitTitle(service.longDescTitle)}</h2>
-
             </div>
 
             <div className={styles.longDescCard}>
@@ -112,7 +125,7 @@ export default function ServiceDetail() {
               {service.comparisons.map((comp: any, idx: number) => (
                 <div key={idx} className={`${styles.comparisonCard} ${comp.isNegative ? styles.negativeCard : styles.positiveCard}`}>
                   <div className={styles.compHeader}>
-                    {comp.isNegative ? <AlertCircle size={24} color="#f44336" /> : <CheckCircle size={24} color="#4caf50" />}
+                    {comp.isNegative ? <XCircle size={24} color="#f44336" /> : <CheckCircle size={24} color="#4caf50" />}
                     <h3>{comp.title}</h3>
                   </div>
                   <ul className={styles.compList}>
@@ -134,8 +147,7 @@ export default function ServiceDetail() {
           <section className={styles.processSection}>
             <div className="section-title text-center">
               <h2>{splitTitle(service.processTitle)}</h2>
-
-              <p>{slug === 'steam-iron' ? 'Each garment goes through a careful 6-step process to ensure exceptional results every time:' : 'Every garment is processed through a carefully designed 6-step procedure to guarantee a fresh, crisp, and spotless finish.'}</p>
+              <p>{slug === 'steam-iron' ? 'Each garment goes through a careful process to ensure exceptional results every time.' : 'Every garment is processed through a carefully designed procedure to guarantee a fresh, crisp, and spotless finish.'}</p>
             </div>
 
             <div className={styles.processGrid}>
@@ -152,64 +164,19 @@ export default function ServiceDetail() {
           </section>
         )}
 
-        {/* Items We Clean Section */}
-        {'itemsWeClean' in service && (
-          <section className={styles.itemsSection}>
-             <div className={styles.itemsCard}>
-                <h3>
-                  <List size={24} />
-                  {splitTitle(service.itemsTitle)}
-                </h3>
-                <div className={styles.itemsGrid}>
-                  {((service as any).itemsWeClean as any[]).map((item: any, i: number) => {
-                    const isObject = typeof item === 'object' && item !== null;
-                    const itemName = isObject ? item.name : item;
-                    const IconComponent = isObject ? (
-                      item.icon === 'Shirt' ? Shirt :
-                      item.icon === 'User' ? User :
-                      item.icon === 'User2' ? User2 :
-                      item.icon === 'Sparkles' ? Sparkles :
-                      item.icon === 'Briefcase' ? Briefcase :
-                      item.icon === 'Bed' ? Bed :
-                      item.icon === 'Luggage' ? Luggage : Shirt
-                    ) : null;
-
-                    return (
-                      <div key={i} className={isObject ? styles.itemCard : styles.itemLink}>
-                        {isObject ? (
-                          <>
-                            <div className={styles.iconWrapper}>
-                              {IconComponent && <IconComponent size={48} strokeWidth={1.5} />}
-                            </div>
-                            <span className={styles.itemLabel}>{itemName}</span>
-                          </>
-                        ) : (
-                          <>
-                            <CheckCircle size={16} className={styles.itemCheck} />
-                            {itemName}
-                          </>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-             </div>
-          </section>
-        )}
-
         {/* Key Features Section */}
         {service.keyFeatures && (
           <section className={styles.featuresSection}>
             <div className={styles.featuresCard}>
               <h3>
-                <Sparkles size={24} />
+                <Sparkles size={22} />
                 {splitTitle(service.featuresTitle || "Key Features")}
               </h3>
               <div className={styles.featuresGrid}>
                 {service.keyFeatures.map((feature: string, i: number) => (
                   <div key={i} className={styles.featureItem}>
                     <div className={styles.featureCheck}>
-                      <CheckCircle size={20} />
+                      <CheckCircle size={18} />
                     </div>
                     <span>{feature}</span>
                   </div>
@@ -224,14 +191,14 @@ export default function ServiceDetail() {
           <section key={idx} className={styles.featuresSection}>
             <div className={styles.featuresCard}>
               <h3>
-                <AlertCircle size={24} />
+                <Info size={22} />
                 {splitTitle(section.title)}
               </h3>
               <div className={section.items.length > 6 ? styles.featuresGridFull : styles.featuresGrid}>
                 {section.items.map((item: string, i: number) => (
                   <div key={i} className={styles.featureItem}>
                     <div className={styles.featureCheck}>
-                      <CheckCircle size={20} />
+                      <CheckCircle size={18} />
                     </div>
                     <span>{item}</span>
                   </div>
@@ -241,19 +208,14 @@ export default function ServiceDetail() {
           </section>
         ))}
 
-
-
-        {/* Closing Statement */}
+        {/* Closing Statement / Note */}
         {'closingStatement' in service && (
           <div className={styles.processStatement}>
-            <p>
-              {slug === 'steam-iron' && <CheckCircle size={20} className={styles.statementIcon} />}
-              {service.closingStatement}
-            </p>
+            <Info size={20} className={styles.statementIcon} />
+            <p>{service.closingStatement}</p>
           </div>
         )}
 
-        
         <div className={styles.bottomActions}>
           <div className={styles.actionButtons}>
             <Link 
@@ -261,16 +223,18 @@ export default function ServiceDetail() {
               className={styles.pickupBtn}
               target="_blank"
             >
-              {slug === 'steam-iron' ? <Flame size={20} /> : <MessageCircle size={20} />}
+              <Calendar size={18} />
               {service.pickupBtnText || "Schedule Pickup"}
             </Link>
-            <Link href="/pricing" className={styles.pricingBtn}>
-              {slug === 'steam-iron' && <IndianRupee size={18} />}
-              {service.pricingBtnText || "View Pricing"}
-            </Link>
+            {service.pricingBtnText && (
+              <Link href={`/pricing?service=${encodeURIComponent(pricingService)}`} className={styles.pricingBtn}>
+                <IndianRupee size={16} />
+                {service.pricingBtnText}
+              </Link>
+            )}
           </div>
           <Link href="/services" className={styles.backBtn}>
-            <ArrowRight size={20} className={styles.rotateIcon} />
+            <ArrowRight size={18} className={styles.rotateIcon} />
             {service.backBtnText || "Back to All Services"}
           </Link>
         </div>

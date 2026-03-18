@@ -157,7 +157,7 @@
 }
 
 .actions :global(.btn-secondary) {
-  background-color: #18A1D8 !important;
+  background-color: #000 !important;
 }
 
 @media (max-width: 1200px) {
