@@ -48,43 +48,45 @@ export default function ServiceDetail() {
 
   return (
     <>
-    <div className="section-padding bg-white">
+    <div className="section-padding bg-[#f8fafc] py-20 md:py-28">
       <div className="container">
-        <div className="grid grid-cols-1 min-[992px]:grid-cols-2 gap-8 min-[992px]:gap-12 items-center mb-10 min-[992px]:mb-14">
-          <div>
-            <span className="block text-[0.82rem] font-bold uppercase text-[#888] tracking-[1.5px] mb-2">The Orchid Laundry</span>
-            <h1 className="text-black mb-[0.8rem] leading-[1.1] text-[2rem] max-[480px]:text-[1.9rem] lg:text-[clamp(2rem,4vw,3.2rem)]">{splitTitle(service.title)}</h1>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 lg:mb-24 px-4">
+          <div className="order-2 lg:order-1">
+            <span className="block text-[0.85rem] font-bold uppercase text-primary tracking-[3px] mb-4">Premium Care Service</span>
+            <h1 className="text-black mb-6 leading-tight text-[2.2rem] md:text-[3.2rem] font-bold">{splitTitle(service.title)}</h1>
 
-            <p className="text-[1.15rem] font-bold text-[#333] mb-4">{service.subtitle}</p>
-            <p className="text-base text-[#555] leading-[1.65] mb-6">{service.description}</p>
+            <p className="text-[1.2rem] md:text-[1.3rem] font-bold text-black mb-5 leading-snug">{service.subtitle}</p>
+            <p className="text-[1rem] md:text-[1.1rem] text-[#444] leading-relaxed mb-8">{service.description}</p>
             
-            <ul className="list-none p-0 flex flex-col gap-[0.7rem]">
+            <ul className="list-none p-0 flex flex-col gap-4">
               {service.benefits.map((benefit: string, index: number) => (
-                <li key={index} className="flex items-center gap-[0.8rem] font-semibold text-[0.95rem] text-[#444]">
-                  <CheckCircle size={18} className="text-primary shrink-0" />
+                <li key={index} className="flex items-center gap-4 font-bold text-[1rem] text-[#444]">
+                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <CheckCircle size={16} className="text-primary" />
+                  </div>
                   {benefit}
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <div className="rounded-[20px] overflow-hidden">
-              <Image src={service.image} alt={service.title} width={600} height={500} className="w-full h-auto block" priority />
+          <div className="order-1 lg:order-2">
+            <div className="rounded-[40px] overflow-hidden border-8 border-white shadow-none">
+              <Image src={service.image} alt={service.title} width={700} height={600} className="w-full h-auto block transform hover:scale-105 transition-transform duration-700" priority />
             </div>
           </div>
         </div>
 
         {/* Long Description Section */}
         {'longDescription' in service && (
-          <section className="mb-14">
-            <div className="section-title text-center">
-              <h2 className="text-[2rem] mb-6">{splitTitle(service.longDescTitle)}</h2>
+          <section className="mb-20 px-4">
+            <div className="text-center mb-10">
+              <h2 className="text-[2rem] md:text-[2.6rem] text-black font-bold mb-6">{splitTitle(service.longDescTitle)}</h2>
             </div>
 
-            <div className="max-w-[900px] mx-auto py-5 max-[768px]:px-5 md:py-8 px-10 bg-[#f8fafc] rounded-2xl md:rounded-[20px] border border-[#e2e8f0]">
-              <div className="max-w-[820px] mx-auto text-center flex flex-col gap-4">
+            <div className="max-w-[1000px] mx-auto p-8 md:p-14 bg-white rounded-[40px] border border-black/5 shadow-none">
+              <div className="max-w-[850px] mx-auto text-center flex flex-col gap-6">
                 {service.longDescription.map((para: string, i: number) => (
-                  <p key={i} className="text-[0.95rem] md:text-[1.05rem] text-[#555] leading-[1.75]">{para}</p>
+                  <p key={i} className="text-[1.05rem] md:text-[1.15rem] text-[#444] leading-relaxed italic">"{para}"</p>
                 ))}
               </div>
             </div>
@@ -93,18 +95,22 @@ export default function ServiceDetail() {
 
         {/* Comparisons Section */}
         {'comparisons' in service && (
-          <section className="mb-14">
-            <div className="grid grid-cols-1 min-[992px]:grid-cols-2 gap-8">
+          <section className="mb-20 px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
               {service.comparisons.map((comp: any, idx: number) => (
-                <div key={idx} className={`p-8 rounded-[20px] border border-[#eee] ${comp.isNegative ? 'bg-[#fffcfc]' : 'bg-[#fafff4]'}`}>
-                  <div className="flex items-center gap-[0.8rem] mb-6">
-                    {comp.isNegative ? <XCircle size={24} color="#f44336" /> : <CheckCircle size={24} color="#4caf50" />}
-                    <h3 className="text-[1.15rem] font-extrabold text-[#333] m-0">{comp.title}</h3>
+                <div key={idx} className={`p-10 rounded-[40px] border transition-all duration-400 ${comp.isNegative ? 'bg-[#FFF5F5] border-red-100' : 'bg-[#F5FFF8] border-green-100'} shadow-none`}>
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${comp.isNegative ? 'bg-red-100 text-red-500' : 'bg-green-100 text-green-500'}`}>
+                      {comp.isNegative ? <XCircle size={26} /> : <CheckCircle size={26} />}
+                    </div>
+                    <h3 className="text-[1.4rem] font-bold text-black m-0">{comp.title}</h3>
                   </div>
-                  <ul className="list-none p-0 flex flex-col gap-[0.9rem]">
+                  <ul className="list-none p-0 flex flex-col gap-5">
                     {comp.points.map((point: string, pIdx: number) => (
-                      <li key={pIdx} className="flex items-start gap-[0.8rem] text-[0.95rem] leading-[1.5] text-[#555]">
-                        {comp.isNegative ? <XCircle size={18} className="text-[#f44336] shrink-0 mt-[2px]" /> : <CheckCircle size={18} className="text-[#4caf50] shrink-0 mt-[2px]" />}
+                      <li key={pIdx} className="flex items-start gap-4 text-[1rem] leading-relaxed text-[#444] font-medium">
+                        <div className={`mt-1.5 shrink-0 ${comp.isNegative ? 'text-red-400' : 'text-green-500'}`}>
+                          {comp.isNegative ? <XCircle size={18} /> : <CheckCircle size={18} />}
+                        </div>
                         {point}
                       </li>
                     ))}
@@ -117,19 +123,23 @@ export default function ServiceDetail() {
 
         {/* Process Section */}
         {'process' in service && service.process && (
-          <section className="mb-14">
-            <div className="section-title text-center">
-              <h2 className="text-[2rem] mb-[0.8rem]">{splitTitle(service.processTitle)}</h2>
-              <p>{slug === 'steam-iron' ? 'Each garment goes through a careful process to ensure exceptional results every time.' : 'Every garment is processed through a carefully designed procedure to guarantee a fresh, crisp, and spotless finish.'}</p>
+          <section className="mb-24 px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-[2.2rem] md:text-[2.8rem] text-black font-bold mb-4">{splitTitle(service.processTitle)}</h2>
+              <p className="text-[1.1rem] text-[#444] max-w-[700px] mx-auto">
+                {slug === 'steam-iron' ? 'Each garment goes through a careful process to ensure exceptional results every time.' : 'Every garment is processed through a carefully designed procedure to guarantee a fresh, crisp, and spotless finish.'}
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-6 md:gap-y-10 max-[768px]:gap-y-10 max-w-[1200px] mx-auto mt-8 lg:mt-14 pt-[3rem]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-[1200px] mx-auto mt-16">
               {service.process.map((p: any) => (
-                <div key={p.step} className="bg-white rounded-2xl border border-[#eee] relative pb-6 px-5 pt-10 transition-transform duration-250 ease hover:-translate-y-1">
-                  <div className="absolute -top-6 left-4 w-[52px] h-[52px] bg-primary rounded-xl flex items-center justify-center text-[1.8rem] font-black text-white">{p.step}</div>
-                  <div>
-                    <h4 className="text-[1.05rem] text-black mb-2 font-extrabold">{p.title}</h4>
-                    <p className="m-0 text-[#666] leading-[1.6] text-[0.9rem]">{p.desc}</p>
+                <div key={p.step} className="bg-white rounded-[35px] border border-black/5 p-10 relative transition-all duration-400 hover:-translate-y-2 shadow-none group">
+                  <div className="absolute -top-6 left-10 w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center text-[1.6rem] font-bold shadow-none group-hover:scale-110 transition-transform">
+                    {p.step}
+                  </div>
+                  <div className="mt-4">
+                    <h4 className="text-[1.3rem] text-black mb-3 font-bold">{p.title}</h4>
+                    <p className="m-0 text-[#444] leading-relaxed text-[0.95rem]">{p.desc}</p>
                   </div>
                 </div>
               ))}
@@ -138,68 +148,75 @@ export default function ServiceDetail() {
         )}
 
         {/* Key Features Section */}
-        {service.keyFeatures && (
-          <section className="mb-12">
-            <div className="max-w-[1000px] mx-auto py-6 px-5 lg:py-8 lg:px-10 bg-white border border-[#eef2f6] rounded-3xl">
-              <h3 className="text-[1.2rem] text-black mb-6 font-extrabold flex items-center gap-[0.7rem]">
-                <Sparkles size={22} /> {splitTitle(service.featuresTitle || "Key Features")}
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-[0.8rem] md:gap-x-8 md:gap-y-4">
-                {service.keyFeatures.map((feature: string, i: number) => (
-                  <div key={i} className="flex items-start gap-[0.8rem] text-[0.95rem] text-[#444] font-semibold">
-                    <div className="text-[#4caf50] flex items-center shrink-0 mt-[1px]"><CheckCircle size={18} /></div>
-                    <span>{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+        {(service.keyFeatures || service.extraSections) && (
+          <div className="flex flex-col gap-10 lg:gap-12 px-4 mb-20">
+            {service.keyFeatures && (
+              <section className="max-w-[1100px] mx-auto w-full p-10 md:p-14 bg-white border border-black/5 rounded-[40px] shadow-none">
+                <h3 className="text-[1.6rem] text-black mb-10 font-bold flex items-center gap-4">
+                   <div className="w-12 h-12 bg-primary/10 text-primary rounded-2xl flex items-center justify-center">
+                    <Sparkles size={24} />
+                   </div>
+                   {splitTitle(service.featuresTitle || "Service Advantages")}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-12 md:gap-y-6">
+                  {service.keyFeatures.map((feature: string, i: number) => (
+                    <div key={i} className="flex items-start gap-4 text-[1.05rem] text-[#444] font-bold">
+                      <CheckCircle size={22} className="text-green-500 shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
-        {/* Extra Sections (e.g., Special Features, Additional Services) */}
-        {service.extraSections && service.extraSections.map((section: any, idx: number) => (
-          <section key={idx} className="mb-12">
-            <div className="max-w-[1000px] mx-auto py-6 px-5 lg:py-8 lg:px-10 bg-white border border-[#eef2f6] rounded-3xl">
-              <h3 className="text-[1.2rem] text-black mb-6 font-extrabold flex items-center gap-[0.7rem]">
-                <Info size={22} /> {splitTitle(section.title)}
-              </h3>
-              <div className={`grid gap-[0.8rem] md:gap-y-4 md:gap-x-6 ${section.items.length > 6 ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'}`}>
-                {section.items.map((item: string, i: number) => (
-                  <div key={i} className="flex items-start gap-[0.8rem] text-[0.95rem] text-[#444] font-semibold">
-                    <div className="text-[#4caf50] flex items-center shrink-0 mt-[1px]"><CheckCircle size={18} /></div>
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        ))}
-
-        {/* Closing Statement / Note */}
-        {'closingStatement' in service && (
-          <div className="max-w-[860px] mx-auto mt-10 py-4 px-5 lg:py-[1.2rem] lg:px-[1.8rem] bg-[#f0f9ff] border border-primary rounded-xl lg:rounded-2xl flex items-start gap-4">
-            <Info size={20} className="shrink-0 text-primary mt-[2px]" />
-            <p className="m-0 text-[0.9rem] lg:text-[0.95rem] text-[#444] leading-[1.65] font-medium">{service.closingStatement}</p>
+            {service.extraSections && service.extraSections.map((section: any, idx: number) => (
+              <section key={idx} className="max-w-[1100px] mx-auto w-full p-10 md:p-14 bg-white border border-black/5 rounded-[40px] shadow-none">
+                <h3 className="text-[1.6rem] text-black mb-10 font-bold flex items-center gap-4">
+                   <div className="w-12 h-12 bg-primary/10 text-primary rounded-2xl flex items-center justify-center">
+                    <Info size={24} />
+                   </div>
+                   {splitTitle(section.title)}
+                </h3>
+                <div className={`grid gap-6 md:gap-y-6 md:gap-x-12 ${section.items.length > 6 ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'}`}>
+                  {section.items.map((item: string, i: number) => (
+                    <div key={i} className="flex items-start gap-4 text-[1.05rem] text-[#444] font-bold">
+                      <CheckCircle size={22} className="text-green-500 shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
           </div>
         )}
 
-        <div className="flex flex-col items-center gap-5 mt-12">
-          <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto justify-center">
+        {/* Closing Statement */}
+        {'closingStatement' in service && (
+          <div className="max-w-[900px] mx-auto mt-10 p-10 bg-[#EBF8FF] border border-primary/20 rounded-[30px] flex flex-col items-center justify-center text-center gap-6 mx-4">
+            <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center shrink-0">
+              <Info size={24} />
+            </div>
+            <p className="m-0 text-[1.1rem] md:text-[1.2rem] text-black/80 leading-relaxed font-bold italic">{service.closingStatement}</p>
+          </div>
+        )}
+
+        <div className="flex flex-col items-center gap-10 mt-20 px-4">
+          <div className="flex flex-col md:flex-row gap-6 w-full md:w-auto justify-center">
             <Link 
               href={`https://wa.me/917006823074?text=I%20want%20to%20schedule%20a%20pickup%20for%20${service.title}`}
-              className="bg-primary text-white py-[0.85rem] px-8 rounded-xl font-bold text-[0.95rem] no-underline flex items-center justify-center gap-[0.6rem] transition-all duration-250 ease hover:-translate-y-[2px] hover:opacity-90"
+              className="bg-primary text-white py-5 px-10 rounded-2xl font-bold text-[1.1rem] no-underline flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.02] shadow-none"
               target="_blank"
             >
-              <Calendar size={18} /> {service.pickupBtnText || "Schedule Pickup"}
+              <Calendar size={20} /> {service.pickupBtnText || "Schedule Pickup"}
             </Link>
             {service.pricingBtnText && (
-              <Link href={`/pricing?service=${encodeURIComponent(pricingService)}`} className="bg-black text-white py-[0.85rem] px-8 rounded-xl font-bold text-[0.95rem] no-underline flex items-center justify-center gap-[0.6rem] transition-all duration-250 ease hover:-translate-y-[2px] hover:bg-[#222]">
-                <IndianRupee size={16} /> {service.pricingBtnText}
+              <Link href={`/pricing?service=${encodeURIComponent(pricingService)}`} className="bg-black text-white py-5 px-10 rounded-2xl font-bold text-[1.1rem] no-underline flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.02] hover:bg-black/90">
+                <IndianRupee size={18} /> {service.pricingBtnText}
               </Link>
             )}
           </div>
-          <Link href="/services" className="flex items-center gap-[0.6rem] text-[#555] font-semibold text-[0.9rem] no-underline py-[0.6rem] px-5 border border-[#ddd] rounded-[10px] transition-all duration-250 ease hover:bg-[#f5f5f5] hover:text-black">
-            <ArrowRight size={18} className="rotate-180" /> {service.backBtnText || "Back to All Services"}
+          <Link href="/services" className="flex items-center gap-3 text-[#555] font-bold text-[1rem] no-underline py-4 px-8 border border-black/10 rounded-2xl transition-all hover:bg-white hover:text-primary hover:border-primary/30">
+            <ArrowRight size={20} className="rotate-180" /> {service.backBtnText || "Back to All Services"}
           </Link>
         </div>
 

@@ -64,74 +64,99 @@ export default function BlogPage() {
 
   return (
     <>
-      <div className="bg-white py-20 max-[768px]:pt-20 pb-10">
+      <div className="bg-[#f8fafc] py-20 md:py-28 pb-10">
       <div className="container">
-        <div className="text-center mb-8">
-          <h1 className="text-primary mb-4 max-[768px]:text-[2rem] max-[480px]:text-[1.8rem]">Latest blog</h1>
-          <p className="text-[#64748b] text-[1.1rem]">Search for articles, tips, or fabric care guides...</p>
+        <div className="text-center mb-16 px-4">
+          <h1 className="text-[2rem] md:text-[3.2rem] text-black font-bold mb-4">
+            The Orchid <span className="text-gradient">Blog</span>
+          </h1>
+          <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">
+            Expert Fabric Care Guides, Laundry Tips, and Professional Insights
+          </p>
         </div>
 
         {/* Search & Filters */}
-        <div className="max-w-[600px] mx-auto mb-6">
-          <div className="flex bg-white rounded-xl overflow-hidden border border-[#e2e8f0]">
-            <input type="text" placeholder="Search articles, tips, or fabric care guides..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="flex-1 py-4 px-6 border-none text-base text-[#334155] font-[inherit] outline-none" />
-            <button className="bg-[#18a1d8] text-white border-none px-6 cursor-pointer transition-[background] duration-200 hover:bg-[#1489b8]">
-              <Search size={20} />
+        <div className="max-w-[700px] mx-auto mb-10 px-4">
+          <div className="flex bg-white rounded-[20px] overflow-hidden border border-[#e2e8f0] p-1.5 shadow-none">
+            <input 
+              type="text" 
+              placeholder="Search articles, tips, or fabric care guides..." 
+              value={searchTerm} 
+              onChange={(e) => setSearchTerm(e.target.value)} 
+              className="flex-1 py-[1rem] px-[1.8rem] border-none text-base text-[#444] font-[inherit] outline-none bg-transparent" 
+            />
+            <button className="bg-[#18a1d8] text-white border-none w-[55px] h-[55px] rounded-[15px] flex items-center justify-center cursor-pointer transition-all duration-300 ease hover:bg-[#37B9EC] hover:scale-105">
+              <Search size={22} />
             </button>
           </div>
         </div>
 
-        <div className="flex justify-center gap-4 max-[480px]:gap-2 mb-10 flex-wrap">
+        <div className="flex justify-center gap-4 max-[480px]:gap-2 mb-16 flex-wrap px-4">
           {categories.map(cat => (
-            <button key={cat} className={`${pillBase} ${activeCategory === cat ? pillActive : ""}`} onClick={() => setActiveCategory(cat)}>
+            <button 
+              key={cat} 
+              className={`${pillBase} ${activeCategory === cat ? pillActive : ""}`} 
+              onClick={() => setActiveCategory(cat)}
+            >
               {cat}
             </button>
           ))}
         </div>
 
-        <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4">
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post) => (
-              <article key={post.slug} className="bg-white rounded-3xl overflow-hidden border border-[#e2e8f0] flex flex-col transition-all duration-300 ease hover:-translate-y-2 hover:border-[#18a1d8]">
-                <div className="relative h-[220px] w-full">
-                  <Image src={post.image} alt={post.title} fill className="object-cover" />
-                  <span className="absolute top-[1.2rem] right-[1.2rem] bg-[#18a1d8] text-white py-[0.4rem] px-4 rounded-full text-[0.75rem] font-bold z-[2]">{post.category}</span>
+              <article key={post.slug} className="bg-white rounded-[30px] overflow-hidden border border-[#e2e8f0] flex flex-col transition-all duration-400 ease hover:-translate-y-2 hover:border-primary/20 shadow-none">
+                <div className="relative h-[240px] w-full overflow-hidden">
+                  <Image src={post.image} alt={post.title} fill className="object-cover transform hover:scale-105 transition-transform duration-500" />
+                  <span className="absolute top-[1.5rem] right-[1.5rem] bg-[#18a1d8] text-white py-[0.5rem] px-5 rounded-full text-[0.75rem] font-bold z-[2]">{post.category}</span>
                 </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <div className="flex gap-6 mb-4 text-[0.85rem] text-[#94a3b8] font-semibold">
-                    <span className="flex items-center gap-2"><Calendar size={14} /> {post.date}</span>
-                    <span className="flex items-center gap-2"><User size={14} /> {post.author}</span>
+                <div className="p-8 flex-1 flex flex-col">
+                  <div className="flex gap-6 mb-5 text-[0.85rem] text-[#94a3b8] font-bold uppercase tracking-wider">
+                    <span className="flex items-center gap-2"><Calendar size={14} className="text-primary" /> {post.date}</span>
+                    <span className="flex items-center gap-2"><User size={14} className="text-primary" /> {post.author}</span>
                   </div>
-                  <h3 className="text-[1.2rem] max-[480px]:text-[1.2rem] md:text-[1.3rem] text-[#1e293b] mb-4 leading-[1.4] font-extrabold">{post.title}</h3>
-                  <p className="text-[#64748b] text-[0.95rem] leading-[1.6] mb-8 flex-1">{post.excerpt}</p>
-                  <Link href={`/blog/${post.slug}`} className="flex items-center gap-[0.8rem] text-[#18a1d8] font-bold no-underline text-[0.95rem] mt-auto hover:gap-5 transition-all duration-200">
-                    Read More <ArrowRight size={16} />
+                  <h3 className="text-[1.3rem] md:text-[1.4rem] text-black mb-4 leading-[1.3] font-bold">{post.title}</h3>
+                  <p className="text-[#444] text-[0.95rem] md:text-[1rem] leading-relaxed mb-8 flex-1">{post.excerpt}</p>
+                  <Link href={`/blog/${post.slug}`} className="flex items-center gap-2 text-[#18a1d8] font-bold no-underline text-[1rem] mt-auto group">
+                    Read More <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </article>
             ))
           ) : (
             <div className="col-span-full text-center py-20">
-              <p className="text-[1.2rem] text-[#94a3b8] font-semibold">No articles found matching your criteria.</p>
+              <p className="text-[1.2rem] text-[#94a3b8] font-bold">No articles found matching your criteria.</p>
             </div>
           )}
         </div>
 
         {/* Newsletter Section */}
-        <div className="bg-white py-8 max-[480px]:py-8 min-[992px]:py-10 px-4 max-[480px]:px-4 min-[992px]:px-10 rounded-3xl flex flex-col min-[992px]:flex-row justify-between items-center gap-8 mt-14 border border-[#f1f5f9]">
+        <div className="bg-white py-12 md:py-16 px-8 md:px-16 rounded-[40px] border border-black/5 flex flex-col min-[992px]:flex-row justify-between items-center gap-10 mt-20 mx-4">
           <div className="min-[992px]:text-left text-center">
-            <h3 className="text-[#1e293b] mb-[0.8rem] leading-[1.2] max-[480px]:text-[1.6rem]">Subscribe to our newsletter</h3>
-            <p className="text-[#64748b] text-[1.15rem] leading-[1.5] max-w-[400px]">Get expert tips, fabric care guides and latest laundry news delivered to your inbox.</p>
+            <h3 className="text-[1.8rem] md:text-[2.2rem] text-black font-bold mb-4 leading-tight">Subscribe to our newsletter</h3>
+            <p className="text-[#444] text-[1.1rem] md:text-[1.2rem] leading-relaxed max-w-[450px]">Get expert tips, fabric care guides and latest laundry news delivered to your inbox.</p>
           </div>
           <div className="flex flex-col shrink-0 min-[992px]:w-auto w-full">
-            <form onSubmit={handleSubscribe} className="flex gap-5 min-[992px]:flex-row flex-col">
-              <input type="email" placeholder="Enter your email" value={subEmail} onChange={(e) => setSubEmail(e.target.value)} required className="py-4 px-6 rounded-xl border border-[#e2e8f0] min-[992px]:w-[350px] w-full text-base" />
-              <button type="submit" disabled={subStatus === 'loading'} className="bg-[#18a1d8] text-white border-none py-4 px-10 rounded-xl font-extrabold cursor-pointer text-base transition-opacity duration-200 hover:opacity-90">
+            <form onSubmit={handleSubscribe} className="flex gap-4 md:gap-5 min-[992px]:flex-row flex-col">
+              <input 
+                type="email" 
+                placeholder="Enter your email" 
+                value={subEmail} 
+                onChange={(e) => setSubEmail(e.target.value)} 
+                required 
+                className="py-4 px-8 rounded-2xl border border-[#e2e8f0] min-[992px]:w-[380px] w-full text-[1rem] bg-gray-50/50 focus:bg-white focus:border-primary outline-none transition-all" 
+              />
+              <button 
+                type="submit" 
+                disabled={subStatus === 'loading'} 
+                className="bg-[#18a1d8] text-white border-none py-4 px-10 rounded-2xl font-bold cursor-pointer text-[1rem] transition-all hover:bg-primary/90 hover:scale-[1.02]"
+              >
                 {subStatus === 'loading' ? 'Saving...' : 'Subscribe'}
               </button>
             </form>
-            {subStatus === 'success' && <p className="text-[0.85rem] mt-4 font-semibold text-[#10b981] min-[992px]:text-left text-center">Success! You're subscribed.</p>}
-            {subStatus === 'error' && <p className="text-[0.85rem] mt-4 font-semibold text-[#ef4444] min-[992px]:text-left text-center">Something went wrong.</p>}
+            {subStatus === 'success' && <p className="text-[0.9rem] mt-4 font-bold text-[#10b981] min-[992px]:text-left text-center">🎉 Success! You're subscribed.</p>}
+            {subStatus === 'error' && <p className="text-[0.9rem] mt-4 font-bold text-[#ef4444] min-[992px]:text-left text-center">Something went wrong. Please try again.</p>}
           </div>
         </div>
       </div>

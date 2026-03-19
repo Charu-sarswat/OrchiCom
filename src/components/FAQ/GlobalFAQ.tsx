@@ -19,12 +19,13 @@ export default function GlobalFAQ({ faqs }: GlobalFAQProps) {
   return (
     <section className="bg-[#f8f9fa] py-16 lg:py-24">
       <div className="container max-w-[1000px] mx-auto px-4">
-        <div className="text-center mb-12">
-          <p className="text-[#18a1d8] text-[0.8rem] font-bold uppercase tracking-widest mb-3">
+        <div className="text-center mb-16">
+          <p className="text-gradient text-[1rem] font-bold uppercase tracking-widest mb-4">
             GENERAL FAQS
           </p>
-          <h2 className="text-[1.8rem] md:text-[2.2rem] font-bold text-black m-0">
-            FAQs | The Orchid Laundry <span className="font-normal text-[#18a1d8]">- Best Laundry & Dry Clean Company</span>
+          <h2 className="text-[2rem] md:text-[3.2rem] text-black w-full mb-6 leading-[1.1]">
+            FAQs | The Orchid Laundry <br/>
+            <span className="text-gradient">- Best Laundry & Dry Clean Company</span>
           </h2>
         </div>
 
@@ -55,7 +56,7 @@ export default function GlobalFAQ({ faqs }: GlobalFAQProps) {
                     exit={{ height: 0, opacity: 0 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 pb-5 pt-1 text-gray-600 text-[0.95rem] leading-[1.6]">
+                    <div className="px-6 pb-5 pt-1 text-[#444] text-[0.95rem] leading-[1.6]">
                       {faq.answer}
                     </div>
                   </motion.div>

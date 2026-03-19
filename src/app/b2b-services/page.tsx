@@ -15,28 +15,34 @@ const B2BPage = () => {
         style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.35)), url('/B2B.png')" }}
       >
         <div className="container">
-          <div className="max-w-[700px] mx-auto px-4">
-            <h1 className="mb-2 leading-[1.15] text-[clamp(1.8rem,5vw,3.5rem)] text-white">B2B <span className="text-white">Services</span></h1>
-            <p className="text-[1.05rem] opacity-[0.85] tracking-[0.05em]">Pharmaceutical Uniform Processing</p>
+          <div className="max-w-[800px] mx-auto px-4">
+            <h1 className="mb-4 leading-[1.1] text-[2.2rem] md:text-[3.5rem] lg:text-[4.2rem] font-bold text-white">
+              B2B <span className="text-white">Services</span>
+            </h1>
+            <p className="text-[1.1rem] md:text-[1.3rem] font-medium tracking-[0.05em] text-white opacity-90 max-w-[800px] mx-auto leading-[1.7]">
+              Professional Pharmaceutical Uniform Processing Solutions
+            </p>
           </div>
         </div>
       </section>
 
       <div 
-        className="section-padding bg-cover bg-center bg-fixed bg-no-repeat relative"
-        style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('/b.png')" }}
+        className="section-padding bg-cover bg-center bg-fixed bg-no-repeat relative py-16 md:py-24"
+        style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/b.png')" }}
       >
         <div className="relative z-10 w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           {/* Main Introduction */}
-          <div className="text-center mb-12 max-w-[800px] mx-auto text-white">
-            <h2 className="mb-4 text-[1.8rem] md:text-[2.4rem] text-white">Standard Operating <span className="text-[#18a1d8]">Procedure</span></h2>
-            <p className="text-white/80 text-[1.05rem] leading-[1.7] font-medium">
-              Every batch of pharmaceutical uniforms follows the rigorous process outlined below, from pickup to return delivery.
+          <div className="text-center mb-16 max-w-[900px] mx-auto text-white">
+            <h2 className="mb-6 text-[2rem] md:text-[3.2rem] text-white font-bold leading-[1.1]">
+              Standard Operating <span className="text-[#18a1d8]">Procedure</span>
+            </h2>
+            <p className="text-white/80 text-[1.1rem] md:text-[1.15rem] leading-[1.8] font-medium max-w-[800px] mx-auto">
+              Every batch of pharmaceutical uniforms follows the rigorous process outlined below, ensuring peak hygiene and full traceability from pickup to return delivery.
             </p>
           </div>
 
           {/* SOP Steps */}
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12 mt-10">
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12 mt-12">
             {[
               {
                 number: "1",
@@ -102,7 +108,7 @@ const B2BPage = () => {
               {
                 number: "7",
                 image: "/b6.png",
-                title: "Multi-Point Quality Check & Return Delivery",
+                title: "Multi-Point Quality Check",
                 points: [
                   "Every garment goes through a structured three-stage quality inspection before packaging.",
                   "Any garment that fails QC at any stage is returned for re-processing before dispatch.",
@@ -111,20 +117,20 @@ const B2BPage = () => {
                 ]
               }
             ].map((step, idx) => (
-              <div key={idx} className="bg-white border border-[#eee] rounded-[20px] relative transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(24,161,216,0.1)] hover:border-primary/30 flex flex-col mt-4">
-                <div className="absolute -top-[20px] left-[24px] z-10 w-[50px] h-[50px] bg-[#18a1d8] rounded-[14px] flex items-center justify-center font-black text-[1.8rem] text-white shadow-md">
+              <div key={idx} className="bg-white border border-[#eee] rounded-[30px] relative transition-all duration-400 hover:-translate-y-2 hover:border-primary/50 flex flex-col mt-4 shadow-none">
+                <div className="absolute -top-[22px] left-[24px] z-10 w-[55px] h-[55px] bg-[#18a1d8] rounded-[16px] flex items-center justify-center font-black text-[1.8rem] text-white shadow-none">
                   {step.number}
                 </div>
                 
-                <div className="w-full h-[190px] bg-[#f0f9ff] relative rounded-t-[20px] overflow-hidden">
-                  <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
+                <div className="w-full h-[200px] bg-[#f0f9ff] relative rounded-t-[30px] overflow-hidden">
+                  <img src={step.image} alt={step.title} className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" />
                 </div>
                 
-                <div className="p-6 pt-5">
-                  <h3 className="text-[1.2rem] font-extrabold text-black mb-3 leading-[1.3]">{step.title}</h3>
-                  <div className="flex flex-col gap-2">
+                <div className="p-8 pt-6">
+                  <h3 className="text-[1.25rem] md:text-[1.4rem] font-bold text-black mb-4 leading-tight">{step.title}</h3>
+                  <div className="flex flex-col gap-3">
                     {step.points.map((point, i) => (
-                      <p key={i} className="m-0 text-[#666] text-[0.95rem] leading-[1.6]">
+                      <p key={i} className="m-0 text-[#444] text-[0.95rem] md:text-[1rem] leading-relaxed">
                         {point}
                       </p>
                     ))}
@@ -137,29 +143,34 @@ const B2BPage = () => {
       </div>
 
       {/* Our Commitment */}
-      <div className="bg-white py-16 md:py-20 px-4 md:px-0">
+      <div className="bg-white py-20 md:py-28 px-4 md:px-0">
         <div className="container">
-          <div className="text-center mb-10 max-w-[800px] mx-auto">
-            <h2 className="mb-4 text-[1.8rem] md:text-[2.4rem]">Our <span className="text-gradient">Commitment</span></h2>
+          <div className="text-center mb-16 max-w-[900px] mx-auto">
+            <h2 className="text-[2rem] md:text-[3.2rem] text-black font-bold mb-6">
+              Our <span className="text-gradient">Commitment</span>
+            </h2>
+            <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">
+              Ensuring the highest standards of hygiene and reliability for your commercial uniform needs.
+            </p>
           </div>
 
-            <div className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-[1100px] mx-auto mb-16">
-              {[
-                { icon: <ShieldCheck size={26} />, title: "Dedicated Wash Streams", desc: "Pharmaceutical uniforms are never mixed with general laundry." },
-                { icon: <CheckCircle2 size={26} />, title: "Full Traceability", desc: "Every garment is tracked from collection to delivery." },
-                { icon: <Package size={26} />, title: "Hygienic Packaging", desc: "Garments arrive back clean, sealed, and protected." },
-                { icon: <Clock size={26} />, title: "Reliable Turnaround", desc: "Consistent collection and delivery on agreed schedules." },
-                { icon: <MessageSquare size={26} />, title: "Transparent Communication", desc: "Any damage or issue is reported to the client before processing." },
-              ].map((item, i) => (
-                <div key={i} className="bg-white border border-[rgba(24,161,216,0.2)] rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-primary text-center flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-full bg-[#f0f9ff] text-primary flex items-center justify-center mb-4">
-                    {item.icon}
-                  </div>
-                  <h4 className="text-[1.1rem] font-bold text-black mb-2">{item.title}</h4>
-                  <p className="text-[#666] text-[0.9rem] leading-[1.6] m-0">{item.desc}</p>
+          <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-[1240px] mx-auto mb-16">
+            {[
+              { icon: <ShieldCheck size={28} />, title: "Dedicated Wash Streams", desc: "Pharmaceutical uniforms are never mixed with general laundry." },
+              { icon: <CheckCircle2 size={28} />, title: "Full Traceability", desc: "Every garment is tracked from collection to delivery." },
+              { icon: <Package size={28} />, title: "Hygienic Packaging", desc: "Garments arrive back clean, sealed, and protected." },
+              { icon: <Clock size={28} />, title: "Reliable Turnaround", desc: "Consistent collection and delivery on agreed schedules." },
+              { icon: <MessageSquare size={28} />, title: "Transparent Communication", desc: "Any damage or issue is reported to the client before processing." },
+            ].map((item, i) => (
+              <div key={i} className="bg-white border border-[rgba(24,161,216,0.15)] rounded-[30px] p-8 transition-all duration-400 hover:-translate-y-2 hover:border-primary text-center flex flex-col items-center shadow-none">
+                <div className="w-16 h-16 rounded-2xl bg-[#f0f9ff] text-primary flex items-center justify-center mb-6 shadow-none">
+                  {item.icon}
                 </div>
-              ))}
-            </div>
+                <h4 className="text-[1.2rem] md:text-[1.3rem] font-bold text-black mb-3">{item.title}</h4>
+                <p className="text-[#444] text-[0.95rem] md:text-[1rem] leading-relaxed m-0">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       

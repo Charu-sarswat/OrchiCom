@@ -68,28 +68,30 @@ const ServicesGrid = () => {
   return (
     <section className="bg-white section-padding">
       <div className="container">
-        <div className="text-center mb-8">
-          <h2 className="text-[2rem] md:text-5xl font-bold leading-[1.2]">Our <span className="text-gradient">Services</span></h2>
+        <div className="text-center mb-12">
+          <h2 className="text-[2rem] md:text-[3.2rem] text-black w-full mb-4">
+            Our <span className="text-gradient">Services</span>
+          </h2>
+          <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">
+            Premium Care for All Your Fabric Needs
+          </p>
         </div>
         
-        <div className="grid gap-y-10 gap-x-4 sm:gap-6 lg:gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mt-8 lg:mt-12">
+        <div className="grid gap-y-10 gap-x-4 sm:gap-6 lg:gap-10 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mt-10 lg:mt-16">
           {services.map((service) => (
-            <Link href={service.link} key={service.id} className="group bg-transparent no-underline flex flex-col items-center gap-3 lg:gap-4 transition-all duration-300">
-              <div className="relative w-[100px] h-[100px] md:w-[90px] md:h-[90px] rounded-xl overflow-hidden border-[1.5px] border-transparent transition-all duration-300 group-hover:border-[#18A1D8] shadow-none">
+            <Link href={service.link} key={service.id} className="group bg-transparent no-underline flex flex-col items-center gap-6 md:gap-8 transition-all duration-300">
+              <div className="relative w-[110px] h-[110px] md:w-[130px] md:h-[130px] rounded-2xl overflow-hidden border-[1.5px] border-transparent transition-all duration-300 group-hover:border-[#18A1D8] group-hover:-translate-y-[5px] shadow-none">
                 <Image 
                   src={service.img} 
                   alt={service.title} 
                   fill 
                   priority={service.id <= 3}
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
               <div className="text-center">
-                <h3 className="text-[1.15rem] font-extrabold m-0">
-                  {service.title.split(' ')[0]} 
-                  <span className="text-primary ml-1">
-                    {service.title.split(' ').slice(1).join(' ')}
-                  </span>
+                <h3 className="text-[1.1rem] md:text-[1.25rem] font-bold text-black m-0 leading-[1.3] transition-colors duration-300 group-hover:text-primary">
+                  {service.title}
                 </h3>
               </div>
             </Link>

@@ -19,9 +19,13 @@ const AboutPage = () => {
         style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.35)), url('/about.png')" }}
       >
         <div className="container">
-          <div className="max-w-[700px] mx-auto px-4">
-            <h1 className="mb-2 leading-[1.15] text-[clamp(1.8rem,5vw,3.5rem)]">About <span className="text-white">The Orchid Laundry LLP</span></h1>
-            <p className="text-[1.05rem] opacity-[0.85] tracking-[0.05em]">Fast - Reliable - Affordable</p>
+          <div className="max-w-[800px] mx-auto px-4">
+            <h1 className="mb-4 leading-[1.1] text-[2.2rem] md:text-[3.5rem] lg:text-[4.2rem] font-bold">
+              About <span className="text-white">The Orchid Laundry LLP</span>
+            </h1>
+            <p className="text-[1.1rem] md:text-[1.3rem] font-medium tracking-[0.05em] text-white opacity-90">
+              Fast - Reliable - Affordable
+            </p>
           </div>
         </div>
       </section>
@@ -29,65 +33,76 @@ const AboutPage = () => {
       <div className="section-padding">
         <div className="container">
           {/* Main Introduction */}
-          <div className="grid gap-6 md:gap-10 items-center grid-cols-1 min-[900px]:grid-cols-[1fr_1.2fr]">
+          <div className="grid gap-6 md:gap-12 items-center grid-cols-1 min-[900px]:grid-cols-[1fr_1.2fr]">
             <div>
-              <div className="rounded-3xl overflow-hidden max-w-[80%] min-[900px]:max-w-[80%] max-[576px]:max-w-[80%] mx-auto">
-                <img src="/img/about-new.jpg" alt="The Orchid Laundry Service" className="w-full h-auto block" />
+              <div className="rounded-[30px] overflow-hidden max-w-[90%] mx-auto shadow-none border border-black/5">
+                <img src="/img/about-new.jpg" alt="The Orchid Laundry Service" className="w-full h-auto block transform hover:scale-105 transition-transform duration-500" />
               </div>
             </div>
-            <div>
-              <p className="text-[#555] mb-4 text-base leading-[1.7]">
-                At The Orchid Laundry, we turn an everyday chore into a seamless, stress-free experience.
+            <div className="text-center min-[900px]:text-left">
+              <p className="text-[#444] mb-6 text-[1.1rem] md:text-[1.15rem] leading-[1.75]">
+                At <strong className="text-gradient">The Orchid Laundry</strong>, we turn an everyday chore into a seamless, stress-free experience.
               </p>
-              <p className="text-[#555] mb-4 text-base leading-[1.7]">
-                We know the hours spent on washing, drying, ironing, and folding can add up, time that could be better spent on family, work, or simply enjoying life.
+              <p className="text-[#444] mb-6 text-[1.1rem] md:text-[1.15rem] leading-[1.75]">
+                We know the hours spent on washing, drying, ironing, and folding can add up—time that could be better spent on family, work, or simply enjoying life.
               </p>
-              <p className="text-[#555] mb-4 text-base leading-[1.7]">
+              <p className="text-[#444] mb-6 text-[1.1rem] md:text-[1.15rem] leading-[1.75]">
                 That is why we started <strong className="text-gradient">The Orchid Laundry LLP</strong>, to make laundry fast, reliable, and affordable. What began as a small idea in Dombivli has grown into a professional, tech-enabled service dedicated to quality, convenience, and customer delight.
               </p>
             </div>
           </div>
 
           {/* Our Approach Card */}
-          <div className="bg-[#fdfcf6] py-[1.4rem] md:py-[1.8rem] px-6 md:px-[2.5rem] rounded-[20px] md:rounded-[28px] mt-6 md:mt-8 mx-auto max-w-[1200px] text-center border border-[rgba(24,161,216,0.15)] transition-all duration-300 ease hover:border-primary">
-            <div className="flex items-center justify-center gap-[0.8rem] mb-[0.8rem]">
-              <h2 className="m-0 text-[1.8rem]">Our <span className="text-gradient">approach</span></h2>
+          <div className="bg-[#fdfcf6] py-[2rem] md:py-[3rem] px-6 md:px-[3rem] rounded-[30px] mt-12 md:mt-16 mx-auto max-w-[1200px] text-center border border-[rgba(24,161,216,0.15)] transition-all duration-300 ease hover:border-primary shadow-none">
+            <div className="flex items-center justify-center gap-[0.8rem] mb-6">
+              <h2 className="m-0 text-[1.8rem] md:text-[2.6rem] text-black font-bold">
+                Our <span className="text-gradient">Approach</span>
+              </h2>
             </div>
-            <p className="text-[0.95rem] md:text-[1.05rem] text-[#444] leading-[1.75] max-w-[880px] mx-auto">
+            <p className="text-[1rem] md:text-[1.15rem] text-[#444] leading-[1.8] max-w-[900px] mx-auto">
               We combine technology, expert care, and efficient operations to deliver a consistent, high-quality laundry experience. From scheduled pickups and doorstep delivery to customizable instructions for every garment, we ensure your clothes are treated with care while saving you time, effort, and money.
             </p>
-            <p className="text-[0.95rem] md:text-[1.05rem] text-[#444] leading-[1.75] max-w-[880px] mx-auto mt-4">
+            <p className="text-[1rem] md:text-[1.15rem] text-[#444] leading-[1.8] max-w-[900px] mx-auto mt-6">
               Our eco-friendly detergents, advanced washing machines, and streamlined processes make laundry simpler for our customers and better for the planet.
             </p>
           </div>
 
           {/* Mission & Vision Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 my-6 mb-6 md:mb-10">
-            <div className="bg-white py-[1.4rem] md:py-8 px-6 md:px-10 rounded-[18px] md:rounded-3xl border border-primary transition-transform duration-300 ease hover:-translate-y-[6px]">
-              <div className="flex items-center gap-[0.8rem] mb-4">
-                <h3 className="m-0 text-2xl md:text-[1.8rem]">Our <span className="text-gradient">mission</span></h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 my-12 md:my-16">
+            <div className="bg-white py-8 md:py-12 px-8 md:px-12 rounded-[30px] border border-primary transition-all duration-400 ease hover:-translate-y-[8px] shadow-none">
+              <div className="flex items-center gap-[0.8rem] mb-6">
+                <h3 className="m-0 text-[1.6rem] md:text-[2rem] text-black font-bold">
+                  Our <span className="text-gradient">Mission</span>
+                </h3>
               </div>
-              <p className="text-[0.95rem] md:text-base leading-[1.65] text-[#444] m-0">
+              <p className="text-[1rem] md:text-[1.1rem] leading-[1.7] text-[#444] m-0">
                 To improve the quality of life for our customers by saving them time, energy, and hassle through a highly reliable, convenient, and affordable laundry service.
               </p>
             </div>
-            <div className="bg-white py-[1.4rem] md:py-8 px-6 md:px-10 rounded-[18px] md:rounded-3xl border border-primary transition-transform duration-300 ease hover:-translate-y-[6px]">
-              <div className="flex items-center gap-[0.8rem] mb-4">
-                <h3 className="m-0 text-2xl md:text-[1.8rem]">Our <span className="text-gradient">vision</span></h3>
+            <div className="bg-white py-8 md:py-12 px-8 md:px-12 rounded-[30px] border border-primary transition-all duration-400 ease hover:-translate-y-[8px] shadow-none">
+              <div className="flex items-center gap-[0.8rem] mb-6">
+                <h3 className="m-0 text-[1.6rem] md:text-[2rem] text-black font-bold">
+                  Our <span className="text-gradient">Vision</span>
+                </h3>
               </div>
-              <p className="text-[0.95rem] md:text-base leading-[1.65] text-[#444] m-0">
+              <p className="text-[1rem] md:text-[1.1rem] leading-[1.7] text-[#444] m-0">
                 To become the most trusted laundry brand in India, starting from Dombivli and expanding across Maharashtra and beyond, delivering consistent quality, convenience, and value to every household.
               </p>
             </div>
           </div>
 
           {/* Core Values Title */}
-          <div className="text-center mt-8 md:mt-10 mb-4 md:mb-6">
-            <h2 className="mb-2 text-[1.8rem]">Our core <span className="text-gradient">values</span></h2>
+          <div className="text-center mt-12 md:mt-20 mb-8 md:mb-12">
+            <h2 className="text-[2rem] md:text-[3.2rem] text-black font-bold mb-4">
+              Our Core <span className="text-gradient">Values</span>
+            </h2>
+            <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">
+              The principles that define our commitment to excellence and community care.
+            </p>
           </div>
           
           {/* Values Bento Grid */}
-          <div className="grid gap-2 min-[400px]:gap-3 md:gap-4 grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:gap-6 grid-cols-2 lg:grid-cols-4">
             {[
               { icon: <Zap size={28} />, title: "Fast", desc: "Quick, on-time service with efficiency at every step." },
               { icon: <CheckCircle size={28} />, title: "Reliable", desc: "Consistent quality, every wash, every time." },
@@ -96,20 +111,25 @@ const AboutPage = () => {
               { icon: <Handshake size={28} />, title: "Respect", desc: "Treating every customer, associate, and partner with dignity." },
               { icon: <Leaf size={28} />, title: "Sustainability", desc: "Caring for the environment with eco-friendly processes and resources." },
             ].map((value, i) => (
-              <div key={i} className={`py-[0.9rem] min-[400px]:py-4 md:py-[1.4rem] px-[0.7rem] min-[400px]:px-[0.9rem] md:px-[1.6rem] rounded-2xl md:rounded-3xl flex flex-col justify-center items-center text-center border border-[rgba(24,161,216,0.1)] transition-all duration-300 ease hover:scale-[1.02] hover:border-primary ${valuesBgColors[i]}`}>
-                <div className="flex items-center gap-4 mb-[0.8rem]">
-                  <h4 className="m-0 text-black text-base md:text-[1.15rem] font-extrabold tracking-[0.5px] md:tracking-[1px]">{value.title}</h4>
+              <div key={i} className={`py-6 md:py-8 px-4 md:px-6 rounded-[24px] md:rounded-[30px] flex flex-col justify-center items-center text-center border border-[rgba(24,161,216,0.1)] transition-all duration-300 ease hover:scale-[1.03] hover:border-primary shadow-none ${valuesBgColors[i]}`}>
+                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-5 text-primary shadow-none">
+                  {value.icon}
                 </div>
-                <p className="text-[0.82rem] md:text-[0.88rem] text-[#555] leading-[1.5] m-0 max-w-[240px]">{value.desc}</p>
+                <div className="flex items-center gap-4 mb-3">
+                  <h4 className="m-0 text-black text-[1.1rem] md:text-[1.25rem] font-bold">{value.title}</h4>
+                </div>
+                <p className="text-[0.88rem] md:text-[0.95rem] text-[#444] leading-[1.6] m-0 max-w-[240px]">{value.desc}</p>
               </div>
             ))}
           </div>
 
           {/* Promise */}
-          <div className="bg-[#f0f9ff] py-[1.4rem] md:py-[1.8rem] px-6 md:px-[2.5rem] rounded-[20px] md:rounded-[28px] mt-6 md:mt-8 text-center border border-primary">
-            <h2 className="text-black mb-4 text-[1.8rem]">Our <span className="text-gradient">promise</span></h2>
-            <p className="text-[0.95rem] md:text-[1.05rem] leading-[1.75] text-[#444] max-w-[860px] mx-auto">
-              At The Orchid Laundry, we do not just clean clothes — we give you back your time, peace of mind, and confidence in every wash. With every pickup, wash, and delivery, we aim to make laundry faster, reliable, and more affordable.
+          <div className="bg-[#f0f9ff] py-[2.5rem] md:py-[4rem] px-6 md:px-[4rem] rounded-[30px] md:rounded-[40px] mt-16 md:mt-24 text-center border border-primary shadow-none">
+            <h2 className="text-black mb-6 text-[2rem] md:text-[2.8rem] font-bold">
+              Our <span className="text-gradient">Promise</span>
+            </h2>
+            <p className="text-[1.1rem] md:text-[1.25rem] leading-[1.8] text-[#444] max-w-[900px] mx-auto">
+              At <strong className="text-gradient">The Orchid Laundry</strong>, we do not just clean clothes — we give you back your time, peace of mind, and confidence in every wash. With every pickup, wash, and delivery, we aim to make laundry faster, more reliable, and more affordable.
             </p>
           </div>
         </div>

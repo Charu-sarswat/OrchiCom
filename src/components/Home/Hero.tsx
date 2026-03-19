@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className="relative py-12 pb-16 bg-[#f8f9fa] overflow-hidden min-h-[calc(100vh-var(--nav-height))] flex items-center max-[1100px]:min-h-[calc(100vh-var(--nav-height-mobile))] max-[1100px]:pt-[1.5rem] max-[1100px]:pb-10">
       {/* Video Background */}
-      <div className="absolute top-0 left-0 w-full h-full z-0 after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-white/20 after:z-[1]">
+      <div className="absolute top-0 left-0 w-full h-full z-0 after:content-[''] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-white/30 after:z-[1]">
         <video 
           autoPlay 
           loop 
@@ -43,11 +43,11 @@ const Hero = () => {
         <div className="mt-4 text-center w-full flex flex-col items-center">
           <h3 className="text-[1.2rem] md:text-[1.4rem] text-black font-bold mb-4">To Place Your Order</h3>
           <div className="flex justify-center flex-col md:flex-row items-center gap-4 md:gap-5 flex-wrap">
-            <Link href="https://wa.me/917080803074" className="px-8 py-3.5 text-[1.05rem] font-bold rounded-[14px] flex items-center justify-center gap-[10px] min-w-full md:min-w-[240px] !text-white !border-none transition-all duration-300 ease-out shadow-[0_4px_12px_rgba(24,161,216,0.2)] hover:-translate-y-[3px] hover:shadow-[0_8px_20px_rgba(24,161,216,0.3)] hover:brightness-105 !bg-black">
+            <Link href="https://wa.me/917080803074" className="px-8 py-3.5 text-[1.05rem] font-bold rounded-[14px] flex items-center justify-center gap-[10px] min-w-full md:min-w-[240px] !text-white !border-none transition-all duration-300 ease-out hover:-translate-y-[3px] hover:brightness-105 !bg-black">
               <SiWhatsapp size={22} />
               Chat On WhatsApp
             </Link>
-            <Link href="/booking" className="px-8 py-3.5 text-[1.05rem] font-bold rounded-[14px] flex items-center justify-center gap-[10px] min-w-full md:min-w-[240px] !text-white !border-none transition-all duration-300 ease-out shadow-[0_4px_12px_rgba(24,161,216,0.2)] hover:-translate-y-[3px] hover:shadow-[0_8px_20px_rgba(24,161,216,0.3)] hover:brightness-105 !bg-[#18A1D8]">
+            <Link href="/booking" className="px-8 py-3.5 text-[1.05rem] font-bold rounded-[14px] flex items-center justify-center gap-[10px] min-w-full md:min-w-[240px] !text-white !border-none transition-all duration-300 ease-out hover:-translate-y-[3px] hover:brightness-105 !bg-[#18A1D8]">
               <Calendar size={22} />
               Schedule Pickup
             </Link>

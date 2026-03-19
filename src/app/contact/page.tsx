@@ -29,89 +29,95 @@ const ContactPage = () => {
 
   return (
     <>
-    <div className="section-padding bg-white">
+    <div className="section-padding bg-[#f8fafc] py-20 md:py-28">
       <div className="container">
-        <div className="text-center mb-10">
-          <h1 className="mb-[0.8rem] max-[576px]:text-[2.5rem]">Get in <span className="text-gradient">touch</span></h1>
-          <p className="text-[#666] text-[1.1rem]">Have questions? We're here to help you with all your laundry needs.</p>
+        <div className="text-center mb-16 px-4">
+          <h1 className="text-[2rem] md:text-[3.2rem] text-black font-bold mb-4">
+            Get in <span className="text-gradient">Touch</span>
+          </h1>
+          <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">
+            Have questions? We're here to help you with all your laundry and dry cleaning needs.
+          </p>
         </div>
 
-        <div className="grid gap-10 min-[992px]:gap-10 grid-cols-1 min-[992px]:grid-cols-[0.8fr_1.2fr]">
+        <div className="grid gap-10 lg:gap-16 grid-cols-1 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="flex flex-col gap-8">
-            <div className="flex gap-6 items-start p-6 border border-[#e2e8f0] rounded-[20px] bg-white transition-[border-color] duration-200 hover:border-[#18a1d8]">
-              <div className="w-[50px] h-[50px] rounded-xl flex items-center justify-center text-2xl shrink-0" style={{ background: 'rgba(70, 198, 206, 0.1)' }}><MapPin size={24} /></div>
+            <div className="flex gap-6 items-start p-8 border border-[#e2e8f0] rounded-[30px] bg-white transition-all duration-400 hover:border-primary/30 shadow-none">
+              <div className="w-[55px] h-[55px] rounded-2xl flex items-center justify-center text-primary shrink-0" style={{ background: 'rgba(24, 161, 216, 0.1)' }}><MapPin size={26} /></div>
               <div>
-                <h3 className="text-[1.1rem] mb-2">Our Location</h3>
-                <p className="text-[#555] text-[0.95rem] mb-[0.2rem]">Shop No. 3, Priyanka Compound, Near MHADA Colony, Badlapur Pipeline Road, Khoni, Dombivli East - 421204</p>
+                <h3 className="text-[1.25rem] font-bold text-black mb-2">Our Location</h3>
+                <p className="text-[#444] text-[1rem] leading-relaxed">Shop No. 3, Priyanka Compound, Near MHADA Colony, Badlapur Pipeline Road, Khoni, Dombivli East - 421204</p>
               </div>
             </div>
 
-            <div className="flex gap-6 items-start p-6 border border-[#e2e8f0] rounded-[20px] bg-white transition-[border-color] duration-200 hover:border-[#18a1d8]">
-              <div className="w-[50px] h-[50px] rounded-xl flex items-center justify-center text-2xl shrink-0" style={{ background: 'rgba(70, 198, 206, 0.1)' }}><Phone size={24} /></div>
+            <div className="flex gap-6 items-start p-8 border border-[#e2e8f0] rounded-[30px] bg-white transition-all duration-400 hover:border-primary/30 shadow-none">
+              <div className="w-[55px] h-[55px] rounded-2xl flex items-center justify-center text-primary shrink-0" style={{ background: 'rgba(24, 161, 216, 0.1)' }}><Phone size={26} /></div>
               <div>
-                <h3 className="text-[1.1rem] mb-2">Call Us</h3>
-                <p className="text-[#555] text-[0.95rem] mb-[0.2rem]">Orders: 7080803074</p>
-                <p className="text-[#555] text-[0.95rem] mb-[0.2rem]">Support: 7080804074</p>
+                <h3 className="text-[1.25rem] font-bold text-black mb-2">Call Us</h3>
+                <p className="text-[#444] text-[1rem] leading-relaxed mb-1">Orders: <span className="font-bold">7080803074</span></p>
+                <p className="text-[#444] text-[1rem] leading-relaxed">Support: <span className="font-bold">7080804074</span></p>
               </div>
             </div>
 
-            <div className="flex gap-6 items-start p-6 border border-[#e2e8f0] rounded-[20px] bg-white transition-[border-color] duration-200 hover:border-[#18a1d8]">
-              <div className="w-[50px] h-[50px] rounded-xl flex items-center justify-center text-2xl shrink-0" style={{ background: 'rgba(70, 198, 206, 0.1)' }}><MailIcon size={24} /></div>
+            <div className="flex gap-6 items-start p-8 border border-[#e2e8f0] rounded-[30px] bg-white transition-all duration-400 hover:border-primary/30 shadow-none">
+              <div className="w-[55px] h-[55px] rounded-2xl flex items-center justify-center text-primary shrink-0" style={{ background: 'rgba(24, 161, 216, 0.1)' }}><MailIcon size={26} /></div>
               <div>
-                <h3 className="text-[1.1rem] mb-2">Email Us</h3>
-                <p className="text-[#555] text-[0.95rem] mb-[0.2rem]">Info@theorchidlaundry.com</p>
-                <p className="text-[#555] text-[0.95rem] mb-[0.2rem]">care@theorchidlaundry.com</p>
+                <h3 className="text-[1.25rem] font-bold text-black mb-2">Email Us</h3>
+                <p className="text-[#444] text-[1rem] leading-relaxed mb-1">Info@theorchidlaundry.com</p>
+                <p className="text-[#444] text-[1rem] leading-relaxed">care@theorchidlaundry.com</p>
               </div>
             </div>
             
-            <a href="https://wa.me/917080803074" target="_blank" rel="noopener noreferrer" className="bg-green-500 py-6 px-8 rounded-[20px] text-white flex items-center gap-6 no-underline transition-all duration-200 hover:-translate-y-[5px] hover:bg-green-600">
-              <div className="w-[60px] h-[60px] bg-white/20 rounded-full flex items-center justify-center shrink-0">
-                <MessageSquare size={32} fill="white" />
+            <a href="https://wa.me/917080803074" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] p-8 rounded-[30px] text-white flex items-center gap-8 no-underline transition-all duration-400 hover:-translate-y-2 shadow-none group">
+              <div className="w-[70px] h-[70px] bg-white/20 rounded-full flex items-center justify-center shrink-0 transition-transform group-hover:scale-110">
+                <MessageSquare size={36} fill="white" />
               </div>
               <div>
-                <h3 className="text-white mb-[0.2rem] text-[1.4rem] font-extrabold">Chat on WhatsApp</h3>
-                <p className="mb-0 opacity-95 text-base">Instant support for your queries</p>
+                <h3 className="text-white mb-1 text-[1.4rem] font-bold">Chat on WhatsApp</h3>
+                <p className="mb-0 opacity-90 text-[1rem]">Instant support for your queries</p>
               </div>
             </a>
           </div>
 
           <div className="relative">
-            <h2 className="mb-8 text-[#1e293b]">Send us a message</h2>
+            <h2 className="mb-8 text-[1.8rem] md:text-[2.2rem] text-black font-bold">Send Us a <span className="text-gradient">Message</span></h2>
             {status === 'success' ? (
-              <div className="text-center py-20 px-12 flex flex-col items-center glass-card">
-                <div className="text-[4rem] mb-4">✅</div>
-                <h2 className="mb-4 font-extrabold">Message Sent!</h2>
-                <p className="mb-10 text-[#666] max-w-[400px] leading-[1.6]">Thank you for reaching out. Our team will contact you shortly.</p>
-                <button onClick={() => setStatus('idle')} className="btn btn-primary">Send Another Message</button>
+              <div className="text-center py-24 px-12 flex flex-col items-center bg-white border border-[#e2e8f0] rounded-[40px]">
+                <div className="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-[2.5rem] mb-6">✅</div>
+                <h2 className="mb-4 font-bold text-[2rem] text-black">Message Sent!</h2>
+                <p className="mb-10 text-[#444] max-w-[400px] text-[1.1rem] leading-relaxed">Thank you for reaching out. Our team will contact you shortly regarding your inquiry.</p>
+                <button onClick={() => setStatus('idle')} className="bg-primary text-white py-4 px-10 rounded-xl font-bold text-[1rem] hover:opacity-90 transition-all">Send Another Message</button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="p-6 max-[576px]:p-6 md:p-8 border border-[#e2e8f0] rounded-3xl bg-white glass-card">
-                <div className="grid grid-cols-1 min-[576px]:grid-cols-2 gap-6 mb-6">
-                  <div className="flex flex-col gap-[0.6rem] mb-6">
-                    <label className="font-semibold text-[0.9rem] text-primary">Your Name</label>
+              <form onSubmit={handleSubmit} className="p-8 md:p-12 border border-[#e2e8f0] rounded-[40px] bg-white">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                  <div className="flex flex-col gap-2.5">
+                    <label className="font-bold text-[0.95rem] text-black ml-1 uppercase tracking-wider">Your Name</label>
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="John Doe" className={inputCls} />
                   </div>
-                  <div className="flex flex-col gap-[0.6rem] mb-6">
-                    <label className="font-semibold text-[0.9rem] text-primary">Email Address</label>
+                  <div className="flex flex-col gap-2.5">
+                    <label className="font-bold text-[0.95rem] text-black ml-1 uppercase tracking-wider">Email Address</label>
                     <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="john@example.com" className={inputCls} />
                   </div>
-                  <div className="flex flex-col gap-[0.6rem] mb-6">
-                    <label className="font-semibold text-[0.9rem] text-primary">Phone Number</label>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                  <div className="flex flex-col gap-2.5">
+                    <label className="font-bold text-[0.95rem] text-black ml-1 uppercase tracking-wider">Phone Number</label>
                     <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required placeholder="708080XXXX" className={inputCls} />
                   </div>
-                  <div className="flex flex-col gap-[0.6rem] mb-6">
-                    <label className="font-semibold text-[0.9rem] text-primary">Subject</label>
+                  <div className="flex flex-col gap-2.5">
+                    <label className="font-bold text-[0.95rem] text-black ml-1 uppercase tracking-wider">Subject</label>
                     <input type="text" name="subject" value={formData.subject} onChange={handleChange} required placeholder="Dry Cleaning Inquiry" className={inputCls} />
                   </div>
                 </div>
-                <div className="flex flex-col gap-[0.6rem] mb-6">
-                  <label className="font-semibold text-[0.9rem] text-primary">Your Message</label>
+                <div className="flex flex-col gap-2.5 mb-10">
+                  <label className="font-bold text-[0.95rem] text-black ml-1 uppercase tracking-wider">Your Message</label>
                   <textarea name="message" value={formData.message} onChange={handleChange} required rows={5} placeholder="How can we help you today?" className={inputCls}></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary" disabled={status === 'loading'}>
+                <button type="submit" className="w-full bg-primary text-white py-5 rounded-[20px] font-bold text-[1.1rem] transition-all hover:bg-primary/90 hover:scale-[1.01]" disabled={status === 'loading'}>
                   {status === 'loading' ? 'Sending...' : 'Send Message'}
                 </button>
-                {status === 'error' && <p className="text-[#ff4d4d] mt-4 text-[0.9rem]">Something went wrong. Please try again.</p>}
+                {status === 'error' && <p className="text-[#ef4444] mt-5 text-center font-bold">Something went wrong. Please try again.</p>}
               </form>
             )}
           </div>

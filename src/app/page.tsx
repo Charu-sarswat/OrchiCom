@@ -89,18 +89,23 @@ export default function Home() {
               />
             </div>
             <div className="lg:pl-6 text-center lg:text-left">
-              <h2 className="mb-2">About <span className="text-gradient">The Orchid Laundry LLP</span></h2>
-              <p className="font-extrabold text-black mb-3 text-[1.1rem]">Fast - Reliable - Affordable</p>
+              <h2 className="text-[2rem] md:text-[3.2rem] text-black mb-6">
+                About <span className="text-gradient">The Orchid Laundry LLP</span>
+              </h2>
               
-              <p className="text-[#333] mb-3 text-[1.1rem] leading-[1.6]">
-                At <strong className="text-primary">The Orchid Laundry</strong>, we turn an everyday chore into a seamless, stress-free experience.
+              <h3 className="text-[1.4rem] md:text-[1.6rem] text-black font-bold mb-6">
+                Fast - Reliable - Affordable
+              </h3>
+              
+              <p className="text-[#444] mb-6 text-[1.1rem] md:text-[1.15rem] leading-[1.7]">
+                At <strong className="text-gradient">The Orchid Laundry</strong>, we turn an everyday chore into a seamless, stress-free experience.
               </p>
               
-              <p className="text-[#333] mb-3 text-[1.1rem] leading-[1.6]">
-                We know the hours spent on washing, drying, ironing, and folding can add up, time that could be better spent on family, work, or simply enjoying life.
+              <p className="text-[#444] mb-6 text-[1.1rem] md:text-[1.15rem] leading-[1.7]">
+                We know the hours spent on washing, drying, ironing, and folding can add up—time that could be better spent on family, work, or simply enjoying life.
               </p>
 
-              <p className="text-[#333] mb-5 text-[1.1rem] leading-[1.6]">
+              <p className="text-[#444] mb-8 text-[1.1rem] md:text-[1.15rem] leading-[1.7]">
                 That is why we started <strong className="text-gradient">The Orchid Laundry LLP</strong>, to make laundry fast, reliable, and affordable. What began as a small idea in Dombivli has grown into a professional, tech-enabled service dedicated to quality, convenience, and customer delight.
               </p>
 
@@ -128,8 +133,13 @@ export default function Home() {
       {/* Why Choose Us */}
       <section className="section-padding bg-white overflow-hidden">
         <div className="container">
-          <div className="text-center mb-12">
-            <h2>The Orchid Laundry – <span className="text-gradient">Why Choose Us?</span></h2>
+          <div className="text-center mb-16">
+            <h2 className="text-[2rem] md:text-[3.2rem] text-black w-full mb-4">
+              The Orchid Laundry – <span className="text-gradient">Why Choose Us?</span>
+            </h2>
+            <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">
+              Elevating Your Laundry Experience with Professional Care
+            </p>
           </div>
         </div>
         
@@ -155,14 +165,14 @@ export default function Home() {
                       <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center shrink-0">
                         <item.icon size={20} className="text-black" strokeWidth={2.5} />
                       </div>
-                      <h3 className="text-[1.15rem] font-extrabold leading-[1.2] m-0">
+                      <h3 className="text-[1.1rem] md:text-[1.2rem] font-bold text-black m-0 leading-[1.3]">
                         {item.title.split(' ')[0]} 
-                        <span className="text-primary ml-1">
+                        <span className="text-gradient block sm:inline">
                           {item.title.split(' ').slice(1).join(' ')}
                         </span>
                       </h3>
                     </div>
-                    <p className="text-[#555] text-sm leading-[1.4] m-0">{item.desc}</p>
+                    <p className="text-[#555] text-sm leading-[1.5] m-0">{item.desc}</p>
                   </div>
                 ))}
               </div>

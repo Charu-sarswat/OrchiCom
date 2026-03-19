@@ -192,37 +192,42 @@ function PricingContent() {
   })).filter((group: any) => group.items.length > 0);
 
   const pillBase = "py-[0.6rem] px-[1.8rem] rounded-xl font-bold text-[0.9rem] border-2 border-[#e2e8f0] bg-white text-[#64748b] cursor-pointer transition-all duration-300 ease hover:-translate-y-[3px] hover:border-primary hover:text-primary";
-  const pillActive = "!bg-primary !text-white !border-primary -translate-y-[3px] shadow-[0_5px_15px_rgba(24,161,216,0.2)]";
+  const pillActive = "!bg-primary !text-white !border-primary -translate-y-[3px]";
 
   return (
-    <div className="bg-[#f8fafc] py-20 max-[480px]:pt-20 pb-10">
+    <div className="bg-[#f8fafc] py-20 md:py-28 pb-10">
       <div className="container">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-primary text-[1.8rem] md:text-[2.5rem]">Our services & pricing</h1>
+        <div className="text-center mb-12 md:mb-16">
+          <h1 className="text-[2rem] md:text-[3.2rem] text-black font-bold mb-4">
+            Our Services & <span className="text-gradient">Pricing</span>
+          </h1>
+          <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">
+            Transparent Pricing and Flexible Subscription Plans for Complete Wardrobe Care
+          </p>
         </div>
 
         {/* Search Bar */}
-        <div className="max-w-[600px] mx-auto mb-6">
-          <div className="flex bg-white rounded-xl overflow-hidden border border-[#e2e8f0] p-1 shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
+        <div className="max-w-[700px] mx-auto mb-10">
+          <div className="flex bg-white rounded-[20px] overflow-hidden border border-[#e2e8f0] p-1.5 focus-within:border-primary transition-all">
             <input
               type="text"
               placeholder="Search items (e.g. shirt, saree, comforter...)"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="flex-1 py-[0.8rem] px-[1.8rem] border-none text-base text-[#334155] bg-transparent outline-none"
+              className="flex-1 py-[1rem] px-[1.8rem] border-none text-base text-[#444] bg-transparent outline-none"
             />
-            <button className="bg-primary text-white border-none w-[50px] h-[50px] rounded-xl flex items-center justify-center cursor-pointer transition-all duration-300 ease hover:bg-[#37B9EC] hover:scale-105">
-              <Search size={20} />
+            <button className="bg-primary text-white border-none w-[55px] h-[55px] rounded-[15px] flex items-center justify-center cursor-pointer transition-all duration-300 ease hover:bg-[#37B9EC] hover:scale-105">
+              <Search size={22} />
             </button>
           </div>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col gap-6 mb-8 items-center">
-          <div className="flex flex-col items-center gap-[0.8rem]">
-            <p className="font-bold text-[#64748b] text-[0.85rem] uppercase tracking-[0.05em]">Services</p>
-            <div className="flex flex-wrap gap-[0.8rem] justify-center">
+        <div className="flex flex-col gap-8 mb-12 items-center">
+          <div className="flex flex-col items-center gap-[1rem]">
+            <p className="font-bold text-[#444] text-[0.9rem] uppercase tracking-widest">Select Service</p>
+            <div className="flex flex-wrap gap-[1rem] justify-center">
               {services.map(service => (
                 <button
                   key={service}
@@ -235,9 +240,9 @@ function PricingContent() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-[0.8rem]">
-            <p className="font-bold text-[#64748b] text-[0.85rem] uppercase tracking-[0.05em]">Category</p>
-            <div className="flex flex-wrap gap-[0.8rem] justify-center">
+          <div className="flex flex-col items-center gap-[1rem]">
+            <p className="font-bold text-[#444] text-[0.9rem] uppercase tracking-widest">Select Category</p>
+            <div className="flex flex-wrap gap-[1rem] justify-center">
               {!activeService.toLowerCase().includes("kg") && categories.map(cat => (
                 <button
                   key={cat}
@@ -248,25 +253,25 @@ function PricingContent() {
                 </button>
               ))}
               {activeService.toLowerCase().includes("kg") && (
-                <span className="text-[0.9rem] text-[#666]">All items shown below</span>
+                <span className="text-[1rem] text-[#444] font-medium italic underline underline-offset-4 decoration-primary">All items shown below</span>
               )}
             </div>
           </div>
         </div>
 
         {/* Current Selection Info */}
-        <div className="text-center mb-8 text-[0.9rem] text-[#94a3b8]">
-          <p>You are in <span className="text-[#18a1d8] font-bold">{activeService}</span> » <span className="text-[#18a1d8] font-bold">{activeCategory}</span></p>
+        <div className="text-center mb-10 text-[1rem] text-[#64748b]">
+          <p>You are viewing: <span className="text-[#18a1d8] font-bold">{activeService}</span> » <span className="text-[#18a1d8] font-bold">{activeCategory}</span></p>
         </div>
 
         {/* Pricing Table */}
-        <div className="bg-white rounded-2xl overflow-auto mb-8 border border-[#e2e8f0] shadow-none max-h-[500px] relative">
+        <div className="bg-white rounded-[30px] overflow-auto mb-10 border border-[#e2e8f0] shadow-none max-h-[600px] relative">
           <table className="w-full border-collapse">
             <thead>
               <tr>
-                <th className="sticky top-0 z-10 bg-[#18a1d8] text-white py-5 md:py-5 px-[0.8rem] md:px-5 text-left text-[0.85rem] md:text-[0.95rem] font-bold">Service Category</th>
-                <th className="sticky top-0 z-10 bg-[#18a1d8] text-white py-5 md:py-5 px-[0.8rem] md:px-5 text-left text-[0.85rem] md:text-[0.95rem] font-bold">Item Description</th>
-                <th className="sticky top-0 z-10 bg-[#18a1d8] text-white py-5 md:py-5 px-[0.8rem] md:px-5 text-left text-[0.85rem] md:text-[0.95rem] font-bold">Price (INR)</th>
+                <th className="sticky top-0 z-20 bg-[#18a1d8] text-white py-6 md:py-6 px-[1.2rem] md:px-8 text-left text-[0.9rem] md:text-[1.05rem] font-bold">Service Category</th>
+                <th className="sticky top-0 z-20 bg-[#18a1d8] text-white py-6 md:py-6 px-[1.2rem] md:px-8 text-left text-[0.9rem] md:text-[1.05rem] font-bold">Item Description</th>
+                <th className="sticky top-0 z-20 bg-[#18a1d8] text-white py-6 md:py-6 px-[1.2rem] md:px-8 text-center text-[0.9rem] md:text-[1.05rem] font-bold">Price (INR)</th>
               </tr>
             </thead>
             <tbody>
@@ -274,26 +279,26 @@ function PricingContent() {
                 filteredData.map((group) => (
                   <Fragment key={group.category}>
                     {!activeService.toLowerCase().includes("kg") && (
-                      <tr className="bg-[#f8fafc]">
-                        <td colSpan={3} className="py-[0.8rem] md:py-5 px-[0.8rem] md:px-5 border-b border-b-[#f1f5f9] text-[0.85rem] md:text-[0.95rem] text-[#334155]">
-                          <div className="flex items-center gap-[0.8rem] font-extrabold text-black text-[0.9rem] uppercase">
-                            <User size={16} /> {group.category}
+                      <tr className="bg-[#f8fafc]/50">
+                        <td colSpan={3} className="py-6 px-8 border-b border-[#f1f5f9]">
+                          <div className="flex items-center gap-3 font-bold text-black text-[1rem] uppercase tracking-wider">
+                            <User size={18} className="text-primary" /> {group.category}
                           </div>
                         </td>
                       </tr>
                     )}
                     {group.items.map((item, i) => (
-                      <tr key={i}>
-                        <td className="py-[0.8rem] md:py-5 px-[0.8rem] md:px-5 border-b border-b-[#f1f5f9] text-[0.85rem] md:text-[0.95rem] text-[#64748b] font-semibold">{activeService.toLowerCase().includes("kg") ? "Laundry" : `${group.category} Service`}</td>
-                        <td className="py-[0.8rem] md:py-5 px-[0.8rem] md:px-5 border-b border-b-[#f1f5f9] text-[0.85rem] md:text-[0.95rem] text-[#334155] font-medium">{item.name}</td>
-                        <td className="py-[0.8rem] md:py-5 px-[0.8rem] md:px-5 border-b border-b-[#f1f5f9] text-[0.85rem] md:text-[0.95rem] font-extrabold text-black text-center">{item.price}</td>
+                      <tr key={i} className="hover:bg-gray-50/50 transition-colors">
+                        <td className="py-5 px-8 border-b border-[#f1f5f9] text-[1rem] text-[#64748b] font-medium">{activeService.toLowerCase().includes("kg") ? "Laundry" : `${group.category} Service`}</td>
+                        <td className="py-5 px-8 border-b border-[#f1f5f9] text-[1rem] text-[#444] font-semibold">{item.name}</td>
+                        <td className="py-5 px-8 border-b border-[#f1f5f9] text-[1.1rem] font-bold text-black text-center">{item.price}</td>
                       </tr>
                     ))}
                   </Fragment>
                 ))
               ) : (
                 <tr>
-                  <td colSpan={3} className="text-center py-16 text-[#94a3b8]">No items found matching your search.</td>
+                  <td colSpan={3} className="text-center py-24 text-[#94a3b8] text-[1.1rem]">No items found matching your search.</td>
                 </tr>
               )}
             </tbody>
@@ -301,78 +306,107 @@ function PricingContent() {
         </div>
 
         {/* Add-on Services */}
-        <div className="mb-10 bg-white py-10 px-10 max-[768px]:px-6 rounded-[20px] border border-[#e2e8f0] border-l-[5px] border-l-[#18a1d8]">
-          <h3 className="flex items-center gap-[0.8rem] mb-6 text-[#18a1d8] text-[1.2rem]"><Star size={20} /> Add-on Services</h3>
-          <ul className="list-none p-0 flex flex-col gap-4">
-            <li className="flex items-center gap-[0.8rem] text-base text-[#334155] font-semibold"><Star className="text-[#fbbf24]" size={16} /> <span>Starch:</span> <strong className="text-[#18a1d8]">₹10/per piece</strong></li>
-            <li className="flex items-center gap-[0.8rem] text-base text-[#334155] font-semibold"><Star className="text-[#fbbf24]" size={16} /> <span>Fragrance:</span> <strong className="text-[#18a1d8]">₹10/per piece</strong></li>
-            <li className="flex items-center gap-[0.8rem] text-base text-[#334155] font-semibold"><Star className="text-[#fbbf24]" size={16} /> <span>Antiseptic Wash:</span> <strong className="text-[#18a1d8]">₹10/per piece</strong></li>
-            <li className="flex items-center gap-[0.8rem] text-base text-[#334155] font-semibold"><Star className="text-[#fbbf24]" size={16} /> <span>Express Service (20% extra):</span> <strong className="text-[#18a1d8]">Min ₹199</strong></li>
-          </ul>
+        <div className="mb-16 bg-white py-12 px-12 rounded-[30px] border border-[#e2e8f0] border-l-[6px] border-l-[#18a1d8] shadow-none">
+          <h3 className="flex items-center gap-3 mb-8 text-black font-bold text-[1.4rem]"><Star size={24} className="text-[#18a1d8]" /> Add-on Services</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ul className="list-none p-0 flex flex-col gap-5">
+              <li className="flex items-center gap-4 text-[1.1rem] text-[#444] font-medium">
+                <span className="w-2 h-2 bg-primary rounded-full"></span>
+                <span>Starch:</span> <strong className="text-[#18a1d8] ml-auto">₹10/per piece</strong>
+              </li>
+              <li className="flex items-center gap-4 text-[1.1rem] text-[#444] font-medium">
+                <span className="w-2 h-2 bg-primary rounded-full"></span>
+                <span>Fragrance:</span> <strong className="text-[#18a1d8] ml-auto">₹10/per piece</strong>
+              </li>
+            </ul>
+            <ul className="list-none p-0 flex flex-col gap-5">
+              <li className="flex items-center gap-4 text-[1.1rem] text-[#444] font-medium">
+                <span className="w-2 h-2 bg-primary rounded-full"></span>
+                <span>Antiseptic Wash:</span> <strong className="text-[#18a1d8] ml-auto">₹10/per piece</strong>
+              </li>
+              <li className="flex items-center gap-4 text-[1.1rem] text-[#444] font-medium">
+                <span className="w-2 h-2 bg-primary rounded-full"></span>
+                <span>Express Service (20% extra):</span> <strong className="text-[#18a1d8] ml-auto">Min ₹199</strong>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Subscription Plans */}
-        <div className="mb-10">
-          <h2 className="text-center text-primary mb-8">Subscription plans</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="mb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-[2rem] md:text-[2.8rem] text-black font-bold mb-4">
+              Subscription <span className="text-gradient">Plans</span>
+            </h2>
+            <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">Choose a plan that fits your regular laundry volume and enjoy bigger savings.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {plans.map((plan, idx) => (
-              <div key={idx} className={`bg-white rounded-3xl py-8 max-[480px]:py-8 md:py-10 px-6 max-[480px]:px-6 md:px-8 border relative flex flex-col transition-transform duration-300 hover:-translate-y-[5px] ${plan.popular ? "border-[#18a1d8]" : "border-[#e2e8f0]"}`}>
-                {plan.popular && <span className="absolute -top-[15px] left-1/2 -translate-x-1/2 bg-[#18a1d8] text-white py-[0.4rem] px-5 rounded-full text-[0.75rem] font-bold whitespace-nowrap">Most Popular</span>}
-                <div className="text-center mb-8">
-                  <h3 className="text-[#18a1d8] text-[1.2rem] mb-4">{plan.name}</h3>
-                  <div className="text-[2rem] max-[480px]:text-[2rem] md:text-[2.5rem] font-extrabold text-black">{plan.price}</div>
+              <div key={idx} className={`bg-white rounded-[30px] p-8 md:p-10 border relative flex flex-col transition-all duration-400 hover:-translate-y-2 shadow-none ${plan.popular ? "border-[#18a1d8] ring-2 ring-[#18a1d8]/10" : "border-[#e2e8f0]"}`}>
+                {plan.popular && <span className="absolute -top-[16px] left-1/2 -translate-x-1/2 bg-[#18a1d8] text-white py-1.5 px-6 rounded-full text-[0.8rem] font-bold tracking-widest uppercase">Most Popular</span>}
+                <div className="text-center mb-10">
+                  <h3 className="text-[#18a1d8] text-[1.4rem] font-bold mb-4 uppercase tracking-wider">{plan.name}</h3>
+                  <div className="text-[2.8rem] md:text-[3.2rem] font-bold text-black leading-none">{plan.price}</div>
                 </div>
-                <ul className="list-none p-0 mb-10 flex-1">
+                <ul className="list-none p-0 mb-10 flex-1 flex flex-col gap-5">
                   {plan.features.map((f, i) => (
-                    <li key={i} className="flex items-start gap-[0.8rem] mb-4 text-[0.9rem] text-[#475569] leading-[1.4]">
-                      <CheckCircle size={18} className="text-[#10b981] shrink-0 mt-[2px]" /> {f}
+                    <li key={i} className="flex items-start gap-4 text-[1rem] text-[#444] leading-relaxed">
+                      <CheckCircle size={20} className="text-[#10b981] shrink-0 mt-[2px]" /> {f}
                     </li>
                   ))}
                 </ul>
+                <Link href="/booking" className={`w-full py-4 rounded-xl text-center font-bold text-[1rem] transition-all ${plan.popular ? "bg-primary text-white hover:bg-primary/90" : "bg-gray-50 text-[#444] hover:bg-gray-100"}`}>Select Plan</Link>
               </div>
             ))}
           </div>
         </div>
 
         {/* Delivery Info */}
-        <div className="bg-white rounded-[20px] p-8 mb-10 border border-[#e2e8f0] flex flex-col gap-6">
-          <div className="flex items-center gap-4 text-[#18a1d8] border-b border-b-[#f1f5f9] pb-4">
-            <Truck size={24} />
-            <h4 className="font-extrabold text-[1.2rem]">Pickup & Delivery Charges</h4>
+        <div className="bg-white rounded-[30px] p-10 md:p-12 mb-16 border border-[#e2e8f0] flex flex-col gap-10 shadow-none">
+          <div className="text-center border-b border-[#f1f5f9] pb-8">
+            <h3 className="text-black font-bold text-[1.6rem] md:text-[2rem] flex items-center justify-center gap-4">
+              <Truck size={32} className="text-[#18a1d8]" /> Pickup & Delivery Charges
+            </h3>
           </div>
           <div className="w-full">
-            <div className="flex justify-between flex-wrap gap-6">
-              <div className="flex items-center gap-[0.8rem]">
-                <span className="w-2 h-2 bg-[#18a1d8] rounded-full shrink-0"></span>
-                <p className="text-base font-semibold text-[#475569]">&lt; ₹299: <span className="text-[#18a1d8] font-extrabold">₹60 delivery charge</span></p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center bg-gray-50/50 py-8 px-6 rounded-[24px]">
+              <div className="flex flex-col items-center gap-3">
+                <p className="text-[#444] text-[1.15rem] font-semibold">Orders below ₹299</p>
+                <span className="text-primary font-bold text-[1.4rem]">₹60 Delivery</span>
               </div>
-              <div className="flex items-center gap-[0.8rem]">
-                <span className="w-2 h-2 bg-[#18a1d8] rounded-full shrink-0"></span>
-                <p className="text-base font-semibold text-[#475569]">₹299 - ₹499: <span className="text-[#18a1d8] font-extrabold">₹30 delivery charge</span></p>
+              <div className="flex flex-col items-center gap-3 border-y md:border-y-0 md:border-x border-[#e2e8f0] py-6 md:py-0">
+                <p className="text-[#444] text-[1.15rem] font-semibold">Orders ₹299 - ₹499</p>
+                <span className="text-primary font-bold text-[1.4rem]">₹30 Delivery</span>
               </div>
-              <div className="flex items-center gap-[0.8rem]">
-                <span className="w-2 h-2 bg-[#18a1d8] rounded-full shrink-0"></span>
-                <p className="text-base font-semibold text-[#475569]">&gt; ₹499: <span className="text-[#18a1d8] font-extrabold">FREE delivery</span></p>
+              <div className="flex flex-col items-center gap-3">
+                <p className="text-[#444] text-[1.15rem] font-semibold">Orders above ₹499</p>
+                <span className="text-[#10b981] font-bold text-[1.5rem]">FREE Delivery</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-          <div className="bg-white p-8 rounded-[20px] border border-[#e2e8f0]">
-            <h3 className="flex items-center gap-[0.8rem] mb-6 text-[#18a1d8] text-[1.1rem]"><Clock size={20} /> Pick-up & Delivery Slots</h3>
-            <div>
-              <p className="text-[0.95rem] text-[#475569] mb-[0.8rem] font-semibold">Slot 1: 9:00 AM - 12:00 PM</p>
-              <p className="text-[0.95rem] text-[#475569] mb-[0.8rem] font-semibold">Slot 2: 12:00 PM - 3:00 PM</p>
-              <p className="text-[0.95rem] text-[#475569] mb-[0.8rem] font-semibold">Slot 3: 3:00 PM - 6:00 PM</p>
-              <p className="text-[0.95rem] text-[#475569] mb-[0.8rem] font-semibold">Slot 4: 6:00 PM - 9:00 PM</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16">
+          <div className="bg-white p-10 rounded-[30px] border border-[#e2e8f0] shadow-none flex flex-col">
+            <h3 className="flex items-center gap-4 mb-8 text-black font-bold text-[1.4rem]"><Clock size={28} className="text-[#18a1d8]" /> Pickup & Delivery Slots</h3>
+            <div className="flex flex-col gap-5">
+              <p className="text-[1.1rem] text-[#444] flex items-center justify-between border-b border-gray-50 pb-3"><span>Slot 1:</span> <span className="font-bold text-black">9:00 AM - 12:00 PM</span></p>
+              <p className="text-[1.1rem] text-[#444] flex items-center justify-between border-b border-gray-50 pb-3"><span>Slot 2:</span> <span className="font-bold text-black">12:00 PM - 3:00 PM</span></p>
+              <p className="text-[1.1rem] text-[#444] flex items-center justify-between border-b border-gray-50 pb-3"><span>Slot 3:</span> <span className="font-bold text-black">3:00 PM - 6:00 PM</span></p>
+              <p className="text-[1.1rem] text-[#444] flex items-center justify-between"><span>Slot 4:</span> <span className="font-bold text-black">6:00 PM - 9:00 PM</span></p>
             </div>
           </div>
-          <div className="bg-white p-8 rounded-[20px] border border-[#e2e8f0]">
-            <h3 className="flex items-center gap-[0.8rem] mb-6 text-[#18a1d8] text-[1.1rem]"><Calendar size={20} /> Cut-off Timings</h3>
-            <div>
-              <p className="text-[0.95rem] text-[#475569] mb-[0.8rem] font-semibold">Slots 1 & 2: Cut-off 10:00 PM (Previous Day)</p>
-              <p className="text-[0.95rem] text-[#475569] mb-[0.8rem] font-semibold">Slots 3 & 4: Cut-off 10:00 AM (Same day)</p>
+          <div className="bg-white p-10 rounded-[30px] border border-[#e2e8f0] shadow-none flex flex-col">
+            <h3 className="flex items-center gap-4 mb-8 text-black font-bold text-[1.4rem]"><Calendar size={28} className="text-[#18a1d8]" /> Booking Cut-off Timings</h3>
+            <div className="flex flex-col gap-6">
+              <div className="bg-primary/5 p-6 rounded-2xl border-l-[4px] border-l-primary">
+                <p className="text-[1.05rem] text-primary font-bold mb-2 uppercase tracking-wide">Morning Slots (1 & 2)</p>
+                <p className="text-[1.15rem] text-black font-bold">Cut-off: 10:00 PM <span className="font-medium text-[#444] text-[0.95rem]">(Previous Day)</span></p>
+              </div>
+              <div className="bg-primary/5 p-6 rounded-2xl border-l-[4px] border-l-primary">
+                <p className="text-[1.05rem] text-primary font-bold mb-2 uppercase tracking-wide">Evening Slots (3 & 4)</p>
+                <p className="text-[1.15rem] text-black font-bold">Cut-off: 10:00 AM <span className="font-medium text-[#444] text-[0.95rem]">(Same Day)</span></p>
+              </div>
             </div>
           </div>
         </div>

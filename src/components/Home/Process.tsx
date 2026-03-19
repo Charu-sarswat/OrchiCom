@@ -87,11 +87,13 @@ export default function Process() {
       `}</style>
       <div className="container max-w-full px-5 lg:px-8 xl:max-w-[1240px] 2xl:max-w-[1400px]">
         <div className="grid gap-8 lg:gap-8 xl:gap-4 items-center grid-cols-1 lg:grid-cols-[1fr_1.1fr] xl:grid-cols-[1fr_1.3fr]">
-          <div className="static lg:sticky lg:top-[120px] text-center lg:text-left z-20 max-w-[550px] mx-auto lg:mx-0">
-            <span className="block text-[2rem] lg:text-[2.6rem] xl:text-[3rem] font-bold text-[#13A5D9] mb-2 lg:mb-4 leading-[1.2]">The Orchid Laundry</span>
-            <h2 className="text-2xl lg:text-[clamp(1.8rem,3vw,2.4rem)] font-black text-black mb-4 lg:mb-6 leading-[1.2]">Six Stage Process for <br/>Unmatched Garment Care</h2>
-            <p className="text-base lg:text-[1.05rem] xl:text-[1.1rem] text-[#333] mb-8 leading-[1.6]">
-              Specialized machinery & skilled experts for each stage makes <strong>The Orchid Laundry</strong> the best laundry & dry cleaner near you.
+          <div className="static lg:sticky lg:top-[120px] text-center lg:text-left z-20 max-w-[600px] mx-auto lg:mx-0">
+            <h2 className="text-[2rem] md:text-[3.2rem] text-black w-full mb-6 leading-[1.1]">
+              Six Stage Process for <br/>
+              <span className="text-gradient">Unmatched Garment Care</span>
+            </h2>
+            <p className="text-[1.1rem] md:text-[1.15rem] text-[#444] mb-8 leading-[1.7]">
+              Specialized machinery & skilled experts for each stage makes <strong className="text-gradient">The Orchid Laundry</strong> the best laundry & dry cleaner near you.
             </p>
             <div className="flex flex-col md:flex-row justify-center lg:justify-start items-center gap-4 md:gap-6 mt-8 lg:mb-12 w-full">
               <Link href="https://wa.me/917080803074" className="btn btn-secondary w-full md:w-auto text-base md:text-[1.1rem] py-[0.8rem] md:py-4 px-6 md:px-8 rounded-xl flex items-center justify-center gap-2 whitespace-nowrap">

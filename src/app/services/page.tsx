@@ -47,18 +47,24 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="mb-[0.8rem] text-[2.2rem] max-[480px]:text-[2.2rem] md:text-[clamp(2rem,5vw,3.5rem)] text-white">Our Expert <span className="text-[#18a1d8]">Laundry Care</span></h1>
-            <p className="text-[1.1rem] text-gray-200 max-w-[650px] mx-auto leading-[1.65]">From everyday wear to delicate bridal gowns, we treat every garment with scientific precision and professional care.</p>
+            <h1 className="mb-4 leading-[1.1] text-[2.2rem] md:text-[3.5rem] lg:text-[4.2rem] font-bold text-white">
+              Our Expert <span className="text-[#18a1d8]">Laundry Care</span>
+            </h1>
+            <p className="text-[1.1rem] md:text-[1.3rem] font-medium tracking-[0.05em] text-white opacity-90 max-w-[800px] mx-auto leading-[1.7]">
+              From everyday wear to delicate bridal gowns, we treat every garment with scientific precision and professional care.
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* 8-Step Process Section */}
-      <section className="section-padding bg-white py-8 overflow-hidden">
+      <section className="section-padding bg-white py-12 md:py-20 overflow-hidden">
         <div className="container relative">
-          <div className="section-title text-center mb-6">
-            <h2 className="mb-[0.8rem]">Our 8-step <span className="text-gradient">premium process</span></h2>
-            <p>Scientifically designed to make your clothes feel &apos;As Good As New&apos;.</p>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-[2rem] md:text-[3.2rem] text-black font-bold mb-4">
+              Our 8-Step <span className="text-gradient">Premium Process</span>
+            </h2>
+            <p className="text-[1.1rem] text-[#444] max-w-[700px] mx-auto">Scientifically designed to make your clothes feel &apos;As Good As New&apos;.</p>
           </div>
 
           {/* Desktop Circular Infographic Layout */}
@@ -192,28 +198,31 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid Section */}
       <section className="section-padding bg-light">
         <div className="container">
-          <div className="mb-12 relative">
-            <h2 className="text-[1.4rem] min-[600px]:text-[1.8rem] text-black mb-[0.6rem]">Explore All <span className="text-gradient">Our Services</span></h2>
-            <div className="w-[50px] h-[3px] bg-primary rounded-sm"></div>
+          <div className="text-center mb-16">
+            <h2 className="text-[2rem] md:text-[3.2rem] text-black font-bold mb-4">
+              Explore All <span className="text-gradient">Our Services</span>
+            </h2>
+            <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">
+              Comprehensive Care for Every Garment in Your Wardrobe
+            </p>
           </div>
           
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-[0.8rem] min-[600px]:gap-[1.2rem]">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16">
             {allServices.map((item) => {
               const service = (servicesData as any)[item.slug];
               if (!service) return null;
 
               return (
-                <Link key={item.slug} href={`/services/${item.slug}`} className="bg-white rounded-[20px] overflow-hidden no-underline transition-transform duration-300 ease hover:-translate-y-[6px]">
-                  <div className="h-[130px] min-[600px]:h-[180px] relative">
+                <Link key={item.slug} href={`/services/${item.slug}`} className="bg-white rounded-[30px] overflow-hidden no-underline transition-all duration-400 ease hover:-translate-y-[8px] border border-black/5 shadow-none">
+                  <div className="h-[140px] md:h-[220px] relative overflow-hiddenGroup transition-transform duration-500 hover:scale-105">
                     <Image src={service.image} alt={service.title} fill className="object-cover" />
                   </div>
-                  <div className="p-4 min-[600px]:p-6">
-                    <h3 className="text-[0.95rem] min-[600px]:text-[1.1rem] mb-[0.4rem] text-primary font-bold">{service.title.includes("Best") ? service.title.replace("Best ", "") : service.title}</h3>
-                    <p className="text-[#666] text-[0.88rem] mb-4 leading-[1.5] hidden min-[600px]:block">{service.subtitle}</p>
-                    <span className="flex items-center gap-[0.4rem] text-primary font-bold text-[0.88rem]">Explore Service <ArrowRight size={16} /></span>
+                  <div className="p-6 md:p-8">
+                    <h3 className="text-[1.1rem] md:text-[1.3rem] mb-3 text-black font-bold leading-tight">{service.title.includes("Best") ? service.title.replace("Best ", "") : service.title}</h3>
+                    <p className="text-[#444] text-[0.95rem] mb-6 leading-relaxed hidden min-[600px]:block">{service.subtitle}</p>
+                    <span className="flex items-center gap-2 text-primary font-bold text-[0.95rem] group">Explore Service <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" /></span>
                   </div>
                 </Link>
               );
