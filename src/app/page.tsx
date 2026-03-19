@@ -92,18 +92,18 @@ export default function Home() {
             </div>
 
             {/* Content on Right */}
-            <div className="flex flex-col space-y-5 lg:pl-4 max-w-xl text-center lg:text-left mx-auto lg:mx-0">
-              <div className="space-y-2">
-                <span className="text-primary font-bold text-[0.8rem] uppercase tracking-[3px]">Who We Are</span>
-                <h2 className="text-[2.2rem] md:text-[2.8rem] text-black leading-tight m-0">
+            <div className="flex flex-col space-y-3 lg:space-y-5 lg:pl-4 max-w-[92%] lg:max-w-xl text-left lg:text-left mx-auto lg:mx-0 px-2 md:px-0">
+              <div className="space-y-1.5 lg:space-y-2">
+                <span className="text-primary font-bold text-[0.75rem] md:text-[0.8rem] uppercase tracking-[3px] block">Who We Are</span>
+                <h2 className="text-[2rem] md:text-[2.8rem] text-black leading-[1.2] lg:leading-tight m-0">
                   About <span className="text-gradient">The Orchid Laundry LLP</span>
                 </h2>
-                <h3 className="text-[1.1rem] md:text-[1.2rem] text-black font-semibold tracking-wide">
+                <h3 className="text-[1rem] md:text-[1.2rem] text-black font-semibold tracking-wide mt-1 lg:mt-0">
                   Fast • Reliable • Affordable
                 </h3>
               </div>
               
-              <div className="space-y-4 text-[#555] text-[1rem] md:text-[1.05rem] leading-snug">
+              <div className="space-y-3 lg:space-y-4 text-[#555] text-[0.95rem] md:text-[1.05rem] leading-relaxed lg:leading-snug">
                 <p>
                   At <strong className="text-primary">The Orchid Laundry</strong>, we turn an everyday chore into a seamless, stress-free experience.
                 </p>
@@ -116,21 +116,21 @@ export default function Home() {
               </div>
 
               {/* Compact Feature Grid */}
-              <div className="grid grid-cols-2 gap-4 py-2 border-y border-gray-100">
+              <div className="grid grid-cols-2 gap-y-3 gap-x-4 py-3 border-y border-gray-100">
                 {[
                   { label: "FAST", desc: "On-time delivery" },
                   { label: "RELIABLE", desc: "Expert handling" },
                   { label: "AFFORDABLE", desc: "Best pricing" },
                   { label: "HYGIENIC", desc: "UV-safe process" }
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 text-[0.9rem]">
+                  <div key={i} className="flex items-center gap-2 text-[0.88rem] md:text-[0.9rem]">
                     <CheckCircle2 size={16} className="text-primary shrink-0" /> 
-                    <span className="text-black font-semibold">{item.label}</span>
+                    <span className="text-black font-semibold uppercase">{item.label}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-2">
+              <div className="pt-2 flex lg:block">
                 <Link href="/about" className="btn btn-primary !rounded-lg !px-10">Read Our Full Story</Link>
               </div>
             </div>

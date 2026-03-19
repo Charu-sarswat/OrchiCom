@@ -86,16 +86,16 @@ export default function Process() {
         }
       `}</style>
       <div className="container max-w-full px-5 lg:px-8 xl:max-w-[1240px] 2xl:max-w-[1400px]">
-        <div className="grid gap-8 lg:gap-8 xl:gap-4 items-center grid-cols-1 lg:grid-cols-[1fr_1.1fr] xl:grid-cols-[1fr_1.3fr]">
+        <div className="grid gap-3 lg:gap-8 xl:gap-4 items-center grid-cols-1 lg:grid-cols-[1fr_1.1fr] xl:grid-cols-[1fr_1.3fr]">
           <div className="static lg:sticky lg:top-[120px] text-center lg:text-left z-20 max-w-[600px] mx-auto lg:mx-0">
             <h2 className="text-[2rem] md:text-[3.2rem] text-black w-full mb-6 leading-[1.1]">
               Six Stage Process for <br/>
               <span className="text-gradient">Unmatched Garment Care</span>
             </h2>
-            <p className="text-[1.1rem] md:text-[1.15rem] text-[#444] mb-8 leading-[1.7]">
+            <p className="text-[1.1rem] md:text-[1.15rem] text-[#444] mb-5 lg:mb-8 leading-[1.7]">
               Specialized machinery & skilled experts for each stage makes <strong className="text-gradient">The Orchid Laundry</strong> the best laundry & dry cleaner near you.
             </p>
-            <div className="flex flex-col md:flex-row justify-center lg:justify-start items-center gap-4 md:gap-6 mt-8 lg:mb-12 w-full">
+            <div className="hidden lg:flex flex-col md:flex-row justify-center lg:justify-start items-center gap-4 md:gap-6 mt-8 lg:mb-12 w-full">
               <Link href="https://wa.me/917080803074" className="btn btn-secondary w-full md:w-auto text-base md:text-[1.1rem] py-[0.8rem] md:py-4 px-6 md:px-8 rounded-xl flex items-center justify-center gap-2 whitespace-nowrap">
                 <SiWhatsapp size={20} /> Chat on WhatsApp
               </Link>
@@ -106,7 +106,7 @@ export default function Process() {
           </div>
 
           <div className="flex items-center justify-center relative min-h-auto lg:min-h-[450px] xl:min-h-[550px] 2xl:min-h-[650px] lg:overflow-visible">
-            <div className="relative w-full lg:w-[480px] xl:w-[500px] 2xl:w-[600px] h-auto lg:h-[480px] xl:h-[500px] 2xl:h-[600px] flex flex-col lg:block items-center justify-center mx-auto my-10 lg:my-0 gap-4 lg:gap-0 pl-2 lg:pl-0">
+            <div className="relative w-full lg:w-[480px] xl:w-[500px] 2xl:w-[600px] h-auto lg:h-[480px] xl:h-[500px] 2xl:h-[600px] flex flex-col lg:block items-center justify-center mx-auto my-4 lg:my-0 gap-4 lg:gap-0 pl-2 lg:pl-0">
               
               {/* Central Box */}
               <div className="hidden lg:flex w-[90px] h-[90px] xl:w-[110px] xl:h-[110px] bg-white z-[100] flex-col items-center justify-center text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -137,6 +137,16 @@ export default function Process() {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Mobile Buttons (shown after all cards) */}
+        <div className="flex lg:hidden flex-col md:flex-row justify-center items-center gap-4 md:gap-6 mt-6 w-full">
+          <Link href="https://wa.me/917080803074" className="btn btn-secondary w-full md:w-auto text-base md:text-[1.1rem] py-[0.8rem] md:py-4 px-6 md:px-8 rounded-xl flex items-center justify-center gap-2 whitespace-nowrap">
+            <SiWhatsapp size={20} /> Chat on WhatsApp
+          </Link>
+          <Link href="/booking" className="btn btn-primary w-full md:w-auto text-base md:text-[1.1rem] py-[0.8rem] md:py-4 px-6 md:px-8 rounded-xl flex items-center justify-center gap-2 whitespace-nowrap">
+            <Calendar size={20} /> Schedule Free Pickup
+          </Link>
         </div>
       </div>
     </section>

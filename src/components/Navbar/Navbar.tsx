@@ -31,6 +31,14 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
     setIsOpen(false);
     setShowDropdown(false);
     setShowServices(false);
@@ -38,7 +46,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 flex items-center z-[1000] transition-all duration-400 ease ${
+      <nav className={`fixed top-0 left-0 right-0 flex items-center z-[1100] transition-all duration-400 ease ${
         isScrolled 
           ? "bg-white/95 h-[70px] backdrop-blur-[10px] border-b border-[#f0f0f0]" 
           : "bg-white h-[var(--nav-height)] max-[1100px]:h-[var(--nav-height-mobile)] border-b border-[#f0f0f0]"
@@ -110,10 +118,10 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Toggle */}
-            <div className="flex min-[1100px]:hidden items-center gap-[0.8rem]">
-              <Link href="/contact" className="bg-primary text-white py-[0.55rem] px-[0.85rem] rounded-[10px] text-[0.8rem] font-bold no-underline whitespace-nowrap transition-all duration-300 ease hover:bg-[#37B9EC] hover:-translate-y-[1px]">Contact Us</Link>
-              <button className="bg-transparent border-none text-black cursor-pointer flex items-center p-1" onClick={() => setIsOpen(!isOpen)}>
-                {isOpen ? <X size={26} /> : <Menu size={26} />}
+            <div className="flex min-[1100px]:hidden items-center gap-[0.6rem]">
+              <Link href="/contact" className="bg-primary text-white py-[0.5rem] px-[0.75rem] rounded-[10px] text-[0.75rem] font-bold no-underline whitespace-nowrap transition-all duration-300 ease hover:bg-[#37B9EC] hover:-translate-y-[1px] relative z-10">Contact Us</Link>
+              <button className="bg-transparent border-none text-black cursor-pointer flex items-center p-2 rounded-lg transition-colors hover:bg-black/5 relative z-[1101]" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
           </div>
@@ -132,24 +140,26 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
               />
               <motion.div
-                className="fixed top-0 right-0 h-[100dvh] bg-white z-[2000] flex flex-col overflow-hidden border-l border-[#f0f0f0] w-[min(82vw,300px)] max-[380px]:w-[88vw]"
+                className="fixed inset-y-0 right-0 bg-white z-[2000] overflow-y-auto border-l border-[#f0f0f0] w-[min(82vw,300px)] max-[380px]:w-[88vw] flex flex-col scroll-smooth overscroll-contain"
                 initial={{ x: "100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ type: "spring", damping: 28, stiffness: 220 }}
               >
-                <div className="py-[0.85rem] px-4 flex justify-between items-center border-b border-[#f0f0f0] shrink-0">
+                {/* Mobile Sidebar Header */}
+                <div className="sticky top-0 py-[0.85rem] px-4 flex justify-between items-center border-b border-[#f0f0f0] bg-white z-20 shrink-0">
                   <Image src="/logo.png" alt="Logo" width={110} height={38} />
                   <button className="bg-[#f5f5f5] border-none w-9 h-9 rounded-full flex items-center justify-center cursor-pointer text-[#333] transition-all duration-250 ease hover:bg-[#eee]" onClick={() => setIsOpen(false)} aria-label="Close menu">
                     <X size={22} />
                   </button>
                 </div>
 
-                <div className="flex-1 overflow-y-auto py-2 px-3 flex flex-col gap-[0.15rem] touch-pan-y" style={{ WebkitOverflowScrolling: 'touch' }}>
+                {/* Mobile Sidebar Content */}
+                <div className="flex-1 py-2 px-3 flex flex-col gap-[0.15rem]">
                   <Link href="/" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Home</Link>
                   <Link href="/about" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/about" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>About</Link>
 
-                  {/* Collapsible Services */}
+                  {/* Collapsible Services Section */}
                   <div className="rounded-[10px] overflow-hidden border border-black/[0.06] bg-[#fafafa] my-[0.1rem]">
                     <button
                       className="flex items-center justify-between w-full py-[0.55rem] px-3 bg-transparent border-none cursor-pointer transition-background duration-200 ease hover:bg-[rgba(24,161,216,0.05)]"
@@ -166,22 +176,22 @@ export default function Navbar() {
                       />
                     </button>
 
-                    <AnimatePresence>
+                    <AnimatePresence initial={false}>
                       {showServices && (
                         <motion.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.22 }}
-                          style={{ overflow: "hidden" }}
+                          className="overflow-hidden"
                         >
                           <div className="py-2 px-3 pb-[0.6rem] flex flex-col gap-[0.8rem]">
                             {serviceCategories.map((category) => (
                               <div key={category.title} className="flex flex-col">
                                 <p className="text-[0.62rem] uppercase font-bold text-[#a0a0a0] tracking-[0.1em] mb-[0.3rem] pl-[0.1rem] m-0">{category.title}</p>
                                 <div className="flex flex-col gap-[0.05rem]">
-                                  {category.links.map((s) => (
-                                    <Link key={s.href} href={s.href} className="no-underline text-[#444] font-semibold text-[0.82rem] py-[0.35rem] px-[0.7rem] rounded-md transition-all duration-200 ease hover:bg-white hover:text-primary block">{s.name}</Link>
+                                  {category.links.map((link) => (
+                                    <Link key={link.href} href={link.href} className="no-underline text-[#444] font-semibold text-[0.82rem] py-[0.35rem] px-[0.7rem] rounded-md transition-all duration-200 ease hover:bg-white hover:text-primary block">{link.name}</Link>
                                   ))}
                                 </div>
                               </div>
@@ -196,14 +206,15 @@ export default function Navbar() {
                   <Link href="/pricing" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/pricing" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Pricing</Link>
                   <Link href="/blog" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/blog" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Blog</Link>
                   <Link href="/contact" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/contact" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Contact</Link>
+                </div>
 
-                  <div className="py-3 px-3 flex flex-col gap-2 bg-white border-t border-[#f0f0f0] shrink-0 mt-auto">
-                    <a href="tel:+917080803074" className="bg-[#f0f9ff] text-primary flex items-center justify-center gap-2 py-[0.6rem] px-4 rounded-[10px] no-underline font-semibold text-[0.88rem] transition-all duration-300 ease hover:bg-primary hover:text-white">
-                      <Phone size={17} />
-                      +91 70808 03074
-                    </a>
-                    <Link href="/booking" className="bg-primary text-white text-center py-[0.6rem] px-4 rounded-[10px] no-underline font-semibold text-[0.88rem] block">Book free pickup</Link>
-                  </div>
+                {/* Mobile Sidebar Footer */}
+                <div className="sticky bottom-0 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] px-3 flex flex-col gap-2 bg-white border-t border-[#f0f0f0] shrink-0 z-20">
+                  <a href="tel:+917080803074" className="bg-[#f0f9ff] text-primary flex items-center justify-center gap-2 py-[0.6rem] px-4 rounded-[10px] no-underline font-semibold text-[0.88rem] transition-all duration-300 ease hover:bg-primary hover:text-white">
+                    <Phone size={17} />
+                    +91 70808 03074
+                  </a>
+                  <Link href="/booking" className="bg-primary text-white text-center py-[0.6rem] px-4 rounded-[10px] no-underline font-semibold text-[0.88rem] block">Book free pickup</Link>
                 </div>
               </motion.div>
             </>

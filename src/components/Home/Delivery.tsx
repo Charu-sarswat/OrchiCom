@@ -24,13 +24,13 @@ export default function Delivery() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white py-6 px-5 lg:px-6 rounded-[20px] flex flex-col border border-[rgba(24,161,216,0.3)] transition-all duration-300 ease-in-out hover:-translate-y-[5px] hover:border-[#18a1d8] hover:shadow-[0_10px_30px_rgba(24,161,216,0.15)] shadow-none"
+            className="bg-white py-6 px-5 lg:px-6 rounded-[20px] flex flex-col border border-[rgba(24,161,216,0.3)] transition-all duration-300 ease-in-out hover:-translate-y-[5px] hover:border-[#18a1d8] hover:shadow-[0_10px_30px_rgba(24,161,216,0.15)] shadow-none min-h-[260px] md:min-h-[0px]"
           >
             <div className="flex items-center gap-3 mb-6">
               <Truck size={30} color="#000" className="shrink-0" />
               <h3 className="text-[1.5rem] lg:text-[1.6rem] m-0 font-bold whitespace-nowrap">Regular <span className="text-primary">Delivery</span></h3>
             </div>
-            <ul className="list-none p-0 m-0 flex flex-col gap-[1rem]">
+            <ul className="list-none p-0 m-0 flex flex-col gap-[1rem] flex-1">
               <li className="flex items-start gap-[0.6rem] text-black font-medium text-[1.05rem] leading-[1.3]">
                 <Check size={20} className="text-black mt-[2px] shrink-0" /> Free (No extra charges)
               </li>
@@ -52,13 +52,13 @@ export default function Delivery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="bg-white py-6 px-5 lg:px-6 rounded-[20px] flex flex-col border border-[rgba(24,161,216,0.3)] transition-all duration-300 ease-in-out hover:-translate-y-[5px] hover:border-[#18a1d8] hover:shadow-[0_10px_30px_rgba(24,161,216,0.15)] shadow-none"
+            className="bg-white py-6 px-5 lg:px-6 rounded-[20px] flex flex-col border border-[rgba(24,161,216,0.3)] transition-all duration-300 ease-in-out hover:-translate-y-[5px] hover:border-[#18a1d8] hover:shadow-[0_10px_30px_rgba(24,161,216,0.15)] shadow-none min-h-[260px] md:min-h-[0px]"
           >
             <div className="flex items-center gap-3 mb-6">
               <Zap size={30} color="#000" className="shrink-0" />
               <h3 className="text-[1.5rem] lg:text-[1.6rem] m-0 font-bold whitespace-nowrap">Express <span className="text-primary">Delivery</span></h3>
             </div>
-            <ul className="list-none p-0 m-0 flex flex-col gap-[1rem]">
+            <ul className="list-none p-0 m-0 flex flex-col gap-[1rem] flex-1">
               <li className="flex items-start gap-[0.6rem] text-black font-medium text-[1.05rem] leading-[1.3]">
                 <Check size={20} className="text-black mt-[2px] shrink-0" /> With Minimal Additional Charges
               </li>
