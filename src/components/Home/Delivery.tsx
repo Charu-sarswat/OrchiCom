@@ -18,7 +18,7 @@ export default function Delivery() {
           </p>
         </div>
 
-        <div className="grid gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.1fr_1.1fr_0.8fr] items-stretch">
+        <div className="grid gap-6 lg:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.3fr] items-stretch">
           {/* Regular Delivery */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -76,13 +76,13 @@ export default function Delivery() {
             transition={{ delay: 0.2 }}
             className="flex items-center justify-center md:col-span-2 lg:col-span-1"
           >
-            <div className="w-full h-full relative flex items-center justify-center">
+            <div className="w-full relative flex items-center justify-center">
               <Image 
-                src="/img/van logo image.png" 
-                alt="Delivery Van" 
-                width={550} 
-                height={350} 
-                className="w-full h-auto object-cover shadow-none rounded-[15px]"
+                src="/b2.png" 
+                alt="Free Home Pickup & Delivery" 
+                width={800} 
+                height={600} 
+                className="w-full h-auto object-contain transition-transform duration-500 hover:scale-105"
               />
             </div>
           </motion.div>
