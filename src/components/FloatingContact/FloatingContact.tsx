@@ -9,7 +9,7 @@ export default function FloatingContact() {
     <div className="fixed right-0 top-1/2 -translate-y-1/2 max-[768px]:top-auto max-[768px]:bottom-[30px] max-[768px]:right-[15px] max-[768px]:translate-y-0 z-[1000] flex flex-col items-end gap-2">
       <a
         href="tel:7080803074"
-        className="group w-[54px] max-[768px]:w-12 h-[54px] max-[768px]:h-12 rounded-xl max-[768px]:rounded-full flex items-center justify-center text-white no-underline font-semibold overflow-hidden whitespace-nowrap shadow-[0_4px_15px_rgba(0,0,0,0.2)] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:w-[160px] max-[768px]:hover:w-12 hover:pr-[15px] max-[768px]:hover:pr-0 hover:-translate-x-[5px] max-[768px]:hover:translate-x-0 max-[768px]:hover:-translate-y-[5px]"
+        className="group w-[54px] max-[768px]:w-12 h-[54px] max-[768px]:h-12 rounded-xl max-[768px]:rounded-full flex items-center justify-center text-white no-underline font-semibold overflow-hidden whitespace-nowrap shadow-none transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:w-[160px] max-[768px]:hover:w-12 hover:pr-[15px] max-[768px]:hover:pr-0 hover:-translate-x-[5px] max-[768px]:hover:translate-x-0 max-[768px]:hover:-translate-y-[5px]"
         style={{ background: 'linear-gradient(135deg, #ef4444, #dc2626)' }}
       >
         <Phone size={22} fill="currentColor" />
@@ -19,7 +19,7 @@ export default function FloatingContact() {
       <Link
         href="https://wa.me/917080803074"
         target="_blank"
-        className="group w-[54px] max-[768px]:w-12 h-[54px] max-[768px]:h-12 rounded-xl max-[768px]:rounded-full flex items-center justify-center text-white no-underline font-semibold overflow-hidden whitespace-nowrap shadow-[0_4px_15px_rgba(0,0,0,0.2)] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:w-[160px] max-[768px]:hover:w-12 hover:pr-[15px] max-[768px]:hover:pr-0 hover:-translate-x-[5px] max-[768px]:hover:translate-x-0 max-[768px]:hover:-translate-y-[5px]"
+        className="group w-[54px] max-[768px]:w-12 h-[54px] max-[768px]:h-12 rounded-xl max-[768px]:rounded-full flex items-center justify-center text-white no-underline font-semibold overflow-hidden whitespace-nowrap shadow-none transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:w-[160px] max-[768px]:hover:w-12 hover:pr-[15px] max-[768px]:hover:pr-0 hover:-translate-x-[5px] max-[768px]:hover:translate-x-0 max-[768px]:hover:-translate-y-[5px]"
         style={{ background: 'linear-gradient(135deg, #25D366, #159947)' }}
       >
         <SiWhatsapp size={22} />
@@ -28,7 +28,7 @@ export default function FloatingContact() {
       
       <Link
         href="/booking"
-        className="group w-[54px] max-[768px]:w-12 h-[54px] max-[768px]:h-12 rounded-xl max-[768px]:rounded-full flex items-center justify-center text-white no-underline font-semibold overflow-hidden whitespace-nowrap shadow-[0_4px_15px_rgba(0,0,0,0.2)] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:w-[160px] max-[768px]:hover:w-12 hover:pr-[15px] max-[768px]:hover:pr-0 hover:-translate-x-[5px] max-[768px]:hover:translate-x-0 max-[768px]:hover:-translate-y-[5px]"
+        className="group w-[54px] max-[768px]:w-12 h-[54px] max-[768px]:h-12 rounded-xl max-[768px]:rounded-full flex items-center justify-center text-white no-underline font-semibold overflow-hidden whitespace-nowrap shadow-none transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:w-[160px] max-[768px]:hover:w-12 hover:pr-[15px] max-[768px]:hover:pr-0 hover:-translate-x-[5px] max-[768px]:hover:translate-x-0 max-[768px]:hover:-translate-y-[5px]"
         style={{ background: 'linear-gradient(135deg, #18A1D8, #0a7ea4)' }}
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -42,7 +42,7 @@ export default function FloatingContact() {
       
       <Link
         href="#"
-        className="group w-[54px] max-[768px]:w-12 h-[54px] max-[768px]:h-12 rounded-xl max-[768px]:rounded-full flex items-center justify-center text-white no-underline font-semibold overflow-hidden whitespace-nowrap shadow-[0_4px_15px_rgba(0,0,0,0.2)] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:w-[160px] max-[768px]:hover:w-12 hover:pr-[15px] max-[768px]:hover:pr-0 hover:-translate-x-[5px] max-[768px]:hover:translate-x-0 max-[768px]:hover:-translate-y-[5px]"
+        className="group w-[54px] max-[768px]:w-12 h-[54px] max-[768px]:h-12 rounded-xl max-[768px]:rounded-full flex items-center justify-center text-white no-underline font-semibold overflow-hidden whitespace-nowrap shadow-none transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:w-[160px] max-[768px]:hover:w-12 hover:pr-[15px] max-[768px]:hover:pr-0 hover:-translate-x-[5px] max-[768px]:hover:translate-x-0 max-[768px]:hover:-translate-y-[5px]"
         style={{ background: 'linear-gradient(135deg, #0f74c7, #0a5a9a)' }}
       >
         <Download size={22} />

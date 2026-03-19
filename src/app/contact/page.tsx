@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { MessageSquare, MapPin, Phone, Mail as MailIcon } from 'lucide-react';
+import { SiWhatsapp } from 'react-icons/si';
+import { MapPin, Phone, Mail as MailIcon } from 'lucide-react';
 import GlobalFAQ from "@/components/FAQ/GlobalFAQ";
 
 const ContactPage = () => {
@@ -68,13 +69,13 @@ const ContactPage = () => {
               </div>
             </div>
             
-            <a href="https://wa.me/917080803074" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] p-8 rounded-[30px] text-white flex items-center gap-8 no-underline transition-all duration-400 hover:-translate-y-2 shadow-none group">
-              <div className="w-[70px] h-[70px] bg-white/20 rounded-full flex items-center justify-center shrink-0 transition-transform group-hover:scale-110">
-                <MessageSquare size={36} fill="white" />
+            <a href="https://wa.me/917080803074" target="_blank" rel="noopener noreferrer" className="bg-white p-8 rounded-[30px] border-2 border-primary text-black flex items-center gap-8 no-underline transition-all duration-400 hover:-translate-y-2 shadow-none group">
+              <div className="w-[70px] h-[70px] rounded-full flex items-center justify-center shrink-0 transition-transform group-hover:scale-110" style={{ background: 'rgba(37, 211, 102, 0.1)' }}>
+                <SiWhatsapp size={36} style={{ color: '#25D366' }} />
               </div>
               <div>
-                <h3 className="text-white mb-1 text-[1.4rem] font-bold">Chat on WhatsApp</h3>
-                <p className="mb-0 opacity-90 text-[1rem]">Instant support for your queries</p>
+                <h3 className="text-black mb-1 text-[1.4rem] font-bold">Chat on WhatsApp</h3>
+                <p className="mb-0 text-[#444]/80 text-[1rem]">Instant support for your queries</p>
               </div>
             </a>
           </div>

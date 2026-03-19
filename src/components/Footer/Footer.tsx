@@ -16,7 +16,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="pb-5 mb-4 md:pb-0 md:mb-0 border-b border-[#f5f5f5] md:border-b-0 footer-section">
             <Link href="/" className="group">
-              <Image src="/img/orhidlogo.png" alt="Logo" width={180} height={60} style={{ width: 'auto', height: '44px' }} className="md:h-[44px] max-[768px]:h-10" />
+              <Image src="/logo.png" alt="Logo" width={180} height={60} style={{ width: 'auto', height: '44px' }} className="md:h-[44px] max-[768px]:h-10" />
             </Link>
             <p className="text-[#444] leading-[1.6] my-[0.8rem] text-[0.88rem] md:text-[0.95rem]">
               Premium laundry and dry cleaning services dedicated to providing the highest quality care for your garments.

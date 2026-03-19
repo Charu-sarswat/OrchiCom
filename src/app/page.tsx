@@ -77,53 +77,64 @@ export default function Home() {
       <Hero />
       
       {/* About Section */}
-      <section className="py-12 bg-light">
+      <section className="py-12 md:py-16 bg-white overflow-hidden">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative rounded-[30px] overflow-hidden min-h-[300px] md:min-h-[480px] w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            
+            {/* Image on Left */}
+            <div className="relative rounded-2xl overflow-hidden h-[300px] md:h-[400px] lg:h-[450px] w-full shadow-none group">
               <Image 
                 src="/img/about-new.jpg" 
                 alt="The Orchid Laundry LLP" 
                 fill
-                style={{ objectFit: 'cover' }}
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
-            <div className="lg:pl-6 text-center lg:text-left">
-              <h2 className="text-[2rem] md:text-[3.2rem] text-black mb-6">
-                About <span className="text-gradient">The Orchid Laundry LLP</span>
-              </h2>
-              
-              <h3 className="text-[1.4rem] md:text-[1.6rem] text-black font-bold mb-6">
-                Fast - Reliable - Affordable
-              </h3>
-              
-              <p className="text-[#444] mb-6 text-[1.1rem] md:text-[1.15rem] leading-[1.7]">
-                At <strong className="text-gradient">The Orchid Laundry</strong>, we turn an everyday chore into a seamless, stress-free experience.
-              </p>
-              
-              <p className="text-[#444] mb-6 text-[1.1rem] md:text-[1.15rem] leading-[1.7]">
-                We know the hours spent on washing, drying, ironing, and folding can add up—time that could be better spent on family, work, or simply enjoying life.
-              </p>
 
-              <p className="text-[#444] mb-8 text-[1.1rem] md:text-[1.15rem] leading-[1.7]">
-                That is why we started <strong className="text-gradient">The Orchid Laundry LLP</strong>, to make laundry fast, reliable, and affordable. What began as a small idea in Dombivli has grown into a professional, tech-enabled service dedicated to quality, convenience, and customer delight.
-              </p>
+            {/* Content on Right */}
+            <div className="flex flex-col space-y-5 lg:pl-4 max-w-xl text-center lg:text-left mx-auto lg:mx-0">
+              <div className="space-y-2">
+                <span className="text-primary font-bold text-[0.8rem] uppercase tracking-[3px]">Who We Are</span>
+                <h2 className="text-[2.2rem] md:text-[2.8rem] text-black leading-tight m-0">
+                  About <span className="text-gradient">The Orchid Laundry LLP</span>
+                </h2>
+                <h3 className="text-[1.1rem] md:text-[1.2rem] text-black font-semibold tracking-wide">
+                  Fast • Reliable • Affordable
+                </h3>
+              </div>
+              
+              <div className="space-y-4 text-[#555] text-[1rem] md:text-[1.05rem] leading-snug">
+                <p>
+                  At <strong className="text-primary">The Orchid Laundry</strong>, we turn an everyday chore into a seamless, stress-free experience.
+                </p>
+                <p>
+                  We know the hours spent on washing, drying, ironing, and folding can add up—time that could be better spent on family, work, or simply enjoying life.
+                </p>
+                <p>
+                  That is why we started <strong className="text-primary">The Orchid Laundry LLP</strong>, to make laundry fast, reliable, and affordable. What began as a small idea in Dombivli has grown into a tech-enabled service dedicated to quality and convenience.
+                </p>
+              </div>
 
-              <div className="grid grid-cols-1 min-[480px]:grid-cols-2 gap-6 mb-6">
+              {/* Compact Feature Grid */}
+              <div className="grid grid-cols-2 gap-4 py-2 border-y border-gray-100">
                 {[
-                  { label: "FAST", desc: "Quick on-time service" },
-                  { label: "RELIABLE", desc: "Consistent quality" },
-                  { label: "AFFORDABLE", desc: "Transparent pricing" },
-                  { label: "ECO-FRIENDLY", desc: "Safe processes" }
+                  { label: "FAST", desc: "On-time delivery" },
+                  { label: "RELIABLE", desc: "Expert handling" },
+                  { label: "AFFORDABLE", desc: "Best pricing" },
+                  { label: "HYGIENIC", desc: "UV-safe process" }
                 ].map((item, i) => (
-                  <div key={i} className="flex items-start lg:justify-start justify-center gap-[0.8rem] text-[1.05rem]">
-                    <CheckCircle2 size={22} className="text-primary mt-[2px] shrink-0" /> 
-                    <span><strong className="text-primary">{item.label}:</strong> {item.desc}</span>
+                  <div key={i} className="flex items-center gap-2 text-[0.9rem]">
+                    <CheckCircle2 size={16} className="text-primary shrink-0" /> 
+                    <span className="text-black font-semibold">{item.label}</span>
                   </div>
                 ))}
               </div>
-              <Link href="/about" className="btn btn-primary mt-[1.2rem] inline-block">Read More</Link>
+
+              <div className="pt-2">
+                <Link href="/about" className="btn btn-primary !rounded-lg !px-10">Read Our Full Story</Link>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -165,11 +176,9 @@ export default function Home() {
                       <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center shrink-0">
                         <item.icon size={20} className="text-black" strokeWidth={2.5} />
                       </div>
-                      <h3 className="text-[1.1rem] md:text-[1.2rem] font-bold text-black m-0 leading-[1.3]">
-                        {item.title.split(' ')[0]} 
-                        <span className="text-gradient block sm:inline">
-                          {item.title.split(' ').slice(1).join(' ')}
-                        </span>
+                      <h3 className="text-[1.1rem] md:text-[1.2rem] font-bold text-primary m-0 leading-[1.3]">
+                        <span className="mr-[2px]">{item.title[0]}</span>
+                        {item.title.slice(1)}
                       </h3>
                     </div>
                     <p className="text-[#555] text-sm leading-[1.5] m-0">{item.desc}</p>
