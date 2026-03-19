@@ -5,6 +5,7 @@ import { blogPosts } from "@/blog/blogData";
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, User, ArrowRight, Search } from "lucide-react";
+import GlobalFAQ from "@/components/FAQ/GlobalFAQ";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
 
@@ -62,7 +63,8 @@ export default function BlogPage() {
   const pillActive = "!bg-[#18a1d8] !text-white !border-[#18a1d8]";
 
   return (
-    <div className="bg-white py-20 max-[768px]:pt-20 pb-10">
+    <>
+      <div className="bg-white py-20 max-[768px]:pt-20 pb-10">
       <div className="container">
         <div className="text-center mb-8">
           <h1 className="text-primary mb-4 max-[768px]:text-[2rem] max-[480px]:text-[1.8rem]">Latest blog</h1>
@@ -133,6 +135,61 @@ export default function BlogPage() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      
+      {/* Global FAQ Section */}
+      <GlobalFAQ faqs={blogFaqs} />
+    </>
   );
 }
+
+const blogFaqs = [
+  {
+    question: "Do you provide fabric care tips in your blog?",
+    answer: "Yes, our blog is a comprehensive resource for fabric care, stain removal guides, and tips on how to extend the life of your expensive garments."
+  },
+  {
+    question: "How often do you update the blog with new laundry tips?",
+    answer: "We update our blog weekly with fresh insights, seasonal garment care advice, and the latest trends in professional laundry and dry cleaning technology."
+  },
+  {
+    question: "Can I request a specific topic for a blog post?",
+    answer: "Absolutely! If you have a specific fabric or garment care question you'd like us to cover, feel free to reach out via our contact page or social media."
+  },
+  {
+    question: "Are the tips in your blog safe for all types of clothes?",
+    answer: "While we provide general professional advice, always check your garment's care label first. Our tips are designed to supplement standard care instructions with professional expertise."
+  },
+  {
+    question: "Do you cover DIY stain removal methods?",
+    answer: "Yes, we often share safe 'At-Home' emergency tips for immediate stain management before you can get your garment to our professional facility."
+  },
+  {
+    question: "Can I find advice for seasonal garment storage (e.g., winter wear)?",
+    answer: "Definitely. We have dedicated guides on how to properly clean and store woolens, silks, and heavy linens to prevent moth damage and fabric yellowing during off-seasons."
+  },
+  {
+    question: "Do you feature insights from textile experts?",
+    answer: "Our articles are written and reviewed by our senior facility technicians who have decades of hands-on experience in professional garment care."
+  },
+  {
+    question: "Are your blog articles available for download as PDFs?",
+    answer: "Many of our 'Ultimate Care Guides' are being converted into downloadable checklists for your convenience. Stay tuned for these resources!"
+  },
+  {
+    question: "Can I share your blog content on my social media?",
+    answer: "We encourage it! Every article has easy sharing buttons so you can help your friends and family care for their wardrobes better too."
+  },
+  {
+    question: "Is there a way to get notified when a new post is published?",
+    answer: "Yes, by subscribing to our newsletter at the bottom of the blog page, you'll receive a monthly roundup of our most popular and helpful articles."
+  },
+  {
+    question: "Do you offer exclusive discounts within your blog articles?",
+    answer: "Occasionally, we hide 'easter egg' promo codes inside our educational long-form guides as a reward for our most dedicated readers."
+  },
+  {
+    question: "Can I ask specific questions about an article?",
+    answer: "Yes! You can reach out via our contact form or WhatsApp with any follow-up questions you have regarding the tips shared in our posts."
+  }
+];

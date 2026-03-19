@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, User, ArrowRight, Tag, Mail, HelpCircle, ChevronRight, Facebook, Twitter, Linkedin, MessageSquare, Clock } from "lucide-react";
 import { useEffect, useState } from "react";
+import GlobalFAQ from "@/components/FAQ/GlobalFAQ";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
 
@@ -208,6 +209,60 @@ export default function BlogDetail() {
           </aside>
         </div>
       </div>
+      
+      {/* Global FAQ Section */}
+      <GlobalFAQ faqs={blogFaqs} />
     </div>
   );
 }
+
+const blogFaqs = [
+  {
+    question: "Is the information in this article verified by professionals?",
+    answer: "Yes, every guide we publish is written and vetted by our senior textile experts who manage our professional facility in Dombivli."
+  },
+  {
+    question: "Can I apply these tips to delicate fabrics like silk or wool?",
+    answer: "While many tips are universal, delicate fabrics often require special handling. We always recommend testing any home method on a small, hidden area first."
+  },
+  {
+    question: "What should I do if a recommended home remedy doesn't work?",
+    answer: "If a stain persists, do not keep scrubbing. Bring the garment to our facility as soon as possible so our professionals can treat it before the stain becomes permanent."
+  },
+  {
+    question: "How can I stay updated with similar garment care guides?",
+    answer: "The best way is to subscribe to our newsletter at the bottom of this page. We'll send the most helpful and popular guides directly to your inbox."
+  },
+  {
+    question: "Do you offer professional versions of the services described in your blog?",
+    answer: "Absolutely. Most techniques we write about are professional-grade versions of what we perform daily at The Orchid Laundry facility."
+  },
+  {
+    question: "Can I request a deep-dive into a specific fabric cleaning technique?",
+    answer: "We love feedback! If there's a specific fabric or garment type you're struggling with, send us a message on WhatsApp and we may feature it in our next post."
+  },
+  {
+    question: "How does professional dry cleaning differ from home washing mentioned here?",
+    answer: "Commercial dry cleaning involves specialized non-water-based solvents and high-precision machinery that home washers simply cannot replicate for delicate fibers."
+  },
+  {
+    question: "Are there any risks to following DIY cleaning tips from the internet?",
+    answer: "Generic internet tips can be dangerous for certain dyes. Our blog focuses exclusively on safe, professional-approved methods to minimize any risk to your wardrobe."
+  },
+  {
+    question: "Do you provide sources or references for your blog content?",
+    answer: "Our primary source is our own decade of experience in the laundry industry, supplemented by modern textile science and manufacturer care guidelines."
+  },
+  {
+    question: "Can I share this specific post with my friends or colleagues?",
+    answer: "Yes, please do! Use the social share buttons provided to help others extend the life of their favorite clothes."
+  },
+  {
+    question: "Is there a way to print your guides for offline use?",
+    answer: "Our website is mobile-optimized so you can keep the guide open on your phone while you work, but you can also use your browser's 'Print' function for a clean layout."
+  },
+  {
+    question: "Who can I contact for more specific textile-related questions?",
+    answer: "You can reach out to our customer care team via the 'Contact' page if you have a unique fabric issue that wasn't covered in our articles."
+  }
+];

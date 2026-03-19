@@ -40,8 +40,8 @@ export default function Navbar() {
     <>
       <nav className={`fixed top-0 left-0 right-0 flex items-center z-[1000] transition-all duration-400 ease ${
         isScrolled 
-          ? "bg-white/95 h-[70px] backdrop-blur-[10px] shadow-[0_4px_30px_rgba(0,0,0,0.05)]" 
-          : "bg-white h-[var(--nav-height)] max-[1100px]:h-[var(--nav-height-mobile)] shadow-[0_2px_10px_rgba(0,0,0,0.02)]"
+          ? "bg-white/95 h-[70px] backdrop-blur-[10px] border-b border-[#f0f0f0]" 
+          : "bg-white h-[var(--nav-height)] max-[1100px]:h-[var(--nav-height-mobile)] border-b border-[#f0f0f0]"
       }`}>
         <div className="container">
           <div className="flex justify-between items-center w-full">
@@ -68,7 +68,7 @@ export default function Navbar() {
                 <AnimatePresence>
                   {showDropdown && (
                     <motion.div
-                      className="absolute top-full bg-white min-w-[750px] p-10 rounded-[30px] border border-black/5 z-[1001] overflow-hidden left-1/2 -ml-[375px] mt-[10px] shadow-[0_40px_100px_rgba(0,0,0,0.1)]"
+                      className="absolute top-full bg-white min-w-[750px] p-10 rounded-[30px] border border-black/5 z-[1001] overflow-hidden left-1/2 -ml-[375px] mt-[10px]"
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 15 }}
@@ -101,7 +101,7 @@ export default function Navbar() {
               <Link href="/contact" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/contact" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Contact</Link>
 
               <div className="flex items-center gap-6 ml-4 pl-6 border-l border-[#eee]">
-                <Link href="/booking" className="bg-primary text-white py-[0.8rem] px-[1.8rem] rounded-2xl no-underline font-bold text-[0.95rem] flex items-center gap-[0.8rem] shadow-[0_10px_20px_rgba(24,161,216,0.15)] transition-all duration-300 ease hover:-translate-y-[2px] hover:shadow-[0_15px_30px_rgba(24,161,216,0.25)]">
+                <Link href="/booking" className="bg-primary text-white py-[0.8rem] px-[1.8rem] rounded-2xl no-underline font-bold text-[0.95rem] flex items-center gap-[0.8rem] transition-all duration-300 ease hover:-translate-y-[2px]">
                   <Calendar size={18} />
                   Schedule Pickup
                 </Link>
@@ -131,7 +131,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
               />
               <motion.div
-                className="fixed top-0 right-0 h-[100dvh] bg-white z-[2000] flex flex-col overflow-hidden border-l border-[#f0f0f0] shadow-[-4px_0_24px_rgba(0,0,0,0.08)] w-[min(82vw,300px)] max-[380px]:w-[88vw]"
+                className="fixed top-0 right-0 h-[100dvh] bg-white z-[2000] flex flex-col overflow-hidden border-l border-[#f0f0f0] w-[min(82vw,300px)] max-[380px]:w-[88vw]"
                 initial={{ x: "100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}

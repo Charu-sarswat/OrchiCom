@@ -5,7 +5,7 @@ import AppDownload from "../Home/AppDownload";
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-dark p-0 mt-12 border-t border-[#f0f0f0]">
+    <footer className="bg-white text-dark p-0 border-t border-[#f0f0f0]">
       <div className="container">
         {/* App Download Strip */}
         <div style={{ position: 'relative', top: '-3rem' }}>

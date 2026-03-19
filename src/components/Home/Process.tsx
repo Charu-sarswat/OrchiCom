@@ -54,12 +54,10 @@ export default function Process() {
           .process-step-inner {
             transform: rotate(calc(var(--i) * -60deg + 45deg)) scale(1) !important;
             border-radius: 25px !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
             transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275) !important;
           }
           .process-step-outer:hover .process-step-inner {
             transform: rotate(calc(var(--i) * -60deg + 45deg)) scale(1.05) !important;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25) !important;
             z-index: 250 !important;
           }
           .process-step-content {
@@ -95,14 +93,12 @@ export default function Process() {
             <p className="text-base lg:text-[1.05rem] xl:text-[1.1rem] text-[#333] mb-8 leading-[1.6]">
               Specialized machinery & skilled experts for each stage makes <strong>The Orchid Laundry</strong> the best laundry & dry cleaner near you.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 lg:gap-3 mt-8 lg:mb-12">
-              <Link href="https://wa.me/917080803074" className="flex items-center gap-2 text-white py-3 lg:py-[1rem] px-6 lg:px-6 rounded-[12px] font-bold text-base lg:text-[0.95rem] xl:text-[1rem] bg-black transition-all duration-300 hover:bg-[#333] w-full sm:w-auto justify-center">
-                <SiWhatsapp size={20} />
-                Chat on WhatsApp
+            <div className="flex flex-col md:flex-row justify-center lg:justify-start items-center gap-4 md:gap-6 mt-8 lg:mb-12 w-full">
+              <Link href="https://wa.me/917080803074" className="btn btn-secondary w-full md:w-auto text-base md:text-[1.1rem] py-[0.8rem] md:py-4 px-6 md:px-8 rounded-xl flex items-center justify-center gap-2 whitespace-nowrap">
+                <SiWhatsapp size={20} /> Chat on WhatsApp
               </Link>
-              <Link href="/booking" className="flex items-center gap-2 text-white py-3 lg:py-[1rem] px-6 lg:px-6 rounded-[12px] font-bold text-base lg:text-[0.95rem] xl:text-[1rem] bg-[#13A5D9] transition-all duration-300 hover:bg-[#108bb8] w-full sm:w-auto justify-center">
-                <Calendar size={20} />
-                Schedule Free Pickup
+              <Link href="/booking" className="btn btn-primary w-full md:w-auto text-base md:text-[1.1rem] py-[0.8rem] md:py-4 px-6 md:px-8 rounded-xl flex items-center justify-center gap-2 whitespace-nowrap">
+                <Calendar size={20} /> Schedule Free Pickup
               </Link>
             </div>
           </div>
@@ -124,12 +120,12 @@ export default function Process() {
                   style={{ "--i": idx, zIndex: 10 + idx } as React.CSSProperties}
                 >
                   <div 
-                     className="w-full h-auto lg:h-full flex items-center justify-center p-6 lg:p-[0.5rem] relative rounded-2xl transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:scale-[1.03] group-hover:-translate-y-1 group-hover:shadow-[0_15px_30px_rgba(0,0,0,0.15)] process-step-inner overflow-visible"
+                     className="w-full h-auto lg:h-full flex items-center justify-center p-6 lg:p-[0.5rem] relative rounded-2xl transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] group-hover:scale-[1.03] group-hover:-translate-y-1 process-step-inner overflow-visible"
                      style={{ background: `var(--step-clr-${idx + 1})` }}
                   >
                     <div className="w-full text-left lg:text-center text-white lg:w-[150px] xl:w-[170px] flex flex-col items-start lg:items-center justify-start lg:justify-center process-step-content relative z-10 px-2 lg:px-0">
                       <div className="flex flex-row lg:flex-col items-center gap-4 lg:gap-[0.3rem] mb-[0.4rem] w-full">
-                        <div className="w-10 h-10 lg:w-7 lg:h-7 xl:w-8 xl:h-8 flex-shrink-0 text-[1rem] lg:text-[0.8rem] xl:text-[0.85rem] bg-white rounded-full flex items-center justify-center font-black transition-transform duration-300 group-hover:scale-110 group-hover:shadow-md" style={{ color: `var(--step-clr-${idx + 1})` }}>{step.number}</div>
+                        <div className="w-10 h-10 lg:w-7 lg:h-7 xl:w-8 xl:h-8 flex-shrink-0 text-[1rem] lg:text-[0.8rem] xl:text-[0.85rem] bg-white rounded-full flex items-center justify-center font-black transition-transform duration-300 group-hover:scale-110" style={{ color: `var(--step-clr-${idx + 1})` }}>{step.number}</div>
                         <h4 className={`text-[1.05rem] md:text-[0.9rem] lg:text-[0.7rem] xl:text-[0.8rem] 2xl:text-[0.9rem] font-black m-0 uppercase text-left lg:text-center tracking-normal lg:px-1 transition-transform duration-300 ${(idx + 1) % 2 === 0 ? 'lg:text-[#18A1D8]' : 'text-white'}`}>{step.title}</h4>
                       </div>
                       <p className="text-[0.95rem] md:text-[0.85rem] lg:text-[0.6rem] xl:text-[0.65rem] 2xl:text-[0.75rem] leading-[1.3] text-white m-0 font-medium max-w-full lg:max-w-auto lg:w-[120px] xl:w-[140px] mx-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300 px-1">{step.desc}</p>

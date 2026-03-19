@@ -18,6 +18,58 @@ import ServicesGrid from '@/components/Home/ServicesGrid';
 import Delivery from '@/components/Home/Delivery';
 import Process from '@/components/Home/Process';
 import Testimonials from '@/components/Home/Testimonials';
+import GlobalFAQ from '@/components/FAQ/GlobalFAQ';
+
+const homeFaqs = [
+  {
+    question: "What type of cleaning services does The Orchid Laundry offer?",
+    answer: "We offer a comprehensive range of services including Dry Cleaning, Premium Laundry, Wash & Iron, Wash & Fold, Steam Ironing, Shoe Cleaning, Sofa Cleaning, Carpet Cleaning, and delicate Bridal Wear care."
+  },
+  {
+    question: "Apart from laundry and dry cleaning, what other services does The Orchid Laundry offer?",
+    answer: "In addition to garments, we specialize in home upholstery care (sofas, carpets, and curtains), heavy woolens, leather jacket treatments, and specialized shoe refurbishment."
+  },
+  {
+    question: "Do you offer any discounts for first-time customers?",
+    answer: "Yes! New customers often enjoy a welcome discount on their first order. Please check our booking page or contact our support team for the latest introductory offers."
+  },
+  {
+    question: "Does The Orchid Laundry have a minimum order amount for pickup and delivery services?",
+    answer: "Yes, we have a nominal minimum order value to qualify for our free doorstep pickup and delivery service. Contact us directly for the exact minimum value in your specific location."
+  },
+  {
+    question: "How can I avail discounts and offers at The Orchid Laundry?",
+    answer: "You can avail offers by checking our website's banner announcements, subscribing to our WhatsApp alerts, or choosing one of our highly discounted prepaid bulk plans."
+  },
+  {
+    question: "Is it possible to schedule a pickup and delivery online at The Orchid Laundry?",
+    answer: "Absolutely. You can schedule a pickup in under 60 seconds directly through our website booking portal or by messaging us on WhatsApp."
+  },
+  {
+    question: "What are your standard delivery timelines?",
+    answer: "Our standard delivery for laundry is 48-72 hours, while dry cleaning typically takes 3-5 days. We ensure your clothes are returned fresh and crisp in the shortest possible time."
+  },
+  {
+    question: "Do you handle luxury or highly expensive designer garments?",
+    answer: "Yes, we specialize in luxury garment care. Every piece is inspected manually and processed using the most delicate, fabric-safe solvents available in the industry."
+  },
+  {
+    question: "Is there any extra cost for express or same-day delivery?",
+    answer: "Yes, for customers in a hurry, we offer an Express Service with a small surcharge to prioritize your garments through our facility."
+  },
+  {
+    question: "How do you ensure the safety and hygiene of my clothes?",
+    answer: "We use individual wash cycles (no mixing with other customers), premium non-toxic detergents, and temperature-controlled drying systems to maintain global hygiene standards."
+  },
+  {
+    question: "What if a stubborn stain is not removed?",
+    answer: "We have an extremely high success rate with stains. If a stain persists without damaging the fabric, we'll consult with you on possible advanced treatments or re-processing options."
+  },
+  {
+    question: "Where is The Orchid Laundry facility located?",
+    answer: "Our main professional facility is located in Dombivli East, serving the local community and surrounding areas with high-quality, professional laundry solutions."
+  }
+];
 
 export default function Home() {
   return (
@@ -120,7 +172,7 @@ export default function Home() {
       </section>
       <Delivery />
       <Process />
-      <Testimonials />
+      <GlobalFAQ faqs={homeFaqs} />
     </main>
   );
 }

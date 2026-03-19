@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check, Truck, User, List, Plus, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
+import GlobalFAQ from "@/components/FAQ/GlobalFAQ";
 
 export default function BookingPage() {
   const [formData, setFormData] = useState({
@@ -195,6 +196,60 @@ export default function BookingPage() {
           {status === "error" && <p className="text-[#c12b2b] text-center mt-6 font-semibold">Something went wrong. Please try again or call us.</p>}
         </form>
       </div>
+      
+      {/* Global FAQ Section */}
+      <GlobalFAQ faqs={bookingFaqs} />
     </div>
   );
 }
+
+const bookingFaqs = [
+  {
+    question: "Do I need to sort my clothes before handing them to the delivery agent?",
+    answer: "No! Just place all your garments into a bag. Our trained facility technicians will meticulously inspect, sort, and tag each individual garment based on fabric type, color-fastness, and required care."
+  },
+  {
+    question: "What happens if I miss my requested pickup time slot?",
+    answer: "Don't worry. Our delivery partner will call you before arriving. If you're unavailable, we can simply reschedule the pickup for the next convenient slot through WhatsApp."
+  },
+  {
+    question: "Is there an extra charge for Express Delivery?",
+    answer: "Yes, our Same-Day/Next-Day Express Delivery carries a minimal surcharge to prioritize your garments through the facility while maintaining our rigorous 8-step quality protocols."
+  },
+  {
+    question: "How do I pay for my order?",
+    answer: "You can pay via UPI, Credit/Debit Card, or Cash upon delivery. We also offer highly discounted prepaid wallet plans which can be automatically deducted for seamless contactless delivery."
+  },
+  {
+    question: "Can I change my delivery address after the order is picked up?",
+    answer: "Yes, you can update your delivery address as long as it's within our service area. Please notify our support team via WhatsApp at least 4 hours before the scheduled delivery."
+  },
+  {
+    question: "Is there a minimum order requirement for 'Wash per KG' bookings?",
+    answer: "Yes, a minimum weight of 3kg is applicable for our 'Wash per KG' service to ensure efficient machine cycles. Lower weights will be billed at the 3kg base rate."
+  },
+  {
+    question: "Do I get an official invoice for my booking?",
+    answer: "Absolutely. Once your order is processed, a digital invoice will be sent to your registered email and is also accessible via the order link sent to your WhatsApp."
+  },
+  {
+    question: "Can I cancel my booking after the agent is dispatched?",
+    answer: "If the agent has already reached your location, a nominal dispatch fee may apply. Cancellations made 4 hours before the slot are completely free of charge."
+  },
+  {
+    question: "Do you provide bags for the initial pickup?",
+    answer: "Our agent carries heavy-duty reusable collection bags. However, we recommend you keep your items ready in a temporary bag or basket for a quick and easy handover."
+  },
+  {
+    question: "Is insurance included for extremely high-value items?",
+    answer: "While we take the utmost care, we recommend declaring high-value items during booking. Our liability is limited, but we offer special handling protocols for luxury couture."
+  },
+  {
+    question: "How can I track my order in real-time?",
+    answer: "You will receive a unique tracking link via SMS or WhatsApp once your order is picked up. You can see the stage of cleaning (Washing, Ironing, etc.) in real-time."
+  },
+  {
+    question: "What are your operational hours for pickup and delivery slots?",
+    answer: "We operate from 9:00 AM to 9:00 PM, 7 days a week. You can choose from four distinct time slots during the day that best fit your schedule."
+  }
+];

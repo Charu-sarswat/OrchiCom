@@ -18,30 +18,30 @@ export default function Delivery() {
           </p>
         </div>
 
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.5fr] items-stretch">
+        <div className="grid gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.1fr_1.1fr_0.8fr] items-stretch">
           {/* Regular Delivery */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white py-6 px-8 rounded-[20px] flex flex-col border border-[rgba(24,161,216,0.3)] transition-all duration-300 ease-in-out hover:-translate-y-[5px] hover:border-[#18a1d8] hover:shadow-[0_10px_30px_rgba(24,161,216,0.15)] shadow-none"
+            className="bg-white py-6 px-5 lg:px-6 rounded-[20px] flex flex-col border border-[rgba(24,161,216,0.3)] transition-all duration-300 ease-in-out hover:-translate-y-[5px] hover:border-[#18a1d8] hover:shadow-[0_10px_30px_rgba(24,161,216,0.15)] shadow-none"
           >
-            <div className="flex items-center gap-4 mb-8">
-              <Truck size={36} color="#000" />
-              <h3 className="text-[1.8rem] m-0 font-bold">Regular <span className="text-primary">Delivery</span></h3>
+            <div className="flex items-center gap-3 mb-6">
+              <Truck size={30} color="#000" className="shrink-0" />
+              <h3 className="text-[1.5rem] lg:text-[1.6rem] m-0 font-bold whitespace-nowrap">Regular <span className="text-primary">Delivery</span></h3>
             </div>
-            <ul className="list-none p-0 m-0 flex flex-col gap-[1.2rem]">
-              <li className="flex items-start gap-[0.8rem] text-black font-medium text-[1.05rem]">
-                <Check size={20} className="text-black mt-[3px] shrink-0" /> Free (No extra charges)
+            <ul className="list-none p-0 m-0 flex flex-col gap-[1rem]">
+              <li className="flex items-start gap-[0.6rem] text-black font-medium text-[1.05rem] leading-[1.3]">
+                <Check size={20} className="text-black mt-[2px] shrink-0" /> Free (No extra charges)
               </li>
-              <li className="flex items-start gap-[0.8rem] text-black font-medium text-[1.05rem]">
-                <Check size={20} className="text-black mt-[3px] shrink-0" /> Laundry Per KG – 72 Hours
+              <li className="flex items-start gap-[0.6rem] text-black font-medium text-[1.05rem] leading-[1.3]">
+                <Check size={20} className="text-black mt-[2px] shrink-0" /> Laundry Per KG – 72 Hours
               </li>
-              <li className="flex items-start gap-[0.8rem] text-black font-medium text-[1.05rem]">
-                <Check size={20} className="text-black mt-[3px] shrink-0" /> Dry Clean – 72 Hours
+              <li className="flex items-start gap-[0.6rem] text-black font-medium text-[1.05rem] leading-[1.3]">
+                <Check size={20} className="text-black mt-[2px] shrink-0" /> Dry Clean – 72 Hours
               </li>
-              <li className="flex items-start gap-[0.8rem] text-black font-medium text-[1.05rem]">
-                <Check size={20} className="text-black mt-[3px] shrink-0" /> Shoe Cleaning – 72 Hours
+              <li className="flex items-start gap-[0.6rem] text-black font-medium text-[1.05rem] leading-[1.3]">
+                <Check size={20} className="text-black mt-[2px] shrink-0" /> Shoe Cleaning – 72 Hours
               </li>
             </ul>
           </motion.div>
@@ -52,18 +52,18 @@ export default function Delivery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="bg-white py-6 px-8 rounded-[20px] flex flex-col border border-[rgba(24,161,216,0.3)] transition-all duration-300 ease-in-out hover:-translate-y-[5px] hover:border-primary-light hover:shadow-[0_10px_30px_rgba(24,161,216,0.15)] shadow-none"
+            className="bg-white py-6 px-5 lg:px-6 rounded-[20px] flex flex-col border border-[rgba(24,161,216,0.3)] transition-all duration-300 ease-in-out hover:-translate-y-[5px] hover:border-[#18a1d8] hover:shadow-[0_10px_30px_rgba(24,161,216,0.15)] shadow-none"
           >
-            <div className="flex items-center gap-4 mb-8">
-              <Zap size={36} color="#000" />
-              <h3 className="text-[1.8rem] m-0 font-bold">Express <span className="text-primary">Delivery</span></h3>
+            <div className="flex items-center gap-3 mb-6">
+              <Zap size={30} color="#000" className="shrink-0" />
+              <h3 className="text-[1.5rem] lg:text-[1.6rem] m-0 font-bold whitespace-nowrap">Express <span className="text-primary">Delivery</span></h3>
             </div>
-            <ul className="list-none p-0 m-0 flex flex-col gap-[1.2rem]">
-              <li className="flex items-start gap-[0.8rem] text-black font-medium text-[1.05rem]">
-                <Check size={20} className="text-black mt-[3px] shrink-0" /> With Minimal Additional Charges
+            <ul className="list-none p-0 m-0 flex flex-col gap-[1rem]">
+              <li className="flex items-start gap-[0.6rem] text-black font-medium text-[1.05rem] leading-[1.3]">
+                <Check size={20} className="text-black mt-[2px] shrink-0" /> With Minimal Additional Charges
               </li>
-              <li className="flex items-start gap-[0.8rem] text-black font-medium text-[1.05rem]">
-                <Check size={20} className="text-black mt-[3px] shrink-0" /> Same-day / Next-day Delivery
+              <li className="flex items-start gap-[0.6rem] text-black font-medium text-[1.05rem] leading-[1.3]">
+                <Check size={20} className="text-black mt-[2px] shrink-0" /> Same-day / Next-day Delivery
               </li>
             </ul>
           </motion.div>
@@ -89,10 +89,10 @@ export default function Delivery() {
         </div>
         
         <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mt-12 w-full">
-          <Link href="https://wa.me/917080803074" className="btn btn-secondary w-full md:w-auto md:min-w-[250px] text-base md:text-[1.1rem] py-[0.8rem] md:py-4 px-6 md:px-8 rounded-xl flex items-center justify-center gap-2">
+          <Link href="https://wa.me/917080803074" className="btn btn-secondary w-full md:w-auto text-base md:text-[1.1rem] py-[0.8rem] md:py-4 px-6 md:px-8 rounded-xl flex items-center justify-center gap-2 whitespace-nowrap">
             <SiWhatsapp size={20} /> Chat on WhatsApp
           </Link>
-          <Link href="/booking" className="btn btn-primary w-full md:w-auto md:min-w-[250px] text-base md:text-[1.1rem] py-[0.8rem] md:py-4 px-6 md:px-8 rounded-xl flex items-center justify-center gap-2">
+          <Link href="/booking" className="btn btn-primary w-full md:w-auto text-base md:text-[1.1rem] py-[0.8rem] md:py-4 px-6 md:px-8 rounded-xl flex items-center justify-center gap-2 whitespace-nowrap">
             <Calendar size={20} /> Schedule Free Pickup
           </Link>
         </div>

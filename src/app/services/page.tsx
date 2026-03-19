@@ -5,6 +5,7 @@ import { Search, Droplets, Wind, Zap, Shield, Package, ArrowRight } from "lucide
 import Link from "next/link";
 import { servicesData } from "@/services/servicesData";
 import Image from "next/image";
+import GlobalFAQ from "@/components/FAQ/GlobalFAQ";
 
 const steps = [
   { icon: Search, title: "Tagging & Sorting", desc: "Each garment is tagged and sorted based on color, fabric type, and soiling level." },
@@ -36,14 +37,18 @@ export default function ServicesPage() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="bg-light py-14 pb-10 text-center">
-        <div className="container">
+      <section 
+        className="relative py-24 pb-20 text-center bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url('/exper.png')` }}
+      >
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="container relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="mb-[0.8rem] text-[2.2rem] max-[480px]:text-[2.2rem] md:text-[clamp(2rem,5vw,3.5rem)]">Our Expert <span className="text-gradient">Laundry Care</span></h1>
-            <p className="text-[1.1rem] text-[#666] max-w-[650px] mx-auto leading-[1.65]">From everyday wear to delicate bridal gowns, we treat every garment with scientific precision and professional care.</p>
+            <h1 className="mb-[0.8rem] text-[2.2rem] max-[480px]:text-[2.2rem] md:text-[clamp(2rem,5vw,3.5rem)] text-white">Our Expert <span className="text-[#18a1d8]">Laundry Care</span></h1>
+            <p className="text-[1.1rem] text-gray-200 max-w-[650px] mx-auto leading-[1.65]">From everyday wear to delicate bridal gowns, we treat every garment with scientific precision and professional care.</p>
           </motion.div>
         </div>
       </section>
@@ -216,6 +221,60 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      {/* Global FAQ Section */}
+      <GlobalFAQ faqs={servicesFaqs} />
     </div>
   );
 }
+
+const servicesFaqs = [
+  {
+    question: "Do you offer dry cleaning for delicate fabrics like silk or sequence work?",
+    answer: "Yes, we specialize in high-end garment care. Delicate fabrics undergo a special inspection, and we use fabric-safe European solvents to ensure the texture, color, and embellishments remain strictly intact."
+  },
+  {
+    question: "What is the turnaround time for standard laundry vs dry cleaning?",
+    answer: "Our standard Wash & Iron or Wash & Fold takes 48-72 hours. Premium Dry Cleaning takes around 3-5 days. If you are in a rush, we offer Express Next-Day delivery for a nominal extra charge."
+  },
+  {
+    question: "Can you remove tough stains like red wine, ink, or grease?",
+    answer: "We have highly trained stain removal technicians. While we boast an extremely high success rate at lifting tough stains without damaging fabric, total removal depends on how aged or naturally set the stain is."
+  },
+  {
+    question: "How do you wash clothes? Are they mixed with other customers' garments?",
+    answer: "Absolutely not. Every single customer's order is processed entirely individually in separate batches to maintain peak hygiene standards and prevent any cross-contamination or color bleeding."
+  },
+  {
+    question: "Do you offer bulk 'Laundry by KG' services?",
+    answer: "Yes, our 'Wash Per KG' service is perfect for daily wear t-shirts, pajamas, and towels. It's a highly economical choice for families looking for reliable weekly laundry support."
+  },
+  {
+    question: "Do you specialize in wedding wear or bridal outfit cleaning?",
+    answer: "Yes, we are the region's top choice for bridal wear. We use specialized techniques to clean and preserve heavy lehengas, gowns, and sherwanis without losing their original luster."
+  },
+  {
+    question: "Is specialized shoe cleaning part of your regular service list?",
+    answer: "Definitely. We offer professional shoe refurbishment for sneakers, suedes, and leathers. We deep clean, deodorize, and restore the texture to make them look almost brand new."
+  },
+  {
+    question: "Do you handle large home items like curtains, carpets, and sofas?",
+    answer: "Yes, we offer on-site sofa and carpet cleaning, along with professional curtain laundry that includes removal and re-hanging assistance if needed."
+  },
+  {
+    question: "Is precision steam ironing included in the dry cleaning service?",
+    answer: "Yes, every dry-cleaned item is expertly steam-ironed on pneumatic machines to ensure a crisp, wrinkle-free finish that preserves the garment's original drape."
+  },
+  {
+    question: "Do you provide specialized packaging for seasonal clothes like woolens?",
+    answer: "We provide high-quality breathable packaging for all items. For woolens and silks, we offer premium packing that helps prevent moth damage during storage."
+  },
+  {
+    question: "Are your cleaning agents safe for expensive leather or suede jackets?",
+    answer: "Yes, we use pH-neutral leather conditioners and specialized suede cleaners that restore oils and color without causing the material to crack or stiffen."
+  },
+  {
+    question: "Can I get a specialized antibacterial wash for gym and athletic wear?",
+    answer: "Absolutely. We offer an 'Antiseptic Wash' add-on that uses medical-grade, skin-friendly sanitizers to eliminate odor-causing bacteria from synthetic sports fabrics."
+  }
+];

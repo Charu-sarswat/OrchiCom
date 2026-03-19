@@ -1,4 +1,5 @@
 import { Zap, CheckCircle, IndianRupee, Shield, Handshake, Leaf } from "lucide-react";
+import GlobalFAQ from "@/components/FAQ/GlobalFAQ";
 
 const valuesBgColors = [
   "bg-[#f0f9ff] col-span-2 lg:col-span-2",
@@ -113,8 +114,62 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
+      
+      {/* Global FAQ Section */}
+      <GlobalFAQ faqs={aboutFaqs} />
     </div>
   );
 };
+
+const aboutFaqs = [
+  {
+    question: "When was The Orchid Laundry founded?",
+    answer: "The Orchid Laundry was founded to bridge the gap between expensive premium service and affordable daily care. We started as a small idea in Dombivli and have scaled into a full-service, tech-enabled enterprise."
+  },
+  {
+    question: "Why should I trust The Orchid Laundry with my expensive garments?",
+    answer: "We employ highly trained textile experts, utilize gentle European solvents instead of harsh local chemicals, and track every single garment through our rigid 8-step barcode scanning process to ensure zero damage and zero loss."
+  },
+  {
+    question: "Are your cleaning processes eco-friendly?",
+    answer: "Yes. Sustainability is a core pillar of our manifesto. We utilize low-water consumption technology and eco-friendly cleaning agents that are exceptionally tough on stains but perfectly safe for local water systems."
+  },
+  {
+    question: "Where are your processing centers located?",
+    answer: "Our primary state-of-the-art facility is located to efficiently serve the entire Dombivli region and surrounding urban areas, enabling us to guarantee rapidly swift turnaround times."
+  },
+  {
+    question: "How much experience do your textile experts have?",
+    answer: "Our lead technicians bring over 15+ years of experience from the hospitality and professional dry-cleaning industries, ensuring your clothes are handled with master-grade proficiency."
+  },
+  {
+    question: "Do you use recycled water in your facility?",
+    answer: "We employ advanced water filtration and softening systems. While we ensure hygiene first, we also utilize modern technology that uses 40% less water than traditional commercial washers."
+  },
+  {
+    question: "Is The Orchid Laundry a locally owned business?",
+    answer: "Yes, we are a proudly homegrown brand from Dombivli East. We are deeply committed to serving our local community with international-standard cleaning technology."
+  },
+  {
+    question: "How do you ensure the quality of every single wash?",
+    answer: "Every order goes through an 8-stage rigorous quality check—from initial fabric inspection and stain tagging to the final precision steam iron and packaging."
+  },
+  {
+    question: "What separates your facility from local laundry shops?",
+    answer: "Unlike local shops that often use harsh detergents and open-air drying, we use automated temperature-controlled drying and premium enzyme-based cleaners to preserve garment life."
+  },
+  {
+    question: "Are your detergents safe for sensitive skin?",
+    answer: "Absolutely. We exclusively use hypoallergenic and skin-safe detergents that are free from harsh bleach and irritating synthetic fragrances, making them ideal for infant clothing too."
+  },
+  {
+    question: "How do you handle growth as a Dombivli-born brand?",
+    answer: "We grow through consistency. By maintaining our 'quality-first' approach even as our volume increases, we've built a reputation as the most reliable laundry partner in the region."
+  },
+  {
+    question: "Why was the name 'Orchid' chosen for the brand?",
+    answer: "The Orchid symbolizes grace, strength, and delicate beauty—qualities we aspire to bring to your wardrobe through our meticulous and gentle cleaning processes."
+  }
+];
 
 export default AboutPage;

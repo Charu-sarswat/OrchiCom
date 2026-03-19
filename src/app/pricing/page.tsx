@@ -14,6 +14,59 @@ interface PricingGroup { category: string; items: PricingItem[]; }
 interface PricingDataMap { [serviceName: string]: PricingGroup[]; }
 interface Plan { name: string; price: string; features: string[]; popular: boolean; }
 
+import GlobalFAQ from "@/components/FAQ/GlobalFAQ";
+
+const pricingFaqs = [
+  {
+    question: "Why does pricing vary slightly for certain premium fabrics?",
+    answer: "Premium fabrics like silk, cashmere, and high-end synthetics require specialized, extra-delicate solvents and longer processing times to ensure the fibers are not degraded, which creates a slight pricing gap compared to standard cottons."
+  },
+  {
+    question: "Do you have any hidden pickup or delivery charges?",
+    answer: "Nothing is hidden! Orders above ₹499 unlock absolutely free pickup and delivery. For orders below this threshold, a small flat delivery fee applies based on the order value—all clearly stated before you confirm."
+  },
+  {
+    question: "What are the benefits of your prepaid bulk washing plans?",
+    answer: "Our prepaid plans act like a digital wallet where you pay upfront for highly discounted volume credits. They eliminate the hassle of daily payments and offer overall savings of up to 25% for regular households."
+  },
+  {
+    question: "Are your listed prices inclusive of all taxes?",
+    answer: "Yes, all our prices on the website and app are fully inclusive of all applicable taxes. The price you see is exactly what you pay in your final invoice."
+  },
+  {
+    question: "Do you offer any special discounts for recurring or loyal customers?",
+    answer: "We have a loyalty program where recurring customers earn points on every order. We also offer seasonal and festive discounts which are announced via our WhatsApp newsletter."
+  },
+  {
+    question: "Is there a significant price difference for Men's and Women's garments?",
+    answer: "Pricing is primarily based on fabric type and garment complexity. While most standard items like shirts have similar rates, heavily embellished or delicate women's wear may require specialized care pricing."
+  },
+  {
+    question: "How do you calculate the weight for the 'Wash per KG' service?",
+    answer: "We weigh your clothes right at our facility using high-precision digital scales. This 'dry weight' is used to calculate your final bill accurately before the washing process begins."
+  },
+  {
+    question: "Do you provide customized pricing for corporate or hotel contracts?",
+    answer: "Yes, we offer specialized B2B pricing for high-volume corporate clients, hotels, and clinics. Please reach out to our commercial team via the contact page for a custom quote."
+  },
+  {
+    question: "Are your subscription wallet plans refundable if not fully used?",
+    answer: "Our subscription plans are designed for value and have high validity periods. While usually non-refundable, the credits can be transferred to another user or carried forward in most cases."
+  },
+  {
+    question: "Can I use 'Wash per KG' credits for Dry Cleaning services in a subscription?",
+    answer: "Most of our plans are specific to service types. However, we do have 'Combo Plans' that allow you to utilize your balance across multiple service categories like Laundry and Steam Ironing."
+  },
+  {
+    question: "Do you have a price match policy with local unorganized laundries?",
+    answer: "We provide a professional, tech-enabled service with professional facility hygiene and insurance—standards local shops often don't meet. As such, our pricing reflects our superior quality and reliability."
+  },
+  {
+    question: "Is there a surcharge for garments requiring extra-urgent turnaround?",
+    answer: "Yes, our 'Express Service' (24-hour turnaround) carries a 20% surcharge to cover the logistical and operational costs of prioritizing your items through our facility queue."
+  }
+];
+
 export default function PricingPage() {
   return (
     <Suspense fallback={<div>Loading Pricing...</div>}>
@@ -325,6 +378,9 @@ function PricingContent() {
         </div>
 
       </div>
+      
+      {/* Global FAQ Section */}
+      <GlobalFAQ faqs={pricingFaqs} />
     </div>
   );
 }
