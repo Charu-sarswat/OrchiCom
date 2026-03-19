@@ -173,6 +173,7 @@ export default function Home() {
       <Delivery />
       <Process />
       <GlobalFAQ faqs={homeFaqs} />
+      <Testimonials />
     </main>
   );
 }
