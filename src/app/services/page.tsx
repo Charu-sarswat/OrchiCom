@@ -81,16 +81,16 @@ export default function ServicesPage() {
             {steps.map((step, index) => {
               const nodeColors = ["#1a1a1a", "#18a1d8", "#1a1a1a", "#18a1d8", "#1a1a1a", "#18a1d8", "#1a1a1a", "#18a1d8"];
               
-              // Equal vertical spacing: 4 cards per side with y: -202, -67, +67, +202 (evenly spaced at ~134px gaps)
+              // Equal uniform vertical Y-spacing but dynamically adjusted X-radius so outer nodes cleanly dock onto the slanted octagonal edges
               const offsets = [
-                { x: 202, y: -202 },  // 01 - right top
+                { x: 95, y: -202 },   // 01 - right top
                 { x: 202, y: -67 },   // 02 - right upper-mid
                 { x: 202, y: 67 },    // 03 - right lower-mid
-                { x: 202, y: 202 },   // 04 - right bottom
-                { x: -202, y: 202 },  // 05 - left bottom
+                { x: 95, y: 202 },    // 04 - right bottom
+                { x: -95, y: 202 },   // 05 - left bottom
                 { x: -202, y: 67 },   // 06 - left lower-mid
                 { x: -202, y: -67 },  // 07 - left upper-mid
-                { x: -202, y: -202 }, // 08 - left top
+                { x: -95, y: -202 },  // 08 - left top
               ];
               
               const cColor = "#18a1d8"; // Force all card borders and icons to be strictly Blue
@@ -114,9 +114,20 @@ export default function ServicesPage() {
                     className="absolute top-1/2 -translate-y-1/2 bg-white rounded-full flex items-center p-[10px] py-[16px] w-[410px] border-[2px] z-[30]"
                     style={{
                       borderColor: cColor,
-                      [isRight ? 'left' : 'right']: '32px' // Spaced out to leave a clean visible white gap between card and node
+                      [isRight ? 'left' : 'right']: '25px' // Spaced exactly from the 50px node (25px radius)
                     }}
                   >
+                    {/* Tiny Connecting Pointer */}
+                    <div 
+                      className="absolute top-1/2 -translate-y-1/2 w-0 h-0 z-[-1]"
+                      style={{
+                        [isRight ? 'left' : 'right']: '-6px',
+                        borderTop: '6px solid transparent',
+                        borderBottom: '6px solid transparent',
+                        [isRight ? 'borderRight' : 'borderLeft']: `7px solid ${cColor}`,
+                      }}
+                    />
+
                     {/* Card Content based on direction */}
                     {isRight ? (
                       <>
@@ -124,16 +135,16 @@ export default function ServicesPage() {
                         <div className="w-[64px] h-[64px] rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: cColor }}>
                           <step.icon size={26} color="#fff" />
                         </div>
-                        <div className="flex-1 text-left pl-3 pr-5 pt-1">
-                          <h4 className="m-0 text-[1.05rem] font-bold text-black leading-[1.2] mb-[5px]">{step.title}</h4>
+                        <div className="flex-1 text-left px-5 pt-1">
+                          <h4 className="m-0 text-[1.05rem] font-bold text-black leading-[1.2] mb-[6px]">{step.title}</h4>
                           <p className="m-0 text-[0.8rem] text-[#666] leading-[1.35] pb-1">{step.desc}</p>
                         </div>
                       </>
                     ) : (
                       <>
                         {/* Icon Right for Left Cards (hugging center node) */}
-                        <div className="flex-1 text-right pr-3 pl-5 pt-1">
-                          <h4 className="m-0 text-[1.05rem] font-bold text-black leading-[1.2] mb-[5px]">{step.title}</h4>
+                        <div className="flex-1 text-right px-5 pt-1">
+                          <h4 className="m-0 text-[1.05rem] font-bold text-black leading-[1.2] mb-[6px]">{step.title}</h4>
                           <p className="m-0 text-[0.8rem] text-[#666] leading-[1.35] pb-1">{step.desc}</p>
                         </div>
                         <div className="w-[64px] h-[64px] rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: cColor }}>
