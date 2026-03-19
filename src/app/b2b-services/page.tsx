@@ -42,7 +42,7 @@ const B2BPage = () => {
           </div>
 
           {/* SOP Steps */}
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12 mt-12">
+          <div className="w-full flex flex-col gap-12 md:gap-20 mt-16 max-w-[1240px] mx-auto">
             {[
               {
                 number: "1",
@@ -117,22 +117,26 @@ const B2BPage = () => {
                 ]
               }
             ].map((step, idx) => (
-              <div key={idx} className="bg-white border border-[#eee] rounded-[30px] relative transition-all duration-400 hover:-translate-y-2 hover:border-primary/50 flex flex-col mt-4 shadow-none">
-                <div className="absolute -top-[22px] left-[24px] z-10 w-[55px] h-[55px] bg-[#18a1d8] rounded-[16px] flex items-center justify-center font-black text-[1.8rem] text-white shadow-none">
-                  {step.number}
+              <div key={idx} className="flex flex-col lg:flex-row items-stretch gap-0 lg:gap-0 w-full lg:h-[520px] group rounded-[40px] overflow-hidden border border-white/10 bg-white/5 shadow-none transition-all duration-400 hover:border-primary/50">
+                {/* Left Side: Image */}
+                <div className="w-full lg:w-1/2 min-h-[300px] lg:min-h-0 lg:h-full relative overflow-hidden shrink-0">
+                  <img src={step.image} alt={step.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute top-6 left-6 z-10 w-[55px] h-[55px] bg-[#18a1d8] rounded-[18px] flex items-center justify-center font-black text-[1.8rem] text-white shadow-none">
+                    {step.number}
+                  </div>
                 </div>
-                
-                <div className="w-full h-[200px] bg-[#f0f9ff] relative rounded-t-[30px] overflow-hidden">
-                  <img src={step.image} alt={step.title} className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" />
-                </div>
-                
-                <div className="p-8 pt-6">
-                  <h3 className="text-[1.25rem] md:text-[1.4rem] font-bold text-black mb-4 leading-tight">{step.title}</h3>
-                  <div className="flex flex-col gap-3">
+
+                {/* Right Side: Content Card */}
+                <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-white/10 h-full overflow-hidden">
+                   <h3 className="text-[1.6rem] md:text-[2.2rem] font-bold text-white mb-6 leading-tight">{step.title}</h3>
+                   <div className="flex flex-col gap-4">
                     {step.points.map((point, i) => (
-                      <p key={i} className="m-0 text-[#444] text-[0.95rem] md:text-[1rem] leading-relaxed">
-                        {point}
-                      </p>
+                      <div key={i} className="flex gap-4 items-start">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
+                        <p className="m-0 text-white/80 text-[1rem] md:text-[1.1rem] leading-relaxed">
+                          {point}
+                        </p>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -162,12 +166,14 @@ const B2BPage = () => {
               { icon: <Clock size={28} />, title: "Reliable Turnaround", desc: "Consistent collection and delivery on agreed schedules." },
               { icon: <MessageSquare size={28} />, title: "Transparent Communication", desc: "Any damage or issue is reported to the client before processing." },
             ].map((item, i) => (
-              <div key={i} className="bg-white border border-[rgba(24,161,216,0.15)] rounded-[30px] p-8 transition-all duration-400 hover:-translate-y-2 hover:border-primary text-center flex flex-col items-center shadow-none">
-                <div className="w-16 h-16 rounded-2xl bg-[#f0f9ff] text-primary flex items-center justify-center mb-6 shadow-none">
-                  {item.icon}
+              <div key={i} className="bg-white border border-[rgba(24,161,216,0.15)] rounded-[20px] p-4 md:p-6 transition-all duration-400 hover:-translate-y-2 hover:border-primary text-center flex flex-col items-center shadow-none min-h-[180px] justify-center">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-[#f0f9ff] text-primary flex items-center justify-center mb-3 md:mb-4 shadow-none">
+                  <div className="[&>svg]:w-5 [&>svg]:h-5 md:[&>svg]:w-6 md:[&>svg]:h-6">
+                    {item.icon}
+                  </div>
                 </div>
-                <h4 className="text-[1.2rem] md:text-[1.3rem] font-bold text-black mb-3">{item.title}</h4>
-                <p className="text-[#444] text-[0.95rem] md:text-[1rem] leading-relaxed m-0">{item.desc}</p>
+                <h4 className="text-[1rem] md:text-[1.1rem] font-bold text-black mb-1.5 leading-tight">{item.title}</h4>
+                <p className="text-[#444] text-[0.85rem] md:text-[0.9rem] leading-relaxed m-0">{item.desc}</p>
               </div>
             ))}
           </div>
