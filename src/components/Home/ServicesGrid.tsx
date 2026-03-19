@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from './ServicesGrid.module.css';
 
 const services = [
   { 
@@ -67,32 +66,31 @@ const services = [
 
 const ServicesGrid = () => {
   return (
-    <section className={`section-padding ${styles.servicesSection}`}>
+    <section className="bg-white section-padding">
       <div className="container">
-        <div className={styles.header}>
-          <h2 className={styles.title}>Our <span className="text-gradient">Services</span></h2>
+        <div className="text-center mb-8">
+          <h2 className="text-[2rem] md:text-5xl font-bold leading-[1.2]">Our <span className="text-gradient">Services</span></h2>
         </div>
         
-        <div className={styles.grid}>
+        <div className="grid gap-y-10 gap-x-4 sm:gap-6 lg:gap-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mt-8 lg:mt-12">
           {services.map((service) => (
-            <Link href={service.link} key={service.id} className={styles.serviceCard}>
-              <div className={styles.imageBox}>
+            <Link href={service.link} key={service.id} className="group bg-transparent no-underline flex flex-col items-center gap-3 lg:gap-4 transition-all duration-300">
+              <div className="relative w-[100px] h-[100px] md:w-[90px] md:h-[90px] rounded-xl overflow-hidden border-[1.5px] border-transparent transition-all duration-300 group-hover:border-[#18A1D8] shadow-none">
                 <Image 
                   src={service.img} 
                   alt={service.title} 
                   fill 
                   priority={service.id <= 3}
-                  className={styles.img}
+                  className="object-cover"
                 />
               </div>
-              <div className={styles.details}>
-                <h3>
+              <div className="text-center">
+                <h3 className="text-[1.15rem] font-extrabold m-0">
                   {service.title.split(' ')[0]} 
-                  <span style={{ color: 'var(--primary)', marginLeft: '4px' }}>
+                  <span className="text-primary ml-1">
                     {service.title.split(' ').slice(1).join(' ')}
                   </span>
                 </h3>
-                <span className={styles.linkText}>View Details ➜</span>
               </div>
             </Link>
           ))}

@@ -4,9 +4,7 @@ import { useParams, notFound } from "next/navigation";
 import { blogPosts } from "@/blog/blogData";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./BlogDetail.module.css";
 import { Calendar, User, ArrowRight, Tag, Mail, HelpCircle, ChevronRight, Facebook, Twitter, Linkedin, MessageSquare, Clock } from "lucide-react";
-
 import { useEffect, useState } from "react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
@@ -25,46 +23,22 @@ export default function BlogDetail() {
 
   useEffect(() => {
     if (!slug) return;
-
     const fetchPost = async () => {
       try {
         setIsLoading(true);
         const res = await fetch(`${API_URL}/blog/${slug}`);
         if (res.ok) {
           const data = await res.json();
-          setPost({
-            ...data,
-            date: new Date(data.createdAt).toLocaleDateString("en-IN", {
-              day: "numeric",
-              month: "long",
-              year: "numeric"
-            }),
-            author: data.author || "Admin",
-            category: data.category || "General",
-            image: data.image || "/img/blog-1.jpg"
-          });
+          setPost({ ...data, date: new Date(data.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" }), author: data.author || "Admin", category: data.category || "General", image: data.image || "/img/blog-1.jpg" });
         }
-
         const recentRes = await fetch(`${API_URL}/blog`);
         const recentData = await recentRes.json();
-        const formattedRecent = recentData.map((p: any) => ({
-          ...p,
-          date: new Date(p.createdAt).toLocaleDateString("en-IN", {
-            day: "numeric",
-            month: "short",
-            year: "numeric"
-          }),
-          image: p.image || "/img/blog-1.jpg"
-        }));
+        const formattedRecent = recentData.map((p: any) => ({ ...p, date: new Date(p.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }), image: p.image || "/img/blog-1.jpg" }));
         setAllPosts(formattedRecent);
         setRecentPosts(formattedRecent.filter((p: any) => p.slug !== slug).slice(0, 3));
-      } catch (error) {
-        console.error("Error fetching blog post:", error);
-      } finally {
-        setIsLoading(false);
-      }
+      } catch (error) { console.error("Error fetching blog post:", error); }
+      finally { setIsLoading(false); }
     };
-
     fetchPost();
   }, [slug]);
 
@@ -73,208 +47,163 @@ export default function BlogDetail() {
     const email = isBottom ? bottomSubEmail : subEmail;
     const setStatus = isBottom ? setBottomSubStatus : setSubStatus;
     const setEmail = isBottom ? setBottomSubEmail : setSubEmail;
-
     if (!email) return;
-
     setStatus('loading');
     try {
-      const res = await fetch(`${API_URL}/blog/subscribe`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-
-      if (res.ok) {
-        setStatus('success');
-        setEmail("");
-        setTimeout(() => setStatus('idle'), 3000);
-      } else {
-        setStatus('error');
-      }
-    } catch (error) {
-      console.error("Subscription error:", error);
-      setStatus('error');
-    }
+      const res = await fetch(`${API_URL}/blog/subscribe`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
+      if (res.ok) { setStatus('success'); setEmail(""); setTimeout(() => setStatus('idle'), 3000); }
+      else setStatus('error');
+    } catch (error) { console.error("Subscription error:", error); setStatus('error'); }
   };
 
-  if (isLoading) {
-    return <div className="container section-padding">Loading...</div>;
-  }
+  if (isLoading) return <div className="container section-padding">Loading...</div>;
+  if (!post) return notFound();
 
-  if (!post) {
-    return notFound();
-  }
-
-  // Calculate dynamic categories from all posts
-  const categories = allPosts.reduce((acc: any, p: any) => {
-    const cat = p.category || "General";
-    acc[cat] = (acc[cat] || 0) + 1;
-    return acc;
-  }, {});
+  const categories = allPosts.reduce((acc: any, p: any) => { const cat = p.category || "General"; acc[cat] = (acc[cat] || 0) + 1; return acc; }, {});
 
   return (
-    <div className={styles.page}>
+    <div className="bg-white py-5 md:py-10 pb-[60px] md:pb-20">
       <div className="container">
         {/* Breadcrumbs */}
-        <nav className={styles.breadcrumbs}>
-          <Link href="/">Home</Link>
+        <nav className="flex items-center gap-2 text-[0.85rem] text-[#888] mb-10">
+          <Link href="/" className="no-underline text-[#888] hover:text-[#18a1d8] transition-colors duration-200">Home</Link>
           <ChevronRight size={14} />
-          <Link href="/blog">Blog</Link>
+          <Link href="/blog" className="no-underline text-[#888] hover:text-[#18a1d8] transition-colors duration-200">Blog</Link>
           <ChevronRight size={14} />
-          <span>{post.title}</span>
+          <span className="text-[#555] font-semibold">{post.title}</span>
         </nav>
 
-        <div className={styles.mainGrid}>
+        <div className="grid gap-12 grid-cols-1 min-[1200px]:grid-cols-[1fr_340px]">
           {/* Main Content Area */}
-          <div className={styles.contentArea}>
-            <div className={styles.postHeader}>
-              <span className={styles.categoryBadge}>{post.category}</span>
-              <h1 className={styles.title}>{post.title}</h1>
-              <div className={styles.postMeta}>
-                <div className={styles.metaItem}>
-                  <User size={16} /> <span>By {post.author}</span>
-                </div>
-                <div className={styles.metaItem}>
-                  <Calendar size={16} /> <span>{post.date}</span>
-                </div>
-                <div className={styles.metaItem}>
-                  <Tag size={16} /> <span>{post.category}</span>
-                </div>
+          <div>
+            <div className="mb-12">
+              <span className="bg-[#e0f2fe] text-[#0ea5e9] py-[0.4rem] px-4 rounded-[6px] text-[0.75rem] font-extrabold uppercase inline-block mb-6">{post.category}</span>
+              <h1 className="text-[#18a1d8] font-extrabold leading-[1.2] mb-6 text-2xl max-[480px]:text-2xl md:text-[clamp(1.6rem,8vw,2rem)] min-[1024px]:text-[2.2rem] min-[1200px]:text-[clamp(1.8rem,6vw,2.8rem)]">{post.title}</h1>
+              <div className="flex flex-wrap gap-4 md:gap-8 text-[0.8rem] md:text-[0.9rem] text-[#64748b] font-semibold">
+                <div className="flex items-center gap-[0.6rem]"><User size={16} className="text-[#18a1d8]" /> <span>By {post.author}</span></div>
+                <div className="flex items-center gap-[0.6rem]"><Calendar size={16} className="text-[#18a1d8]" /> <span>{post.date}</span></div>
+                <div className="flex items-center gap-[0.6rem]"><Tag size={16} className="text-[#18a1d8]" /> <span>{post.category}</span></div>
               </div>
             </div>
 
-            <article className={styles.article}>
-              <div 
-                className={styles.blogContent}
-                dangerouslySetInnerHTML={{ __html: post.content.replace(/&nbsp;/g, ' ') }} 
-              />
+            <article className="text-[1.1rem] leading-[1.8] text-[#444]">
+              <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.content.replace(/&nbsp;/g, ' ') }} />
             </article>
 
             {/* Social Share & Tags Footer */}
-            <div className={styles.articleFooter}>
-              <div className={styles.shareGroup}>
-                <span>Share:</span>
-                <div className={styles.socialButtons}>
-                   <Link href="#" className={styles.socialCircle}><Facebook size={18} /></Link>
-                   <Link href="#" className={styles.socialCircle}><Twitter size={18} /></Link>
-                   <Link href="#" className={styles.socialCircle}><Linkedin size={18} /></Link>
-                   <Link href="#" className={styles.socialCircle}><Mail size={18} /></Link>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center my-16 py-8 border-t border-b border-[#eee] gap-6">
+              <div className="flex items-center gap-6">
+                <span className="font-bold text-[#333]">Share:</span>
+                <div className="flex gap-[0.8rem] flex-wrap">
+                  <Link href="#" className="w-10 h-10 rounded-full border border-[#e2e8f0] flex items-center justify-center text-[#64748b] transition-all duration-200 hover:bg-[#18a1d8] hover:text-white hover:border-[#18a1d8]"><Facebook size={18} /></Link>
+                  <Link href="#" className="w-10 h-10 rounded-full border border-[#e2e8f0] flex items-center justify-center text-[#64748b] transition-all duration-200 hover:bg-[#18a1d8] hover:text-white hover:border-[#18a1d8]"><Twitter size={18} /></Link>
+                  <Link href="#" className="w-10 h-10 rounded-full border border-[#e2e8f0] flex items-center justify-center text-[#64748b] transition-all duration-200 hover:bg-[#18a1d8] hover:text-white hover:border-[#18a1d8]"><Linkedin size={18} /></Link>
+                  <Link href="#" className="w-10 h-10 rounded-full border border-[#e2e8f0] flex items-center justify-center text-[#64748b] transition-all duration-200 hover:bg-[#18a1d8] hover:text-white hover:border-[#18a1d8]"><Mail size={18} /></Link>
                 </div>
               </div>
-              <div className={styles.footerTags}>
-                <span>Tags:</span>
-                {["PRO TIPS", "FABRIC CARE"].map(t => <span key={t} className={styles.tagLabel}>{t}</span>)}
+              <div className="flex items-center gap-4">
+                <span className="font-bold text-[#333]">Tags:</span>
+                {["PRO TIPS", "FABRIC CARE"].map(t => <span key={t} className="bg-[#f1f5f9] py-[0.4rem] px-[0.8rem] rounded text-[0.75rem] font-bold text-[#64748b]">{t}</span>)}
               </div>
             </div>
 
             {/* Author Box */}
-            <div className={styles.authorBox}>
-              <div className={styles.authorAvatar}>
-                <div className={styles.avatarCircle}>
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center p-4 max-[480px]:p-4 md:p-10 bg-white border border-[#e2e8f0] rounded-[20px] mb-20 max-[768px]:text-center">
+              <div>
+                <div className="w-[60px] max-[480px]:w-[60px] md:w-20 h-[60px] max-[480px]:h-[60px] md:h-20 bg-[#f1f5f9] rounded-full flex items-center justify-center text-[#18a1d8]">
                   <User size={40} />
                 </div>
               </div>
-              <div className={styles.authorBody}>
-                <h4>{post.author}</h4>
-                <p>Professional laundry experts dedicated to helping you care for your garments. Our guides provide actionable advice for longevity, fabric health, and premium care services.</p>
+              <div>
+                <h4 className="text-[1.1rem] max-[480px]:text-[1.1rem] md:text-[1.25rem] mb-2 text-[#18a1d8] font-extrabold">{post.author}</h4>
+                <p className="text-[0.95rem] text-[#64748b] leading-[1.6]">Professional laundry experts dedicated to helping you care for your garments. Our guides provide actionable advice for longevity, fabric health, and premium care services.</p>
               </div>
             </div>
 
             {/* Related Articles */}
-            <div className={styles.relatedSection}>
-              <h3>Related Articles</h3>
-              <div className={styles.relatedGrid}>
+            <div>
+              <h3 className="text-2xl mb-8 font-extrabold">Related Articles</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
                 {recentPosts.slice(0, 2).map((p) => (
-                  <Link href={`/blog/${p.slug}`} key={p.slug} className={styles.relatedCard}>
-                    <div className={styles.relatedImg}>
+                  <Link href={`/blog/${p.slug}`} key={p.slug} className="flex flex-col no-underline">
+                    <div className="relative h-[180px] rounded-xl overflow-hidden mb-4">
                       <Image src={p.image} alt={p.title} fill />
                     </div>
-                    <div className={styles.relatedInfo}>
-                      <h4>{p.title}</h4>
-                      <span>{p.category}</span>
+                    <div>
+                      <h4 className="text-[1.1rem] text-[#1e293b] font-bold mb-[0.4rem]">{p.title}</h4>
+                      <span className="text-[0.8rem] text-[#18a1d8] font-bold uppercase">{p.category}</span>
                     </div>
                   </Link>
                 ))}
               </div>
             </div>
 
-            <div className={styles.newsletterSection}>
-               <div className={styles.newsletterContent}>
-                  <h3>Subscribe to Our Newsletter</h3>
-                  <p>Get expert tips, fabric care guides and latest laundry news delivered to your inbox.</p>
-               </div>
-               <div className={styles.newsletterFormWrapper}>
-                 <form onSubmit={(e) => handleSubscribe(e, true)} className={styles.newsletterForm}>
-                    <input 
-                      type="email" 
-                      placeholder="Enter your email" 
-                      value={bottomSubEmail}
-                      onChange={(e) => setBottomSubEmail(e.target.value)}
-                      required
-                    />
-                    <button type="submit" disabled={bottomSubStatus === 'loading'}>
-                      {bottomSubStatus === 'loading' ? 'Saving...' : 'Subscribe'}
-                    </button>
-                 </form>
-                 {bottomSubStatus === 'success' && <p className={styles.successText}>Success! You're subscribed.</p>}
-                 {bottomSubStatus === 'error' && <p className={styles.errorText}>Something went wrong.</p>}
-               </div>
+            {/* Newsletter */}
+            <div className="bg-[#f8fafc] p-4 md:p-12 max-[768px]:py-8 max-[768px]:px-4 rounded-[20px] flex flex-col md:flex-row justify-between items-center gap-8 mt-16 max-[768px]:text-center">
+              <div>
+                <h3 className="text-2xl text-[#1e293b] mb-2 font-extrabold">Subscribe to Our Newsletter</h3>
+                <p className="text-[#64748b]">Get expert tips, fabric care guides and latest laundry news delivered to your inbox.</p>
+              </div>
+              <div className="flex flex-col shrink-0 max-[768px]:w-full">
+                <form onSubmit={(e) => handleSubscribe(e, true)} className="flex gap-4 max-[768px]:flex-col max-[768px]:w-full">
+                  <input type="email" placeholder="Enter your email" value={bottomSubEmail} onChange={(e) => setBottomSubEmail(e.target.value)} required className="py-[0.8rem] px-6 rounded-xl border border-[#e2e8f0] w-[300px] max-[768px]:w-full" />
+                  <button type="submit" disabled={bottomSubStatus === 'loading'} className="bg-[#18a1d8] text-white border-none py-[0.8rem] px-8 rounded-xl font-bold cursor-pointer max-[768px]:w-full">
+                    {bottomSubStatus === 'loading' ? 'Saving...' : 'Subscribe'}
+                  </button>
+                </form>
+                {bottomSubStatus === 'success' && <p className="text-[0.85rem] mt-[0.8rem] font-semibold pl-2 text-[#10b981]">Success! You're subscribed.</p>}
+                {bottomSubStatus === 'error' && <p className="text-[0.85rem] mt-[0.8rem] font-semibold pl-2 text-[#ef4444]">Something went wrong.</p>}
+              </div>
             </div>
           </div>
 
           {/* Sidebar Area */}
-          <aside className={styles.sidebar}>
-            <div className={styles.widget}>
-              <h3 className={styles.widgetTitle}><Mail size={18} /> Stay Updated</h3>
-              <p>Join our newsletter to receive the latest updates directly in your inbox.</p>
-              <form onSubmit={(e) => handleSubscribe(e)} className={styles.widgetForm}>
-                <input 
-                  type="email" 
-                  placeholder="Your Email Address" 
-                  value={subEmail}
-                  onChange={(e) => setSubEmail(e.target.value)}
-                  required
-                />
-                <button type="submit" className={styles.widgetBtn} disabled={subStatus === 'loading'}>
+          <aside className="flex flex-col gap-10">
+            <div className="bg-white border border-[#e2e8f0] p-6 max-[480px]:p-6 md:p-10 rounded-[20px]">
+              <h3 className="flex items-center gap-[0.8rem] text-[1.15rem] text-[#18a1d8] font-extrabold mb-6"><Mail size={18} /> Stay Updated</h3>
+              <p className="text-[0.9rem] text-[#64748b] mb-6 leading-[1.5]">Join our newsletter to receive the latest updates directly in your inbox.</p>
+              <form onSubmit={(e) => handleSubscribe(e)} className="flex flex-col gap-4">
+                <input type="email" placeholder="Your Email Address" value={subEmail} onChange={(e) => setSubEmail(e.target.value)} required className="py-[0.8rem] px-4 border border-[#e2e8f0] rounded-lg text-[0.9rem]" />
+                <button type="submit" className="bg-[#18a1d8] text-white border-none py-[0.8rem] rounded-lg font-bold cursor-pointer tracking-[0.05em]" disabled={subStatus === 'loading'}>
                   {subStatus === 'loading' ? 'SAVING...' : 'SUBSCRIBE NOW'}
                 </button>
               </form>
-              {subStatus === 'success' && <p className={styles.successTextSide}>Successfully subscribed!</p>}
-              {subStatus === 'error' && <p className={styles.errorTextSide}>Error subscribing.</p>}
+              {subStatus === 'success' && <p className="text-[0.8rem] mt-2 font-semibold text-center text-[#10b981]">Successfully subscribed!</p>}
+              {subStatus === 'error' && <p className="text-[0.8rem] mt-2 font-semibold text-center text-[#ef4444]">Error subscribing.</p>}
             </div>
 
-            <div className={styles.widget}>
-              <h3 className={styles.widgetTitle}><Clock size={18} /> Recent Posts</h3>
-              <div className={styles.recentList}>
+            <div className="bg-white border border-[#e2e8f0] p-6 max-[480px]:p-6 md:p-10 rounded-[20px]">
+              <h3 className="flex items-center gap-[0.8rem] text-[1.15rem] text-[#18a1d8] font-extrabold mb-6"><Clock size={18} /> Recent Posts</h3>
+              <div className="flex flex-col gap-6">
                 {recentPosts.map(p => (
-                  <Link href={`/blog/${p.slug}`} key={p.slug} className={styles.recentLink}>
-                    <ArrowRight size={14} />
+                  <Link href={`/blog/${p.slug}`} key={p.slug} className="flex gap-4 no-underline items-start transition-all duration-200 ease hover:translate-x-[5px] hover:opacity-80">
+                    <ArrowRight size={14} className="text-[#18a1d8] mt-1 shrink-0" />
                     <div>
-                      <p>{p.title}</p>
-                      <span>{p.date}</span>
+                      <p className="text-[0.95rem] text-[#1e293b] font-bold leading-[1.4] !m-0 !mb-[0.3rem]">{p.title}</p>
+                      <span className="text-[0.8rem] text-[#94a3b8]">{p.date}</span>
                     </div>
                   </Link>
                 ))}
               </div>
             </div>
 
-            <div className={styles.widget}>
-              <h3 className={styles.widgetTitle}><Tag size={18} /> Categories</h3>
-              <div className={styles.categoryList}>
+            <div className="bg-white border border-[#e2e8f0] p-6 max-[480px]:p-6 md:p-10 rounded-[20px]">
+              <h3 className="flex items-center gap-[0.8rem] text-[1.15rem] text-[#18a1d8] font-extrabold mb-6"><Tag size={18} /> Categories</h3>
+              <div className="flex flex-col gap-4">
                 {Object.entries(categories).map(([cat, count]) => (
-                  <Link href={`/blog?category=${cat}`} key={cat} className={styles.categoryItem}>
+                  <Link href={`/blog?category=${cat}`} key={cat} className="flex justify-between no-underline text-[#475569] font-semibold text-[0.95rem] py-2 px-[0.8rem] rounded-lg transition-all duration-200 ease hover:bg-[#f0f9ff] hover:text-[#18a1d8] hover:translate-x-[5px]">
                     <span>{cat}</span>
-                    <span className={styles.catCount}>{count as number}</span>
+                    <span className="bg-[#f1f5f9] text-[#64748b] w-6 h-6 rounded-full flex items-center justify-center text-[0.75rem]">{count as number}</span>
                   </Link>
                 ))}
               </div>
             </div>
 
             {/* Help Widget */}
-            <div className={styles.widgetHelp}>
-               <h3 className={styles.widgetTitle}><HelpCircle size={18} /> Need Expert Help?</h3>
-               <p>Our team of laundry experts is ready to assist with any garment care specialty. Contact us today!</p>
-               <Link href="/contact" className={styles.helpBtn}>Get in Touch</Link>
+            <div className="bg-[#f0f9ff] border border-[#bae6fd] p-6 max-[480px]:p-6 md:p-10 rounded-[20px] text-center">
+              <h3 className="flex items-center justify-center gap-[0.8rem] text-[1.15rem] text-[#18a1d8] font-extrabold mb-6"><HelpCircle size={18} /> Need Expert Help?</h3>
+              <p className="text-[0.9rem] text-[#475569] mb-6">Our team of laundry experts is ready to assist with any garment care specialty. Contact us today!</p>
+              <Link href="/contact" className="bg-[#18a1d8] text-white no-underline py-[0.8rem] px-8 rounded-xl font-bold inline-block">Get in Touch</Link>
             </div>
           </aside>
         </div>

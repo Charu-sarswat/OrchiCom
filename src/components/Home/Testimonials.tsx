@@ -2,7 +2,7 @@
 
 import { Star } from "lucide-react";
 import Image from "next/image";
-import styles from "./Testimonials.module.css";
+
 
 const testimonials = [
   {
@@ -72,38 +72,38 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className={`section-padding ${styles.section}`}>
+    <section className="bg-white py-12 overflow-hidden section-padding">
       <div className="container">
-        <div className={styles.header}>
-          <h2 className={styles.title}>What our <span className="text-gradient">Clients Say</span></h2>
+        <div className="text-center mb-10">
+          <h2 className="text-black">What our <span className="text-gradient">Clients Say</span></h2>
         </div>
       </div>
 
-      <div className={styles.wrapper}>
-        <div className={styles.track}>
+      <div className="w-full overflow-hidden relative py-8">
+        <div className="flex w-max animate-scroll-rtl hover:[animation-play-state:paused]">
           {[...Array(2)].map((_, listIndex) => (
-            <div key={listIndex} className={styles.list}>
+            <div key={listIndex} className="flex gap-8 pr-8">
               {testimonials.map((item, idx) => (
-                <div key={idx} className={styles.card}>
-                  <div className={styles.profile}>
-                    <div className={styles.avatar}>
-                      <Image src={item.image} alt={item.name} width={90} height={90} className={styles.img} />
+                <div key={idx} className="bg-white rounded-3xl w-[290px] md:w-[350px] min-h-[360px] shrink-0 flex flex-col p-5 md:p-8 border-[1.5px] border-[rgba(19,165,217,0.15)] transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:-translate-y-2 hover:border-[#13A5D9] hover:shadow-[0_20px_40px_rgba(19,165,217,0.15)]">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-[70px] h-[70px] md:w-[90px] md:h-[90px] rounded-full overflow-hidden shrink-0 relative flex items-center justify-center bg-[#f8fafc] border-[3px] border-[#13A5D9] shadow-[0_0_20px_rgba(19,165,217,0.2)]">
+                      <Image src={item.image} alt={item.name} width={90} height={90} className="object-cover object-top block !w-full !h-full" />
                     </div>
-                    <div className={styles.meta}>
-                      <strong>{item.name}</strong>
-                      <span>{item.role}</span>
+                    <div className="flex flex-col gap-1">
+                      <strong className="text-[1.1rem] md:text-[1.3rem] text-black font-extrabold whitespace-nowrap font-outfit">{item.name}</strong>
+                      <span className="text-[0.95rem] md:text-[1.05rem] text-[#13A5D9] font-semibold">{item.role}</span>
                     </div>
                   </div>
 
-                  <div className={styles.divider}></div>
+                  <div className="w-full h-px bg-[#f1f5f9] mb-6"></div>
                   
-                  <div className={styles.rating}>
+                  <div className="flex gap-[6px] mb-6">
                     {[...Array(item.rating)].map((_, i) => (
                       <Star key={i} size={20} fill="#FFD700" stroke="none" />
                     ))}
                   </div>
 
-                  <p className={styles.text}>"{item.text}"</p>
+                  <p className="text-[#334155] font-medium m-0">"{item.text}"</p>
                 </div>
               ))}
             </div>

@@ -1,25 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./booking.module.css";
 import { Check, Truck, User, List, Plus, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function BookingPage() {
   const [formData, setFormData] = useState({
-    fullname: "",
-    email: "",
-    phone: "",
-    address: "",
-    service: "",
-    quantity: "",
-    delivery: "standard",
-    pickup_date: "",
-    pickup_time: "",
-    instructions: "",
-    stain: false,
-    starch: false,
-    waterproof: false,
+    fullname: "", email: "", phone: "", address: "", service: "", quantity: "",
+    delivery: "standard", pickup_date: "", pickup_time: "", instructions: "",
+    stain: false, starch: false, waterproof: false,
   });
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -33,14 +22,12 @@ export default function BookingPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-    
     try {
       const res = await fetch("http://localhost:5000/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, type: "booking" }),
       });
-      
       if (res.ok) setStatus("success");
       else setStatus("error");
     } catch (err) {
@@ -50,9 +37,9 @@ export default function BookingPage() {
 
   if (status === "success") {
     return (
-      <div className={`section-padding ${styles.successPage}`}>
-        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className={styles.successCard}>
-          <div className={styles.successIcon}><Check size={48} /></div>
+      <div className="section-padding min-h-[80vh] flex items-center justify-center">
+        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center bg-white py-20 px-12 rounded-[40px] max-w-[600px] shadow-none">
+          <div className="w-[100px] h-[100px] rounded-full flex items-center justify-center mx-auto mb-10" style={{ background: 'rgba(70, 198, 206, 0.1)', color: '#46C6CE' }}><Check size={48} /></div>
           <h1>Booking Confirmed!</h1>
           <p>Thank you, {formData.fullname}. Our team will contact you within 2 hours to confirm your pickup.</p>
           <button onClick={() => setStatus("idle")} className="btn btn-primary">Make Another Booking</button>
@@ -61,53 +48,55 @@ export default function BookingPage() {
     );
   }
 
+  const inputCls = "w-full py-4 px-5 rounded-xl border-[1.5px] border-[#eee] font-[inherit] text-base transition-all duration-300 ease-in-out outline-none focus:border-secondary focus:shadow-[0_0_0_4px_rgba(70,198,206,0.1)]";
+
   return (
-    <div className={`section-padding ${styles.page}`}>
+    <div className="section-padding bg-light">
       <div className="container">
-        <div className={styles.header}>
-          <h1>Book Your <span className="text-gradient">Professional Care</span></h1>
+        <div className="text-center mb-16">
+          <h1 className="text-5xl mb-4">Book Your <span className="text-gradient">Professional Care</span></h1>
           <p>Quick and easy booking. Fill the form below and relax while we handle your garments.</p>
         </div>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className="max-w-[800px] mx-auto" onSubmit={handleSubmit}>
           {/* Section 1: Personal Info */}
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
+          <div className="bg-white rounded-[20px] mb-8 border border-black/5 overflow-hidden shadow-none">
+            <div className="bg-primary text-white py-5 px-8 flex items-center gap-4">
               <User size={20} />
-              <h3>Personal Information</h3>
+              <h3 className="m-0 text-[1.15rem] font-semibold">Personal Information</h3>
             </div>
-            <div className={styles.cardBody}>
-              <div className={styles.inputGroup}>
-                <label>Full Name *</label>
-                <input type="text" name="fullname" required value={formData.fullname} onChange={handleChange} placeholder="John Doe" />
+            <div className="p-8">
+              <div className="mb-6">
+                <label className="block mb-[0.8rem] font-semibold text-[0.9rem] text-primary">Full Name *</label>
+                <input type="text" name="fullname" required value={formData.fullname} onChange={handleChange} placeholder="John Doe" className={inputCls} />
               </div>
-              <div className={styles.row}>
-                <div className={styles.inputGroup}>
-                  <label>Email Address *</label>
-                  <input type="email" name="email" required value={formData.email} onChange={handleChange} placeholder="john@example.com" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="mb-6">
+                  <label className="block mb-[0.8rem] font-semibold text-[0.9rem] text-primary">Email Address *</label>
+                  <input type="email" name="email" required value={formData.email} onChange={handleChange} placeholder="john@example.com" className={inputCls} />
                 </div>
-                <div className={styles.inputGroup}>
-                  <label>Phone Number *</label>
-                  <input type="tel" name="phone" required value={formData.phone} onChange={handleChange} placeholder="7080803074" />
+                <div className="mb-6">
+                  <label className="block mb-[0.8rem] font-semibold text-[0.9rem] text-primary">Phone Number *</label>
+                  <input type="tel" name="phone" required value={formData.phone} onChange={handleChange} placeholder="7080803074" className={inputCls} />
                 </div>
               </div>
-              <div className={styles.inputGroup}>
-                <label>Address *</label>
-                <input type="text" name="address" required value={formData.address} onChange={handleChange} placeholder="Building, Street, Area..." />
+              <div className="mb-6">
+                <label className="block mb-[0.8rem] font-semibold text-[0.9rem] text-primary">Address *</label>
+                <input type="text" name="address" required value={formData.address} onChange={handleChange} placeholder="Building, Street, Area..." className={inputCls} />
               </div>
             </div>
           </div>
 
           {/* Section 2: Service Details */}
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
+          <div className="bg-white rounded-[20px] mb-8 border border-black/5 overflow-hidden shadow-none">
+            <div className="bg-primary text-white py-5 px-8 flex items-center gap-4">
               <List size={20} />
-              <h3>Service Selection</h3>
+              <h3 className="m-0 text-[1.15rem] font-semibold">Service Selection</h3>
             </div>
-            <div className={styles.cardBody}>
-              <div className={styles.inputGroup}>
-                <label>Select Service *</label>
-                <select name="service" required value={formData.service} onChange={handleChange}>
+            <div className="p-8">
+              <div className="mb-6">
+                <label className="block mb-[0.8rem] font-semibold text-[0.9rem] text-primary">Select Service *</label>
+                <select name="service" required value={formData.service} onChange={handleChange} className={inputCls}>
                   <option value="">-- Choose a Service --</option>
                   <option value="wash">Regular Wash & Iron</option>
                   <option value="dryclean">Dry Cleaning</option>
@@ -116,14 +105,14 @@ export default function BookingPage() {
                   <option value="sofa">Sofa Cleaning</option>
                 </select>
               </div>
-              <div className={styles.row}>
-                <div className={styles.inputGroup}>
-                  <label>Approx. Quantity (kg/pcs) *</label>
-                  <input type="text" name="quantity" required value={formData.quantity} onChange={handleChange} placeholder="e.g. 5kg or 2 pieces" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="mb-6">
+                  <label className="block mb-[0.8rem] font-semibold text-[0.9rem] text-primary">Approx. Quantity (kg/pcs) *</label>
+                  <input type="text" name="quantity" required value={formData.quantity} onChange={handleChange} placeholder="e.g. 5kg or 2 pieces" className={inputCls} />
                 </div>
-                <div className={styles.inputGroup}>
-                  <label>Delivery Speed *</label>
-                  <select name="delivery" value={formData.delivery} onChange={handleChange}>
+                <div className="mb-6">
+                  <label className="block mb-[0.8rem] font-semibold text-[0.9rem] text-primary">Delivery Speed *</label>
+                  <select name="delivery" value={formData.delivery} onChange={handleChange} className={inputCls}>
                     <option value="standard">Standard (3 Days)</option>
                     <option value="express">Express (24-48 Hours)</option>
                     <option value="sameday">Same Day (+ Charge)</option>
@@ -134,23 +123,23 @@ export default function BookingPage() {
           </div>
 
           {/* Section 3: Add-ons */}
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
+          <div className="bg-white rounded-[20px] mb-8 border border-black/5 overflow-hidden shadow-none">
+            <div className="bg-primary text-white py-5 px-8 flex items-center gap-4">
               <Plus size={20} />
-              <h3>Additional Services</h3>
+              <h3 className="m-0 text-[1.15rem] font-semibold">Additional Services</h3>
             </div>
-            <div className={styles.cardBody}>
-              <div className={styles.checkboxGrid}>
-                <label className={styles.checkboxLabel}>
-                  <input type="checkbox" name="stain" checked={formData.stain} onChange={handleChange} />
+            <div className="p-8">
+              <div className="grid gap-[1.2rem]" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
+                <label className="flex items-center gap-[0.8rem] cursor-pointer font-medium text-[#555]">
+                  <input type="checkbox" name="stain" checked={formData.stain} onChange={handleChange} className="w-5 h-5 accent-secondary" />
                   <span>Stain Removal Treatment</span>
                 </label>
-                <label className={styles.checkboxLabel}>
-                  <input type="checkbox" name="starch" checked={formData.starch} onChange={handleChange} />
+                <label className="flex items-center gap-[0.8rem] cursor-pointer font-medium text-[#555]">
+                  <input type="checkbox" name="starch" checked={formData.starch} onChange={handleChange} className="w-5 h-5 accent-secondary" />
                   <span>Fabric Starching (Finish)</span>
                 </label>
-                <label className={styles.checkboxLabel}>
-                  <input type="checkbox" name="waterproof" checked={formData.waterproof} onChange={handleChange} />
+                <label className="flex items-center gap-[0.8rem] cursor-pointer font-medium text-[#555]">
+                  <input type="checkbox" name="waterproof" checked={formData.waterproof} onChange={handleChange} className="w-5 h-5 accent-secondary" />
                   <span>Protective Coating</span>
                 </label>
               </div>
@@ -158,20 +147,20 @@ export default function BookingPage() {
           </div>
 
           {/* Section 4: Pickup & Delivery */}
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
+          <div className="bg-white rounded-[20px] mb-8 border border-black/5 overflow-hidden shadow-none">
+            <div className="bg-primary text-white py-5 px-8 flex items-center gap-4">
               <Truck size={20} />
-              <h3>Pickup Schedule</h3>
+              <h3 className="m-0 text-[1.15rem] font-semibold">Pickup Schedule</h3>
             </div>
-            <div className={styles.cardBody}>
-              <div className={styles.row}>
-                <div className={styles.inputGroup}>
-                  <label>Preferred Date *</label>
-                  <input type="date" name="pickup_date" required value={formData.pickup_date} onChange={handleChange} />
+            <div className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="mb-6">
+                  <label className="block mb-[0.8rem] font-semibold text-[0.9rem] text-primary">Preferred Date *</label>
+                  <input type="date" name="pickup_date" required value={formData.pickup_date} onChange={handleChange} className={inputCls} />
                 </div>
-                <div className={styles.inputGroup}>
-                  <label>Time Slot *</label>
-                  <select name="pickup_time" required value={formData.pickup_time} onChange={handleChange}>
+                <div className="mb-6">
+                  <label className="block mb-[0.8rem] font-semibold text-[0.9rem] text-primary">Time Slot *</label>
+                  <select name="pickup_time" required value={formData.pickup_time} onChange={handleChange} className={inputCls}>
                     <option value="">-- Choose Time Slot --</option>
                     <option value="9am-12pm">09:00 AM - 12:00 PM</option>
                     <option value="12pm-3pm">12:00 PM - 03:00 PM</option>
@@ -180,30 +169,30 @@ export default function BookingPage() {
                   </select>
                 </div>
               </div>
-              <div className={styles.freeNotice}>
+              <div className="flex items-center gap-[0.6rem] text-[#1c7c3d] font-bold text-[0.9rem] mt-2">
                 <Check size={16} /> FREE Pickup & Delivery included
               </div>
             </div>
           </div>
 
           {/* Section 5: Instructions */}
-          <div className={styles.card}>
-            <div className={styles.cardHeader}>
+          <div className="bg-white rounded-[20px] mb-8 border border-black/5 overflow-hidden shadow-none">
+            <div className="bg-primary text-white py-5 px-8 flex items-center gap-4">
               <MessageSquare size={20} />
-              <h3>Special Instructions</h3>
+              <h3 className="m-0 text-[1.15rem] font-semibold">Special Instructions</h3>
             </div>
-            <div className={styles.cardBody}>
-              <div className={styles.inputGroup}>
-                <textarea name="instructions" rows={4} value={formData.instructions} onChange={handleChange} placeholder="Any specific handles, delicate fabrics, or stain locations..."></textarea>
+            <div className="p-8">
+              <div className="mb-6">
+                <textarea name="instructions" rows={4} value={formData.instructions} onChange={handleChange} placeholder="Any specific handles, delicate fabrics, or stain locations..." className={inputCls}></textarea>
               </div>
             </div>
           </div>
 
-          <button type="submit" disabled={status === "loading"} className={`btn btn-primary ${styles.submitBtn}`}>
+          <button type="submit" disabled={status === "loading"} className="btn btn-primary w-full py-6 text-xl rounded-[15px] mt-4">
             {status === "loading" ? "Processing..." : "Confirm Booking"}
           </button>
           
-          {status === "error" && <p className={styles.error}>Something went wrong. Please try again or call us.</p>}
+          {status === "error" && <p className="text-[#c12b2b] text-center mt-6 font-semibold">Something went wrong. Please try again or call us.</p>}
         </form>
       </div>
     </div>

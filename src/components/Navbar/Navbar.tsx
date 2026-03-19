@@ -6,7 +6,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Calendar, ShieldCheck, Clock, MapPin } from "lucide-react";
-import styles from "./Navbar.module.css";
 
 import { serviceCategories } from "@/services/servicesData";
 
@@ -39,50 +38,54 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`${styles.nav} ${isScrolled ? styles.scrolled : ""}`}>
+      <nav className={`fixed top-0 left-0 right-0 flex items-center z-[1000] transition-all duration-400 ease ${
+        isScrolled 
+          ? "bg-white/95 h-[70px] backdrop-blur-[10px] shadow-[0_4px_30px_rgba(0,0,0,0.05)]" 
+          : "bg-white h-[var(--nav-height)] max-[1100px]:h-[var(--nav-height-mobile)] shadow-[0_2px_10px_rgba(0,0,0,0.02)]"
+      }`}>
         <div className="container">
-          <div className={styles.navInner}>
+          <div className="flex justify-between items-center w-full">
             {/* Logo */}
-            <Link href="/" className={styles.logo}>
-              <Image src="/logo.png" alt="The Orchid Laundry" width={200} height={70} priority />
+            <Link href="/" className="group">
+              <Image src="/logo.png" alt="The Orchid Laundry" width={200} height={70} priority className="h-[50px] w-auto transition-transform duration-300 ease group-hover:scale-105" />
             </Link>
 
             {/* Desktop Menu */}
-            <div className={styles.desktopMenu}>
-              <Link href="/" className={`${styles.navLink} ${pathname === "/" ? styles.active : ""}`}>Home</Link>
-              <Link href="/about" className={`${styles.navLink} ${pathname === "/about" ? styles.active : ""}`}>About</Link>
+            <div className="hidden min-[1100px]:flex items-center gap-2">
+              <Link href="/" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Home</Link>
+              <Link href="/about" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/about" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>About</Link>
 
               <div
-                className={styles.dropdownWrap}
+                className="relative flex items-center group"
                 onMouseEnter={() => setShowDropdown(true)}
                 onMouseLeave={() => setShowDropdown(false)}
               >
-                <Link href="/services" className={`${styles.navLink} ${pathname.startsWith("/services") ? styles.active : ""}`}>
+                <Link href="/services" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname.startsWith("/services") ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>
                   Services
-                  <ChevronDown size={14} className={styles.chevron} />
+                  <ChevronDown size={14} className="transition-transform duration-300 ease group-hover:rotate-180 flex-shrink-0" />
                 </Link>
 
                 <AnimatePresence>
                   {showDropdown && (
                     <motion.div
-                      className={styles.dropdown}
-                      initial={{ opacity: 0, y: 15, x: "-50%" }}
-                      animate={{ opacity: 1, y: 0, x: "-50%" }}
-                      exit={{ opacity: 0, y: 15, x: "-50%" }}
+                      className="absolute top-full bg-white min-w-[750px] p-10 rounded-[30px] border border-black/5 z-[1001] overflow-hidden left-1/2 -ml-[375px] mt-[10px] shadow-[0_40px_100px_rgba(0,0,0,0.1)]"
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 15 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className={styles.dropdownContent}>
+                      <div className="flex gap-12 relative w-full">
                         {serviceCategories.map((category, idx) => (
-                          <div key={category.title} className={styles.categorySection}>
-                            <h5 className={styles.categoryTitle}>
+                          <div key={category.title} className="flex-1">
+                            <h5 className="text-[0.8rem] uppercase text-primary tracking-[0.1em] font-extrabold mb-6 flex items-center gap-[0.8rem]">
                               {idx === 0 && <ShieldCheck size={16} />}
                               {idx === 1 && <Clock size={16} />}
                               {idx === 2 && <MapPin size={16} />}
                               {category.title}
                             </h5>
-                            <div className={styles.categoryLinks}>
+                            <div className="flex flex-col gap-[0.4rem]">
                               {category.links.map((s) => (
-                                <Link key={s.href} href={s.href} className={styles.dropdownItem}>{s.name}</Link>
+                                <Link key={s.href} href={s.href} className="py-[0.8rem] px-5 text-[#444] no-underline font-semibold text-[0.95rem] rounded-2xl transition-all duration-200 ease hover:bg-light hover:text-primary hover:translate-x-[5px] block">{s.name}</Link>
                               ))}
                             </div>
                           </div>
@@ -93,12 +96,12 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              <Link href="/pricing" className={`${styles.navLink} ${pathname === "/pricing" ? styles.active : ""}`}>Pricing</Link>
-              <Link href="/blog" className={`${styles.navLink} ${pathname === "/blog" ? styles.active : ""}`}>Blog</Link>
-              <Link href="/contact" className={`${styles.navLink} ${pathname === "/contact" ? styles.active : ""}`}>Contact</Link>
+              <Link href="/pricing" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/pricing" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Pricing</Link>
+              <Link href="/blog" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/blog" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Blog</Link>
+              <Link href="/contact" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/contact" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Contact</Link>
 
-              <div className={styles.desktopActions}>
-                <Link href="/booking" className={styles.cta}>
+              <div className="flex items-center gap-6 ml-4 pl-6 border-l border-[#eee]">
+                <Link href="/booking" className="bg-primary text-white py-[0.8rem] px-[1.8rem] rounded-2xl no-underline font-bold text-[0.95rem] flex items-center gap-[0.8rem] shadow-[0_10px_20px_rgba(24,161,216,0.15)] transition-all duration-300 ease hover:-translate-y-[2px] hover:shadow-[0_15px_30px_rgba(24,161,216,0.25)]">
                   <Calendar size={18} />
                   Schedule Pickup
                 </Link>
@@ -106,9 +109,9 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Toggle */}
-            <div className={styles.mobileRight}>
-              <Link href="/contact" className={styles.mobileContactBtn}>Contact Us</Link>
-              <button className={styles.mobileToggle} onClick={() => setIsOpen(!isOpen)}>
+            <div className="flex min-[1100px]:hidden items-center gap-[0.8rem]">
+              <Link href="/contact" className="bg-primary text-white py-[0.55rem] px-[0.85rem] rounded-[10px] text-[0.8rem] font-bold no-underline whitespace-nowrap transition-all duration-300 ease hover:bg-[#37B9EC] hover:-translate-y-[1px]">Contact Us</Link>
+              <button className="bg-transparent border-none text-black cursor-pointer flex items-center p-1" onClick={() => setIsOpen(!isOpen)}>
                 {isOpen ? <X size={26} /> : <Menu size={26} />}
               </button>
             </div>
@@ -121,44 +124,44 @@ export default function Navbar() {
             <>
               {/* Overlay */}
               <motion.div
-                className={styles.overlay}
+                className="fixed inset-0 z-[1999] bg-[rgba(0,0,0,0.25)]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setIsOpen(false)}
               />
               <motion.div
-                className={styles.mobileMenu}
+                className="fixed top-0 right-0 h-[100dvh] bg-white z-[2000] flex flex-col overflow-hidden border-l border-[#f0f0f0] shadow-[-4px_0_24px_rgba(0,0,0,0.08)] w-[min(82vw,300px)] max-[380px]:w-[88vw]"
                 initial={{ x: "100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ type: "spring", damping: 28, stiffness: 220 }}
               >
-                <div className={styles.mobileHeader}>
+                <div className="py-[0.85rem] px-4 flex justify-between items-center border-b border-[#f0f0f0] shrink-0">
                   <Image src="/logo.png" alt="Logo" width={110} height={38} />
-                  <button onClick={() => setIsOpen(false)} aria-label="Close menu">
+                  <button className="bg-[#f5f5f5] border-none w-9 h-9 rounded-full flex items-center justify-center cursor-pointer text-[#333] transition-all duration-250 ease hover:bg-[#eee]" onClick={() => setIsOpen(false)} aria-label="Close menu">
                     <X size={22} />
                   </button>
                 </div>
 
-                <div className={styles.mobileLinks}>
-                  <Link href="/" className={pathname === "/" ? styles.mobileActive : ""}>Home</Link>
-                  <Link href="/about" className={pathname === "/about" ? styles.mobileActive : ""}>About</Link>
+                <div className="flex-1 overflow-y-auto py-2 px-3 flex flex-col gap-[0.15rem] touch-pan-y" style={{ WebkitOverflowScrolling: 'touch' }}>
+                  <Link href="/" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Home</Link>
+                  <Link href="/about" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/about" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>About</Link>
 
                   {/* Collapsible Services */}
-                  <div className={styles.mobileSubmenu}>
+                  <div className="rounded-[10px] overflow-hidden border border-black/[0.06] bg-[#fafafa] my-[0.1rem]">
                     <button
-                      className={styles.mobileSubmenuHeader}
+                      className="flex items-center justify-between w-full py-[0.55rem] px-3 bg-transparent border-none cursor-pointer transition-background duration-200 ease hover:bg-[rgba(24,161,216,0.05)]"
                       onClick={() => setShowServices(!showServices)}
                       aria-expanded={showServices}
                     >
-                      <span className={styles.mobileSubmenuLabel}>
+                      <span className="flex items-center gap-2 font-bold text-[0.9rem] text-primary">
                         <ShieldCheck size={15} />
                         Services
                       </span>
                       <ChevronDown
                         size={15}
-                        className={`${styles.submenuChevron} ${showServices ? styles.submenuChevronOpen : ""}`}
+                        className={`text-[#888] flex-shrink-0 transition-transform duration-[0.22s] ease ${showServices ? "rotate-180" : ""}`}
                       />
                     </button>
 
@@ -171,13 +174,13 @@ export default function Navbar() {
                           transition={{ duration: 0.22 }}
                           style={{ overflow: "hidden" }}
                         >
-                          <div className={styles.mobileSubGrid}>
+                          <div className="py-2 px-3 pb-[0.6rem] flex flex-col gap-[0.8rem]">
                             {serviceCategories.map((category) => (
-                              <div key={category.title} className={styles.mobileCategory}>
-                                <p className={styles.mobileCategoryTitle}>{category.title}</p>
-                                <div className={styles.mobileSubLinks}>
+                              <div key={category.title} className="flex flex-col">
+                                <p className="text-[0.62rem] uppercase font-bold text-[#a0a0a0] tracking-[0.1em] mb-[0.3rem] pl-[0.1rem] m-0">{category.title}</p>
+                                <div className="flex flex-col gap-[0.05rem]">
                                   {category.links.map((s) => (
-                                    <Link key={s.href} href={s.href} className={styles.mobileSubLink}>{s.name}</Link>
+                                    <Link key={s.href} href={s.href} className="no-underline text-[#444] font-semibold text-[0.82rem] py-[0.35rem] px-[0.7rem] rounded-md transition-all duration-200 ease hover:bg-white hover:text-primary block">{s.name}</Link>
                                   ))}
                                 </div>
                               </div>
@@ -188,16 +191,16 @@ export default function Navbar() {
                     </AnimatePresence>
                   </div>
 
-                  <Link href="/pricing" className={pathname === "/pricing" ? styles.mobileActive : ""}>Pricing</Link>
-                  <Link href="/blog" className={pathname === "/blog" ? styles.mobileActive : ""}>Blog</Link>
-                  <Link href="/contact" className={pathname === "/contact" ? styles.mobileActive : ""}>Contact</Link>
+                  <Link href="/pricing" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/pricing" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Pricing</Link>
+                  <Link href="/blog" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/blog" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Blog</Link>
+                  <Link href="/contact" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/contact" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Contact</Link>
 
-                  <div className={styles.mobileActions}>
-                    <a href="tel:+917080803074" className={styles.mobilePhoneBtn}>
+                  <div className="py-3 px-3 flex flex-col gap-2 bg-white border-t border-[#f0f0f0] shrink-0 mt-auto">
+                    <a href="tel:+917080803074" className="bg-[#f0f9ff] text-primary flex items-center justify-center gap-2 py-[0.6rem] px-4 rounded-[10px] no-underline font-semibold text-[0.88rem] transition-all duration-300 ease hover:bg-primary hover:text-white">
                       <Phone size={17} />
                       +91 70808 03074
                     </a>
-                    <Link href="/booking" className={styles.mobileCta}>Book free pickup</Link>
+                    <Link href="/booking" className="bg-primary text-white text-center py-[0.6rem] px-4 rounded-[10px] no-underline font-semibold text-[0.88rem] block">Book free pickup</Link>
                   </div>
                 </div>
               </motion.div>

@@ -18,7 +18,6 @@ import ServicesGrid from '@/components/Home/ServicesGrid';
 import Delivery from '@/components/Home/Delivery';
 import Process from '@/components/Home/Process';
 import Testimonials from '@/components/Home/Testimonials';
-import styles from './Home.module.css';
 
 export default function Home() {
   return (
@@ -26,10 +25,10 @@ export default function Home() {
       <Hero />
       
       {/* About Section */}
-      <section className={`${styles.homeSection} bg-light`}>
+      <section className="py-12 bg-light">
         <div className="container">
-          <div className="grid grid-2">
-            <div className="about-home-image-container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative rounded-[30px] overflow-hidden min-h-[300px] md:min-h-[480px] w-full">
               <Image 
                 src="/img/about-new.jpg" 
                 alt="The Orchid Laundry LLP" 
@@ -37,36 +36,36 @@ export default function Home() {
                 style={{ objectFit: 'cover' }}
               />
             </div>
-            <div style={{ paddingLeft: '1.5rem' }}>
-              <h2 style={{ marginBottom: '0.5rem' }}>About <span className="text-gradient">The Orchid Laundry LLP</span></h2>
-              <p style={{ fontWeight: 800, color: '#000', marginBottom: '0.8rem', fontSize: '1.1rem' }}>Fast - Reliable - Affordable</p>
+            <div className="lg:pl-6 text-center lg:text-left">
+              <h2 className="mb-2">About <span className="text-gradient">The Orchid Laundry LLP</span></h2>
+              <p className="font-extrabold text-black mb-3 text-[1.1rem]">Fast - Reliable - Affordable</p>
               
-              <p style={{ color: '#333', marginBottom: '0.8rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
-                At <strong style={{ color: 'var(--primary)' }}>The Orchid Laundry</strong>, we turn an everyday chore into a seamless, stress-free experience.
+              <p className="text-[#333] mb-3 text-[1.1rem] leading-[1.6]">
+                At <strong className="text-primary">The Orchid Laundry</strong>, we turn an everyday chore into a seamless, stress-free experience.
               </p>
               
-              <p style={{ color: '#333', marginBottom: '0.8rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
+              <p className="text-[#333] mb-3 text-[1.1rem] leading-[1.6]">
                 We know the hours spent on washing, drying, ironing, and folding can add up, time that could be better spent on family, work, or simply enjoying life.
               </p>
 
-              <p style={{ color: '#333', marginBottom: '1.2rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
+              <p className="text-[#333] mb-5 text-[1.1rem] leading-[1.6]">
                 That is why we started <strong className="text-gradient">The Orchid Laundry LLP</strong>, to make laundry fast, reliable, and affordable. What began as a small idea in Dombivli has grown into a professional, tech-enabled service dedicated to quality, convenience, and customer delight.
               </p>
 
-              <div className={styles.featureGrid}>
+              <div className="grid grid-cols-1 min-[480px]:grid-cols-2 gap-6 mb-6">
                 {[
                   { label: "FAST", desc: "Quick on-time service" },
                   { label: "RELIABLE", desc: "Consistent quality" },
                   { label: "AFFORDABLE", desc: "Transparent pricing" },
                   { label: "ECO-FRIENDLY", desc: "Safe processes" }
                 ].map((item, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.8rem', fontSize: '1.05rem' }}>
-                    <CheckCircle2 size={22} color="var(--primary)" style={{ marginTop: '2px', flexShrink: 0 }} /> 
-                    <span><strong style={{ color: 'var(--primary)' }}>{item.label}:</strong> {item.desc}</span>
+                  <div key={i} className="flex items-start lg:justify-start justify-center gap-[0.8rem] text-[1.05rem]">
+                    <CheckCircle2 size={22} className="text-primary mt-[2px] shrink-0" /> 
+                    <span><strong className="text-primary">{item.label}:</strong> {item.desc}</span>
                   </div>
                 ))}
               </div>
-              <Link href="/about" className="btn btn-primary" style={{ marginTop: '1.2rem' }}>Read More</Link>
+              <Link href="/about" className="btn btn-primary mt-[1.2rem] inline-block">Read More</Link>
             </div>
           </div>
         </div>
@@ -75,9 +74,9 @@ export default function Home() {
       <ServicesGrid />
 
       {/* Why Choose Us */}
-      <section className="section-padding bg-white" style={{ overflow: 'hidden' }}>
+      <section className="section-padding bg-white overflow-hidden">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <div className="text-center mb-12">
             <h2>The Orchid Laundry – <span className="text-gradient">Why Choose Us?</span></h2>
           </div>
         </div>
@@ -85,7 +84,7 @@ export default function Home() {
         <div className="why-choose-wrapper">
           <div className="why-choose-track">
             {[...Array(2)].map((_, listIndex) => (
-              <div key={listIndex} style={{ display: 'flex', gap: '2rem' }}>
+              <div key={listIndex} className="flex gap-8">
                 {[
                   { title: "Cost-Effective Laundry by Kilo", desc: "Get professional cleaning at affordable prices. Outsourcing your laundry saves money compared to frequent home washing, especially for busy families.", icon: Wallet },
                   { title: "Saves Time, Space & Effort", desc: "Laundry takes hours every week, plus drying requires space and attention. We take care of it all, letting you focus on what matters most.", icon: Hourglass },
@@ -100,27 +99,18 @@ export default function Home() {
                   { title: "Hygiene & Safety First", desc: "From detergents to packaging, every step is hygienic, UV-safe, and allergy-conscious, ensuring peace of mind for your family.", icon: Shield }
                 ].map((item, i) => (
                   <div key={i} className="why-choose-card">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', width: '100%', marginBottom: '1rem' }}>
-                      <div style={{ 
-                        width: '40px', 
-                        height: '40px', 
-                        backgroundColor: '#f1f5f9', 
-                        borderRadius: '8px', 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        justifyContent: 'center',
-                        flexShrink: 0
-                      }}>
-                        <item.icon size={20} color="#000" strokeWidth={2.5} />
+                    <div className="flex items-center gap-3 w-full mb-4">
+                      <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center shrink-0">
+                        <item.icon size={20} className="text-black" strokeWidth={2.5} />
                       </div>
-                      <h3 style={{ fontSize: '1.15rem', fontWeight: 800, lineHeight: '1.2', margin: 0 }}>
+                      <h3 className="text-[1.15rem] font-extrabold leading-[1.2] m-0">
                         {item.title.split(' ')[0]} 
-                        <span style={{ color: 'var(--primary)', marginLeft: '4px' }}>
+                        <span className="text-primary ml-1">
                           {item.title.split(' ').slice(1).join(' ')}
                         </span>
                       </h3>
                     </div>
-                    <p style={{ color: '#555', fontSize: '0.8rem', lineHeight: '1.4', margin: 0 }}>{item.desc}</p>
+                    <p className="text-[#555] text-sm leading-[1.4] m-0">{item.desc}</p>
                   </div>
                 ))}
               </div>
