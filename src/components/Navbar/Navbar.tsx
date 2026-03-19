@@ -96,6 +96,7 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
+              <Link href="/b2b-services" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/b2b-services" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>B2B Services</Link>
               <Link href="/pricing" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/pricing" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Pricing</Link>
               <Link href="/blog" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/blog" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Blog</Link>
               <Link href="/contact" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/contact" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Contact</Link>
@@ -191,6 +192,7 @@ export default function Navbar() {
                     </AnimatePresence>
                   </div>
 
+                  <Link href="/b2b-services" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/b2b-services" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>B2B Services</Link>
                   <Link href="/pricing" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/pricing" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Pricing</Link>
                   <Link href="/blog" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/blog" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Blog</Link>
                   <Link href="/contact" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/contact" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Contact</Link>
