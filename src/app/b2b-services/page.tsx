@@ -168,7 +168,7 @@ const B2BPage = () => {
                     {/* Content Card */}
                     <div className="w-full lg:w-1/2 text-left py-8">
                         <div className="mb-12">
-                            <h4 className="text-[1.6rem] md:text-[2rem] font-bold text-black mb-8 leading-tight">Industry <span className="text-gradient">Scope</span></h4>
+                            <h4 className="text-[1.8rem] md:text-[2.6rem] font-bold text-black mb-8 leading-tight">{ind.title} <span className="text-gradient">Industry Scope</span></h4>
                             <p className="text-[1.1rem] md:text-[1.15rem] leading-[1.75] text-[#444] mb-10 font-medium">{ind.description}</p>
                             <div className="flex flex-wrap gap-3">
                                 {ind.clients.map(c => (
