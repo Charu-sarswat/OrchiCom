@@ -21,7 +21,7 @@ const AboutPage = () => {
         <div className="container">
           <div className="max-w-[800px] mx-auto px-4">
             <h1 className="mb-4 leading-[1.1] text-[2.2rem] md:text-[3.5rem] lg:text-[4.2rem] font-bold">
-              About <span className="text-white">The Orchid Laundry LLP</span>
+              About <span className="text-white">The Orchid Laundry</span>
             </h1>
             <p className="text-[1.1rem] md:text-[1.3rem] font-medium tracking-[0.05em] text-white opacity-90">
               Fast - Reliable - Affordable
@@ -47,7 +47,7 @@ const AboutPage = () => {
                 We know the hours spent on washing, drying, ironing, and folding can add up—time that could be better spent on family, work, or simply enjoying life.
               </p>
               <p className="text-[#444] mb-6 text-[1.1rem] md:text-[1.15rem] leading-[1.75]">
-                That is why we started <strong className="text-gradient">The Orchid Laundry LLP</strong>, to make laundry fast, reliable, and affordable. What began as a small idea in Dombivli has grown into a professional, tech-enabled service dedicated to quality, convenience, and customer delight.
+                That is why we started <strong className="text-gradient">The Orchid Laundry</strong>, to make laundry fast, reliable, and affordable. What began as a small idea in Dombivli has grown into a professional, tech-enabled service dedicated to quality, convenience, and customer delight.
               </p>
             </div>
           </div>

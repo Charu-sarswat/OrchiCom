@@ -68,7 +68,7 @@ export default function BlogPage() {
       <div className="container">
         <div className="text-center mb-16 px-4">
           <h1 className="text-[2rem] md:text-[3.2rem] text-black font-bold mb-4">
-            The Orchid <span className="text-gradient">Blog</span>
+            The <span className="text-primary">Orchid Blog</span>
           </h1>
           <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">
             Expert Fabric Care Guides, Laundry Tips, and Professional Insights
@@ -163,7 +163,7 @@ export default function BlogPage() {
       </div>
       
       {/* Global FAQ Section */}
-      <GlobalFAQ faqs={blogFaqs} />
+      <GlobalFAQ faqs={blogFaqs} subtitle="- Fabric Care & Laundry Insights" />
     </>
   );
 }

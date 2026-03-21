@@ -200,7 +200,7 @@ function PricingContent() {
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <h1 className="text-[2rem] md:text-[3.2rem] text-black font-bold mb-4">
-            Our Services & <span className="text-gradient">Pricing</span>
+            Our <span className="text-primary">Services & Pricing</span>
           </h1>
           <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">
             Transparent Pricing and Flexible Subscription Plans for Complete Wardrobe Care
@@ -269,7 +269,6 @@ function PricingContent() {
           <table className="w-full border-collapse">
             <thead>
               <tr>
-                <th className="sticky top-0 z-20 bg-[#18a1d8] text-white py-6 md:py-6 px-[1.2rem] md:px-8 text-left text-[0.9rem] md:text-[1.05rem] font-bold">Service Category</th>
                 <th className="sticky top-0 z-20 bg-[#18a1d8] text-white py-6 md:py-6 px-[1.2rem] md:px-8 text-left text-[0.9rem] md:text-[1.05rem] font-bold">Item Description</th>
                 <th className="sticky top-0 z-20 bg-[#18a1d8] text-white py-6 md:py-6 px-[1.2rem] md:px-8 text-center text-[0.9rem] md:text-[1.05rem] font-bold">Price (INR)</th>
               </tr>
@@ -280,7 +279,7 @@ function PricingContent() {
                   <Fragment key={group.category}>
                     {!activeService.toLowerCase().includes("kg") && (
                       <tr className="bg-[#f8fafc]/50">
-                        <td colSpan={3} className="py-6 px-8 border-b border-[#f1f5f9]">
+                        <td colSpan={2} className="py-6 px-8 border-b border-[#f1f5f9]">
                           <div className="flex items-center gap-3 font-bold text-black text-[1rem] uppercase tracking-wider">
                             <User size={18} className="text-primary" /> {group.category}
                           </div>
@@ -289,7 +288,6 @@ function PricingContent() {
                     )}
                     {group.items.map((item, i) => (
                       <tr key={i} className="hover:bg-gray-50/50 transition-colors">
-                        <td className="py-5 px-8 border-b border-[#f1f5f9] text-[1rem] text-[#64748b] font-medium">{activeService.toLowerCase().includes("kg") ? "Laundry" : `${group.category} Service`}</td>
                         <td className="py-5 px-8 border-b border-[#f1f5f9] text-[1rem] text-[#444] font-semibold">{item.name}</td>
                         <td className="py-5 px-8 border-b border-[#f1f5f9] text-[1.1rem] font-bold text-black text-center">{item.price}</td>
                       </tr>
@@ -298,7 +296,7 @@ function PricingContent() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={3} className="text-center py-24 text-[#94a3b8] text-[1.1rem]">No items found matching your search.</td>
+                  <td colSpan={2} className="text-center py-24 text-[#94a3b8] text-[1.1rem]">No items found matching your search.</td>
                 </tr>
               )}
             </tbody>
@@ -310,39 +308,54 @@ function PricingContent() {
           <h3 className="flex items-center gap-3 mb-8 text-black font-bold text-[1.4rem]"><Star size={24} className="text-[#18a1d8]" /> Add-on Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ul className="list-none p-0 flex flex-col gap-5">
-              <li className="flex items-center gap-4 text-[1.1rem] text-[#444] font-medium">
-                <span className="w-2 h-2 bg-primary rounded-full"></span>
-                <span>Starch:</span> <strong className="text-[#18a1d8] ml-auto">₹10/per piece</strong>
+              <li className="flex items-center text-[1.05rem] text-[#444] font-medium">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3 shrink-0"></span>
+                <div className="flex items-center gap-4">
+                  <span>Starch:</span>
+                  <span className="text-primary">Rs. 10 per piece</span>
+                </div>
               </li>
-              <li className="flex items-center gap-4 text-[1.1rem] text-[#444] font-medium">
-                <span className="w-2 h-2 bg-primary rounded-full"></span>
-                <span>Fragrance:</span> <strong className="text-[#18a1d8] ml-auto">₹10/per piece</strong>
+              <li className="flex items-center text-[1.05rem] text-[#444] font-medium">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3 shrink-0"></span>
+                <div className="flex items-center gap-4">
+                  <span>Fragrance:</span>
+                  <span className="text-primary">Rs. 10 per piece</span>
+                </div>
               </li>
             </ul>
             <ul className="list-none p-0 flex flex-col gap-5">
-              <li className="flex items-center gap-4 text-[1.1rem] text-[#444] font-medium">
-                <span className="w-2 h-2 bg-primary rounded-full"></span>
-                <span>Antiseptic Wash:</span> <strong className="text-[#18a1d8] ml-auto">₹10/per piece</strong>
+              <li className="flex items-center text-[1.05rem] text-[#444] font-medium">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3 shrink-0"></span>
+                <div className="flex items-center gap-4">
+                  <span>Antiseptic Wash:</span>
+                  <span className="text-primary">Rs. 10 per piece</span>
+                </div>
               </li>
-              <li className="flex items-center gap-4 text-[1.1rem] text-[#444] font-medium">
-                <span className="w-2 h-2 bg-primary rounded-full"></span>
-                <span>Express Service (20% extra):</span> <strong className="text-[#18a1d8] ml-auto">Min ₹199</strong>
+              <li className="flex items-center text-[1.05rem] text-[#444] font-medium">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3 shrink-0"></span>
+                <div className="flex items-center gap-4">
+                  <span>Express Service (20% extra):</span>
+                  <span className="text-primary">Min Rs. 199</span>
+                </div>
               </li>
             </ul>
           </div>
+          <p className="mt-8 text-[0.95rem] text-[#666] italic leading-relaxed">
+            * Express Service includes Pick up and Drop Off with an extra charge of 20% of the total laundry bill, with a minimum of Rs. 199.
+          </p>
         </div>
 
         {/* Subscription Plans */}
         <div className="mb-20">
           <div className="text-center mb-16">
             <h2 className="text-[2rem] md:text-[2.8rem] text-black font-bold mb-4">
-              Subscription <span className="text-gradient">Plans</span>
+              Subscription <span className="text-primary">Plans</span>
             </h2>
             <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">Choose a plan that fits your regular laundry volume and enjoy bigger savings.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {plans.map((plan, idx) => (
-              <div key={idx} className={`bg-white rounded-[30px] p-8 md:p-10 border relative flex flex-col transition-all duration-400 hover:-translate-y-2 shadow-none ${plan.popular ? "border-[#18a1d8] ring-2 ring-[#18a1d8]/10" : "border-[#e2e8f0]"}`}>
+              <div key={idx} className={`bg-white rounded-[30px] p-8 md:p-10 border relative flex flex-col transition-all duration-400 hover:-translate-y-2 hover:border-primary hover:ring-2 hover:ring-primary/10 shadow-none ${plan.popular ? "border-[#18a1d8] ring-2 ring-[#18a1d8]/10" : "border-[#e2e8f0]"}`}>
                 {plan.popular && <span className="absolute -top-[16px] left-1/2 -translate-x-1/2 bg-[#18a1d8] text-white py-1.5 px-6 rounded-full text-[0.8rem] font-bold tracking-widest uppercase">Most Popular</span>}
                 <div className="text-center mb-10">
                   <h3 className="text-[#18a1d8] text-[1.4rem] font-bold mb-4 uppercase tracking-wider">{plan.name}</h3>
@@ -372,11 +385,11 @@ function PricingContent() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center bg-gray-50/50 py-8 px-6 rounded-[24px]">
               <div className="flex flex-col items-center gap-3">
                 <p className="text-[#444] text-[1.15rem] font-semibold">Orders below ₹299</p>
-                <span className="text-primary font-bold text-[1.4rem]">₹60 Delivery</span>
+                <span className="text-primary font-bold text-[1.4rem]">₹99 Delivery</span>
               </div>
               <div className="flex flex-col items-center gap-3 border-y md:border-y-0 md:border-x border-[#e2e8f0] py-6 md:py-0">
                 <p className="text-[#444] text-[1.15rem] font-semibold">Orders ₹299 - ₹499</p>
-                <span className="text-primary font-bold text-[1.4rem]">₹30 Delivery</span>
+                <span className="text-primary font-bold text-[1.4rem]">₹49 Delivery</span>
               </div>
               <div className="flex flex-col items-center gap-3">
                 <p className="text-[#444] text-[1.15rem] font-semibold">Orders above ₹499</p>
@@ -400,12 +413,12 @@ function PricingContent() {
             <h3 className="flex items-center gap-4 mb-8 text-black font-bold text-[1.4rem]"><Calendar size={28} className="text-[#18a1d8]" /> Booking Cut-off Timings</h3>
             <div className="flex flex-col gap-6">
               <div className="bg-primary/5 p-6 rounded-2xl border-l-[4px] border-l-primary">
-                <p className="text-[1.05rem] text-primary font-bold mb-2 uppercase tracking-wide">Morning Slots (1 & 2)</p>
-                <p className="text-[1.15rem] text-black font-bold">Cut-off: 10:00 PM <span className="font-medium text-[#444] text-[0.95rem]">(Previous Day)</span></p>
+                <p className="text-[1.05rem] text-primary font-bold mb-2 uppercase tracking-wide">Slots 1 & 2 (Morning)</p>
+                <p className="text-[1.15rem] text-black font-bold">Cut-off: 10:30 PM <span className="font-medium text-[#444] text-[0.95rem]">(Previous Day)</span></p>
               </div>
               <div className="bg-primary/5 p-6 rounded-2xl border-l-[4px] border-l-primary">
-                <p className="text-[1.05rem] text-primary font-bold mb-2 uppercase tracking-wide">Evening Slots (3 & 4)</p>
-                <p className="text-[1.15rem] text-black font-bold">Cut-off: 10:00 AM <span className="font-medium text-[#444] text-[0.95rem]">(Same Day)</span></p>
+                <p className="text-[1.05rem] text-primary font-bold mb-2 uppercase tracking-wide">Slots 3 & 4 (Evening)</p>
+                <p className="text-[1.15rem] text-black font-bold">Cut-off: 12:00 PM <span className="font-medium text-[#444] text-[0.95rem]">(Same Day)</span></p>
               </div>
             </div>
           </div>
@@ -414,7 +427,7 @@ function PricingContent() {
       </div>
       
       {/* Global FAQ Section */}
-      <GlobalFAQ faqs={pricingFaqs} />
+      <GlobalFAQ faqs={pricingFaqs} subtitle="- Flexible Pricing & Subscription Plans" />
     </div>
   );
 }

@@ -28,9 +28,9 @@ const services = [
   },
   { 
     id: 5, 
-    title: 'Household Cleaning', 
+    title: 'Household Laundry', 
     img: '/img/household.jpg',
-    link: '/services/household'
+    link: '/services/household-laundry'
   },
   { 
     id: 6, 

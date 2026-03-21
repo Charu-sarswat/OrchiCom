@@ -18,10 +18,10 @@ export const servicesData = {
     pricingBtnText: "View Dry Cleaning Pricing",
     backBtnText: "Back to All Services",
     longDescription: [
-      "We understand that some garments are more than just clothing - they hold memories, emotions, and value.",
-      "Whether it's a wedding lehenga, designer gown, silk saree, woolens, or a bespoke suit, our professional dry cleaning service ensures your precious clothes are treated with utmost care.",
-      "Our FAST, RELIABLE, and AFFORDABLE services combine advanced eco-friendly cleaning techniques with modern technology to save you time, effort, and resources - all from the comfort of your home.",
-      "We believe that dry cleaning is not just a service but an art, and our highly trained team ensures that every garment receives attention tailored to its fabric, design, and level of care required."
+      "We understand that some garments are more than just clothing - they hold memories emotions and value.",
+      "Whether it's a wedding lehenga designer gown silk saree woolens or a bespoke suit our professional dry cleaning service ensures your precious clothes are treated with utmost care.",
+      "Our FAST RELIABLE and AFFORDABLE services combine advanced eco-friendly cleaning techniques with modern technology to save you time effort and resources - all from the comfort of your home.",
+      "We believe that dry cleaning is not just a service but an art and our highly trained team ensures that every garment receives attention tailored to its fabric design and level of care required."
     ],
     process: [
       { step: 1, title: "Tagging & Sorting", desc: "Each garment is tagged, categorized, and sorted according to fabric type, color, and cleaning requirements to avoid mix-ups." },
@@ -567,7 +567,7 @@ export const serviceCategories = [
       { name: "Wash & Iron", href: "/services/wash-iron" },
       { name: "Wash & Fold", href: "/services/wash-fold" },
       { name: "Premium Laundry", href: "/services/premium-laundry" },
-      { name: "Household", href: "/services/household-laundry" },
+      { name: "Household Laundry", href: "/services/household-laundry" },
     ]
   },
   {

@@ -11,21 +11,37 @@ export type FAQItem = {
 
 interface GlobalFAQProps {
   faqs: FAQItem[];
+  title?: string;
+  subtitle?: string;
 }
 
-export default function GlobalFAQ({ faqs }: GlobalFAQProps) {
+export default function GlobalFAQ({ 
+  faqs, 
+  title = "FAQs | The Orchid Laundry",
+  subtitle = "- Laundry & Dry cleaning Services"
+}: GlobalFAQProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const splitTitle = (text: string) => {
+    if (!text) return "";
+    const words = text.split(" ");
+    return (
+      <>
+        {words[0]} <span className="text-primary">{words.slice(1).join(" ")}</span>
+      </>
+    );
+  };
 
   return (
     <section className="bg-[#f8f9fa] py-16 lg:py-24">
       <div className="container max-w-[1000px] mx-auto px-4">
         <div className="text-center mb-16">
-          <p className="text-gradient text-[1rem] font-bold uppercase tracking-widest mb-4">
+          <p className="text-primary text-[1rem] font-bold uppercase tracking-widest mb-4">
             GENERAL FAQS
           </p>
           <h2 className="text-[2rem] md:text-[3.2rem] text-black w-full mb-6 leading-[1.1]">
-            FAQs | The Orchid Laundry <br/>
-            <span className="text-gradient">- Best Laundry & Dry Clean Company</span>
+            {splitTitle(title)} <br/>
+            <span className="text-primary">{subtitle}</span>
           </h2>
         </div>
 

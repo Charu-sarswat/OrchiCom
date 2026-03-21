@@ -232,7 +232,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Global FAQ Section */}
-      <GlobalFAQ faqs={servicesFaqs} />
+      <GlobalFAQ faqs={servicesFaqs} subtitle="- Comprehensive Care for All Services" />
     </div>
   );
 }

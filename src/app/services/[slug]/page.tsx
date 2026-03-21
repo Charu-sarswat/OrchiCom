@@ -40,7 +40,7 @@ export default function ServiceDetail() {
   const splitTitle = (title: string) => {
     if (!title) return null;
     const words = title.split(" ");
-    const splitPoint = Math.floor(words.length / 2);
+    const splitPoint = 1;
     const firstPart = words.slice(0, splitPoint).join(" ");
     const secondPart = words.slice(splitPoint).join(" ");
     return <>{firstPart} <span className="text-gradient">{secondPart}</span></>;
@@ -80,13 +80,22 @@ export default function ServiceDetail() {
         {'longDescription' in service && (
           <section className="mb-20 px-4">
             <div className="text-center mb-10">
-              <h2 className="text-[2rem] md:text-[2.6rem] text-black font-bold mb-6">{splitTitle(service.longDescTitle)}</h2>
+              <h2 className="text-[2.2rem] md:text-[2.8rem] text-black font-bold mb-6">
+                {splitTitle(service.longDescTitle)}
+              </h2>
             </div>
 
-            <div className="max-w-[1000px] mx-auto p-8 md:p-14 bg-white rounded-[40px] border border-black/5 shadow-none">
-              <div className="max-w-[850px] mx-auto text-center flex flex-col gap-6">
+            <div className="max-w-[1180px] mx-auto p-6 md:p-10 bg-white rounded-[40px] border-2 border-[#18a1d8]/30 shadow-none">
+              <div className="w-full mx-auto flex flex-col gap-6">
                 {service.longDescription.map((para: string, i: number) => (
-                  <p key={i} className="text-[1.05rem] md:text-[1.15rem] text-[#444] leading-relaxed italic">"{para}"</p>
+                  <div key={i} className="flex gap-5 items-start">
+                    <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle size={22} className="text-primary" />
+                    </div>
+                    <p className="text-[1.05rem] md:text-[1.15rem] text-[#444] leading-relaxed m-0 font-medium pt-1">
+                      {para}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -190,13 +199,9 @@ export default function ServiceDetail() {
           </div>
         )}
 
-        {/* Closing Statement */}
         {'closingStatement' in service && (
-          <div className="max-w-[900px] mx-auto mt-10 p-10 bg-[#EBF8FF] border border-primary/20 rounded-[30px] flex flex-col items-center justify-center text-center gap-6 mx-4">
-            <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center shrink-0">
-              <Info size={24} />
-            </div>
-            <p className="m-0 text-[1.1rem] md:text-[1.2rem] text-black/80 leading-relaxed font-bold italic">{service.closingStatement}</p>
+          <div className="max-w-[900px] mx-auto mt-10 p-10 bg-[#EBF8FF] border border-primary/20 rounded-[30px] flex flex-col items-center justify-center text-center mx-4">
+            <p className="m-0 text-[1.1rem] md:text-[1.2rem] text-black/80 leading-relaxed font-bold">{service.closingStatement}</p>
           </div>
         )}
 
@@ -224,7 +229,24 @@ export default function ServiceDetail() {
       </div>
 
       {/* Global FAQ Section */}
-      <GlobalFAQ faqs={serviceFaqsMap[slug] || serviceFaqsMap["dry-cleaning"]} />
+      <GlobalFAQ 
+        faqs={serviceFaqsMap[slug] || serviceFaqsMap["dry-cleaning"]} 
+        subtitle={
+          slug === 'dry-cleaning' ? '- Professional Dry Cleaning Services' :
+          slug === 'steam-iron' ? '- Precision Steam Ironing Services' :
+          slug === 'wash-iron' ? '- Quality Wash & Iron Services' :
+          slug === 'wash-fold' ? '- Convenient Wash & Fold Services' :
+          slug === 'wash-kg' ? '- Economical Laundry by the Kg' :
+          slug === 'premium-laundry' ? '- Premium Laundry & Care Services' :
+          slug === 'household-laundry' ? '- Expert Household Laundry Services' :
+          slug === 'shoe-cleaning' ? '- Specialized Shoe Cleaning Services' :
+          slug === 'sofa-cleaning' ? '- Premium Sofa & Upholstery cleaning' :
+          slug === 'carpet-cleaning' ? '- Professional Carpet & Rug Cleaning' :
+          slug === 'curtain-cleaning' ? '- Expert Curtain & Drape Cleaning' :
+          slug === 'bridal-wear' ? '- Delicate Bridal & Wedding Wear Care' :
+          '- Premium Laundry & Dry cleaning Services'
+        }
+      />
     </>
   );
 }

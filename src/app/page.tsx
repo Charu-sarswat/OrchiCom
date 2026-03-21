@@ -85,7 +85,7 @@ export default function Home() {
             <div className="relative rounded-2xl overflow-hidden h-[300px] md:h-[400px] lg:h-[450px] w-full shadow-none group">
               <Image 
                 src="/img/about-new.jpg" 
-                alt="The Orchid Laundry LLP" 
+                alt="The Orchid Laundry" 
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -96,7 +96,7 @@ export default function Home() {
               <div className="space-y-1.5 lg:space-y-2">
                 <span className="text-primary font-bold text-[0.75rem] md:text-[0.8rem] uppercase tracking-[3px] block">Who We Are</span>
                 <h2 className="text-[2rem] md:text-[2.8rem] text-black leading-[1.2] lg:leading-tight m-0">
-                  About <span className="text-gradient">The Orchid Laundry LLP</span>
+                  About <span className="text-gradient">The Orchid Laundry</span>
                 </h2>
                 <h3 className="text-[1rem] md:text-[1.2rem] text-black font-semibold tracking-wide mt-1 lg:mt-0">
                   Fast • Reliable • Affordable
@@ -111,7 +111,7 @@ export default function Home() {
                   We know the hours spent on washing, drying, ironing, and folding can add up—time that could be better spent on family, work, or simply enjoying life.
                 </p>
                 <p>
-                  That is why we started <strong className="text-primary">The Orchid Laundry LLP</strong>, to make laundry fast, reliable, and affordable. What began as a small idea in Dombivli has grown into a tech-enabled service dedicated to quality and convenience.
+                  That is why we started <strong className="text-primary">The Orchid Laundry</strong>, to make laundry fast, reliable, and affordable. What began as a small idea in Dombivli has grown into a tech-enabled service dedicated to quality and convenience.
                 </p>
               </div>
 
@@ -191,7 +191,7 @@ export default function Home() {
       </section>
       <Delivery />
       <Process />
-      <GlobalFAQ faqs={homeFaqs} />
+      <GlobalFAQ faqs={homeFaqs} subtitle="- Professional Laundry & Clean Services" />
       <Testimonials />
     </main>
   );

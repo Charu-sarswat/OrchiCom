@@ -37,8 +37,8 @@ export default function Footer() {
                 <li className="mb-3"><Link href="/" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">Home</Link></li>
                 <li className="mb-3"><Link href="/about" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">About Us</Link></li>
                 <li className="mb-3"><Link href="/services" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">Our Services</Link></li>
-                <li className="mb-3"><Link href="/pricing" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">Pricing Plans</Link></li>
-                <li className="mb-3"><Link href="/blog" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">Laundry Blog</Link></li>
+                <li className="mb-3"><Link href="/pricing" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">Pricing & Plans</Link></li>
+                <li className="mb-3"><Link href="/blog" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">Blog</Link></li>
                 <li className="mb-3"><Link href="/contact" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">Contact Us</Link></li>
               </ul>
             </div>
@@ -49,7 +49,6 @@ export default function Footer() {
                 <li className="mb-3"><Link href="/terms" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">Terms &amp; Conditions</Link></li>
                 <li className="mb-3"><Link href="/privacy" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">Privacy Policy</Link></li>
                 <li className="mb-3"><Link href="/faq" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">FAQs</Link></li>
-                <li className="mb-3"><Link href="/booking" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">Book a Pickup</Link></li>
                 <li className="mb-3"><Link href="/contact" className="text-[#444] no-underline transition-all duration-300 ease-in-out text-[0.95rem] hover:text-primary hover:pl-1">Support Center</Link></li>
               </ul>
             </div>
@@ -81,10 +80,6 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-[#f0f0f0] py-[0.7rem] md:py-6 flex flex-col min-[480px]:row justify-between items-center text-[#666] text-[0.8rem] md:text-[0.9rem] gap-[0.3rem] min-[480px]:gap-0 text-center min-[480px]:text-left">
-          <p>&copy; {new Date().getFullYear()} The Orchid Laundry LLP. All Rights Reserved.</p>
-          <p className="italic text-[#888] hidden max-[768px]:hidden min-[480px]:block max-[480px]:block max-[480px]:text-[0.8rem]">Designed with care for premium garments.</p>
-        </div>
       </div>
     </footer>
   );

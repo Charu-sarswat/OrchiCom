@@ -128,7 +128,7 @@ const ContactPage = () => {
         <div className="mt-12 w-full">
           <iframe 
             title="Location Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.4353966186486!2d73.1188939!3d19.1761764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be795ca24710af3%3A0x4895fa5fec477883!2sThe%20Orchid%20Laundry%20LLP!5e0!3m2!1sen!2sin!4v1773768246349!5m2!1sen!2sin" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.4353966186486!2d73.1188939!3d19.1761764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be795ca24710af3%3A0x4895fa5fec477883!2sThe%20Orchid%20Laundry!5e0!3m2!1sen!2sin!4v1773768246349!5m2!1sen!2sin" 
             width="100%" 
             height="450" 
             style={{ border: 0, borderRadius: '24px' }} 
@@ -141,7 +141,7 @@ const ContactPage = () => {
       </div>
       
       {/* Global FAQ Section */}
-      <GlobalFAQ faqs={contactFaqs} />
+      <GlobalFAQ faqs={contactFaqs} subtitle="- Get All Your Questions Answered" />
     </>
   );
 };

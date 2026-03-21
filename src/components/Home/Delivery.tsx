@@ -60,10 +60,10 @@ export default function Delivery() {
             </div>
             <ul className="list-none p-0 m-0 flex flex-col gap-[1rem] flex-1">
               <li className="flex items-start gap-[0.6rem] text-black font-medium text-[1.05rem] leading-[1.3]">
-                <Check size={20} className="text-black mt-[2px] shrink-0" /> With Minimal Additional Charges
+                <Check size={20} className="text-black mt-[2px] shrink-0" /> Minimal extra Charge
               </li>
               <li className="flex items-start gap-[0.6rem] text-black font-medium text-[1.05rem] leading-[1.3]">
-                <Check size={20} className="text-black mt-[2px] shrink-0" /> Same-day / Next-day Delivery
+                <Check size={20} className="text-black mt-[2px] shrink-0" /> Same Day Delivery
               </li>
             </ul>
           </motion.div>

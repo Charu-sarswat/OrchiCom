@@ -47,27 +47,6 @@ const testimonials = [
     text: "The staff is responsive and professional. They handled a few delicate garments perfectly, and the stain removal was better than I expected.",
     rating: 5,
   },
-  {
-    name: "Rajesh Sharma",
-    role: "Verified Customer",
-    image: "/img/rajesh.jpeg",
-    text: "The Orchid Laundry has been my go-to service for the past 2 years. Their customer service is exceptional and my clothes always come back perfectly cleaned. Highly recommended!",
-    rating: 5,
-  },
-  {
-    name: "Neha Gupta",
-    role: "Verified Customer",
-    image: "/img/neha.jpeg",
-    text: "Amazing service! The subscription plan saves me so much money. The team is always on time and my clothes are delivered in perfect condition.",
-    rating: 5,
-  },
-  {
-    name: "Priya Patel",
-    role: "Verified Customer",
-    image: "/img/priya.jpg",
-    text: "Excellent service! They handled my wedding dress with utmost care. The team is professional and the pricing is very reasonable. Worth every penny!",
-    rating: 5,
-  },
 ];
 
 export default function Testimonials() {
