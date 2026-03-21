@@ -47,7 +47,7 @@ const ContactPage = () => {
               <div className="w-[55px] h-[55px] rounded-2xl flex items-center justify-center text-primary shrink-0" style={{ background: 'rgba(24, 161, 216, 0.1)' }}><MapPin size={26} /></div>
               <div>
                 <h3 className="text-[1.25rem] font-bold text-black mb-2">Our Location</h3>
-                <p className="text-[#444] text-[1rem] leading-relaxed">Shop No. 3, Priyanka Compound, Near MHADA Colony, Badlapur Pipeline Road, Khoni, Dombivli East - 421204</p>
+                <a href="#map" className="text-[#444] text-[1rem] leading-relaxed no-underline hover:text-primary transition-colors block">Shop No. 3, Priyanka Compound, Near MHADA Colony, Badlapur Pipeline Road, Khoni, Dombivli East - 421204</a>
               </div>
             </div>
 
@@ -55,8 +55,8 @@ const ContactPage = () => {
               <div className="w-[55px] h-[55px] rounded-2xl flex items-center justify-center text-primary shrink-0" style={{ background: 'rgba(24, 161, 216, 0.1)' }}><Phone size={26} /></div>
               <div>
                 <h3 className="text-[1.25rem] font-bold text-black mb-2">Call Us</h3>
-                <p className="text-[#444] text-[1rem] leading-relaxed mb-1">Orders: <span className="font-bold">7080803074</span></p>
-                <p className="text-[#444] text-[1rem] leading-relaxed">Support: <span className="font-bold">7080804074</span></p>
+                <p className="text-[#444] text-[1rem] leading-relaxed mb-1">Orders: <a href="tel:7080803074" className="font-bold text-black hover:text-primary transition-colors no-underline">7080803074</a></p>
+                <p className="text-[#444] text-[1rem] leading-relaxed">Support: <a href="tel:7080804074" className="font-bold text-black hover:text-primary transition-colors no-underline">7080804074</a></p>
               </div>
             </div>
 
@@ -64,8 +64,8 @@ const ContactPage = () => {
               <div className="w-[55px] h-[55px] rounded-2xl flex items-center justify-center text-primary shrink-0" style={{ background: 'rgba(24, 161, 216, 0.1)' }}><MailIcon size={26} /></div>
               <div>
                 <h3 className="text-[1.25rem] font-bold text-black mb-2">Email Us</h3>
-                <p className="text-[#444] text-[1rem] leading-relaxed mb-1">Info@theorchidlaundry.com</p>
-                <p className="text-[#444] text-[1rem] leading-relaxed">care@theorchidlaundry.com</p>
+                <p className="text-[#444] text-[1rem] leading-relaxed mb-1"><a href="mailto:Info@theorchidlaundry.com" className="hover:text-primary transition-colors no-underline text-inherit">Info@theorchidlaundry.com</a></p>
+                <p className="text-[#444] text-[1rem] leading-relaxed"><a href="mailto:care@theorchidlaundry.com" className="hover:text-primary transition-colors no-underline text-inherit">care@theorchidlaundry.com</a></p>
               </div>
             </div>
             
@@ -125,7 +125,7 @@ const ContactPage = () => {
         </div>
 
         {/* Map Section */}
-        <div className="mt-12 w-full">
+        <div id="map" className="mt-12 w-full">
           <iframe 
             title="Location Map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.4353966186486!2d73.1188939!3d19.1761764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be795ca24710af3%3A0x4895fa5fec477883!2sThe%20Orchid%20Laundry!5e0!3m2!1sen!2sin!4v1773768246349!5m2!1sen!2sin" 

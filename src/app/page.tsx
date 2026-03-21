@@ -18,6 +18,7 @@ import ServicesGrid from '@/components/Home/ServicesGrid';
 import Delivery from '@/components/Home/Delivery';
 import Process from '@/components/Home/Process';
 import Testimonials from '@/components/Home/Testimonials';
+import LocationsList from '@/components/Home/LocationsList';
 import GlobalFAQ from '@/components/FAQ/GlobalFAQ';
 
 const homeFaqs = [

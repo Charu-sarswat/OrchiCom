@@ -70,8 +70,14 @@ export default function ServiceDetail() {
             </ul>
           </div>
           <div className="order-1 lg:order-2">
-            <div className="rounded-[40px] overflow-hidden border-8 border-white shadow-none">
-              <Image src={service.image} alt={service.title} width={700} height={600} className="w-full h-auto block transform hover:scale-105 transition-transform duration-700" priority />
+            <div className="rounded-[40px] overflow-hidden border-8 border-white shadow-none aspect-[7/6] relative">
+              <Image 
+                src={service.image} 
+                alt={service.title} 
+                fill
+                className="object-cover transform hover:scale-105 transition-transform duration-700" 
+                priority 
+              />
             </div>
           </div>
         </div>

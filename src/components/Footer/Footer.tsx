@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Instagram, Linkedin, Youtube, Phone, Mail, MapPin } from "lucide-react";
 import AppDownload from "../Home/AppDownload";
+import { locations } from "@/services/locationData";
 
 export default function Footer() {
   return (
@@ -58,9 +59,11 @@ export default function Footer() {
           <div className="footer-section pb-5 max-[768px]:border-b max-[768px]:border-[#f5f5f5]">
             <h3 className="text-[1.1rem] md:text-[1.2rem] font-bold mb-6 text-black relative footer-heading">Get In Touch</h3>
             <ul className="list-none p-0 m-0">
-              <li className="flex gap-[0.7rem] mb-5 text-[#444] text-[0.95rem] items-center">
-                <MapPin size={20} className="text-primary shrink-0" />
-                <span>Shop No. 3, Priyanka Compound, Near MHADA Colony, Badlapur Pipeline Road, Khoni, Dombivli East – 421204</span>
+              <li className="flex gap-[0.7rem] mb-5 text-[#444] text-[0.95rem] items-start">
+                <MapPin size={20} className="text-primary shrink-0 mt-0.5" />
+                <Link href="/contact#map" className="text-[#444] no-underline transition-all duration-300 ease hover:text-primary hover:pl-1 leading-relaxed">
+                  Shop No. 3, Priyanka Compound, Near MHADA Colony, Badlapur Pipeline Road, Khoni, Dombivli East – 421204
+                </Link>
               </li>
               <li className="flex gap-[0.7rem] mb-5 text-[#444] text-[0.95rem] items-center">
                 <Phone size={20} className="text-primary shrink-0" />

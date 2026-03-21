@@ -45,7 +45,7 @@ export const servicesData = {
   "wash-iron": {
     title: "Professional Wash & Iron Service",
     subtitle: "Fresh wash with crisp, wrinkle-free finishing",
-    image: "/img/mother-with-daughter-doing-laundry-self-serviece-laundrette.jpg",
+    image: "/wash-iron.png",
 
     description: "Ideal for daily wear, office clothes, and family laundry that needs proper cleaning with professional steam ironing.",
     benefits: [

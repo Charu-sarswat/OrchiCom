@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import LocationsList from "@/components/Home/LocationsList";
 import FloatingContact from "@/components/FloatingContact/FloatingContact";
 import "./globals.css";
 
@@ -38,6 +39,7 @@ export default function RootLayout({
         <main className="main-content">
           {children}
         </main>
+        <LocationsList />
         <Footer />
         <FloatingContact />
       </body>

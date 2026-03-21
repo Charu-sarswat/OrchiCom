@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Phone, Calendar, ShieldCheck, Clock, MapPin } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Calendar, ShieldCheck, Clock, MapPin, Building2, Pill, Hospital, Utensils, Sparkles } from "lucide-react";
 
 import { serviceCategories } from "@/services/servicesData";
 
@@ -13,7 +13,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showB2BDropdown, setShowB2BDropdown] = useState(false);
   const [showServices, setShowServices] = useState(false);
+  const [showB2BServices, setShowB2BServices] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -41,8 +43,18 @@ export default function Navbar() {
   useEffect(() => {
     setIsOpen(false);
     setShowDropdown(false);
+    setShowB2BDropdown(false);
     setShowServices(false);
+    setShowB2BServices(false);
   }, [pathname]);
+
+  const b2bLinks = [
+    { name: "Hotel Linen", href: "/b2b-services/hotel-linen" },
+    { name: "Pharma Uniforms", href: "/b2b-services/pharma-uniform" },
+    { name: "Hospital Laundry", href: "/b2b-services/hospital-linen" },
+    { name: "Restaurant Uniforms", href: "/b2b-services/restaurant-uniform" },
+    { name: "Spa & Salon", href: "/b2b-services/spa-towel" },
+  ];
 
   return (
     <>
@@ -63,6 +75,7 @@ export default function Navbar() {
               <Link href="/" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Home</Link>
               <Link href="/about" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/about" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>About</Link>
 
+              {/* Services Dropdown */}
               <div
                 className="relative flex items-center group"
                 onMouseEnter={() => setShowDropdown(true)}
@@ -76,7 +89,7 @@ export default function Navbar() {
                 <AnimatePresence>
                   {showDropdown && (
                     <motion.div
-                      className="absolute top-full bg-white min-w-[750px] p-10 rounded-[30px] border border-black/5 z-[1001] overflow-hidden left-1/2 -ml-[375px] mt-[10px]"
+                      className="absolute top-full bg-white min-w-[750px] p-10 rounded-[30px] border border-black/5 z-[1001] overflow-hidden left-1/2 -ml-[375px] mt-[10px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]"
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 15 }}
@@ -91,9 +104,9 @@ export default function Navbar() {
                               {idx === 2 && <MapPin size={16} />}
                               {category.title}
                             </h5>
-                            <div className="flex flex-col gap-[0.4rem]">
+                            <div className="flex flex-col gap-[0.15rem]">
                               {category.links.map((s) => (
-                                <Link key={s.href} href={s.href} className="py-[0.8rem] px-5 text-[#444] no-underline font-semibold text-[0.95rem] rounded-2xl transition-all duration-200 ease hover:bg-light hover:text-primary hover:translate-x-[5px] block">{s.name}</Link>
+                                <Link key={s.href} href={s.href} className="py-[0.8rem] px-5 text-[#444] no-underline font-semibold text-[0.92rem] rounded-2xl transition-all duration-200 ease hover:bg-[rgba(24,161,216,0.06)] hover:text-primary hover:translate-x-[5px] block">{s.name}</Link>
                               ))}
                             </div>
                           </div>
@@ -104,7 +117,39 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              <Link href="/b2b-services" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/b2b-services" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>B2B Services</Link>
+              {/* B2B Services Dropdown */}
+              <div
+                className="relative flex items-center group"
+                onMouseEnter={() => setShowB2BDropdown(true)}
+                onMouseLeave={() => setShowB2BDropdown(false)}
+              >
+                <Link href="/b2b-services" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname.startsWith("/b2b-services") ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>
+                  B2B Services
+                  <ChevronDown size={14} className="transition-transform duration-300 ease group-hover:rotate-180 flex-shrink-0" />
+                </Link>
+
+                <AnimatePresence>
+                  {showB2BDropdown && (
+                    <motion.div
+                      className="absolute top-full bg-white min-w-[320px] p-6 rounded-[30px] border border-black/5 z-[1001] overflow-hidden left-0 mt-[10px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)]"
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 15 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="flex flex-col gap-[0.15rem]">
+                        <h5 className="text-[0.7rem] uppercase text-primary tracking-[0.1em] font-extrabold mb-4 pl-4 block">Commercial Hub</h5>
+                        {b2bLinks.map((link) => (
+                          <Link key={link.href} href={link.href} className="flex items-center gap-4 py-[0.8rem] px-5 text-[#444] no-underline font-semibold text-[0.92rem] rounded-2xl transition-all duration-200 ease hover:bg-[rgba(24,161,216,0.06)] hover:text-primary hover:translate-x-[5px]">
+                            {link.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               <Link href="/pricing" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/pricing" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Pricing</Link>
               <Link href="/blog" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/blog" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Blog</Link>
               <Link href="/contact" className={`text-black no-underline font-bold text-[0.9rem] xl:text-[0.95rem] py-2 px-[0.8rem] xl:px-4 rounded-xl flex items-center gap-[0.4rem] transition-all duration-300 ease hover:text-primary hover:bg-[rgba(24,161,216,0.05)] ${pathname === "/contact" ? "!text-primary !bg-[rgba(24,161,216,0.05)]" : ""}`}>Contact</Link>
@@ -202,7 +247,42 @@ export default function Navbar() {
                     </AnimatePresence>
                   </div>
 
-                  <Link href="/b2b-services" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/b2b-services" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>B2B Services</Link>
+                  {/* Collapsible B2B Services Section */}
+                  <div className="rounded-[10px] overflow-hidden border border-black/[0.06] bg-[#fafafa] my-[0.1rem]">
+                    <button
+                      className="flex items-center justify-between w-full py-[0.55rem] px-3 bg-transparent border-none cursor-pointer transition-background duration-200 ease hover:bg-[rgba(24,161,216,0.05)]"
+                      onClick={() => setShowB2BServices(!showB2BServices)}
+                      aria-expanded={showB2BServices}
+                    >
+                      <span className="flex items-center gap-2 font-bold text-[0.9rem] text-primary">
+                        <Building2 size={15} />
+                        B2B Services
+                      </span>
+                      <ChevronDown
+                        size={15}
+                        className={`text-[#888] flex-shrink-0 transition-transform duration-[0.22s] ease ${showB2BServices ? "rotate-180" : ""}`}
+                      />
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {showB2BServices && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.22 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="py-2 px-3 pb-[0.6rem] flex flex-col gap-[0.05rem]">
+                            <Link href="/b2b-services" className="no-underline text-primary font-bold text-[0.82rem] py-[0.35rem] px-[0.7rem] rounded-md hover:bg-white block mb-1 underline">B2B Overview Page</Link>
+                            {b2bLinks.map((link) => (
+                              <Link key={link.href} href={link.href} className="no-underline text-[#444] font-semibold text-[0.82rem] py-[0.35rem] px-[0.7rem] rounded-md transition-all duration-200 ease hover:bg-white hover:text-primary block">{link.name}</Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                   <Link href="/pricing" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/pricing" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Pricing</Link>
                   <Link href="/blog" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/blog" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Blog</Link>
                   <Link href="/contact" className={`text-[0.95rem] font-semibold text-[#1a1a1a] no-underline py-2 px-3 rounded-lg transition-all duration-200 ease hover:text-primary hover:bg-[rgba(24,161,216,0.06)] block ${pathname === "/contact" ? "!text-primary !bg-[rgba(24,161,216,0.08)]" : ""}`}>Contact</Link>

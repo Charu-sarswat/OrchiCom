@@ -1,216 +1,217 @@
-import { CheckCircle2, ShieldCheck, Clock, Package, MessageSquare } from "lucide-react";
+import { 
+  ShieldCheck, 
+  CheckCircle2, 
+  Truck, 
+  ArrowRight,
+  ClipboardList,
+  Target,
+  Users,
+  Award,
+  Zap,
+  Leaf,
+  BarChart3,
+  UserCheck,
+  MapPin
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import GlobalFAQ from "@/components/FAQ/GlobalFAQ";
+import { b2bIndustries } from "@/services/b2bData";
 
 export const metadata = {
-  title: "B2B Services | The Orchid Laundry",
-  description: "Standard Operating Procedure and Our Commitment for Pharmaceutical Uniforms.",
+  title: "B2B Commercial Laundry Services | The Orchid Laundry",
+  description: "Professional SOP-driven commercial laundry solutions for Hotels, Pharma, Hospitals, Restaurants, and Spas in Navi Mumbai & Dombivli.",
 };
 
 const B2BPage = () => {
+    
+  const b2bFaqs = [
+    {
+      question: "Do you offer a trial wash for B2B clients?",
+      answer: "Yes, we offer a free consultation and a trial wash for all new commercial clients to demonstrate our quality and SOP compliance."
+    },
+    {
+      question: "How do you handle hygiene in hospital/pharma laundry?",
+      answer: "We maintain 100% segregation between hospital/pharma streams and other categories. We use dedicated vehicles, separate wash lines, and thermal disinfection protocols."
+    },
+    {
+      question: "What is your coverage area for commercial services?",
+      answer: "We serve the entire Navi Mumbai corridor (Airoli to Panvel) and the Kalyan-Dombivli region, with daily pickups for our contracted partners."
+    },
+    {
+      question: "Can we track our linen orders digitally?",
+      answer: "Yes, we provide digital documentation for every transaction, including pickup receipts, delivery manifests, and wash batch records upon request."
+    }
+  ];
+
   return (
-    <div>
-      {/* Hero */}
-      <section
-        className="relative flex items-center justify-center text-white text-center h-[36vh] min-h-[220px] md:h-[50vh] md:min-h-[340px] bg-cover bg-center bg-fixed max-[768px]:bg-scroll"
-        style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0.35)), url('/B2B.png')" }}
-      >
-        <div className="container">
-          <div className="max-w-[800px] mx-auto px-4">
-            <h1 className="mb-4 leading-[1.1] text-[2.2rem] md:text-[3.5rem] lg:text-[4.2rem] font-bold text-white">
-              B2B <span className="text-white">Services</span>
+    <div className="bg-white">
+      {/* Hero Section */}
+      <section className="relative h-[70vh] min-h-[550px] flex items-center justify-center bg-black overflow-hidden px-4 md:px-0">
+         <Image 
+            src="/B2c.png" 
+            alt="B2B Commercial Laundry" 
+            fill 
+            className="object-cover opacity-60"
+            priority
+         />
+         <div className="container relative z-10 text-center text-white">
+            <span className="inline-block px-5 py-2 bg-primary/20 backdrop-blur-md rounded-full text-primary font-black uppercase tracking-[3px] text-xs mb-8 border border-primary/30">
+                Official SOP Document v1.0
+            </span>
+            <h1 className="text-[2.2rem] md:text-[3.8rem] lg:text-[4.5rem] font-bold leading-[1.1] mb-6 m-0 uppercase tracking-normal text-white">
+               B2B Commercial Laundry Services
             </h1>
-            <p className="text-[1.1rem] md:text-[1.3rem] font-medium tracking-[0.05em] text-white opacity-90 max-w-[800px] mx-auto leading-[1.7]">
-              Professional Pharmaceutical Uniform Processing Solutions
+            <p className="text-[1.1rem] md:text-[1.3rem] font-medium tracking-[0.05em] text-white opacity-90">
+                Hygiene. Precision. Reliability. — For Every Industry.
             </p>
-          </div>
+         </div>
+      </section>
+
+      {/* About The Orchid Section - Sync with About Page Intro */}
+      <section className="py-24 bg-white border-b border-slate-100">
+        <div className="container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+                <div className="text-left">
+                   <h2 className="text-[2rem] md:text-[3.2rem] text-black font-bold mb-10 leading-tight">
+                        About The <span className="text-gradient">Orchid Laundry</span>
+                   </h2>
+                   <div className="space-y-8 text-[#444] text-[1.1rem] md:text-[1.15rem] leading-[1.75] font-medium">
+                        <p>
+                            Headquartered in Dombivli, Maharashtra, we are a professional commercial laundry company serving both B2C and B2B commercial clients across Kalyan-Dombivli and the entire Navi Mumbai corridor — from Airoli to Panvel.
+                        </p>
+                        <p>
+                            Our B2B division is a dedicated, purpose-built operation designed to serve the unique laundering needs of the healthcare, hospitality, wellness, food service, and pharmaceutical industries.
+                        </p>
+                   </div>
+                   
+                   <div className="mt-12 p-10 bg-[#fdfcf6] border border-primary/15 rounded-[30px] flex items-start gap-6">
+                        <MapPin className="text-primary mt-1 shrink-0" size={28} />
+                        <div>
+                            <h4 className="text-black font-bold uppercase text-xs tracking-widest mb-3">Service Hubs</h4>
+                            <p className="text-slate-600 m-0 font-bold leading-relaxed text-[0.95rem]">
+                                Airoli | Ghansoli | Kopar Khairane | Vashi | Sanpada | Nerul | Seawoods | CBD Belapur | Kharghar | Panvel | Kalyan | Dombivli
+                            </p>
+                        </div>
+                   </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                        { title: "Industry SOPs", desc: "Custom wash protocols for each B2B client category.", icon: <ClipboardList className="text-primary" /> },
+                        { title: "Trained Experts", desc: "Uniformed experts with category-specific training.", icon: <UserCheck className="text-primary" /> },
+                        { title: "On-time Delivery", desc: "Never miss a linen cycle with our scheduled fleet.", icon: <Zap className="text-primary" /> },
+                        { title: "Digital records", desc: "Pickup receipts, manifests, and batch records.", icon: <BarChart3 className="text-primary" /> },
+                        { title: "Scalable", desc: "From small clinics to multi-property hotel chains.", icon: <Target className="text-primary" /> },
+                        { title: "Eco-Friendly", desc: "Biodegradable detergents and water-efficiency.", icon: <Leaf className="text-primary" /> },
+                        { title: "Fair Pricing", desc: "Volume discounts for our contracted partners.", icon: <ShieldCheck className="text-primary" /> },
+                        { title: "Account Manager", desc: "A single point of contact for every B2B client.", icon: <Users className="text-primary" /> },
+                    ].map((item, i) => (
+                        <div key={i} className="p-8 rounded-[30px] border border-slate-100 bg-white flex flex-col gap-4 text-left transition-all hover:bg-[#f0f9ff] group">
+                            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center border border-black/5 group-hover:scale-110 transition-all">{item.icon}</div>
+                            <h4 className="font-bold text-[1.1rem] text-black m-0">{item.title}</h4>
+                            <p className="text-slate-500 text-[0.88rem] md:text-[0.95rem] m-0 leading-relaxed font-medium">{item.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
       </section>
 
-      <div 
-        className="section-padding bg-cover bg-center bg-fixed bg-no-repeat relative py-16 md:py-24"
-        style={{ backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/b.png')" }}
-      >
-        <div className="relative z-10 w-full max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          {/* Main Introduction */}
-          <div className="text-center mb-16 max-w-[900px] mx-auto text-white">
-            <h2 className="mb-6 text-[2rem] md:text-[3.2rem] text-white font-bold leading-[1.1]">
-              Standard Operating <span className="text-[#18a1d8]">Procedure</span>
+      {/* Service Category Summary */}
+      <section className="py-24 bg-white">
+        <div className="container overflow-x-auto text-black">
+            <h2 className="text-[1.8rem] md:text-[2.6rem] font-bold text-black mb-12 text-left uppercase tracking-tight">
+               Service <span className="text-gradient">Coverage</span> Summary
             </h2>
-            <p className="text-white/80 text-[1.1rem] md:text-[1.15rem] leading-[1.8] font-medium max-w-[800px] mx-auto">
-              Every batch of pharmaceutical uniforms follows the rigorous process outlined below, ensuring peak hygiene and full traceability from pickup to return delivery.
-            </p>
-          </div>
-
-          {/* SOP Steps */}
-          <div className="w-full flex flex-col gap-12 md:gap-20 mt-16 max-w-[1240px] mx-auto">
-            {[
-              {
-                number: "1",
-                image: "/b2.png",
-                title: "Collection from Client Premises",
-                points: [
-                  "Uniforms are collected from the pharmaceutical facility on a pre-agreed schedule.",
-                  "A collection transfer form is signed by both parties noting the garment count and any visible condition issues.",
-                  "Garments are transported in sealed, clean laundry bags to prevent cross-contamination in transit."
-                ]
-              },
-              {
-                number: "2",
-                image: "/b3.png",
-                title: "Sorting & Batch Inspection",
-                points: [
-                  "On arrival at The Orchid Laundry, garments are sorted batch-wise by uniform type, fabric, and colour.",
-                  "Each garment is individually inspected for stains, damage (tears, snags, broken fastenings), and colour-bleed risk.",
-                  "Pockets are checked and cleared. Any items found are bagged and reported to the client.",
-                  "Garments with pre-existing damage are flagged and a damage notification is issued before processing."
-                ]
-              },
-              {
-                number: "3",
-                image: "/b4.png",
-                title: "Spotting & Stain Pre-Treatment",
-                points: [
-                  "Stained areas — cuffs, collars, and any soiled zones — are individually treated with appropriate spotting solutions.",
-                  "Stubborn stains (oil, biological matter, chemical residues, ink) receive targeted pre-treatment using enzyme-based solutions.",
-                  "Chemical compatibility is verified against the garment fabric before any agent is applied."
-                ]
-              },
-              {
-                number: "4",
-                image: "/b5.png",
-                title: "Washing",
-                points: [
-                  "Garments are washed in high-efficiency commercial machines using the correct water temperature, detergent type, and wash cycle for each fabric.",
-                  "Pharmaceutical uniforms are washed in dedicated machines, separate from all non-pharmaceutical laundry, to prevent cross-contamination.",
-                  "Detergents are pharmaceutical-grade, skin-safe, and pH-balanced."
-                ]
-              },
-              {
-                number: "5",
-                image: "/img/abcd.jpg",
-                title: "Drying",
-                points: [
-                  "Washed garments are dried in temperature-controlled anti-bacterial drying chambers.",
-                  "Drying parameters are set per fabric type to prevent shrinkage, fading, or loss of garment shape.",
-                  "No open-air or shared-rack drying is used for pharmaceutical uniforms."
-                ]
-              },
-              {
-                number: "6",
-                image: "/img/steam-ironing-service.png",
-                title: "Ironing & Finishing",
-                points: [
-                  "Garments are steam-pressed using high-pressure steam irons with Teflon-coated plates for a crisp, wrinkle-free finish.",
-                  "Delicate fabrics are finished under precision temperature control to preserve fabric integrity.",
-                  "Garments are folded or hung as per the client's specified preference."
-                ]
-              },
-              {
-                number: "7",
-                image: "/b6.png",
-                title: "Multi-Point Quality Check",
-                points: [
-                  "Every garment goes through a structured three-stage quality inspection before packaging.",
-                  "Any garment that fails QC at any stage is returned for re-processing before dispatch.",
-                  "Passed garments are packaged in hygienic, sealed packaging and returned to the client on the agreed schedule.",
-                  "A delivery confirmation is signed by the client representative upon receipt."
-                ]
-              }
-            ].map((step, idx) => (
-              <div key={idx} className="flex flex-col lg:flex-row items-stretch gap-0 lg:gap-0 w-full lg:h-[520px] group rounded-[40px] overflow-hidden border border-white/10 bg-white/5 shadow-none transition-all duration-400 hover:border-primary/50">
-                {/* Left Side: Image */}
-                <div className="w-full lg:w-1/2 min-h-[300px] lg:min-h-0 lg:h-full relative overflow-hidden shrink-0">
-                  <img src={step.image} alt={step.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute top-6 left-6 z-10 w-[55px] h-[55px] bg-[#18a1d8] rounded-[18px] flex items-center justify-center font-black text-[1.8rem] text-white shadow-none">
-                    {step.number}
-                  </div>
-                </div>
-
-                {/* Right Side: Content Card */}
-                <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-white/10 h-full overflow-hidden">
-                   <h3 className="text-[1.6rem] md:text-[2.2rem] font-bold text-white mb-6 leading-tight">{step.title}</h3>
-                   <div className="flex flex-col gap-4">
-                    {step.points.map((point, i) => (
-                      <div key={i} className="flex gap-4 items-start">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
-                        <p className="m-0 text-white/80 text-[1rem] md:text-[1.1rem] leading-relaxed">
-                          {point}
-                        </p>
-                      </div>
+            <table className="w-full border-collapse rounded-[30px] overflow-hidden border border-slate-100 min-w-[600px]">
+                <thead>
+                    <tr className="bg-slate-900 text-white">
+                        <th className="p-6 text-left font-bold uppercase text-[0.75rem] tracking-widest">Service Category</th>
+                        <th className="p-6 text-left font-bold uppercase text-[0.75rem] tracking-widest">Clients We Serve</th>
+                        <th className="p-6 text-left font-bold uppercase text-[0.75rem] tracking-widest">Key Focus Area</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {b2bIndustries.map((ind, i) => (
+                        <tr key={ind.id} className={`${i % 2 !== 0 ? 'bg-slate-50/50' : 'bg-white'} hover:bg-slate-50 transition-colors`}>
+                               {ind.title.replace(" Laundry", "")}
+                            <td className="p-6 border-b border-slate-100 font-medium text-slate-700 text-[0.95rem]">
+                                {ind.clients.join(", ")}
+                            </td>
+                            <td className="p-6 border-b border-slate-100 text-primary font-bold">
+                                {ind.tagline}
+                            </td>
+                        </tr>
                     ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                </tbody>
+            </table>
         </div>
-      </div>
+      </section>
 
-      {/* Our Commitment */}
-      <div className="bg-white py-20 md:py-28 px-4 md:px-0">
+      {/* Detailed Sections */}
+      <section className="py-24">
         <div className="container">
-          <div className="text-center mb-16 max-w-[900px] mx-auto">
-            <h2 className="text-[2rem] md:text-[3.2rem] text-black font-bold mb-6">
-              Our <span className="text-gradient">Commitment</span>
-            </h2>
-            <p className="max-w-[700px] mx-auto text-[1.1rem] text-[#444]">
-              Ensuring the highest standards of hygiene and reliability for your commercial uniform needs.
-            </p>
-          </div>
+            {b2bIndustries.map((ind, index) => (
+                <div key={ind.id} id={ind.id} className={`mb-32 ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''} flex flex-col lg:flex-row gap-12 lg:gap-24 items-center`}>
+                    {/* Visual Card */}
+                    <div className="w-full lg:w-1/2 relative min-h-[450px] md:min-h-[600px] rounded-[30px] overflow-hidden">
+                        <Image src={ind.image} alt={ind.title} fill className="object-cover" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent flex flex-col justify-end p-12 lg:p-20 text-left">
+                            <div className="mb-8">
+                            </div>
+                            <h3 className="text-[2rem] md:text-[3.2rem] font-bold text-white mb-4 leading-none uppercase tracking-normal">{ind.title}</h3>
+                            <p className="text-[1.2rem] text-primary font-bold uppercase tracking-widest">{ind.tagline}</p>
+                        </div>
+                    </div>
 
-          <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-[1240px] mx-auto mb-16">
-            {[
-              { icon: <ShieldCheck size={28} />, title: "Dedicated Wash Streams", desc: "Pharmaceutical uniforms are never mixed with general laundry." },
-              { icon: <CheckCircle2 size={28} />, title: "Full Traceability", desc: "Every garment is tracked from collection to delivery." },
-              { icon: <Package size={28} />, title: "Hygienic Packaging", desc: "Garments arrive back clean, sealed, and protected." },
-              { icon: <Clock size={28} />, title: "Reliable Turnaround", desc: "Consistent collection and delivery on agreed schedules." },
-              { icon: <MessageSquare size={28} />, title: "Transparent Communication", desc: "Any damage or issue is reported to the client before processing." },
-            ].map((item, i) => (
-              <div key={i} className="bg-white border border-[rgba(24,161,216,0.15)] rounded-[20px] p-4 md:p-6 transition-all duration-400 hover:-translate-y-2 hover:border-primary text-center flex flex-col items-center shadow-none min-h-[180px] justify-center">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-[#f0f9ff] text-primary flex items-center justify-center mb-3 md:mb-4 shadow-none">
-                  <div className="[&>svg]:w-5 [&>svg]:h-5 md:[&>svg]:w-6 md:[&>svg]:h-6">
-                    {item.icon}
-                  </div>
+                    {/* Content Card */}
+                    <div className="w-full lg:w-1/2 text-left py-8">
+                        <div className="mb-12">
+                            <h4 className="text-[1.6rem] md:text-[2rem] font-bold text-black mb-8 leading-tight">Industry <span className="text-gradient">Scope</span></h4>
+                            <p className="text-[1.1rem] md:text-[1.15rem] leading-[1.75] text-[#444] mb-10 font-medium">{ind.description}</p>
+                            <div className="flex flex-wrap gap-3">
+                                {ind.clients.map(c => (
+                                    <span key={c} className="px-6 py-2.5 bg-slate-100 rounded-full text-slate-800 text-[0.8rem] font-bold uppercase tracking-widest border border-slate-200">{c}</span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="space-y-4">
+                            <h4 className="text-black font-bold text-sm uppercase tracking-widest mb-8 flex items-center gap-4">
+                                <span className="w-12 h-[2px] bg-primary"></span>
+                                Core Protocol Highlights
+                            </h4>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {ind.sop.slice(0, 4).map(step => (
+                                    <div key={step.step} className="flex gap-4 items-start p-6 bg-white border border-slate-100 rounded-[20px] transition-all hover:border-primary">
+                                        <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-primary font-bold text-xs shrink-0">
+                                            {step.step}
+                                        </div>
+                                        <h5 className="text-[0.95rem] font-bold text-black uppercase tracking-tight leading-tight mt-1.5">{step.title}</h5>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <Link href={`/b2b-services/${ind.slug}`} className="mt-16 inline-flex items-center gap-4 bg-primary text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-sm transition-all hover:-translate-y-1">
+                            Full SOP Document
+                            <ArrowRight size={20} />
+                        </Link>
+                    </div>
                 </div>
-                <h4 className="text-[1rem] md:text-[1.1rem] font-bold text-black mb-1.5 leading-tight">{item.title}</h4>
-                <p className="text-[#444] text-[0.85rem] md:text-[0.9rem] leading-relaxed m-0">{item.desc}</p>
-              </div>
             ))}
-          </div>
         </div>
-      </div>
-      
-      {/* Global FAQ Section */}
-      <GlobalFAQ faqs={b2bFaqs} />
+      </section>
+
+      {/* Footer Branding */}
+      <footer className="py-12 border-t border-slate-100 text-center">
+            <p className="text-slate-400 font-bold uppercase tracking-[4px] text-[0.7rem]">
+                The Orchid Laundry Services | B2B Division | Dombivli - Navi Mumbai
+            </p>
+      </footer>
     </div>
   );
 };
-
-const b2bFaqs = [
-  {
-    question: "Do you process general garments in the same machines as pharmaceutical uniforms?",
-    answer: "No. We utilize completely dedicated wash streams for pharmaceutical uniforms. They are never mixed with non-pharmaceutical laundry to prevent cross-contamination and to meet strict hygiene regulations."
-  },
-  {
-    question: "How do you handle garments that arrive with pre-existing damage?",
-    answer: "Every garment is individually inspected upon arrival. If we find tears, snags, broken fastenings, or severe damage, we flag it immediately and issue a digital damage notification to your team before processing."
-  },
-  {
-    question: "What kind of detergents are used for B2B pharmaceutical laundry?",
-    answer: "We use exclusively pharmaceutical-grade, skin-safe, and pH-balanced commercial detergents that comply with industry standards to ensure cleanliness without compromising the uniform's integrity."
-  },
-  {
-    question: "Is open-air drying used at any point?",
-    answer: "No. All pharmaceutical uniforms are dried inside temperature-controlled, anti-bacterial drying chambers. Open-air or shared-rack drying poses contamination risks and is strictly prohibited in our B2B workflows."
-  },
-  {
-    question: "How do you prevent items left in pockets from causing issues?",
-    answer: "During our Step 02 Batch Inspection, every pocket is manually checked and cleared. Any items found (like pens, IDs, or tools) are safely bagged and officially reported and returned to your management."
-  },
-  {
-    question: "Do you offer customizable delivery schedules?",
-    answer: "Yes, collection and return deliveries happen strictly according to a pre-agreed schedule that is highly customizable to match your shift changes and operational requirements."
-  }
-];
 
 export default B2BPage;

@@ -11,7 +11,7 @@ const services = [
   { 
     id: 2, 
     title: 'Wash & Iron', 
-    img: '/wash.png',
+    img: '/wash-iron.png',
     link: '/services/wash-iron'
   },
   { 

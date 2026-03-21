@@ -1,0 +1,152 @@
+[
+  {
+    "slug": "panvel",
+    "name": "Panvel",
+    "areas": ["Old Panvel", "New Panvel", "Khanda Colony", "Adai", "Chipale"],
+    "description": "Serving the growing hub of Panvel with premium laundry and dry cleaning services. We offer quick turnaround times for residents in New Panvel and the surrounding residential sectors."
+  },
+  {
+    "slug": "khandeshwar",
+    "name": "Khandeshwar",
+    "areas": ["Khandeshwar Station Area", "Kamothe", "Sector 11", "Sector 12"],
+    "description": "Convenient doorstep laundry solutions for the Khandeshwar and Kamothe community. Our specialized teams ensure your daily wear is processed with peak hygiene."
+  },
+  {
+    "slug": "kharghar",
+    "name": "Kharghar",
+    "areas": ["Sector 12", "Sector 20", "Sector 35", "Central Park Area", "Utsav Chowk"],
+    "description": "Kharghar's premier choice for high-end garment care. From designer sarees to formal suits, we provide the best dry cleaning in the educational and residential hub of Navi Mumbai."
+  },
+  {
+    "slug": "belapur",
+    "name": "Belapur",
+    "areas": ["CBD Belapur", "Sector 15", "Sector 11", "Sector 20"],
+    "description": "Professional corporate and residential laundry services in CBD Belapur. We cater to the busy professionals and residents of the administrative heart of Navi Mumbai."
+  },
+  {
+    "slug": "seawood",
+    "name": "Seawood",
+    "areas": ["Seawoods West", "Seawoods East", "Darave", "Karave Village"],
+    "description": "Experience world-class laundry care in Seawoods. Our pickup team covers all major residential complexes near Seawoods Grand Central."
+  },
+  {
+    "slug": "nerul",
+    "name": "Nerul",
+    "areas": ["Sector 15", "Sector 18", "Sector 20", "Nerul East", "Nerul West"],
+    "description": "The most trusted laundry and dry cleaning service in Nerul. We offer specialized care for heavy woolens and delicate fabrics for the Nerul community."
+  },
+  {
+    "slug": "jui-nagar",
+    "name": "Jui Nagar",
+    "areas": ["Sector 24", "Sector 25", "Railway Colony"],
+    "description": "Reliable and affordable laundry services in Jui Nagar. We ensure your clothes are washed, ironed, and delivered fresh to your doorstep."
+  },
+  {
+    "slug": "sanpada",
+    "name": "Sanpada",
+    "areas": ["Sector 5", "Sector 14", "Sanpada Station Area"],
+    "description": "Premium dry cleaning and laundry solutions for Sanpada residents. We provide quick 48-hour delivery for regular wash and iron orders."
+  },
+  {
+    "slug": "vashi",
+    "name": "Vashi",
+    "areas": ["Sector 17", "Sector 9", "Sector 28", "Vashi Plaza Area"],
+    "description": "Vashi's most experienced dry cleaning experts. Serving the commercial and residential heartbeat of Navi Mumbai with international-standard cleaning technology."
+  },
+  {
+    "slug": "turbhe",
+    "name": "Turbhe",
+    "areas": ["Turbhe Naka", "APMC Market Area", "Sector 19"],
+    "description": "Efficient industrial and residential laundry services in Turbhe. We handle bulk orders and daily wear with equal precision and care."
+  },
+  {
+    "slug": "koparkhairane",
+    "name": "KoparKhairane",
+    "areas": ["Sector 1", "Sector 5", "Sector 11", "Sector 15"],
+    "description": "Comprehensive garment care for the KoparKhairane community. We specialize in deep cleaning of sofas, carpets, and curtains for local households."
+  },
+  {
+    "slug": "ghansoli",
+    "name": "Ghansoli",
+    "areas": ["Ghansoli Village", "Sector 11", "Majiwada", "Ghansoli Station Area"],
+    "description": "Modern laundry solutions for the tech and residential blocks of Ghansoli. Our eco-friendly cleaning agents ensure your clothes last longer."
+  },
+  {
+    "slug": "rabale",
+    "name": "Rabale",
+    "areas": ["Rabale MIDC", "Rabale Village", "Sector 29"],
+    "description": "Serving the Rabale industrial and residential belt with top-notch cleaning services. We offer specialized corporate laundry for MIDC offices."
+  },
+  {
+    "slug": "airoli",
+    "name": "Airoli",
+    "areas": ["Sector 1", "Sector 8", "Sector 19", "Airoli Knowledge Park"],
+    "description": "Premium laundry care in Airoli. We provide doorstep pickup and delivery for IT professionals and residents throughout Airoli's residential sectors."
+  },
+  {
+    "slug": "thane",
+    "name": "Thane",
+    "areas": ["Ghodbunder Road", "Majivada", "Vartak Nagar", "Naupada", "Hiranandani Estate"],
+    "description": "The Orchid Laundry's flagship service reach in Thane. We bring luxury dry cleaning and expert fabric care to the City of Lakes."
+  },
+  {
+    "slug": "kalwa",
+    "name": "Kalwa",
+    "areas": ["Kalwa West", "Manisha Nagar", "Parsik Nagar"],
+    "description": "Dependable and fast laundry services in Kalwa. Our team ensures high-quality stem ironing and washing for all local households."
+  },
+  {
+    "slug": "mumbra",
+    "name": "Mumbra",
+    "areas": ["Kausa", "Amrut Nagar", "Mumbra Station Area"],
+    "description": "Budget-friendly yet professional cleaning services in Mumbra. We handle everything from daily wear to heavy winter coats."
+  },
+  {
+    "slug": "diva",
+    "name": "Diva",
+    "areas": ["Diva East", "Diva West", "Saba Village"],
+    "description": "Introducing professional laundry standards to Diva. We offer reliable pickup and delivery schedules for all Diva residents."
+  },
+  {
+    "slug": "lower-kopar",
+    "name": "Lower Kopar",
+    "areas": ["Kopar Village", "Station Road"],
+    "description": "Focused laundry care for the Lower Kopar residential area. We ensure your whites stay bright and your colors stay vibrant."
+  },
+  {
+    "slug": "kopar",
+    "name": "Kopar",
+    "areas": ["Kopar East", "Kopar West"],
+    "description": "Expert dry cleaning and laundry services now available in Kopar. We provide specialized care for silk sarees and formal suits."
+  },
+  {
+    "slug": "dombivli",
+    "name": "Dombivli",
+    "areas": ["Dombivli East", "Dombivli West", "Phadke Road", "Manpada", "Palava City"],
+    "description": "Our home base and most trusted service area. We are the top-rated laundry and dry cleaning provider in the cultural hub of Dombivli."
+  },
+  {
+    "slug": "thakurli",
+    "name": "Thakurli",
+    "areas": ["Thakurli East", "Thakurli West", "90 Feet Road"],
+    "description": "Premium garment care for Thakurli residents. Our facility ensures every item is processed with international-grade detergents."
+  },
+  {
+    "slug": "kalyan",
+    "name": "Kalyan",
+    "areas": ["Kalyan West", "Kalyan East", "Khadakpada", "Adharwadi", "Chikanghar"],
+    "description": "Comprehensive home upholstery and laundry solutions in Kalyan. We are the preferred choice for deep sofa and carpet cleaning in Kalyan West."
+  },
+  {
+    "slug": "ambernath",
+    "name": "Ambernath",
+    "areas": ["Ambernath East", "Ambernath West", "MIDC Ambernath"],
+    "description": "Quality laundry services for the growing town of Ambernath. We provide professional care for shoes, bags, and expensive ethnic wear."
+  },
+  {
+    "slug": "badlapur",
+    "name": "Badlapur",
+    "areas": ["Badlapur East", "Badlapur West", "Katrap", "Shirgaon"],
+    "description": "Serving the scenic town of Badlapur with premium dry cleaning. We offer free doorstep delivery for all major residential complexes in the area."
+  }
+]

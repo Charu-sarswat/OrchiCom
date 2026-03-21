@@ -76,13 +76,13 @@ export default function Delivery() {
             transition={{ delay: 0.2 }}
             className="flex items-center justify-center md:col-span-2 lg:col-span-1"
           >
-            <div className="w-full relative flex items-center justify-center">
+            <div className="w-full relative flex items-center justify-center rounded-[40px] overflow-hidden">
               <Image 
                 src="/b2.png" 
                 alt="Free Home Pickup & Delivery" 
                 width={800} 
                 height={600} 
-                className="w-full h-auto object-contain transition-transform duration-500 hover:scale-105"
+                className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105 rounded-[40px]"
               />
             </div>
           </motion.div>
